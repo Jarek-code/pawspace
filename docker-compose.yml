@@ -1,0 +1,83 @@
+version: '3.8'
+
+services:
+  db:
+    image: mariadb:11.4
+    container_name: pawspace-db
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootpass}
+      MARIADB_DATABASE: ${DB_NAME:-pawspace}
+      MARIADB_USER: ${DB_USER:-pawuser}
+      MARIADB_PASSWORD: ${DB_PASSWORD:-pawpass}
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./database/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${DB_ROOT_PASSWORD:-rootpass}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - pawspace-net
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: pawspace-backend
+    restart: unless-stopped
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_NAME: ${DB_NAME:-pawspace}
+      DB_USER: ${DB_USER:-pawuser}
+      DB_PASSWORD: ${DB_PASSWORD:-pawpass}
+      DB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootpass}
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./backend/src:/app/src
+      - ./backend/tests:/app/tests
+    networks:
+      - pawspace-net
+
+  adminer:
+    image: adminer:latest
+    container_name: pawspace-adminer
+    restart: unless-stopped
+    environment:
+      ADMINER_DEFAULT_SERVER: db
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    networks:
+      - pawspace-net
+
+  # Optional frontend static server (nginx)
+  frontend:
+    image: nginx:alpine
+    container_name: pawspace-frontend
+    restart: unless-stopped
+    volumes:
+      - ./frontend/src:/usr/share/nginx/html:ro
+      - ./frontend/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - pawspace-net
+
+volumes:
+  db_data:
+
+networks:
+  pawspace-net:
+    driver: bridge
