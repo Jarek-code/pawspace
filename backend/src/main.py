@@ -8,7 +8,7 @@ app = FastAPI(
     description="PawSpace - Social network for pets"
 )
 
-# Create tables (in development; for production use Alembic migrations)
+# Create tables (aun no sirve fladskfjlskjgfhkeriuh)
 @app.on_event("startup")
 async def startup():
     # This will create tables if they don't exist

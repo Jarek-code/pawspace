@@ -1,0 +1,14 @@
+# Nodo de datos dn_a - fragmento PAR  +  MAESTRO de las tablas replicadas
+
+[mysqld]
+server-id = 11
+
+# Binlog en formato ROW: es lo que hace que los filtros por tabla de la replica
+# parcial (replicate-ignore-table) sean fiables.
+log-bin = dn-a-bin
+binlog-format = ROW
+
+# Los dos fragmentos generan ids de la misma secuencia sin pisarse:
+# dn_a los pares (offset 2), dn_b los impares (offset 1).
+auto-increment-increment = 2
+auto-increment-offset = 2
