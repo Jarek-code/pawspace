@@ -1,0 +1,20 @@
+En esta seccion documentare para que mi yo del futuro no tenga problemas en hacer todo este chow.
+Recordando que todo esto se debe hacer en la carpeta donde se ubica el programa.
+Lo primero que se debe hacer es iniciar un entorno virtual en python con el comando en terminal.
+
+#python -m venv (nombre del entorno)
+
+El siguiente paso es activar el entorno virtual con el comando.
+
+#source (nombre del entorno)/bin/activate.fish
+
+Despues de que el entorno este creado y activado ya se pueden descargar las paquerias necesarias
+con los siguientes comandos en terminal.
+
+#pip install fastapi uvicorn sqlalchemy
+
+El comando anterior se define de la siguiente manera. FastAPI es un FrameWork el cual facilita la creacion de 
+API's (Interfaz de programacion de aplicaciones),
+uvicorn nos permite crear servidores locales para poder probar el programa,
+sqlalchemy es un ORM (Mapeo Relacional de Objetos) que transforma las secuencias SQL (Como SELECT*FROM USUARIOS;)
+en codigo python
