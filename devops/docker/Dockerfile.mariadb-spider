@@ -1,0 +1,11 @@
+# Nodo spider para PawSpace
+FROM mariadb:11.4
+
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends mariadb-plugin-spider \
+ && rm -rf /var/lib/apt/lists/*
+
+# Si ha_spider.so no queda instalado, INSTALL SONAME falla mas tarde con un error
+# poco claro ("Can't open shared library"), asi que se comprueba durante el build.
+RUN test -f /usr/lib/mysql/plugin/ha_spider.so \
+ && echo "OK: ha_spider.so presente"

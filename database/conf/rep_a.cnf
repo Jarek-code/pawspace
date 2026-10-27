@@ -1,0 +1,12 @@
+# Nodo rep_a - REPLICA TOTAL asincrona de dn_a
+
+[mysqld]
+server-id = 13
+
+read-only = ON
+skip-log-bin
+
+# El fragmento que guarda es la mitad PAR (la misma que dn_a). Si algun dia se
+# promociona a maestro, que siga generando ids pares y no choque con dn_b.
+auto-increment-increment = 2
+auto-increment-offset = 2

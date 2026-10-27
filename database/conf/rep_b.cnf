@@ -1,0 +1,11 @@
+# Nodo rep_b - REPLICA TOTAL asincrona de dn_b
+
+[mysqld]
+server-id = 14
+
+read-only = ON
+skip-log-bin
+
+# Guarda la mitad IMPAR (la misma que dn_b).
+auto-increment-increment = 2
+auto-increment-offset = 1

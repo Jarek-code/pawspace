@@ -1,7 +1,4 @@
--- ============================================================
 -- PAWSPACE
--- MariaDB
--- ============================================================
 
 DROP DATABASE IF EXISTS pawspace;
 
@@ -12,9 +9,7 @@ CREATE DATABASE pawspace
 USE pawspace;
 
 
--- ============================================================
 -- USUARIO
--- ============================================================
 
 CREATE TABLE USUARIO (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -37,9 +32,7 @@ CREATE TABLE USUARIO (
 ) ENGINE=InnoDB;
 
 
--- ============================================================
 -- ESPECIE
--- ============================================================
 
 CREATE TABLE ESPECIE (
     id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -53,9 +46,7 @@ CREATE TABLE ESPECIE (
 ) ENGINE=InnoDB;
 
 
--- ============================================================
 -- RAZA
--- ============================================================
 
 CREATE TABLE RAZA (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -78,9 +69,7 @@ CREATE TABLE RAZA (
 ) ENGINE=InnoDB;
 
 
--- ============================================================
 -- MASCOTA
--- ============================================================
 
 CREATE TABLE MASCOTA (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -122,9 +111,7 @@ CREATE TABLE MASCOTA (
 ) ENGINE=InnoDB;
 
 
--- ============================================================
 -- USUARIO_MASCOTA
--- ============================================================
 
 CREATE TABLE USUARIO_MASCOTA (
     usuario_id BIGINT UNSIGNED NOT NULL,
@@ -150,9 +137,7 @@ CREATE TABLE USUARIO_MASCOTA (
 ) ENGINE=InnoDB;
 
 
--- ============================================================
 -- SEGUIMIENTO
--- ============================================================
 
 CREATE TABLE SEGUIMIENTO (
     seguidor_id BIGINT UNSIGNED NOT NULL,
@@ -191,9 +176,7 @@ CREATE TABLE SEGUIMIENTO (
 ) ENGINE=InnoDB;
 
 
--- ============================================================
 -- BLOQUEO
--- ============================================================
 
 CREATE TABLE BLOQUEO (
     bloqueador_id BIGINT UNSIGNED NOT NULL,
@@ -220,9 +203,7 @@ CREATE TABLE BLOQUEO (
 ) ENGINE=InnoDB;
 
 
--- ============================================================
 -- PUBLICACION
--- ============================================================
 
 CREATE TABLE PUBLICACION (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -263,9 +244,7 @@ CREATE TABLE PUBLICACION (
 ) ENGINE=InnoDB;
 
 
--- ============================================================
 -- PUBLICACION_ADJUNTO
--- ============================================================
 
 CREATE TABLE PUBLICACION_ADJUNTO (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -297,9 +276,7 @@ CREATE TABLE PUBLICACION_ADJUNTO (
 ) ENGINE=InnoDB;
 
 
--- ============================================================
 -- ME_GUSTA_PUBLICACION
--- ============================================================
 
 CREATE TABLE ME_GUSTA_PUBLICACION (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -333,9 +310,7 @@ CREATE TABLE ME_GUSTA_PUBLICACION (
 ) ENGINE=InnoDB;
 
 
--- ============================================================
 -- COMENTARIO
--- ============================================================
 
 CREATE TABLE COMENTARIO (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -384,9 +359,7 @@ CREATE TABLE COMENTARIO (
 ) ENGINE=InnoDB;
 
 
--- ============================================================
 -- COMENTARIO_IMAGEN
--- ============================================================
 
 CREATE TABLE COMENTARIO_IMAGEN (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -411,9 +384,7 @@ CREATE TABLE COMENTARIO_IMAGEN (
 ) ENGINE=InnoDB;
 
 
--- ============================================================
 -- ME_GUSTA_COMENTARIO
--- ============================================================
 
 CREATE TABLE ME_GUSTA_COMENTARIO (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -447,9 +418,7 @@ CREATE TABLE ME_GUSTA_COMENTARIO (
 ) ENGINE=InnoDB;
 
 
--- ============================================================
 -- HASHTAG
--- ============================================================
 
 CREATE TABLE HASHTAG (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -463,9 +432,7 @@ CREATE TABLE HASHTAG (
 ) ENGINE=InnoDB;
 
 
--- ============================================================
 -- PUBLICACION_HASHTAG
--- ============================================================
 
 CREATE TABLE PUBLICACION_HASHTAG (
     publicacion_id BIGINT UNSIGNED NOT NULL,
@@ -491,9 +458,7 @@ CREATE TABLE PUBLICACION_HASHTAG (
 ) ENGINE=InnoDB;
 
 
--- ============================================================
 -- COMENTARIO_HASHTAG
--- ============================================================
 
 CREATE TABLE COMENTARIO_HASHTAG (
     comentario_id BIGINT UNSIGNED NOT NULL,
@@ -519,9 +484,7 @@ CREATE TABLE COMENTARIO_HASHTAG (
 ) ENGINE=InnoDB;
 
 
--- ============================================================
 -- PUBLICACION_MENCION
--- ============================================================
 
 CREATE TABLE PUBLICACION_MENCION (
     publicacion_id BIGINT UNSIGNED NOT NULL,
@@ -547,9 +510,7 @@ CREATE TABLE PUBLICACION_MENCION (
 ) ENGINE=InnoDB;
 
 
--- ============================================================
 -- COMENTARIO_MENCION
--- ============================================================
 
 CREATE TABLE COMENTARIO_MENCION (
     comentario_id BIGINT UNSIGNED NOT NULL,
@@ -575,9 +536,7 @@ CREATE TABLE COMENTARIO_MENCION (
 ) ENGINE=InnoDB;
 
 
--- ============================================================
 -- HASHTAG_SEGUIDOR
--- ============================================================
 
 CREATE TABLE HASHTAG_SEGUIDOR (
     hashtag_id BIGINT UNSIGNED NOT NULL,
@@ -604,9 +563,7 @@ CREATE TABLE HASHTAG_SEGUIDOR (
 ) ENGINE=InnoDB;
 
 
--- ============================================================
 -- PUBLICACION_GUARDADA
--- ============================================================
 
 CREATE TABLE PUBLICACION_GUARDADA (
     usuario_id BIGINT UNSIGNED NOT NULL,
@@ -633,9 +590,7 @@ CREATE TABLE PUBLICACION_GUARDADA (
 ) ENGINE=InnoDB;
 
 
--- ============================================================
 -- HISTORIA
--- ============================================================
 
 CREATE TABLE HISTORIA (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -660,9 +615,7 @@ CREATE TABLE HISTORIA (
 ) ENGINE=InnoDB;
 
 
--- ============================================================
 -- HISTORIA_ADJUNTO
--- ============================================================
 
 CREATE TABLE HISTORIA_ADJUNTO (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -694,9 +647,7 @@ CREATE TABLE HISTORIA_ADJUNTO (
 ) ENGINE=InnoDB;
 
 
--- ============================================================
 -- HISTORIA_VISTA
--- ============================================================
 
 CREATE TABLE HISTORIA_VISTA (
     historia_id BIGINT UNSIGNED NOT NULL,
@@ -726,9 +677,7 @@ CREATE TABLE HISTORIA_VISTA (
 ) ENGINE=InnoDB;
 
 
--- ============================================================
 -- ME_GUSTA_HISTORIA
--- ============================================================
 
 CREATE TABLE ME_GUSTA_HISTORIA (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -762,9 +711,7 @@ CREATE TABLE ME_GUSTA_HISTORIA (
 ) ENGINE=InnoDB;
 
 
--- ============================================================
 -- CONVERSACION
--- ============================================================
 
 CREATE TABLE CONVERSACION (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -778,9 +725,7 @@ CREATE TABLE CONVERSACION (
 ) ENGINE=InnoDB;
 
 
--- ============================================================
 -- CONVERSACION_PARTICIPANTE
--- ============================================================
 
 CREATE TABLE CONVERSACION_PARTICIPANTE (
     conversacion_id BIGINT UNSIGNED NOT NULL,
@@ -807,9 +752,7 @@ CREATE TABLE CONVERSACION_PARTICIPANTE (
 ) ENGINE=InnoDB;
 
 
--- ============================================================
 -- MENSAJE
--- ============================================================
 
 CREATE TABLE MENSAJE (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -845,9 +788,7 @@ CREATE TABLE MENSAJE (
 ) ENGINE=InnoDB;
 
 
--- ============================================================
 -- REPORTE
--- ============================================================
 
 CREATE TABLE REPORTE (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -943,9 +884,7 @@ CREATE TABLE REPORTE (
 ) ENGINE=InnoDB;
 
 
--- ============================================================
 -- NOTIFICACION
--- ============================================================
 
 CREATE TABLE NOTIFICACION (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -1025,9 +964,7 @@ CREATE TABLE NOTIFICACION (
 ) ENGINE=InnoDB;
 
 
--- ============================================================
 -- TRIGGERS
--- ============================================================
 
 DELIMITER //
 
@@ -1078,9 +1015,7 @@ END//
 DELIMITER ;
 
 
--- ============================================================
 -- USUARIO ADMINISTRADOR DE LA BD
--- ============================================================
 
 DROP USER IF EXISTS 'admin'@'localhost';
 
@@ -1094,9 +1029,7 @@ GRANT ALL PRIVILEGES
 FLUSH PRIVILEGES;
 
 
--- ============================================================
 -- VERIFICACION
--- ============================================================
 
 USE pawspace;
 

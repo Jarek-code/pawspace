@@ -1,0 +1,7 @@
+# Nodo SPIDER - capa de acceso
+
+[mysqld]
+server-id = 10
+
+# Sin binlog: este nodo no es origen de replicacion.
+skip-log-bin

@@ -1,27 +1,109 @@
-version: '3.8'
+name: pawspace
+
+# PawSpace - Base de datos distribuida
 
 services:
-  db:
-    image: mariadb:11.4
-    container_name: pawspace-db
+
+  # BD distribuida
+
+  spider:
+    build:
+      context: ./devops/docker
+      dockerfile: Dockerfile.mariadb-spider
+    image: pawspace-mariadb-spider:11.4
+    container_name: pawspace-spider
+    hostname: nodo-spider
     restart: unless-stopped
     environment:
       MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootpass}
-      MARIADB_DATABASE: ${DB_NAME:-pawspace}
-      MARIADB_USER: ${DB_USER:-pawuser}
-      MARIADB_PASSWORD: ${DB_PASSWORD:-pawpass}
-    ports:
-      - "3306:3306"
     volumes:
-      - db_data:/var/lib/mysql
-      - ./database/init:/docker-entrypoint-initdb.d:ro
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${DB_ROOT_PASSWORD:-rootpass}"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
+      - spider_data:/var/lib/mysql
+      - ./database/conf/spider.cnf:/etc/mysql/conf.d/zz-nodo.cnf:ro
+      # El plugin y los CREATE SERVER se instalan en el arranque: no sobreviven
+      # a un volumen de datos nuevo y ha_spider.so no viene en la imagen.
+      - ./database/distribuida/nodo-spider/00-plugin-y-servers.sql:/docker-entrypoint-initdb.d/00-plugin-y-servers.sql:ro
+    ports:
+      - "127.0.0.1:14306:3306"
     networks:
-      - pawspace-net
+      red_bd:
+        ipv4_address: 172.30.0.10
+      pawspace-net: {}
+    healthcheck: &salud
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 20s
+
+  dn_a:
+    image: mariadb:11.4
+    container_name: pawspace-dn-a
+    hostname: nodo-dn-a
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootpass}
+    volumes:
+      - dn_a_data:/var/lib/mysql
+      - ./database/conf/dn_a.cnf:/etc/mysql/conf.d/zz-nodo.cnf:ro
+    ports:
+      - "127.0.0.1:14307:3306"
+    networks:
+      red_bd:
+        ipv4_address: 172.30.0.11
+    healthcheck: *salud
+
+  dn_b:
+    image: mariadb:11.4
+    container_name: pawspace-dn-b
+    hostname: nodo-dn-b
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootpass}
+    volumes:
+      - dn_b_data:/var/lib/mysql
+      - ./database/conf/dn_b.cnf:/etc/mysql/conf.d/zz-nodo.cnf:ro
+    ports:
+      - "127.0.0.1:14308:3306"
+    networks:
+      red_bd:
+        ipv4_address: 172.30.0.12
+    healthcheck: *salud
+
+  rep_a:
+    image: mariadb:11.4
+    container_name: pawspace-rep-a
+    hostname: nodo-rep-a
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootpass}
+    volumes:
+      - rep_a_data:/var/lib/mysql
+      - ./database/conf/rep_a.cnf:/etc/mysql/conf.d/zz-nodo.cnf:ro
+    ports:
+      - "127.0.0.1:14309:3306"
+    networks:
+      red_bd:
+        ipv4_address: 172.30.0.13
+    healthcheck: *salud
+
+  rep_b:
+    image: mariadb:11.4
+    container_name: pawspace-rep-b
+    hostname: nodo-rep-b
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootpass}
+    volumes:
+      - rep_b_data:/var/lib/mysql
+      - ./database/conf/rep_b.cnf:/etc/mysql/conf.d/zz-nodo.cnf:ro
+    ports:
+      - "127.0.0.1:14310:3306"
+    networks:
+      red_bd:
+        ipv4_address: 172.30.0.14
+    healthcheck: *salud
+
+  # Aplicacion
 
   backend:
     build:
@@ -30,7 +112,9 @@ services:
     container_name: pawspace-backend
     restart: unless-stopped
     environment:
-      DB_HOST: db
+      # La aplicacion no sabe que hay cinco nodos: habla con el spider, que es
+      # quien reparte y quien reconstruye las vistas.
+      DB_HOST: spider
       DB_PORT: 3306
       DB_NAME: ${DB_NAME:-pawspace}
       DB_USER: ${DB_USER:-pawuser}
@@ -39,7 +123,7 @@ services:
     ports:
       - "8000:8000"
     depends_on:
-      db:
+      spider:
         condition: service_healthy
     volumes:
       - ./backend/src:/app/src
@@ -52,11 +136,12 @@ services:
     container_name: pawspace-adminer
     restart: unless-stopped
     environment:
-      ADMINER_DEFAULT_SERVER: db
+      ADMINER_DEFAULT_SERVER: spider
     ports:
-      - "8080:8080"
+      - "127.0.0.1:${ADMINER_PORT:-8081}:8080"
     depends_on:
-      - db
+      spider:
+        condition: service_healthy
     networks:
       - pawspace-net
 
@@ -76,8 +161,21 @@ services:
       - pawspace-net
 
 volumes:
-  db_data:
+  spider_data:
+  dn_a_data:
+  dn_b_data:
+  rep_a_data:
+  rep_b_data:
 
 networks:
+  # Red de la aplicacion: backend, adminer, frontend y el spider.
   pawspace-net:
     driver: bridge
+  # Red interna de la base de datos. IPs fijas porque las definiciones
+  # CREATE SERVER del nodo spider y las replicas apuntan a direcciones.
+  red_bd:
+    name: pawspace-red-bd
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.30.0.0/24

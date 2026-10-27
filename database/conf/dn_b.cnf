@@ -1,0 +1,20 @@
+# Nodo de datos dn_b - fragmento IMPAR  +  REPLICA PARCIAL de dn_a
+
+[mysqld]
+server-id = 12
+
+log-bin = dn-b-bin
+binlog-format = ROW
+
+# Para poder ser maestro de rep_b (replicacion en cascada).
+log-slave-updates = ON
+
+auto-increment-increment = 2
+auto-increment-offset = 1
+
+# REPLICACION PARCIAL: el filtro
+replicate-ignore-table = pawspace.ME_GUSTA_PUBLICACION
+replicate-ignore-table = pawspace.ME_GUSTA_COMENTARIO
+replicate-ignore-table = pawspace.ME_GUSTA_HISTORIA
+replicate-ignore-table = pawspace.HISTORIA_VISTA
+replicate-ignore-table = pawspace.NOTIFICACION
