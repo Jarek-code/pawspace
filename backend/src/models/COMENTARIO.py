@@ -1,5 +1,5 @@
-from sqlalchemy import Column, String, Boolean, DateTime, Index, text
-from sqlalchemy.dialects.mysql import BIGINT
+from sqlalchemy import Column, String, DateTime, Text, text
+from sqlalchemy.dialects.mysql import BIGINT, SMALLINT
 from sqlalchemy.orm import declarative_base
 from src.config.database import engine
 

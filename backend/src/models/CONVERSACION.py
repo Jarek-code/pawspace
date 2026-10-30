@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, Boolean, DateTime, Index, text
+from sqlalchemy import Column, DateTime, Text, text
 from sqlalchemy.dialects.mysql import BIGINT
 from sqlalchemy.orm import declarative_base
 from src.config.database import engine
