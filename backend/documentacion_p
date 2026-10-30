@@ -18,3 +18,32 @@ API's (Interfaz de programacion de aplicaciones),
 uvicorn nos permite crear servidores locales para poder probar el programa,
 sqlalchemy es un ORM (Mapeo Relacional de Objetos) que transforma las secuencias SQL (Como SELECT*FROM USUARIOS;)
 en codigo python
+
+se utilizaron varios procesos al momento de creear las tablas que van en el contenedor
+primero vamos con definiciones de docker pero como son para mi voy a hacer rapido
+primero utilizo el comando 
+
+#docker compose up -d
+
+este comando lo que hace es crea los contenedores espesificados en el docker-compose.yml con todas sus espesicaciones 
+para confirmar que se crearon de forma correcta su utiliza el comando:
+
+#docker compose ps 
+
+este comando revisa que todos los contenedores esten corriendo de forma correcta ahora cuendo terminemos de
+utilizar los contenedores el siguiente comado los apaga todos para que ya no consuman recursos
+
+#docker compose  down
+
+ahora con los contenedores creados tenemos que creear las tablas para la base de datos y poder empezar a 
+tabajar en ellas primero nos vamos a enfocar en el contenedor de "pawspace-adminer" por que este nos permite
+creear las bases de datos y sus tablas apara poder utilizarlo primero nos tenemos que enfocar en cual es el
+puerto asignado de este contenedor en este caso es el : 127.0.0.1 : 8081 esto nos permite acceder a una 
+pagina que se ejecuta de forma local al momento de acceder a la pagina te va a pedir el servidor 
+que en este caso es "spider" un usuario que es "root" la contrasena "rootpass" y el nombre de la base de datos
+que es "pawspace" al momento de hacer login ya se pueden descargar todos los recursos necesarias
+estando en la carpeta principal de pawspace (en terminal) se utiliza el comando
+
+#bash .devops/scripts/construir-bd.sh
+
+y las tablas estaran creadas 

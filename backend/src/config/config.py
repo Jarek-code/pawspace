@@ -4,8 +4,8 @@ class Settings(BaseSettings):
     PROJECT_NAME: str = "PawSpace"
     VERSION: str = "0.1.0"
     
-    DB_HOST: str = "localhost"
-    DB_PORT: int = 3306
+    DB_HOST: str = "127.0.0.1"
+    DB_PORT: int = 14306
     DB_NAME: str = "pawspace"
     DB_USER: str = "pawuser"
     DB_PASSWORD: str = "pawpass"
