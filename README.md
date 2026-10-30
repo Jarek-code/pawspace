@@ -36,7 +36,7 @@ aplicación.
 
 ## La base de datos
 
-No es un servidor, son cinco:
+La base de datos se distribuye en cinco servidores:
 
 ```
                         aplicación
@@ -78,13 +78,3 @@ pawspace/
 └── ui-ux/        Diseño, wireframes y mockups
 ```
 
-Las carpetas que todavía no tienen código se conservan con un archivo `.gitkeep`.
-
-## Estado
-
-- **Hecho**: la base de datos distribuida completa (29 tablas + 3 satélites), la fragmentación
-  horizontal y vertical, la replicación asíncrona, el arranque con Docker Compose y las
-  validaciones. Los cinco nodos levantan en menos de un minuto y la construcción completa tarda
-  unos dos.
-- **Pendiente**: prácticamente toda la lógica de aplicación. Funcionan dos endpoints (`/` y
-  `/health`) de los 45 previstos.
