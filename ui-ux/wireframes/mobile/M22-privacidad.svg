@@ -1,0 +1,256 @@
+<svg width="390" xmlns="http://www.w3.org/2000/svg" height="844" id="screenshot-7aeec741-67c4-80cd-8008-e0cd4d27f2d8" viewBox="0 0 390 844" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1"><style>/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url(http://localhost:9001/internal/gfonts/font/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuFuYAZJhiI2B.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url(http://localhost:9001/internal/gfonts/font/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuFuYAZthiI2B.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url(http://localhost:9001/internal/gfonts/font/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuFuYAZNhiI2B.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url(http://localhost:9001/internal/gfonts/font/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuFuYAZxhiI2B.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url(http://localhost:9001/internal/gfonts/font/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuFuYAZBhiI2B.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url(http://localhost:9001/internal/gfonts/font/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuFuYAZFhiI2B.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url(http://localhost:9001/internal/gfonts/font/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuFuYAZ9hiA.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: block;
+  src: url(http://localhost:9001/internal/gfonts/font/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuI6fAZJhiI2B.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: block;
+  src: url(http://localhost:9001/internal/gfonts/font/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuI6fAZthiI2B.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: block;
+  src: url(http://localhost:9001/internal/gfonts/font/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuI6fAZNhiI2B.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: block;
+  src: url(http://localhost:9001/internal/gfonts/font/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuI6fAZxhiI2B.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: block;
+  src: url(http://localhost:9001/internal/gfonts/font/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuI6fAZBhiI2B.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: block;
+  src: url(http://localhost:9001/internal/gfonts/font/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuI6fAZFhiI2B.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: block;
+  src: url(http://localhost:9001/internal/gfonts/font/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuI6fAZ9hiA.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url(http://localhost:9001/internal/gfonts/font/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfAZJhiI2B.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url(http://localhost:9001/internal/gfonts/font/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfAZthiI2B.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url(http://localhost:9001/internal/gfonts/font/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfAZNhiI2B.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url(http://localhost:9001/internal/gfonts/font/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfAZxhiI2B.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url(http://localhost:9001/internal/gfonts/font/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfAZBhiI2B.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url(http://localhost:9001/internal/gfonts/font/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfAZFhiI2B.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url(http://localhost:9001/internal/gfonts/font/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfAZ9hiA.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: block;
+  src: url(http://localhost:9001/internal/gfonts/font/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYAZJhiI2B.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: block;
+  src: url(http://localhost:9001/internal/gfonts/font/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYAZthiI2B.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: block;
+  src: url(http://localhost:9001/internal/gfonts/font/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYAZNhiI2B.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: block;
+  src: url(http://localhost:9001/internal/gfonts/font/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYAZxhiI2B.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: block;
+  src: url(http://localhost:9001/internal/gfonts/font/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYAZBhiI2B.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: block;
+  src: url(http://localhost:9001/internal/gfonts/font/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYAZFhiI2B.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: block;
+  src: url(http://localhost:9001/internal/gfonts/font/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYAZ9hiA.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style><g id="shape-7aeec741-67c4-80cd-8008-e0cd4d27f2d8"><defs><clipPath id="frame-clip-7aeec741-67c4-80cd-8008-e0cd4d27f2d8-render-1" class="frame-clip frame-clip-def"><rect rx="0" ry="0" x="0" y="0" width="390" height="844" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)"/></clipPath></defs><g class="frame-container-wrapper"><g class="frame-container-blur"><g class="frame-container-shadows"><g clip-path="url(#frame-clip-7aeec741-67c4-80cd-8008-e0cd4d27f2d8-render-1)" fill="none"><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4d27f2d8"><rect width="390" height="844" class="frame-background" x="0" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" style="fill: rgb(245, 245, 245); fill-opacity: 1;" ry="0" rx="0" y="0"/></g><g class="frame-children"><g id="shape-7aeec741-67c4-80cd-8008-e0cd4d3618de"><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4d3618de"><rect rx="0" ry="0" x="15.999999999999886" y="22" transform="matrix(0.707107, -0.707107, 0.707107, 0.707107, -9.819805, 22.292893)" width="12.000000000000114" height="1.9999999999997726" style="fill: rgb(51, 51, 51); fill-opacity: 1;"/></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4d4502b8"><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4d4502b8"><rect rx="0" ry="0" x="16" y="30.000000000000227" transform="matrix(0.707107, 0.707107, -0.707107, 0.707107, 28.363961, -6.476659)" width="11.999999999999886" height="1.9999999999997726" style="fill: rgb(51, 51, 51); fill-opacity: 1;"/></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4d51d1a7"><g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="150" y="18" width="90" height="24" rx="0" ry="0"><defs><pattern patternUnits="objectBoundingBox" width="59.416656494140625" height="18.75" id="fill-0-render-4-0"><g><rect width="59.416656494140625" height="18.75" style="fill: rgb(0, 0, 0); fill-opacity: 1;"/></g></pattern></defs><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4d51d1a7"><text x="165.28334045410156" y="39.366668701171875" dominant-baseline="ideographic" textLength="59.416656494140625" lengthAdjust="spacingAndGlyphs" style="text-transform: none; font-family: Inter; letter-spacing: normal; font-style: normal; font-weight: 700; white-space: pre; font-size: 16px; text-decoration: none; direction: ltr; fill: rgb(0, 0, 0); fill-opacity: 1;">Ajustes</text></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4d66b612"><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4d66b612"><ellipse cx="357.5" cy="25.5" rx="1.5" ry="1.5" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" style="fill: rgb(102, 102, 102); fill-opacity: 1;"/></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4d70e99d"><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4d70e99d"><ellipse cx="357.5" cy="30.5" rx="1.5" ry="1.5" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" style="fill: rgb(102, 102, 102); fill-opacity: 1;"/></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4d7ae11f"><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4d7ae11f"><ellipse cx="357.5" cy="35.5" rx="1.5" ry="1.5" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" style="fill: rgb(102, 102, 102); fill-opacity: 1;"/></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4d852ebd"><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4d852ebd"><rect rx="10" ry="10" x="16" y="68" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" width="358.0000000000002" height="36" style="fill: rgb(255, 255, 255); fill-opacity: 1;"/></g><g id="strokes-29401f6f-92ef-80ad-8008-e0cda2792200-7aeec741-67c4-80cd-8008-e0cd4d852ebd" class="strokes"><g class="stroke-shape"><rect rx="10" ry="10" x="16" y="68" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" width="358.0000000000002" height="36" style="fill: none; stroke-width: 1; stroke: rgb(204, 204, 204);"/></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4d931978"><g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="18" y="70" width="116" height="32" rx="0" ry="0"><defs><pattern patternUnits="objectBoundingBox" width="30.933319091796875" height="11.25" id="fill-0-render-9-0"><g><rect width="30.933319091796875" height="11.25" style="fill: rgb(51, 51, 51); fill-opacity: 1;"/></g></pattern></defs><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4d931978"><text x="60.53334045410156" y="91.61666870117188" dominant-baseline="ideographic" textLength="30.933319091796875" lengthAdjust="spacingAndGlyphs" style="text-transform: none; font-family: Inter; letter-spacing: normal; font-style: normal; font-weight: 500; white-space: pre; font-size: 9px; text-decoration: none; direction: ltr; fill: rgb(51, 51, 51); fill-opacity: 1;">Cuenta</text></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4da85bbd"><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4da85bbd"><rect rx="8" ry="8" x="136" y="70" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" width="116" height="32" style="fill: rgb(0, 0, 0); fill-opacity: 1;"/></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4db3882e"><g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="136" y="70" width="116" height="32" rx="0" ry="0"><defs><pattern patternUnits="objectBoundingBox" width="46.850006103515625" height="11.25" id="fill-0-render-11-0"><g><rect width="46.850006103515625" height="11.25" style="fill: rgb(255, 255, 255); fill-opacity: 1;"/></g></pattern></defs><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4db3882e"><text x="170.56666564941406" y="91.61666870117188" dominant-baseline="ideographic" textLength="46.850006103515625" lengthAdjust="spacingAndGlyphs" style="text-transform: none; font-family: Inter; letter-spacing: normal; font-style: normal; font-weight: 700; white-space: pre; font-size: 9px; text-decoration: none; direction: ltr; fill: rgb(255, 255, 255); fill-opacity: 1;">Privacidad</text></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4dc99a0e"><g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="254" y="70" width="116" height="32" rx="0" ry="0"><defs><pattern patternUnits="objectBoundingBox" width="44.166656494140625" height="11.25" id="fill-0-render-12-0"><g><rect width="44.166656494140625" height="11.25" style="fill: rgb(51, 51, 51); fill-opacity: 1;"/></g></pattern></defs><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4dc99a0e"><text x="289.9166717529297" y="91.61666870117188" dominant-baseline="ideographic" textLength="44.166656494140625" lengthAdjust="spacingAndGlyphs" style="text-transform: none; font-family: Inter; letter-spacing: normal; font-style: normal; font-weight: 500; white-space: pre; font-size: 9px; text-decoration: none; direction: ltr; fill: rgb(51, 51, 51); fill-opacity: 1;">Seguridad</text></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4ddfd283"><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4ddfd283"><rect rx="12" ry="12" x="16" y="116" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" width="358.0000000000002" height="256" style="fill: rgb(255, 255, 255); fill-opacity: 1;"/></g><g id="strokes-29401f6f-92ef-80ad-8008-e0cda27b6bdd-7aeec741-67c4-80cd-8008-e0cd4ddfd283" class="strokes"><g class="stroke-shape"><rect rx="12" ry="12" x="16" y="116" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" width="358.0000000000002" height="256" style="fill: none; stroke-width: 1; stroke: rgb(204, 204, 204);"/></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4decbf9d"><g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="32" y="132" width="300" height="20" rx="0" ry="0"><defs><pattern patternUnits="objectBoundingBox" width="136.9166717529297" height="17.5" id="fill-0-render-14-0"><g><rect width="136.9166717529297" height="17.5" style="fill: rgb(0, 0, 0); fill-opacity: 1;"/></g></pattern></defs><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4decbf9d"><text x="32" y="150.75" dominant-baseline="ideographic" textLength="136.9166717529297" lengthAdjust="spacingAndGlyphs" style="text-transform: none; font-family: Inter; letter-spacing: normal; font-style: normal; font-weight: 700; white-space: pre; font-size: 14px; text-decoration: none; direction: ltr; fill: rgb(0, 0, 0); fill-opacity: 1;">Privacidad del perfil</text></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4e0233cb"><g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="32" y="154" width="320" height="16" rx="0" ry="0"><defs><pattern patternUnits="objectBoundingBox" width="153.23333740234375" height="10" id="fill-0-render-15-0"><g><rect width="153.23333740234375" height="10" style="fill: rgb(102, 102, 102); fill-opacity: 1;"/></g></pattern></defs><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4e0233cb"><text x="32" y="167" dominant-baseline="ideographic" textLength="153.23333740234375" lengthAdjust="spacingAndGlyphs" style="text-transform: none; font-family: Inter; letter-spacing: normal; font-style: normal; font-weight: 400; white-space: pre; font-size: 8px; text-decoration: none; direction: ltr; fill: rgb(102, 102, 102); fill-opacity: 1;">Controla quién te ve y cómo te contacta.</text></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4e17fa10"><g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="32" y="184" width="270" height="18" rx="0" ry="0"><defs><pattern patternUnits="objectBoundingBox" width="63.883331298828125" height="12.5" id="fill-0-render-16-0"><g><rect width="63.883331298828125" height="12.5" style="fill: rgb(51, 51, 51); fill-opacity: 1;"/></g></pattern></defs><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4e17fa10"><text x="32" y="199.25" dominant-baseline="ideographic" textLength="63.883331298828125" lengthAdjust="spacingAndGlyphs" style="text-transform: none; font-family: Inter; letter-spacing: normal; font-style: normal; font-weight: 600; white-space: pre; font-size: 10px; text-decoration: none; direction: ltr; fill: rgb(51, 51, 51); fill-opacity: 1;">Perfil público</text></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4e2f8296"><g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="32" y="202" width="280" height="14" rx="0" ry="0"><defs><pattern patternUnits="objectBoundingBox" width="139.28334045410156" height="10" id="fill-0-render-17-0"><g><rect width="139.28334045410156" height="10" style="fill: rgb(102, 102, 102); fill-opacity: 1;"/></g></pattern></defs><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4e2f8296"><text x="32" y="214" dominant-baseline="ideographic" textLength="139.28334045410156" lengthAdjust="spacingAndGlyphs" style="text-transform: none; font-family: Inter; letter-spacing: normal; font-style: normal; font-weight: 400; white-space: pre; font-size: 8px; text-decoration: none; direction: ltr; fill: rgb(102, 102, 102); fill-opacity: 1;">Cualquiera puede ver la información.</text></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4e4561f0"><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4e4561f0"><rect rx="10" ry="10" x="324" y="185" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" width="36" height="20" style="fill: rgb(255, 255, 255); fill-opacity: 1;"/></g><g id="strokes-29401f6f-92ef-80ad-8008-e0cda27d3422-7aeec741-67c4-80cd-8008-e0cd4e4561f0" class="strokes"><g class="stroke-shape"><rect rx="10" ry="10" x="324" y="185" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" width="36" height="20" style="fill: none; stroke-width: 1; stroke: rgb(204, 204, 204);"/></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4e53102b"><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4e53102b"><ellipse cx="334" cy="195" rx="8" ry="8" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" style="fill: rgb(255, 255, 255); fill-opacity: 1;"/></g><g id="strokes-29401f6f-92ef-80ad-8008-e0cda27d3423-7aeec741-67c4-80cd-8008-e0cd4e53102b" class="strokes"><g class="stroke-shape"><ellipse cx="334" cy="195" rx="8" ry="8" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" style="fill: none; stroke-width: 1; stroke: rgb(204, 204, 204);"/></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4e6025b6"><g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="32" y="232" width="270" height="18" rx="0" ry="0"><defs><pattern patternUnits="objectBoundingBox" width="87.73333740234375" height="12.5" id="fill-0-render-20-0"><g><rect width="87.73333740234375" height="12.5" style="fill: rgb(51, 51, 51); fill-opacity: 1;"/></g></pattern></defs><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4e6025b6"><text x="32" y="247.25" dominant-baseline="ideographic" textLength="87.73333740234375" lengthAdjust="spacingAndGlyphs" style="text-transform: none; font-family: Inter; letter-spacing: normal; font-style: normal; font-weight: 600; white-space: pre; font-size: 10px; text-decoration: none; direction: ltr; fill: rgb(51, 51, 51); fill-opacity: 1;">Mostrar ubicación</text></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4e7803f1"><g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="32" y="250" width="280" height="14" rx="0" ry="0"><defs><pattern patternUnits="objectBoundingBox" width="112.05000305175781" height="10" id="fill-0-render-21-0"><g><rect width="112.05000305175781" height="10" style="fill: rgb(102, 102, 102); fill-opacity: 1;"/></g></pattern></defs><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4e7803f1"><text x="32" y="262" dominant-baseline="ideographic" textLength="112.05000305175781" lengthAdjust="spacingAndGlyphs" style="text-transform: none; font-family: Inter; letter-spacing: normal; font-style: normal; font-weight: 400; white-space: pre; font-size: 8px; text-decoration: none; direction: ltr; fill: rgb(102, 102, 102); fill-opacity: 1;">Muestra la ciudad en el perfil.</text></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4e8f475a"><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4e8f475a"><rect rx="10" ry="10" x="324" y="233" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" width="36" height="20" style="fill: rgb(255, 255, 255); fill-opacity: 1;"/></g><g id="strokes-29401f6f-92ef-80ad-8008-e0cda27dd811-7aeec741-67c4-80cd-8008-e0cd4e8f475a" class="strokes"><g class="stroke-shape"><rect rx="10" ry="10" x="324" y="233" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" width="36" height="20" style="fill: none; stroke-width: 1; stroke: rgb(204, 204, 204);"/></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4e9d65d5"><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4e9d65d5"><ellipse cx="334" cy="243" rx="8" ry="8" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" style="fill: rgb(255, 255, 255); fill-opacity: 1;"/></g><g id="strokes-29401f6f-92ef-80ad-8008-e0cda27e221b-7aeec741-67c4-80cd-8008-e0cd4e9d65d5" class="strokes"><g class="stroke-shape"><ellipse cx="334" cy="243" rx="8" ry="8" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" style="fill: none; stroke-width: 1; stroke: rgb(204, 204, 204);"/></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4ea9fcce"><g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="32" y="280" width="270" height="18" rx="0" ry="0"><defs><pattern patternUnits="objectBoundingBox" width="131.75" height="12.5" id="fill-0-render-24-0"><g><rect width="131.75" height="12.5" style="fill: rgb(51, 51, 51); fill-opacity: 1;"/></g></pattern></defs><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4ea9fcce"><text x="32" y="295.25" dominant-baseline="ideographic" textLength="131.75" lengthAdjust="spacingAndGlyphs" style="text-transform: none; font-family: Inter; letter-spacing: normal; font-style: normal; font-weight: 600; white-space: pre; font-size: 10px; text-decoration: none; direction: ltr; fill: rgb(51, 51, 51); fill-opacity: 1;">Mensajes de desconocidos</text></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4ec29257"><g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="32" y="298" width="280" height="14" rx="0" ry="0"><defs><pattern patternUnits="objectBoundingBox" width="118.11666870117188" height="10" id="fill-0-render-25-0"><g><rect width="118.11666870117188" height="10" style="fill: rgb(102, 102, 102); fill-opacity: 1;"/></g></pattern></defs><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4ec29257"><text x="32" y="310" dominant-baseline="ideographic" textLength="118.11666870117188" lengthAdjust="spacingAndGlyphs" style="text-transform: none; font-family: Inter; letter-spacing: normal; font-style: normal; font-weight: 400; white-space: pre; font-size: 8px; text-decoration: none; direction: ltr; fill: rgb(102, 102, 102); fill-opacity: 1;">Permite iniciar conversaciones.</text></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4ed9c118"><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4ed9c118"><rect rx="10" ry="10" x="324" y="281" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" width="36" height="20" style="fill: rgb(255, 255, 255); fill-opacity: 1;"/></g><g id="strokes-29401f6f-92ef-80ad-8008-e0cda27e82c1-7aeec741-67c4-80cd-8008-e0cd4ed9c118" class="strokes"><g class="stroke-shape"><rect rx="10" ry="10" x="324" y="281" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" width="36" height="20" style="fill: none; stroke-width: 1; stroke: rgb(204, 204, 204);"/></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4ee7c142"><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4ee7c142"><ellipse cx="334" cy="291" rx="8" ry="8" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" style="fill: rgb(255, 255, 255); fill-opacity: 1;"/></g><g id="strokes-29401f6f-92ef-80ad-8008-e0cda27ec0db-7aeec741-67c4-80cd-8008-e0cd4ee7c142" class="strokes"><g class="stroke-shape"><ellipse cx="334" cy="291" rx="8" ry="8" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" style="fill: none; stroke-width: 1; stroke: rgb(204, 204, 204);"/></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4ef786b4"><g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="32" y="328" width="270" height="18" rx="0" ry="0"><defs><pattern patternUnits="objectBoundingBox" width="92.96665954589844" height="12.5" id="fill-0-render-28-0"><g><rect width="92.96665954589844" height="12.5" style="fill: rgb(51, 51, 51); fill-opacity: 1;"/></g></pattern></defs><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4ef786b4"><text x="32" y="343.25" dominant-baseline="ideographic" textLength="92.96665954589844" lengthAdjust="spacingAndGlyphs" style="text-transform: none; font-family: Inter; letter-spacing: normal; font-style: normal; font-weight: 600; white-space: pre; font-size: 10px; text-decoration: none; direction: ltr; fill: rgb(51, 51, 51); fill-opacity: 1;">Compartir historias</text></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4f143039"><g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="32" y="346" width="280" height="14" rx="0" ry="0"><defs><pattern patternUnits="objectBoundingBox" width="119.10000610351562" height="10" id="fill-0-render-29-0"><g><rect width="119.10000610351562" height="10" style="fill: rgb(102, 102, 102); fill-opacity: 1;"/></g></pattern></defs><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4f143039"><text x="32" y="358" dominant-baseline="ideographic" textLength="119.10000610351562" lengthAdjust="spacingAndGlyphs" style="text-transform: none; font-family: Inter; letter-spacing: normal; font-style: normal; font-weight: 400; white-space: pre; font-size: 8px; text-decoration: none; direction: ltr; fill: rgb(102, 102, 102); fill-opacity: 1;">Solo seguidores pueden verlas.</text></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4f2dbf8c"><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4f2dbf8c"><rect rx="10" ry="10" x="324" y="329" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" width="36" height="20" style="fill: rgb(0, 0, 0); fill-opacity: 1;"/></g><g id="strokes-29401f6f-92ef-80ad-8008-e0cda27fa5cb-7aeec741-67c4-80cd-8008-e0cd4f2dbf8c" class="strokes"><g class="stroke-shape"><rect rx="10" ry="10" x="324" y="329" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" width="36" height="20" style="fill: none; stroke-width: 1; stroke: rgb(0, 0, 0);"/></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4f40636c"><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4f40636c"><ellipse cx="350" cy="339" rx="8" ry="8" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" style="fill: rgb(255, 255, 255); fill-opacity: 1;"/></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4f4df32e"><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4f4df32e"><rect rx="12" ry="12" x="16" y="388" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" width="358.0000000000002" height="170" style="fill: rgb(255, 255, 255); fill-opacity: 1;"/></g><g id="strokes-29401f6f-92ef-80ad-8008-e0cda2802ec5-7aeec741-67c4-80cd-8008-e0cd4f4df32e" class="strokes"><g class="stroke-shape"><rect rx="12" ry="12" x="16" y="388" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" width="358.0000000000002" height="170" style="fill: none; stroke-width: 1; stroke: rgb(204, 204, 204);"/></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4f5cfc59"><g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="32" y="404" width="300" height="20" rx="0" ry="0"><defs><pattern patternUnits="objectBoundingBox" width="70.44999694824219" height="17.5" id="fill-0-render-33-0"><g><rect width="70.44999694824219" height="17.5" style="fill: rgb(0, 0, 0); fill-opacity: 1;"/></g></pattern></defs><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4f5cfc59"><text x="32" y="422.75" dominant-baseline="ideographic" textLength="70.44999694824219" lengthAdjust="spacingAndGlyphs" style="text-transform: none; font-family: Inter; letter-spacing: normal; font-style: normal; font-weight: 700; white-space: pre; font-size: 14px; text-decoration: none; direction: ltr; fill: rgb(0, 0, 0); fill-opacity: 1;">Seguridad</text></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4f749cfa"><g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="32" y="432" width="270" height="18" rx="0" ry="0"><defs><pattern patternUnits="objectBoundingBox" width="124.71665954589844" height="12.5" id="fill-0-render-34-0"><g><rect width="124.71665954589844" height="12.5" style="fill: rgb(51, 51, 51); fill-opacity: 1;"/></g></pattern></defs><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4f749cfa"><text x="32" y="447.25" dominant-baseline="ideographic" textLength="124.71665954589844" lengthAdjust="spacingAndGlyphs" style="text-transform: none; font-family: Inter; letter-spacing: normal; font-style: normal; font-weight: 600; white-space: pre; font-size: 10px; text-decoration: none; direction: ltr; fill: rgb(51, 51, 51); fill-opacity: 1;">Verificación en dos pasos</text></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4f8f6d7f"><g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="32" y="450" width="280" height="14" rx="0" ry="0"><defs><pattern patternUnits="objectBoundingBox" width="125.94999694824219" height="10" id="fill-0-render-35-0"><g><rect width="125.94999694824219" height="10" style="fill: rgb(102, 102, 102); fill-opacity: 1;"/></g></pattern></defs><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4f8f6d7f"><text x="32" y="462" dominant-baseline="ideographic" textLength="125.94999694824219" lengthAdjust="spacingAndGlyphs" style="text-transform: none; font-family: Inter; letter-spacing: normal; font-style: normal; font-weight: 400; white-space: pre; font-size: 8px; text-decoration: none; direction: ltr; fill: rgb(102, 102, 102); fill-opacity: 1;">Código adicional al iniciar sesión.</text></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4fa8e4c9"><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4fa8e4c9"><rect rx="10" ry="10" x="324" y="433" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" width="36" height="20" style="fill: rgb(0, 0, 0); fill-opacity: 1;"/></g><g id="strokes-29401f6f-92ef-80ad-8008-e0cda2812956-7aeec741-67c4-80cd-8008-e0cd4fa8e4c9" class="strokes"><g class="stroke-shape"><rect rx="10" ry="10" x="324" y="433" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" width="36" height="20" style="fill: none; stroke-width: 1; stroke: rgb(0, 0, 0);"/></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4fb8bcf3"><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4fb8bcf3"><ellipse cx="350" cy="443" rx="8" ry="8" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" style="fill: rgb(255, 255, 255); fill-opacity: 1;"/></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4fc6a955"><g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="32" y="494" width="240" height="18" rx="0" ry="0"><defs><pattern patternUnits="objectBoundingBox" width="56.01666259765625" height="12.5" id="fill-0-render-38-0"><g><rect width="56.01666259765625" height="12.5" style="fill: rgb(51, 51, 51); fill-opacity: 1;"/></g></pattern></defs><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4fc6a955"><text x="32" y="509.25" dominant-baseline="ideographic" textLength="56.01666259765625" lengthAdjust="spacingAndGlyphs" style="text-transform: none; font-family: Inter; letter-spacing: normal; font-style: normal; font-weight: 600; white-space: pre; font-size: 10px; text-decoration: none; direction: ltr; fill: rgb(51, 51, 51); fill-opacity: 1;">Contraseña</text></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4fe319a4"><g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="32" y="512" width="260" height="14" rx="0" ry="0"><defs><pattern patternUnits="objectBoundingBox" width="111.71665954589844" height="10" id="fill-0-render-39-0"><g><rect width="111.71665954589844" height="10" style="fill: rgb(102, 102, 102); fill-opacity: 1;"/></g></pattern></defs><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4fe319a4"><text x="32" y="524" dominant-baseline="ideographic" textLength="111.71665954589844" lengthAdjust="spacingAndGlyphs" style="text-transform: none; font-family: Inter; letter-spacing: normal; font-style: normal; font-weight: 400; white-space: pre; font-size: 8px; text-decoration: none; direction: ltr; fill: rgb(102, 102, 102); fill-opacity: 1;">Último cambio hace 3 meses.</text></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd4ffddf78"><g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="286" y="494" width="72" height="18" rx="0" ry="0"><defs><pattern patternUnits="objectBoundingBox" width="44.866668701171875" height="11.25" id="fill-0-render-40-0"><g><rect width="44.866668701171875" height="11.25" style="fill: rgb(0, 0, 0); fill-opacity: 1;"/></g></pattern></defs><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd4ffddf78"><text x="313.1333312988281" y="508.6166687011719" dominant-baseline="ideographic" textLength="44.866668701171875" lengthAdjust="spacingAndGlyphs" style="text-transform: none; font-family: Inter; letter-spacing: normal; font-style: normal; font-weight: 700; white-space: pre; font-size: 9px; text-decoration: none; direction: ltr; fill: rgb(0, 0, 0); fill-opacity: 1;">Actualizar</text></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd501b1f70"><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd501b1f70"><rect rx="12" ry="12" x="16" y="574" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" width="358.0000000000002" height="120" style="fill: rgb(255, 255, 255); fill-opacity: 1;"/></g><g id="strokes-29401f6f-92ef-80ad-8008-e0cda282445a-7aeec741-67c4-80cd-8008-e0cd501b1f70" class="strokes"><g class="stroke-shape"><rect rx="12" ry="12" x="16" y="574" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" width="358.0000000000002" height="120" style="fill: none; stroke-width: 1; stroke: rgb(204, 204, 204);"/></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd502c5127"><g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="32" y="590" width="300" height="20" rx="0" ry="0"><defs><pattern patternUnits="objectBoundingBox" width="39.66667175292969" height="17.5" id="fill-0-render-42-0"><g><rect width="39.66667175292969" height="17.5" style="fill: rgb(0, 0, 0); fill-opacity: 1;"/></g></pattern></defs><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd502c5127"><text x="32" y="608.75" dominant-baseline="ideographic" textLength="39.66667175292969" lengthAdjust="spacingAndGlyphs" style="text-transform: none; font-family: Inter; letter-spacing: normal; font-style: normal; font-weight: 700; white-space: pre; font-size: 14px; text-decoration: none; direction: ltr; fill: rgb(0, 0, 0); fill-opacity: 1;">Datos</text></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd5047b43b"><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd5047b43b"><rect rx="8" ry="8" x="32" y="620" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" width="168" height="36" style="fill: rgb(255, 255, 255); fill-opacity: 1;"/></g><g id="strokes-29401f6f-92ef-80ad-8008-e0cda282c9f5-7aeec741-67c4-80cd-8008-e0cd5047b43b" class="strokes"><g class="stroke-shape"><rect rx="8" ry="8" x="32" y="620" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" width="168" height="36" style="fill: none; stroke-width: 1; stroke: rgb(204, 204, 204);"/></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd5057dca9"><g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="32" y="620" width="168" height="36" rx="0" ry="0"><defs><pattern patternUnits="objectBoundingBox" width="89.25" height="11.25" id="fill-0-render-44-0"><g><rect width="89.25" height="11.25" style="fill: rgb(51, 51, 51); fill-opacity: 1;"/></g></pattern></defs><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd5057dca9"><text x="71.36666870117188" y="643.6166687011719" dominant-baseline="ideographic" textLength="89.25" lengthAdjust="spacingAndGlyphs" style="text-transform: none; font-family: Inter; letter-spacing: normal; font-style: normal; font-weight: 600; white-space: pre; font-size: 9px; text-decoration: none; direction: ltr; fill: rgb(51, 51, 51); fill-opacity: 1;">Descargar mis datos</text></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd5078a3c6"><g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="220" y="630" width="130" height="18" rx="0" ry="0"><defs><pattern patternUnits="objectBoundingBox" width="67.10000610351562" height="11.25" id="fill-0-render-45-0"><g><rect width="67.10000610351562" height="11.25" style="fill: rgb(0, 0, 0); fill-opacity: 1;"/></g></pattern></defs><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd5078a3c6"><text x="282.8999938964844" y="644.6166687011719" dominant-baseline="ideographic" textLength="67.10000610351562" lengthAdjust="spacingAndGlyphs" style="text-transform: none; font-family: Inter; letter-spacing: normal; font-style: normal; font-weight: 600; white-space: pre; font-size: 9px; text-decoration: none; direction: ltr; fill: rgb(0, 0, 0); fill-opacity: 1;">Eliminar cuenta</text></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd5098cd32"><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd5098cd32"><rect rx="12" ry="12" x="16" y="710" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" width="358.0000000000002" height="84" style="fill: rgb(255, 255, 255); fill-opacity: 1;"/></g><g id="strokes-29401f6f-92ef-80ad-8008-e0cda283ccc4-7aeec741-67c4-80cd-8008-e0cd5098cd32" class="strokes"><g class="stroke-shape"><rect rx="12" ry="12" x="16" y="710" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" width="358.0000000000002" height="84" style="fill: none; stroke-width: 1; stroke: rgb(204, 204, 204);"/></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd50ab3c7d"><g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="32" y="724" width="200" height="18" rx="0" ry="0"><defs><pattern patternUnits="objectBoundingBox" width="40.16667175292969" height="12.5" id="fill-0-render-47-0"><g><rect width="40.16667175292969" height="12.5" style="fill: rgb(0, 0, 0); fill-opacity: 1;"/></g></pattern></defs><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd50ab3c7d"><text x="32" y="739.25" dominant-baseline="ideographic" textLength="40.16667175292969" lengthAdjust="spacingAndGlyphs" style="text-transform: none; font-family: Inter; letter-spacing: normal; font-style: normal; font-weight: 700; white-space: pre; font-size: 10px; text-decoration: none; direction: ltr; fill: rgb(0, 0, 0); fill-opacity: 1;">Consejo</text></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd50c8fb85"><g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="32" y="746" width="320" height="34" rx="0" ry="0"><defs><pattern patternUnits="objectBoundingBox" width="242.98333740234375" height="11.25" id="fill-0-render-48-0"><g><rect width="242.98333740234375" height="11.25" style="fill: rgb(102, 102, 102); fill-opacity: 1;"/></g></pattern></defs><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd50c8fb85"><text x="32" y="768.6166687011719" dominant-baseline="ideographic" textLength="242.98333740234375" lengthAdjust="spacingAndGlyphs" style="text-transform: none; font-family: Inter; letter-spacing: normal; font-style: normal; font-weight: 400; white-space: pre; font-size: 9px; text-decoration: none; direction: ltr; fill: rgb(102, 102, 102); fill-opacity: 1;">Revisa tus sesiones y activa la verificación en dos pasos.</text></g></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd50e68893"><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd50e68893"><rect rx="0" ry="0" x="0" y="810" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" width="390" height="34" style="fill: rgb(230, 230, 230); fill-opacity: 1;"/></g></g><g id="shape-7aeec741-67c4-80cd-8008-e0cd50f6c798"><g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="12" y="816" width="366" height="22" rx="0" ry="0"><defs><pattern patternUnits="objectBoundingBox" width="351.20001220703125" height="26.5" id="fill-0-render-50-0"><g><rect width="351.20001220703125" height="26.5" style="fill: rgb(51, 51, 51); fill-opacity: 1;"/></g></pattern><pattern patternUnits="objectBoundingBox" width="351.20001220703125" height="26.5" id="fill-1-render-50-0"><g><rect width="351.20001220703125" height="26.5" style="fill: rgb(51, 51, 51); fill-opacity: 1;"/></g></pattern></defs><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd50f6c798"><text x="12" y="826.25" dominant-baseline="ideographic" textLength="351.20001220703125" lengthAdjust="spacingAndGlyphs" style="text-transform: none; font-family: Inter; letter-spacing: normal; font-style: normal; font-weight: 400; white-space: pre; font-size: 10px; text-decoration: none; direction: ltr; fill: rgb(51, 51, 51); fill-opacity: 1;">M22 · Privacidad · Permisos de perfil e historias, seguridad y descarga de </text></g><defs><pattern patternUnits="objectBoundingBox" width="351.20001220703125" height="26.5" id="fill-0-render-50-1"><g><rect width="351.20001220703125" height="26.5" style="fill: rgb(51, 51, 51); fill-opacity: 1;"/></g></pattern><pattern patternUnits="objectBoundingBox" width="351.20001220703125" height="26.5" id="fill-1-render-50-1"><g><rect width="351.20001220703125" height="26.5" style="fill: rgb(51, 51, 51); fill-opacity: 1;"/></g></pattern></defs><g class="fills" id="fills-7aeec741-67c4-80cd-8008-e0cd50f6c798"><text x="12" y="840.25" dominant-baseline="ideographic" textLength="201.28334045410156" lengthAdjust="spacingAndGlyphs" style="text-transform: none; font-family: Inter; letter-spacing: normal; font-style: normal; font-weight: 400; white-space: pre; font-size: 10px; text-decoration: none; direction: ltr; fill: rgb(51, 51, 51); fill-opacity: 1;">datos. Los cambios se guardan al instante.</text></g></g></g></g></g></g></g></g></g></svg>
