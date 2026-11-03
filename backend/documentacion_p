@@ -47,3 +47,90 @@ estando en la carpeta principal de pawspace (en terminal) se utiliza el comando
 #bash .devops/scripts/construir-bd.sh
 
 y las tablas estaran creadas 
+
+RED_SOCIAL_API/
+│
+├── docker-compose.yml        # Configuración de tus contenedores (API + MariaDB)
+├── .env                      # Variables secretas (contraseñas de BD, clave JWT)
+├── requirements.txt          # Dependencias (fastapi, uvicorn, pymysql, sqlalchemy)
+├── .gitignore                # Ignora carpetas como el entorno virtual (venv) y el .env
+│
+└── src/                      # Código fuente de tu aplicación
+    │
+    ├── main.py               # Punto de inicio. Levanta Uvicorn y registra las rutas
+    │
+    ├── config/
+    │   ├── database.py       # Tu conexión a MariaDB (aquí va tu cnt_database)
+    │   └── settings.py       # Carga las variables del .env de forma segura
+    │
+    ├── middleware/
+    │   ├── auth_jwt.py       # Bloquea peticiones si el usuario no tiene sesión iniciada
+    │   └── rate_limit.py     # Evita que un bot haga spam de "Me gusta" (limita peticiones)
+    │
+    ├── models/
+    │   ├── db_models.py      # Estructura de tablas MariaDB: Usuario, Publicacion, Comentario
+    │   └── schemas.py        # Validaciones Pydantic: Exige que un post no supere 280 caracteres
+    │
+    ├── routes/
+    │   ├── auth_routes.py    # Endpoints: POST /login, POST /registro
+    │   ├── users_routes.py   # Endpoints: GET /usuarios/{id}, PUT /usuarios/perfil
+    │   └── posts_routes.py   # Endpoints: POST /publicaciones, GET /feed
+    │
+    ├── controllers/
+    │   ├── auth_ctrl.py      # Recibe credenciales, se las pasa al servicio y devuelve el Token
+    │   ├── users_ctrl.py     # Recibe peticiones para seguir a un usuario o editar perfil
+    │   └── posts_ctrl.py     # Recibe el JSON de un nuevo post y decide qué responder (200 o 400)
+    │
+    ├── services/
+    │   ├── auth_srv.py       # Lógica: Compara contraseñas encriptadas y genera el token de sesión
+    │   ├── users_srv.py      # Lógica: Ejecuta el "INSERT INTO" o "SELECT" del usuario en MariaDB
+    │   └── posts_srv.py      # Lógica: Guarda el post y actualiza el muro de los seguidores
+    │
+    └── uploads/
+        └── .gitkeep          # Carpeta vacía forzada en Git para guardar fotos subidas en el futuro
+
+
+
+
+RED_SOCIAL_API/
+│
+├── docker-compose.yml        # Configuración de tus contenedores (API + MariaDB)
+├── .env                      # Variables secretas
+├── requirements.txt          # AHORA INCLUYE: fastapi, uvicorn, pymysql, passlib, bcrypt
+├── .gitignore                
+│
+└── src/
+    ├── main.py               
+    │
+    ├── config/
+    │   ├── database.py       
+    │   └── settings.py       
+    │
+    ├── utils/                # NUEVA CARPETA: Herramientas globales e independientes
+    │   └── security.py       # NUEVO ARCHIVO: Configuración de CryptContext (Bcrypt)
+    │
+    ├── middleware/
+    │   ├── auth_jwt.py       
+    │   └── rate_limit.py     
+    │
+    ├── models/
+    │   ├── db_models.py      
+    │   └── schemas.py        
+    │
+    ├── routes/
+    │   ├── auth_routes.py    
+    │   ├── users_routes.py   
+    │   └── posts_routes.py   
+    │
+    ├── controllers/
+    │   ├── auth_ctrl.py      
+    │   ├── users_ctrl.py     
+    │   └── posts_ctrl.py     
+    │
+    ├── services/
+    │   ├── auth_srv.py       # AHORA: Importa las funciones de utils/security.py
+    │   ├── users_srv.py      
+    │   └── posts_srv.py      
+    │
+    └── uploads/
+        └── .gitkeep

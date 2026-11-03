@@ -1,5 +1,5 @@
-from sqlalchemy import Column, String, Boolean, DateTime, Index, text
-from sqlalchemy.dialects.mysql import BIGINT
+from sqlalchemy import Column, String, DateTime, Enum, Index, text
+from sqlalchemy.dialects.mysql import BIGINT, SMALLINT, INTEGER
 from sqlalchemy.orm import declarative_base
 from src.config.database import engine
 
@@ -101,7 +101,7 @@ class HistoriaAdjunto(Base):
     
     # Restricción de tipo de archivo mediante Enum
     tipo = Column(
-        Enum('IMAGEN', 'VIDEO', name='historia_adjunto_tipo_enum'), 
+        ENUM('IMAGEN', 'VIDEO', name='historia_adjunto_tipo_enum'), 
         nullable=False
     )
     
