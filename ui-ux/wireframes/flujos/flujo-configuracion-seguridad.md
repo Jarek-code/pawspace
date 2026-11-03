@@ -66,10 +66,10 @@ flowchart TD
 
 - Los campos de D28 validan al salir y al guardar.
 - Guardar muestra un toast y conserva los valores si falla.
-- El correo nuevo requiere verificación antes de aplicarse.
+- El correo nuevo valida el formato y se guarda; no hay verificación por correo.
 - Cambiar la contraseña pide la actual y cierra las demás sesiones.
 - Cerrar una sesión o todas pide confirmación.
-- Eliminar la cuenta pide escribir el handle y confirmar por correo.
+- Eliminar la cuenta pide escribir el handle y confirmar en un modal.
 - Los permisos de privacidad se guardan al instante.
 - Hacer público el perfil pide confirmación explícita.
 - Desbloquear una cuenta pide confirmación.
@@ -131,7 +131,6 @@ flowchart TD
 
 ## Mejoras futuras
 
-- Verificación de correo y teléfono paso a paso.
 - Autenticación con passkeys y códigos de respaldo.
 - Historial de actividad y auditoría de seguridad.
 - Apelaciones con seguimiento y respuesta del equipo.
