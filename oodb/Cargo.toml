@@ -1,0 +1,17 @@
+[workspace]
+resolver = "3"
+members = ["crates/oodb", "crates/pawspace-modelo", "crates/pawspace-servicio", "crates/pawspace-cli"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.86"
+publish = false
+
+[workspace.dependencies]
+oodb = { path = "crates/oodb" }
+pawspace-modelo = { path = "crates/pawspace-modelo" }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+typetag = "0.2"
+thiserror = "2"

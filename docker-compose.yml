@@ -160,12 +160,38 @@ services:
     networks:
       - pawspace-net
 
+  # Adjuntos de PawSpace: la OODB, que guarda imágenes y vídeos anclados a las filas.
+  # Es la fuente de verdad de los adjuntos; el backend la consulta por HTTP.
+  oodb:
+    build:
+      context: ./oodb
+    image: pawspace-oodb:0.1.0
+    container_name: pawspace-oodb
+    restart: unless-stopped
+    environment:
+      OODB_RUTA: /datos/pawspace.redb
+      OODB_ARCHIVOS: /datos/archivos
+      OODB_PUERTO: "8787"
+      OODB_BASE: mysql://${DB_USER:-pawuser}:${DB_PASSWORD:-pawpass}@spider:3306/${DB_NAME:-pawspace}
+      OODB_TOKEN: ${OODB_TOKEN:-}
+      OODB_INTERVALO_SEG: "30"
+    volumes:
+      - oodb_data:/datos
+    ports:
+      - "127.0.0.1:8787:8787"
+    depends_on:
+      spider:
+        condition: service_healthy
+    networks:
+      - pawspace-net
+
 volumes:
   spider_data:
   dn_a_data:
   dn_b_data:
   rep_a_data:
   rep_b_data:
+  oodb_data:
 
 networks:
   # Red de la aplicacion: backend, adminer, frontend y el spider.

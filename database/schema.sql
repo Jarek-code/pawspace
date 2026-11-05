@@ -244,37 +244,11 @@ CREATE TABLE PUBLICACION (
 ) ENGINE=InnoDB;
 
 
--- PUBLICACION_ADJUNTO
+-- ADJUNTOS
 
-CREATE TABLE PUBLICACION_ADJUNTO (
-    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    publicacion_id BIGINT UNSIGNED NOT NULL,
-
-    tipo ENUM(
-        'IMAGEN',
-        'VIDEO'
-    ) NOT NULL,
-
-    posicion SMALLINT UNSIGNED NOT NULL,
-    archivo_url VARCHAR(2048) NOT NULL,
-    duracion_seg INT UNSIGNED NULL,
-
-    CONSTRAINT pk_publicacion_adjunto
-        PRIMARY KEY (id),
-
-    CONSTRAINT fk_pa_publicacion
-        FOREIGN KEY (publicacion_id)
-        REFERENCES PUBLICACION(id)
-        ON UPDATE CASCADE
-        ON DELETE CASCADE,
-
-    CONSTRAINT uq_pa_posicion
-        UNIQUE (publicacion_id, posicion),
-
-    INDEX idx_pa_publicacion
-        (publicacion_id)
-) ENGINE=InnoDB;
-
+-- Las imágenes y los vídeos de publicaciones, historias y comentarios NO se guardan aquí:
+-- viven en la base de datos orientada a objetos, anclados a su fila por (tabla, id).
+-- El servicio `oodb` es la fuente de verdad de esos archivos.
 
 -- ME_GUSTA_PUBLICACION
 
@@ -356,31 +330,6 @@ CREATE TABLE COMENTARIO (
 
     INDEX idx_comentario_eliminado
         (eliminado_en)
-) ENGINE=InnoDB;
-
-
--- COMENTARIO_IMAGEN
-
-CREATE TABLE COMENTARIO_IMAGEN (
-    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    comentario_id BIGINT UNSIGNED NOT NULL,
-    posicion SMALLINT UNSIGNED NOT NULL,
-    archivo_url VARCHAR(2048) NOT NULL,
-
-    CONSTRAINT pk_comentario_imagen
-        PRIMARY KEY (id),
-
-    CONSTRAINT fk_ci_comentario
-        FOREIGN KEY (comentario_id)
-        REFERENCES COMENTARIO(id)
-        ON UPDATE CASCADE
-        ON DELETE CASCADE,
-
-    CONSTRAINT uq_ci_posicion
-        UNIQUE (comentario_id, posicion),
-
-    INDEX idx_ci_comentario
-        (comentario_id)
 ) ENGINE=InnoDB;
 
 
@@ -612,38 +561,6 @@ CREATE TABLE HISTORIA (
 
     INDEX idx_historia_vence
         (vence_en)
-) ENGINE=InnoDB;
-
-
--- HISTORIA_ADJUNTO
-
-CREATE TABLE HISTORIA_ADJUNTO (
-    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    historia_id BIGINT UNSIGNED NOT NULL,
-
-    tipo ENUM(
-        'IMAGEN',
-        'VIDEO'
-    ) NOT NULL,
-
-    posicion SMALLINT UNSIGNED NOT NULL,
-    archivo_url VARCHAR(2048) NOT NULL,
-    duracion_seg INT UNSIGNED NULL,
-
-    CONSTRAINT pk_historia_adjunto
-        PRIMARY KEY (id),
-
-    CONSTRAINT fk_ha_historia
-        FOREIGN KEY (historia_id)
-        REFERENCES HISTORIA(id)
-        ON UPDATE CASCADE
-        ON DELETE CASCADE,
-
-    CONSTRAINT uq_ha_posicion
-        UNIQUE (historia_id, posicion),
-
-    INDEX idx_ha_historia
-        (historia_id)
 ) ENGINE=InnoDB;
 
 

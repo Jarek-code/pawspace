@@ -22,3 +22,8 @@ venv/
 # Frontend
 node_modules/
 dist/
+
+# Rust
+oodb/target/
+**/datos/
+*.redb

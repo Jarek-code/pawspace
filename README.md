@@ -78,3 +78,58 @@ pawspace/
 └── ui-ux/        Diseño, wireframes y mockups
 ```
 
+
+## Adjuntos en la OODB
+
+Las imágenes y los vídeos no viven en MariaDB: viven en una base de datos orientada a objetos
+que ancla cada contenido a su fila por `(tabla, registro_id)`. El contenido sigue en la base
+relacional; la OODB se ocupa de lo que la relacional no expresa bien.
+
+| Pieza | Qué hace |
+|---|---|
+| `oodb/crates/oodb` | Motor: identidad de objeto, mapa de identidad, índice de aristas y `commit` transaccional |
+| `oodb/crates/pawspace-modelo` | Dominio: `PUBLICACION`, `HISTORIA` y `COMENTARIO` con sus adjuntos |
+| `oodb/crates/pawspace-servicio` | Servicio HTTP, adaptador de MariaDB y reconciliación |
+| `oodb/crates/pawspace-cli` | CLI para anclar, ver, colgar, mover y mantener el almacén |
+
+```bash
+# Con el cluster levantado, el servicio entra en el compose
+docker compose up -d oodb
+
+# La CLI, contra el servicio o contra el archivo
+cargo run -p pawspace-cli -- --url http://127.0.0.1:8787 estado
+cargo run -p pawspace-cli -- --ruta datos/pawspace.redb listar --clase Publicacion
+
+# Anclar, colgar y ver
+cargo run -p pawspace-cli -- anclar PUBLICACION 1207 --texto "en el parque"
+cargo run -p pawspace-cli -- adjuntar PUBLICACION 1207 --imagen https://cdn/parque.jpg
+cargo run -p pawspace-cli -- ver PUBLICACION 1207
+```
+
+Las rutas de adjuntos del backend (`/adjuntos/...`) son la puerta del frontend: anclar, colgar,
+listar y borrar. Si `OODB_URL` está vacío, el backend arranca igual pero sin adjuntos.
+
+### Archivos
+
+Los binarios se guardan por ahora en una carpeta del disco del servicio (`OODB_ARCHIVOS`,
+`datos/archivos` por omisión; en el compose es un volumen). El servicio los recibe por
+`POST /archivos` (cuerpo binario y `content-type`), los sirve en `GET /archivos/{nombre}` y
+devuelve la ruta con la que se pueden colgar de un contenido.
+
+Desde el backend, `POST /adjuntos/{tabla}/{id}/subir` recibe el archivo, lo guarda en la OODB,
+lo cuelga del contenido y devuelve la ruta pública `/adjuntos/archivo/{nombre}`, que es la que
+consume el frontend. Cambiar la carpeta por un almacén de objetos toca un solo módulo.
+
+El motor mantiene un **índice de aristas** (`desde -> hacia`) en el mismo archivo: los borrados
+en cascada, el rechazo de borrados con referencias y la comprobación de integridad consultan ese
+índice en vez de recorrer todo el almacén. Además lo usa para denunciar enlaces colgados sin
+necesidad de tener los objetos en memoria.
+
+El servicio reconcilia solo: cada `OODB_INTERVALO_SEG` revisa las anclas, aplica la cola
+`oodb_pendientes` y borra lo que ya no existe, está eliminado (`eliminado_en`) o venció
+(`vence_en`). `database/oodb.sql` crea esa cola y trae los disparadores de ejemplo.
+
+```bash
+cd oodb && cargo build --release     # los cuatro crates
+cargo run -p pawspace-cli -- --help  # todos los comandos
+```
