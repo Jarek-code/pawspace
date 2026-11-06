@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="738pt" height="713pt" viewBox="0.00 0.00 738.00 713.00">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(18 694.5)">
+<title>pawspace</title>
+<polygon fill="#fff8f0" stroke="none" points="-18,18 -18,-694.5 720,-694.5 720,18 -18,18" />
+<text xml:space="preserve" text-anchor="start" x="111" y="-652.6" font-family="Outfit" font-weight="bold" font-size="22.00">PawSpace · de qué está hecho cada participante</text>
+<g id="clust1" class="cluster">
+<title>cluster_rel</title>
+<path fill="#fff8f0" stroke="#b4d3c0" d="M20,-8C20,-8 453,-8 453,-8 459,-8 465,-14 465,-20 465,-20 465,-230 465,-230 465,-236 459,-242 453,-242 453,-242 20,-242 20,-242 14,-242 8,-236 8,-230 8,-230 8,-20 8,-20 8,-14 14,-8 20,-8" />
+<text xml:space="preserve" text-anchor="start" x="150.62" y="-227.6" font-family="Inter" font-weight="bold" font-size="12.00">RELACIONAL · fragmentación</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_obj</title>
+<path fill="#fff8f0" stroke="#ffc7c0" d="M22.62,-250C22.62,-250 447,-250 447,-250 453,-250 459,-256 459,-262 459,-262 459,-349 459,-349 459,-355 453,-361 447,-361 447,-361 22.62,-361 22.62,-361 16.62,-361 10.62,-355 10.62,-349 10.62,-349 10.62,-262 10.62,-262 10.62,-256 16.62,-250 22.62,-250" />
+<text xml:space="preserve" text-anchor="start" x="183.44" y="-346.6" font-family="Inter" font-weight="bold" font-size="12.00">OBJETOS · clases</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_arch</title>
+<path fill="#fff8f0" stroke="#d2b69a" d="M523,-251C523,-251 682,-251 682,-251 688,-251 694,-257 694,-263 694,-263 694,-348 694,-348 694,-354 688,-360 682,-360 682,-360 523,-360 523,-360 517,-360 511,-354 511,-348 511,-348 511,-263 511,-263 511,-257 517,-251 523,-251" />
+<text xml:space="preserve" text-anchor="start" x="571" y="-345.6" font-family="Inter" font-weight="bold" font-size="12.00">ARCHIVOS</text>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_doc</title>
+<path fill="#fff8f0" stroke="#ffdd85" d="M25.25,-369C25.25,-369 185.25,-369 185.25,-369 191.25,-369 197.25,-375 197.25,-381 197.25,-381 197.25,-620 197.25,-620 197.25,-626 191.25,-632 185.25,-632 185.25,-632 25.25,-632 25.25,-632 19.25,-632 13.25,-626 13.25,-620 13.25,-620 13.25,-381 13.25,-381 13.25,-375 19.25,-369 25.25,-369" />
+<text xml:space="preserve" text-anchor="start" x="21.25" y="-617.6" font-family="Inter" font-weight="bold" font-size="12.00">DOCUMENTOS · colecciones</text>
+</g>
+
+<g id="node1" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node1)"><title>tabla</title>
+<polygon fill="none" stroke="#d2b69a" points="24,-20.5 24,-65.5 185.5,-65.5 185.5,-20.5 24,-20.5" />
+<polygon fill="#2f5d4a" stroke="none" points="25,-40.75 25,-64.5 184.5,-64.5 184.5,-40.75 25,-40.75" />
+<text xml:space="preserve" text-anchor="start" x="29" y="-50.1" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">ME_GUSTA_PUBLICACION</text>
+<polygon fill="#ffffff" stroke="none" points="25,-21.5 25,-40.75 184.5,-40.75 184.5,-21.5 25,-21.5" />
+<text xml:space="preserve" text-anchor="start" x="29" y="-27.75" font-family="Inter" font-size="9.00">Una tabla entera.</text>
+</g><rect x="24.0" y="-65.5" width="161.5" height="45.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="node2" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node2)"><title>fpar</title>
+<polygon fill="none" stroke="#d2b69a" points="335.88,-20.5 335.88,-65.5 444.12,-65.5 444.12,-20.5 335.88,-20.5" />
+<polygon fill="#2f5d4a" stroke="none" points="336.88,-40.75 336.88,-64.5 443.12,-64.5 443.12,-40.75 336.88,-40.75" />
+<text xml:space="preserve" text-anchor="start" x="373.5" y="-50.1" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">F_par</text>
+<polygon fill="#ffffff" stroke="none" points="336.88,-21.5 336.88,-40.75 443.12,-40.75 443.12,-21.5 336.88,-21.5" />
+<text xml:space="preserve" text-anchor="start" x="340.88" y="-27.75" font-family="Inter" font-size="9.00">mascota_id par → dn_b</text>
+</g><rect x="335.88" y="-65.5" width="108.24000000000001" height="45.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge1" class="edge">
+<title>tabla-&gt;fpar</title>
+<path fill="none" stroke="#a3afa8" d="M193.43,-43C234.07,-43 281.66,-43 319.73,-43" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="319.68,-45.45 326.68,-43 319.68,-40.55 319.68,-45.45" />
+</g>
+
+<g id="node3" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node3)"><title>fimpar</title>
+<polygon fill="none" stroke="#d2b69a" points="331,-105.5 331,-150.5 449,-150.5 449,-105.5 331,-105.5" />
+<polygon fill="#2f5d4a" stroke="none" points="332,-125.75 332,-149.5 448,-149.5 448,-125.75 332,-125.75" />
+<text xml:space="preserve" text-anchor="start" x="366.75" y="-135.1" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">F_impar</text>
+<polygon fill="#ffffff" stroke="none" points="332,-106.5 332,-125.75 448,-125.75 448,-106.5 332,-106.5" />
+<text xml:space="preserve" text-anchor="start" x="336" y="-112.75" font-family="Inter" font-size="9.00">mascota_id impar → dn_a</text>
+</g><rect x="331.0" y="-150.5" width="118.0" height="45.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge2" class="edge">
+<title>tabla-&gt;fimpar</title>
+<path fill="none" stroke="#a3afa8" d="M193.43,-69.31C232.57,-81.06 278.16,-94.74 315.48,-105.94" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="314.45,-108.19 321.86,-107.85 315.86,-103.49 314.45,-108.19" />
+</g>
+
+<g id="node4" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node4)"><title>satelite</title>
+<polygon fill="none" stroke="#d2b69a" points="43.5,-105.38 43.5,-206.62 166,-206.62 166,-105.38 43.5,-105.38" />
+<polygon fill="#2f5d4a" stroke="none" points="44.5,-181.88 44.5,-205.62 165,-205.62 165,-181.88 44.5,-181.88" />
+<text xml:space="preserve" text-anchor="start" x="53.38" y="-191.22" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">satélites verticales</text>
+<polygon fill="#ffffff" stroke="none" points="44.5,-162.62 44.5,-181.88 165,-181.88 165,-162.62 44.5,-162.62" />
+<text xml:space="preserve" text-anchor="start" x="48.5" y="-168.88" font-family="Inter" font-size="9.00">USUARIO_CREDENCIALES</text>
+<polygon fill="#ffffff" stroke="none" points="44.5,-143.38 44.5,-162.62 165,-162.62 165,-143.38 44.5,-143.38" />
+<text xml:space="preserve" text-anchor="start" x="48.5" y="-149.62" font-family="Inter" font-size="9.00">MASCOTA_PERFIL</text>
+<polygon fill="#ffffff" stroke="none" points="44.5,-124.12 44.5,-143.38 165,-143.38 165,-124.12 44.5,-124.12" />
+<text xml:space="preserve" text-anchor="start" x="48.5" y="-130.38" font-family="Inter" font-size="9.00">PUBLICACION_TEXTO</text>
+<polygon fill="#fbefe2" stroke="none" points="44.5,-106.38 44.5,-124.12 165,-124.12 165,-106.38 44.5,-106.38" />
+<text xml:space="preserve" text-anchor="start" x="48.5" y="-112.62" font-family="DejaVu Sans Mono" font-size="8.00">vPUBLICACION las reúne</text>
+</g><rect x="43.5" y="-206.62" width="122.5" height="101.24000000000001" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="node5" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node5)"><title>contenido</title>
+<polygon fill="none" stroke="#d2b69a" points="26.62,-271.5 26.62,-316.5 182.88,-316.5 182.88,-271.5 26.62,-271.5" />
+<polygon fill="#c94c41" stroke="none" points="27.62,-291.75 27.62,-315.5 181.88,-315.5 181.88,-291.75 27.62,-291.75" />
+<text xml:space="preserve" text-anchor="start" x="76.25" y="-301.1" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">Contenido</text>
+<polygon fill="#ffffff" stroke="none" points="27.62,-272.5 27.62,-291.75 181.88,-291.75 181.88,-272.5 27.62,-272.5" />
+<text xml:space="preserve" text-anchor="start" x="31.62" y="-278.75" font-family="Inter" font-size="9.00">Publicacion · Historia · Comentario</text>
+</g><rect x="26.62" y="-316.5" width="156.26" height="45.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="node6" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node6)"><title>adjunto</title>
+<polygon fill="none" stroke="#d2b69a" points="337,-261.88 337,-326.12 443,-326.12 443,-261.88 337,-261.88" />
+<polygon fill="#c94c41" stroke="none" points="338,-301.38 338,-325.12 442,-325.12 442,-301.38 338,-301.38" />
+<text xml:space="preserve" text-anchor="start" x="368.25" y="-310.73" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">Adjunto</text>
+<polygon fill="#ffffff" stroke="none" points="338,-282.12 338,-301.38 442,-301.38 442,-282.12 338,-282.12" />
+<text xml:space="preserve" text-anchor="start" x="342" y="-288.38" font-family="Inter" font-size="9.00">Imagen · Video</text>
+<polygon fill="#ffffff" stroke="none" points="338,-262.88 338,-282.12 442,-282.12 442,-262.88 338,-262.88" />
+<text xml:space="preserve" text-anchor="start" x="342" y="-269.12" font-family="Inter" font-size="9.00">hasta 10 por contenido</text>
+</g><rect x="337.0" y="-326.12" width="106.0" height="64.24000000000001" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge3" class="edge">
+<title>contenido-&gt;adjunto</title>
+<path fill="none" stroke="#a3afa8" d="M190.73,-294C232.42,-294 281.94,-294 321.06,-294" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="320.74,-296.45 327.74,-294 320.74,-291.55 320.74,-296.45" />
+<text xml:space="preserve" text-anchor="middle" x="260.12" y="-296.7" font-family="Inter" font-size="9.00">referencias por OID</text>
+</g>
+
+<g id="node7" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node7)"><title>binario</title>
+<polygon fill="none" stroke="#d2b69a" points="527,-262.62 527,-325.38 678,-325.38 678,-262.62 527,-262.62" />
+<polygon fill="#8c725a" stroke="none" points="528,-300.62 528,-324.38 677,-324.38 677,-300.62 528,-300.62" />
+<text xml:space="preserve" text-anchor="start" x="541.38" y="-309.98" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">un binario por adjunto</text>
+<polygon fill="#ffffff" stroke="none" points="528,-281.38 528,-300.62 677,-300.62 677,-281.38 528,-281.38" />
+<text xml:space="preserve" text-anchor="start" x="532" y="-287.62" font-family="Inter" font-size="9.00">Nombre generado por el servicio.</text>
+<polygon fill="#fbefe2" stroke="none" points="528,-263.62 528,-281.38 677,-281.38 677,-263.62 528,-263.62" />
+<text xml:space="preserve" text-anchor="start" x="532" y="-269.88" font-family="DejaVu Sans Mono" font-size="8.00">archivos/1a1a…-0000.png</text>
+</g><rect x="527.0" y="-325.38" width="151.0" height="62.75999999999999" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge4" class="edge">
+<title>adjunto-&gt;binario</title>
+<path fill="none" stroke="#a3afa8" d="M450.76,-294C469.45,-294 490.52,-294 510.85,-294" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="510.68,-296.45 517.68,-294 510.68,-291.55 510.68,-296.45" />
+<text xml:space="preserve" text-anchor="middle" x="488" y="-296.7" font-family="Inter" font-size="9.00">URL</text>
+</g>
+
+<g id="node8" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node8)"><title>col1</title>
+<polygon fill="none" stroke="#d2b69a" points="49.12,-381.5 49.12,-426.5 160.38,-426.5 160.38,-381.5 49.12,-381.5" />
+<polygon fill="#b57b1f" stroke="none" points="50.12,-401.75 50.12,-425.5 159.38,-425.5 159.38,-401.75 50.12,-401.75" />
+<text xml:space="preserve" text-anchor="start" x="83.38" y="-411.1" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">eventos</text>
+<polygon fill="#ffffff" stroke="none" points="50.12,-382.5 50.12,-401.75 159.38,-401.75 159.38,-382.5 50.12,-382.5" />
+<text xml:space="preserve" text-anchor="start" x="54.12" y="-388.75" font-family="Inter" font-size="9.00">1 documento por acción</text>
+</g><rect x="49.12" y="-426.5" width="111.25999999999999" height="45.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="node9" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node9)"><title>col2</title>
+<polygon fill="none" stroke="#d2b69a" points="52.12,-466.5 52.12,-511.5 157.38,-511.5 157.38,-466.5 52.12,-466.5" />
+<polygon fill="#b57b1f" stroke="none" points="53.12,-486.75 53.12,-510.5 156.38,-510.5 156.38,-486.75 53.12,-486.75" />
+<text xml:space="preserve" text-anchor="start" x="81.88" y="-496.1" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">sesiones</text>
+<polygon fill="#ffffff" stroke="none" points="53.12,-467.5 53.12,-486.75 156.38,-486.75 156.38,-467.5 53.12,-467.5" />
+<text xml:space="preserve" text-anchor="start" x="57.12" y="-473.75" font-family="Inter" font-size="9.00">1 documento por visita</text>
+</g><rect x="52.12" y="-511.5" width="105.25999999999999" height="45.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="node10" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node10)"><title>col3</title>
+<polygon fill="none" stroke="#d2b69a" points="56.25,-551.5 56.25,-596.5 153.25,-596.5 153.25,-551.5 56.25,-551.5" />
+<polygon fill="#b57b1f" stroke="none" points="57.25,-571.75 57.25,-595.5 152.25,-595.5 152.25,-571.75 57.25,-571.75" />
+<text xml:space="preserve" text-anchor="start" x="61.25" y="-581.1" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">resumen_diario</text>
+<polygon fill="#ffffff" stroke="none" points="57.25,-552.5 57.25,-571.75 152.25,-571.75 152.25,-552.5 57.25,-552.5" />
+<text xml:space="preserve" text-anchor="start" x="61.25" y="-558.75" font-family="Inter" font-size="9.00">1 documento por día</text>
+</g><rect x="56.25" y="-596.5" width="97.0" height="45.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+</g>
+<defs><filter id="sombra" x="-15%" y="-15%" width="130%" height="140%"><feDropShadow dx="0" dy="4" stdDeviation="6.0" flood-color="#1F2A24" flood-opacity="0.1" /></filter><clipPath id="corte_node1"><rect x="24.0" y="-65.5" width="161.5" height="45.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node2"><rect x="335.88" y="-65.5" width="108.24000000000001" height="45.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node3"><rect x="331.0" y="-150.5" width="118.0" height="45.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node4"><rect x="43.5" y="-206.62" width="122.5" height="101.24000000000001" rx="12" ry="12" /></clipPath><clipPath id="corte_node5"><rect x="26.62" y="-316.5" width="156.26" height="45.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node6"><rect x="337.0" y="-326.12" width="106.0" height="64.24000000000001" rx="12" ry="12" /></clipPath><clipPath id="corte_node7"><rect x="527.0" y="-325.38" width="151.0" height="62.75999999999999" rx="12" ry="12" /></clipPath><clipPath id="corte_node8"><rect x="49.12" y="-426.5" width="111.25999999999999" height="45.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node9"><rect x="52.12" y="-511.5" width="105.25999999999999" height="45.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node10"><rect x="56.25" y="-596.5" width="97.0" height="45.0" rx="12" ry="12" /></clipPath></defs></svg>

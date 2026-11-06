@@ -15,8 +15,8 @@ def ruta_reg_usuario(usuario_in: UsuarioCrear, db: Session =Depends(get_db)):
     
     return UsuarioControl.registrar_us(usuario_in, db)
 
-
+#Se reciben los datos que usuario mando y comprueba que sean correctos 
 @router.post("/login",response_model=TokenSesion)
 def sesion_sesiada(credenciales: UserLogin, db: Session = Depends(get_db)):
-    
+
     return UsuarioControl.chequea_login(credenciales, db)

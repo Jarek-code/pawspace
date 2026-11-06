@@ -22,3 +22,12 @@ venv/
 # Frontend
 node_modules/
 dist/
+
+# Rust
+oodb/target/
+**/datos/
+*.redb
+
+# Las fuentes de los diagramas y los PDF se quedan fuera: al repositorio van PNG y SVG.
+docs/**/*.dot
+docs/**/*.pdf

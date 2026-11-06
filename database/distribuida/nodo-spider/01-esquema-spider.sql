@@ -100,21 +100,6 @@ CREATE TABLE PUBLICACION (
 ) ENGINE=SPIDER
   COMMENT='wrapper "mysql", srv "dn_a"';
 
-CREATE TABLE PUBLICACION_ADJUNTO (
-    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    publicacion_id BIGINT UNSIGNED NOT NULL,
-    tipo ENUM(
-        'IMAGEN',
-        'VIDEO'
-    ) NOT NULL,
-    posicion SMALLINT UNSIGNED NOT NULL,
-    archivo_url VARCHAR(2048) NOT NULL,
-    duracion_seg INT UNSIGNED NULL,
-    CONSTRAINT pk_publicacion_adjunto
-        PRIMARY KEY (id)
-) ENGINE=SPIDER
-  COMMENT='wrapper "mysql", srv "dn_a"';
-
 CREATE TABLE COMENTARIO (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
     publicacion_id BIGINT UNSIGNED NOT NULL,
@@ -127,16 +112,6 @@ CREATE TABLE COMENTARIO (
         ON UPDATE CURRENT_TIMESTAMP,
     eliminado_en DATETIME NULL,
     CONSTRAINT pk_comentario
-        PRIMARY KEY (id)
-) ENGINE=SPIDER
-  COMMENT='wrapper "mysql", srv "dn_a"';
-
-CREATE TABLE COMENTARIO_IMAGEN (
-    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    comentario_id BIGINT UNSIGNED NOT NULL,
-    posicion SMALLINT UNSIGNED NOT NULL,
-    archivo_url VARCHAR(2048) NOT NULL,
-    CONSTRAINT pk_comentario_imagen
         PRIMARY KEY (id)
 ) ENGINE=SPIDER
   COMMENT='wrapper "mysql", srv "dn_a"';
@@ -205,21 +180,6 @@ CREATE TABLE HISTORIA (
     creado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     vence_en DATETIME NOT NULL,
     CONSTRAINT pk_historia
-        PRIMARY KEY (id)
-) ENGINE=SPIDER
-  COMMENT='wrapper "mysql", srv "dn_a"';
-
-CREATE TABLE HISTORIA_ADJUNTO (
-    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    historia_id BIGINT UNSIGNED NOT NULL,
-    tipo ENUM(
-        'IMAGEN',
-        'VIDEO'
-    ) NOT NULL,
-    posicion SMALLINT UNSIGNED NOT NULL,
-    archivo_url VARCHAR(2048) NOT NULL,
-    duracion_seg INT UNSIGNED NULL,
-    CONSTRAINT pk_historia_adjunto
         PRIMARY KEY (id)
 ) ENGINE=SPIDER
   COMMENT='wrapper "mysql", srv "dn_a"';

@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1175pt" height="406pt" viewBox="0.00 0.00 1175.00 406.00">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(18 387.75)">
+<title>pawspace</title>
+<polygon fill="#fff8f0" stroke="none" points="-18,18 -18,-387.75 1156.5,-387.75 1156.5,18 -18,18" />
+<text xml:space="preserve" text-anchor="start" x="390.38" y="-345.85" font-family="Outfit" font-weight="bold" font-size="22.00">PawSpace · qué ve cada consumidor</text>
+
+<g id="node1" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node1)"><title>muro</title>
+<polygon fill="none" stroke="#d2b69a" points="565.88,-265 565.88,-329.25 725.12,-329.25 725.12,-265 565.88,-265" />
+<polygon fill="#2f5d4a" stroke="none" points="566.88,-304.5 566.88,-328.25 724.12,-328.25 724.12,-304.5 566.88,-304.5" />
+<text xml:space="preserve" text-anchor="start" x="630.88" y="-313.85" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">Muro</text>
+<polygon fill="#ffffff" stroke="none" points="566.88,-285.25 566.88,-304.5 724.12,-304.5 724.12,-285.25 566.88,-285.25" />
+<text xml:space="preserve" text-anchor="start" x="570.88" y="-291.5" font-family="Inter" font-size="9.00">Publicaciones con texto y adjuntos.</text>
+<polygon fill="#ffffff" stroke="none" points="566.88,-266 566.88,-285.25 724.12,-285.25 724.12,-266 566.88,-266" />
+<text xml:space="preserve" text-anchor="start" x="570.88" y="-272.25" font-family="Inter" font-size="9.00">Con el orden de las fotos.</text>
+</g><rect x="565.88" y="-329.25" width="159.24" height="64.25" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="node7" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node7)"><title>vrel</title>
+<polygon fill="none" stroke="#d2b69a" points="216.5,-130 216.5,-212 448.5,-212 448.5,-130 216.5,-130" />
+<polygon fill="#2f5d4a" stroke="none" points="217.5,-187.25 217.5,-211 447.5,-211 447.5,-187.25 217.5,-187.25" />
+<text xml:space="preserve" text-anchor="start" x="221.5" y="-196.6" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">vPUBLICACION · vMASCOTA · HISTORIA</text>
+<polygon fill="#ffffff" stroke="none" points="217.5,-168 217.5,-187.25 447.5,-187.25 447.5,-168 217.5,-168" />
+<text xml:space="preserve" text-anchor="start" x="221.5" y="-174.25" font-family="Inter" font-size="9.00">Vistas y tablas del spider.</text>
+<polygon fill="#ffffff" stroke="none" points="217.5,-148.75 217.5,-168 447.5,-168 447.5,-148.75 217.5,-148.75" />
+<text xml:space="preserve" text-anchor="start" x="221.5" y="-155" font-family="Inter" font-size="9.00">El texto vive en PUBLICACION_TEXTO.</text>
+<polygon fill="#fbefe2" stroke="none" points="217.5,-131 217.5,-148.75 447.5,-148.75 447.5,-131 217.5,-131" />
+<text xml:space="preserve" text-anchor="start" x="221.5" y="-137.25" font-family="DejaVu Sans Mono" font-size="8.00">SELECT * FROM vPUBLICACION;</text>
+</g><rect x="216.5" y="-212.0" width="232.0" height="82.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge1" class="edge">
+<title>muro-&gt;vrel</title>
+<path fill="none" stroke="#a3afa8" d="M557.9,-261.38C524.72,-248.23 486.38,-233.02 450.84,-218.93" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="452.12,-216.8 444.71,-216.5 450.31,-221.35 452.12,-216.8" />
+</g>
+
+<g id="node8" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node8)"><title>vobj</title>
+<polygon fill="none" stroke="#d2b69a" points="568.5,-130 568.5,-212 722.5,-212 722.5,-130 568.5,-130" />
+<polygon fill="#c94c41" stroke="none" points="569.5,-187.25 569.5,-211 721.5,-211 721.5,-187.25 569.5,-187.25" />
+<text xml:space="preserve" text-anchor="start" x="594.12" y="-196.6" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">adjuntos por ancla</text>
+<polygon fill="#ffffff" stroke="none" points="569.5,-168 569.5,-187.25 721.5,-187.25 721.5,-168 569.5,-168" />
+<text xml:space="preserve" text-anchor="start" x="573.5" y="-174.25" font-family="Inter" font-size="9.00">Cada contenido con sus archivos.</text>
+<polygon fill="#ffffff" stroke="none" points="569.5,-148.75 569.5,-168 721.5,-168 721.5,-148.75 569.5,-148.75" />
+<text xml:space="preserve" text-anchor="start" x="573.5" y="-155" font-family="Inter" font-size="9.00">La URL apunta a la carpeta.</text>
+<polygon fill="#fbefe2" stroke="none" points="569.5,-131 569.5,-148.75 721.5,-148.75 721.5,-131 569.5,-131" />
+<text xml:space="preserve" text-anchor="start" x="573.5" y="-137.25" font-family="DejaVu Sans Mono" font-size="8.00">GET /contenidos/PUBLICACION/1207</text>
+</g><rect x="568.5" y="-212.0" width="154.0" height="82.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge2" class="edge">
+<title>muro-&gt;vobj</title>
+<path fill="none" stroke="#a3afa8" d="M645.5,-261.22C645.5,-249.8 645.5,-236.85 645.5,-224.43" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="647.95,-224.46 645.5,-217.46 643.05,-224.46 647.95,-224.46" />
+</g>
+
+<g id="node2" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node2)"><title>perfil</title>
+<polygon fill="none" stroke="#d2b69a" points="350.75,-274.62 350.75,-319.62 518.25,-319.62 518.25,-274.62 350.75,-274.62" />
+<polygon fill="#2f5d4a" stroke="none" points="351.75,-294.88 351.75,-318.62 517.25,-318.62 517.25,-294.88 351.75,-294.88" />
+<text xml:space="preserve" text-anchor="start" x="419.5" y="-304.23" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">Perfil</text>
+<polygon fill="#ffffff" stroke="none" points="351.75,-275.62 351.75,-294.88 517.25,-294.88 517.25,-275.62 351.75,-275.62" />
+<text xml:space="preserve" text-anchor="start" x="355.75" y="-281.88" font-family="Inter" font-size="9.00">Mascota, publicaciones y seguidores.</text>
+</g><rect x="350.75" y="-319.62" width="167.5" height="45.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge4" class="edge">
+<title>perfil-&gt;vrel</title>
+<path fill="none" stroke="#a3afa8" d="M413.61,-270.71C402.19,-256.81 387.63,-239.08 374,-222.5" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="375.93,-221 369.6,-217.14 372.15,-224.11 375.93,-221" />
+</g>
+
+<g id="node3" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node3)"><title>historias</title>
+<polygon fill="none" stroke="#d2b69a" points="218.75,-274.62 218.75,-319.62 302.25,-319.62 302.25,-274.62 218.75,-274.62" />
+<polygon fill="#2f5d4a" stroke="none" points="219.75,-294.88 219.75,-318.62 301.25,-318.62 301.25,-294.88 219.75,-294.88" />
+<text xml:space="preserve" text-anchor="start" x="235.75" y="-304.23" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">Historias</text>
+<polygon fill="#ffffff" stroke="none" points="219.75,-275.62 219.75,-294.88 301.25,-294.88 301.25,-275.62 219.75,-275.62" />
+<text xml:space="preserve" text-anchor="start" x="223.75" y="-281.88" font-family="Inter" font-size="9.00">Sólo las vigentes.</text>
+</g><rect x="218.75" y="-319.62" width="83.5" height="45.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge5" class="edge">
+<title>historias-&gt;vrel</title>
+<path fill="none" stroke="#a3afa8" d="M275.24,-270.71C283.24,-256.93 293.4,-239.4 302.95,-222.94" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="304.84,-224.57 306.23,-217.28 300.6,-222.11 304.84,-224.57" />
+</g>
+
+<g id="edge6" class="edge">
+<title>historias-&gt;vobj</title>
+<path fill="none" stroke="#a3afa8" d="M304.97,-270.79C312.05,-267.24 319.39,-263.84 326.5,-261 367.47,-244.61 473.97,-215.88 552.71,-195.5" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="553.08,-197.94 559.25,-193.81 551.86,-193.19 553.08,-197.94" />
+</g>
+
+<g id="node4" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node4)"><title>auditoria</title>
+<polygon fill="none" stroke="#d2b69a" points="964.5,-274.62 964.5,-319.62 1130.5,-319.62 1130.5,-274.62 964.5,-274.62" />
+<polygon fill="#b57b1f" stroke="none" points="965.5,-294.88 965.5,-318.62 1129.5,-318.62 1129.5,-294.88 965.5,-294.88" />
+<text xml:space="preserve" text-anchor="start" x="990.88" y="-304.23" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">Auditoría e informes</text>
+<polygon fill="#ffffff" stroke="none" points="965.5,-275.62 965.5,-294.88 1129.5,-294.88 1129.5,-275.62 965.5,-275.62" />
+<text xml:space="preserve" text-anchor="start" x="969.5" y="-281.88" font-family="Inter" font-size="9.00">Sesiones, accesos e intentos fallidos.</text>
+</g><rect x="964.5" y="-319.62" width="166.0" height="45.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="node10" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node10)"><title>vlogs</title>
+<polygon fill="none" stroke="#d2b69a" points="976.12,-139.62 976.12,-202.38 1118.88,-202.38 1118.88,-139.62 976.12,-139.62" />
+<polygon fill="#b57b1f" stroke="none" points="977.12,-177.62 977.12,-201.38 1117.88,-201.38 1117.88,-177.62 977.12,-177.62" />
+<text xml:space="preserve" text-anchor="start" x="999.88" y="-186.97" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">eventos · sesiones</text>
+<polygon fill="#ffffff" stroke="none" points="977.12,-158.38 977.12,-177.62 1117.88,-177.62 1117.88,-158.38 977.12,-158.38" />
+<text xml:space="preserve" text-anchor="start" x="981.12" y="-164.62" font-family="Inter" font-size="9.00">Lo que cada uno hizo y cuándo.</text>
+<polygon fill="#fbefe2" stroke="none" points="977.12,-140.62 977.12,-158.38 1117.88,-158.38 1117.88,-140.62 977.12,-140.62" />
+<text xml:space="preserve" text-anchor="start" x="981.12" y="-146.88" font-family="DejaVu Sans Mono" font-size="8.00">logs.auditoria_actor(12)</text>
+</g><rect x="976.12" y="-202.38" width="142.7600000000001" height="62.75999999999999" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge8" class="edge">
+<title>auditoria-&gt;vlogs</title>
+<path fill="none" stroke="#a3afa8" d="M1047.5,-270.71C1047.5,-254.59 1047.5,-233.34 1047.5,-214.69" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="1049.95,-214.84 1047.5,-207.84 1045.05,-214.84 1049.95,-214.84" />
+</g>
+
+<g id="node5" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node5)"><title>moderacion</title>
+<polygon fill="none" stroke="#d2b69a" points="8,-274.62 8,-319.62 171,-319.62 171,-274.62 8,-274.62" />
+<polygon fill="#d33a2e" stroke="none" points="9,-294.88 9,-318.62 170,-318.62 170,-294.88 9,-294.88" />
+<text xml:space="preserve" text-anchor="start" x="56.12" y="-304.23" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">Moderación</text>
+<polygon fill="#ffffff" stroke="none" points="9,-275.62 9,-294.88 170,-294.88 170,-275.62 9,-275.62" />
+<text xml:space="preserve" text-anchor="start" x="13" y="-281.88" font-family="Inter" font-size="9.00">Reportes con el contenido señalado.</text>
+</g><rect x="8.0" y="-319.62" width="163.0" height="45.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge7" class="edge">
+<title>moderacion-&gt;vrel</title>
+<path fill="none" stroke="#a3afa8" d="M139.26,-270.71C168.04,-256.01 205.18,-237.03 239.2,-219.66" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="239.95,-222.03 245.07,-216.66 237.72,-217.66 239.95,-222.03" />
+</g>
+
+<g id="node6" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node6)"><title>ope</title>
+<polygon fill="none" stroke="#d2b69a" points="772.75,-274.62 772.75,-319.62 916.25,-319.62 916.25,-274.62 772.75,-274.62" />
+<polygon fill="#c94c41" stroke="none" points="773.75,-294.88 773.75,-318.62 915.25,-318.62 915.25,-294.88 773.75,-294.88" />
+<text xml:space="preserve" text-anchor="start" x="814.88" y="-304.23" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">Operación</text>
+<polygon fill="#ffffff" stroke="none" points="773.75,-275.62 773.75,-294.88 915.25,-294.88 915.25,-275.62 773.75,-275.62" />
+<text xml:space="preserve" text-anchor="start" x="777.75" y="-281.88" font-family="Inter" font-size="9.00">Estado, revisión, compactación.</text>
+</g><rect x="772.75" y="-319.62" width="143.5" height="45.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge9" class="edge">
+<title>ope-&gt;vobj</title>
+<path fill="none" stroke="#a3afa8" d="M803.75,-270.71C780.48,-256.19 750.53,-237.51 722.95,-220.31" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="724.52,-218.4 717.28,-216.77 721.93,-222.56 724.52,-218.4" />
+</g>
+
+<g id="node9" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node9)"><title>varch</title>
+<polygon fill="none" stroke="#d2b69a" points="577.5,-4 577.5,-66.75 713.5,-66.75 713.5,-4 577.5,-4" />
+<polygon fill="#8c725a" stroke="none" points="578.5,-42 578.5,-65.75 712.5,-65.75 712.5,-42 578.5,-42" />
+<text xml:space="preserve" text-anchor="start" x="619.62" y="-51.35" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">el binario</text>
+<polygon fill="#ffffff" stroke="none" points="578.5,-22.75 578.5,-42 712.5,-42 712.5,-22.75 578.5,-22.75" />
+<text xml:space="preserve" text-anchor="start" x="582.5" y="-29" font-family="Inter" font-size="9.00">Se sirve con su tipo.</text>
+<polygon fill="#fbefe2" stroke="none" points="578.5,-5 578.5,-22.75 712.5,-22.75 712.5,-5 578.5,-5" />
+<text xml:space="preserve" text-anchor="start" x="582.5" y="-11.25" font-family="DejaVu Sans Mono" font-size="8.00">GET /archivos/1a1a…-0000.png</text>
+</g><rect x="577.5" y="-66.75" width="136.0" height="62.75" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge3" class="edge">
+<title>vobj-&gt;varch</title>
+<path fill="none" stroke="#a3afa8" d="M645.5,-126.25C645.5,-110.96 645.5,-93.84 645.5,-78.68" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="647.95,-78.99 645.5,-71.99 643.05,-78.99 647.95,-78.99" />
+<text xml:space="preserve" text-anchor="middle" x="654.5" y="-95.45" font-family="Inter" font-size="9.00">URL</text>
+</g>
+</g>
+<defs><filter id="sombra" x="-15%" y="-15%" width="130%" height="140%"><feDropShadow dx="0" dy="4" stdDeviation="6.0" flood-color="#1F2A24" flood-opacity="0.1" /></filter><clipPath id="corte_node1"><rect x="565.88" y="-329.25" width="159.24" height="64.25" rx="12" ry="12" /></clipPath><clipPath id="corte_node7"><rect x="216.5" y="-212.0" width="232.0" height="82.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node8"><rect x="568.5" y="-212.0" width="154.0" height="82.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node2"><rect x="350.75" y="-319.62" width="167.5" height="45.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node3"><rect x="218.75" y="-319.62" width="83.5" height="45.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node4"><rect x="964.5" y="-319.62" width="166.0" height="45.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node10"><rect x="976.12" y="-202.38" width="142.7600000000001" height="62.75999999999999" rx="12" ry="12" /></clipPath><clipPath id="corte_node5"><rect x="8.0" y="-319.62" width="163.0" height="45.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node6"><rect x="772.75" y="-319.62" width="143.5" height="45.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node9"><rect x="577.5" y="-66.75" width="136.0" height="62.75" rx="12" ry="12" /></clipPath></defs></svg>

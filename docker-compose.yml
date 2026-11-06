@@ -160,12 +160,63 @@ services:
     networks:
       - pawspace-net
 
+  # Adjuntos de PawSpace: la OODB, que guarda imágenes y vídeos anclados a las filas.
+  # Es la fuente de verdad de los adjuntos; el backend la consulta por HTTP.
+  oodb:
+    build:
+      context: ./oodb
+    image: pawspace-oodb:0.1.0
+    container_name: pawspace-oodb
+    restart: unless-stopped
+    environment:
+      OODB_RUTA: /datos/pawspace.redb
+      OODB_ARCHIVOS: /datos/archivos
+      OODB_PUERTO: "8787"
+      OODB_BASE: mysql://${DB_USER:-pawuser}:${DB_PASSWORD:-pawpass}@spider:3306/${DB_NAME:-pawspace}
+      OODB_TOKEN: ${OODB_TOKEN:-}
+      OODB_INTERVALO_SEG: "30"
+    volumes:
+      - oodb_data:/datos
+    ports:
+      - "127.0.0.1:8787:8787"
+    depends_on:
+      spider:
+        condition: service_healthy
+    networks:
+      - pawspace-net
+
+  # Logs de acciones y sesiones. Es un almacén derivado: si se pierde un evento se
+  # pierde auditoría, nunca datos de negocio.
+  mongo:
+    image: mongo:8
+    container_name: pawspace-mongo
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_DATABASE: ${MONGO_BD:-pawspace_logs}
+    volumes:
+      - mongo_data:/data/db
+      # El esquema, los índices y el catálogo se crean en el primer arranque,
+      # igual que los nodos de MariaDB con su initdb.d.
+      - ./database/mongo/initdb:/docker-entrypoint-initdb.d:ro
+    ports:
+      - "127.0.0.1:${MONGO_PORT:-27017}:27017"
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 10s
+    networks:
+      - pawspace-net
+
 volumes:
   spider_data:
   dn_a_data:
   dn_b_data:
   rep_a_data:
   rep_b_data:
+  oodb_data:
+  mongo_data:
 
 networks:
   # Red de la aplicacion: backend, adminer, frontend y el spider.

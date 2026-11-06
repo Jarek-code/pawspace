@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="824pt" height="462pt" viewBox="0.00 0.00 824.00 462.00">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(18 443.5)">
+<title>pawspace</title>
+<polygon fill="#fff8f0" stroke="none" points="-18,18 -18,-443.5 806,-443.5 806,18 -18,18" />
+<text xml:space="preserve" text-anchor="start" x="98.12" y="-401.6" font-family="Outfit" font-weight="bold" font-size="22.00">PawSpace · qué ofrece cada participante y con qué se entra</text>
+<g id="clust1" class="cluster">
+<title>cluster_salidas</title>
+<path fill="#fff8f0" stroke="#c9d2cc" d="M289.25,-8C289.25,-8 768,-8 768,-8 774,-8 780,-14 780,-20 780,-20 780,-369 780,-369 780,-375 774,-381 768,-381 768,-381 289.25,-381 289.25,-381 283.25,-381 277.25,-375 277.25,-369 277.25,-369 277.25,-20 277.25,-20 277.25,-14 283.25,-8 289.25,-8" />
+<text xml:space="preserve" text-anchor="start" x="461.5" y="-366.6" font-family="Inter" font-weight="bold" font-size="12.00">puertas de cada motor</text>
+</g>
+
+<g id="node1" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node1)"><title>app</title>
+<polygon fill="none" stroke="#d2b69a" points="23,-163.25 23,-246.75 179.25,-246.75 179.25,-163.25 23,-163.25" />
+<polygon fill="#5c6b62" stroke="none" points="24,-222 24,-245.75 178.25,-245.75 178.25,-222 24,-222" />
+<text xml:space="preserve" text-anchor="start" x="66.25" y="-231.35" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">la aplicación</text>
+<polygon fill="#ffffff" stroke="none" points="24,-202.75 24,-222 178.25,-222 178.25,-202.75 24,-202.75" />
+<text xml:space="preserve" text-anchor="start" x="28" y="-209" font-family="Inter" font-size="9.00">Hace SQL contra el spider,</text>
+<polygon fill="#ffffff" stroke="none" points="24,-183.5 24,-202.75 178.25,-202.75 178.25,-183.5 24,-183.5" />
+<text xml:space="preserve" text-anchor="start" x="28" y="-189.75" font-family="Inter" font-size="9.00">HTTP contra el servicio de objetos</text>
+<polygon fill="#ffffff" stroke="none" points="24,-164.25 24,-183.5 178.25,-183.5 178.25,-164.25 24,-164.25" />
+<text xml:space="preserve" text-anchor="start" x="28" y="-170.5" font-family="Inter" font-size="9.00">y usa el paquete de logs.</text>
+</g><rect x="23.0" y="-246.75" width="156.25" height="83.5" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="node2" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node2)"><title>spider</title>
+<polygon fill="none" stroke="#d2b69a" points="293.25,-264 293.25,-346 529.75,-346 529.75,-264 293.25,-264" />
+<polygon fill="#2f5d4a" stroke="none" points="294.25,-321.25 294.25,-345 528.75,-345 528.75,-321.25 294.25,-321.25" />
+<text xml:space="preserve" text-anchor="start" x="378.88" y="-330.6" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">spider · SQL</text>
+<polygon fill="#ffffff" stroke="none" points="294.25,-302 294.25,-321.25 528.75,-321.25 528.75,-302 294.25,-302" />
+<text xml:space="preserve" text-anchor="start" x="298.25" y="-308.25" font-family="Inter" font-size="9.00">26 relaciones federadas, 3 vistas, 8 procedimientos.</text>
+<polygon fill="#ffffff" stroke="none" points="294.25,-282.75 294.25,-302 528.75,-302 528.75,-282.75 294.25,-282.75" />
+<text xml:space="preserve" text-anchor="start" x="298.25" y="-289" font-family="Inter" font-size="9.00">Usuario pawuser: SELECT, INSERT, UPDATE, DELETE.</text>
+<polygon fill="#fbefe2" stroke="none" points="294.25,-265 294.25,-282.75 528.75,-282.75 528.75,-265 294.25,-265" />
+<text xml:space="preserve" text-anchor="start" x="298.25" y="-271.25" font-family="DejaVu Sans Mono" font-size="8.00">mysql://pawuser@spider:3306/pawspace</text>
+</g><rect x="293.25" y="-346.0" width="236.5" height="82.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge1" class="edge">
+<title>app-&gt;spider</title>
+<path fill="none" stroke="#a3afa8" d="M187.21,-232.59C215.15,-241.65 246.9,-251.95 277.52,-261.88" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="276.42,-264.1 283.84,-263.93 277.93,-259.44 276.42,-264.1" />
+<text xml:space="preserve" text-anchor="middle" x="243.75" y="-257.7" font-family="Inter" font-size="9.00">SQL</text>
+</g>
+
+<g id="node3" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node3)"><title>oods</title>
+<polygon fill="none" stroke="#d2b69a" points="303.75,-142 303.75,-224 519.25,-224 519.25,-142 303.75,-142" />
+<polygon fill="#c94c41" stroke="none" points="304.75,-199.25 304.75,-223 518.25,-223 518.25,-199.25 304.75,-199.25" />
+<text xml:space="preserve" text-anchor="start" x="378.12" y="-208.6" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">oodb · HTTP</text>
+<polygon fill="#ffffff" stroke="none" points="304.75,-180 304.75,-199.25 518.25,-199.25 518.25,-180 304.75,-180" />
+<text xml:space="preserve" text-anchor="start" x="308.75" y="-186.25" font-family="Inter" font-size="9.00">Anclar, ver, colgar, mover, borrar y listar.</text>
+<polygon fill="#ffffff" stroke="none" points="304.75,-160.75 304.75,-180 518.25,-180 518.25,-160.75 304.75,-160.75" />
+<text xml:space="preserve" text-anchor="start" x="308.75" y="-167" font-family="Inter" font-size="9.00">El token protege /revisar, /compactar y /verificar.</text>
+<polygon fill="#fbefe2" stroke="none" points="304.75,-143 304.75,-160.75 518.25,-160.75 518.25,-143 304.75,-143" />
+<text xml:space="preserve" text-anchor="start" x="308.75" y="-149.25" font-family="DejaVu Sans Mono" font-size="8.00">POST /contenidos/PUBLICACION/1207</text>
+</g><rect x="303.75" y="-224.0" width="215.5" height="82.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge2" class="edge">
+<title>app-&gt;oods</title>
+<path fill="none" stroke="#a3afa8" d="M187.21,-198.93C218.32,-196.71 254.16,-194.15 287.9,-191.75" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="287.65,-194.22 294.46,-191.28 287.3,-189.33 287.65,-194.22" />
+<text xml:space="preserve" text-anchor="middle" x="243.75" y="-198.67" font-family="Inter" font-size="9.00">HTTP</text>
+</g>
+
+<g id="node5" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node5)"><title>logs</title>
+<polygon fill="none" stroke="#d2b69a" points="314.25,-20 314.25,-102 508.75,-102 508.75,-20 314.25,-20" />
+<polygon fill="#b57b1f" stroke="none" points="315.25,-77.25 315.25,-101 507.75,-101 507.75,-77.25 315.25,-77.25" />
+<text xml:space="preserve" text-anchor="start" x="365.75" y="-86.6" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">mongo · paquete</text>
+<polygon fill="#ffffff" stroke="none" points="315.25,-58 315.25,-77.25 507.75,-77.25 507.75,-58 315.25,-58" />
+<text xml:space="preserve" text-anchor="start" x="319.25" y="-64.25" font-family="Inter" font-size="9.00">Una clase y una llamada por operación.</text>
+<polygon fill="#ffffff" stroke="none" points="315.25,-38.75 315.25,-58 507.75,-58 507.75,-38.75 315.25,-38.75" />
+<text xml:space="preserve" text-anchor="start" x="319.25" y="-45" font-family="Inter" font-size="9.00">Consultas de auditoría y de informes.</text>
+<polygon fill="#fbefe2" stroke="none" points="315.25,-21 315.25,-38.75 507.75,-38.75 507.75,-21 315.25,-21" />
+<text xml:space="preserve" text-anchor="start" x="319.25" y="-27.25" font-family="DejaVu Sans Mono" font-size="8.00">await logs.iniciar_sesion(mascota(12, 3))</text>
+</g><rect x="314.25" y="-102.0" width="194.5" height="82.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge4" class="edge">
+<title>app-&gt;logs</title>
+<path fill="none" stroke="#a3afa8" d="M187.08,-164.46C215.69,-150.88 247.82,-135.71 277.25,-122 285.99,-117.93 295.06,-113.73 304.17,-109.52" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="305.13,-111.78 310.46,-106.62 303.07,-107.33 305.13,-111.78" />
+<text xml:space="preserve" text-anchor="middle" x="243.75" y="-147.3" font-family="Inter" font-size="9.00">paquete</text>
+</g>
+
+<g id="node4" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node4)"><title>arch</title>
+<polygon fill="none" stroke="#d2b69a" points="610.75,-142 610.75,-224 764,-224 764,-142 610.75,-142" />
+<polygon fill="#8c725a" stroke="none" points="611.75,-199.25 611.75,-223 763,-223 763,-199.25 611.75,-199.25" />
+<text xml:space="preserve" text-anchor="start" x="645" y="-208.6" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">archivos · HTTP</text>
+<polygon fill="#ffffff" stroke="none" points="611.75,-180 611.75,-199.25 763,-199.25 763,-180 611.75,-180" />
+<text xml:space="preserve" text-anchor="start" x="615.75" y="-186.25" font-family="Inter" font-size="9.00">Los binarios, con su content-type.</text>
+<polygon fill="#ffffff" stroke="none" points="611.75,-160.75 611.75,-180 763,-180 763,-160.75 611.75,-160.75" />
+<text xml:space="preserve" text-anchor="start" x="615.75" y="-167" font-family="Inter" font-size="9.00">Se sirven por el mismo servicio.</text>
+<polygon fill="#fbefe2" stroke="none" points="611.75,-143 611.75,-160.75 763,-160.75 763,-143 611.75,-143" />
+<text xml:space="preserve" text-anchor="start" x="615.75" y="-149.25" font-family="DejaVu Sans Mono" font-size="8.00">GET /archivos/1a1a…-0000.png</text>
+</g><rect x="610.75" y="-224.0" width="153.25" height="82.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge3" class="edge">
+<title>oods-&gt;arch</title>
+<path fill="none" stroke="#a3afa8" d="M527.06,-183C549.68,-183 573.13,-183 594.86,-183" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="594.59,-185.45 601.59,-183 594.59,-180.55 594.59,-185.45" />
+<text xml:space="preserve" text-anchor="middle" x="570.25" y="-185.7" font-family="Inter" font-size="9.00">sirve</text>
+</g>
+
+<g id="node6" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node6)"><title>op</title>
+<polygon fill="none" stroke="#d2b69a" points="8,-43.88 8,-108.12 194.25,-108.12 194.25,-43.88 8,-43.88" />
+<polygon fill="#5c6b62" stroke="none" points="9,-83.38 9,-107.12 193.25,-107.12 193.25,-83.38 9,-83.38" />
+<text xml:space="preserve" text-anchor="start" x="73" y="-92.72" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">operación</text>
+<polygon fill="#ffffff" stroke="none" points="9,-64.12 9,-83.38 193.25,-83.38 193.25,-64.12 9,-64.12" />
+<text xml:space="preserve" text-anchor="start" x="13" y="-70.38" font-family="Inter" font-size="9.00">CLI pawspace-oodb, mongosh y Adminer.</text>
+<polygon fill="#ffffff" stroke="none" points="9,-44.88 9,-64.12 193.25,-64.12 193.25,-44.88 9,-44.88" />
+<text xml:space="preserve" text-anchor="start" x="13" y="-51.12" font-family="Inter" font-size="9.00">Sólo para quien administra.</text>
+</g><rect x="8.0" y="-108.12" width="186.25" height="64.24000000000001" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge5" class="edge">
+<title>op-&gt;oods</title>
+<path fill="none" stroke="#a3afa8" stroke-dasharray="5,2" d="M202.06,-86.05C223.09,-90.77 244.55,-97.67 263.25,-107.75 271.07,-111.96 269.98,-116.9 277.25,-122 283.22,-126.19 289.51,-130.2 296,-134.02" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="294.49,-135.98 301.78,-137.35 296.93,-131.74 294.49,-135.98" />
+<text xml:space="preserve" text-anchor="middle" x="243.75" y="-110.45" font-family="Inter" font-size="9.00">CLI</text>
+</g>
+
+<g id="edge6" class="edge">
+<title>op-&gt;logs</title>
+<path fill="none" stroke="#a3afa8" stroke-dasharray="5,2" d="M201.99,-61.62C209.51,-60.87 216.99,-60.23 224.25,-59.75 248.17,-58.17 273.85,-57.6 298.26,-57.6" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="297.97,-60.05 304.98,-57.62 297.98,-55.15 297.97,-60.05" />
+<text xml:space="preserve" text-anchor="middle" x="243.75" y="-62.45" font-family="Inter" font-size="9.00">mongosh</text>
+</g>
+</g>
+<defs><filter id="sombra" x="-15%" y="-15%" width="130%" height="140%"><feDropShadow dx="0" dy="4" stdDeviation="6.0" flood-color="#1F2A24" flood-opacity="0.1" /></filter><clipPath id="corte_node1"><rect x="23.0" y="-246.75" width="156.25" height="83.5" rx="12" ry="12" /></clipPath><clipPath id="corte_node2"><rect x="293.25" y="-346.0" width="236.5" height="82.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node3"><rect x="303.75" y="-224.0" width="215.5" height="82.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node5"><rect x="314.25" y="-102.0" width="194.5" height="82.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node4"><rect x="610.75" y="-224.0" width="153.25" height="82.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node6"><rect x="8.0" y="-108.12" width="186.25" height="64.24000000000001" rx="12" ry="12" /></clipPath></defs></svg>

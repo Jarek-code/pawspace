@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="563pt" height="732pt" viewBox="0.00 0.00 563.00 732.00">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(18 713.5)">
+<title>pawspace</title>
+<polygon fill="#fff8f0" stroke="none" points="-18,18 -18,-713.5 544.75,-713.5 544.75,18 -18,18" />
+<text xml:space="preserve" text-anchor="start" x="8" y="-671.6" font-family="Outfit" font-weight="bold" font-size="22.00">PawSpace · qué se pregunta y qué índice lo resuelve</text>
+<g id="clust1" class="cluster">
+<title>cluster_aud</title>
+<path fill="#fff8f0" stroke="#ffdd85" d="M69.5,-8C69.5,-8 446.75,-8 446.75,-8 452.75,-8 458.75,-14 458.75,-20 458.75,-20 458.75,-297 458.75,-297 458.75,-303 452.75,-309 446.75,-309 446.75,-309 69.5,-309 69.5,-309 63.5,-309 57.5,-303 57.5,-297 57.5,-297 57.5,-20 57.5,-20 57.5,-14 63.5,-8 69.5,-8" />
+<text xml:space="preserve" text-anchor="start" x="232.25" y="-294.6" font-family="Inter" font-weight="bold" font-size="12.00">auditoría</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_ses</title>
+<path fill="#fff8f0" stroke="#ffdd85" d="M69.88,-317C69.88,-317 450.5,-317 450.5,-317 456.5,-317 462.5,-323 462.5,-329 462.5,-329 462.5,-520 462.5,-520 462.5,-526 456.5,-532 450.5,-532 450.5,-532 69.88,-532 69.88,-532 63.88,-532 57.88,-526 57.88,-520 57.88,-520 57.88,-329 57.88,-329 57.88,-323 63.88,-317 69.88,-317" />
+<text xml:space="preserve" text-anchor="start" x="233.56" y="-517.6" font-family="Inter" font-weight="bold" font-size="12.00">sesiones</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_inf</title>
+<path fill="#fff8f0" stroke="#ffdd85" d="M87.88,-540C87.88,-540 457.25,-540 457.25,-540 463.25,-540 469.25,-546 469.25,-552 469.25,-552 469.25,-639 469.25,-639 469.25,-645 463.25,-651 457.25,-651 457.25,-651 87.88,-651 87.88,-651 81.88,-651 75.88,-645 75.88,-639 75.88,-639 75.88,-552 75.88,-552 75.88,-546 81.88,-540 87.88,-540" />
+<text xml:space="preserve" text-anchor="start" x="245.94" y="-636.6" font-family="Inter" font-weight="bold" font-size="12.00">informes</text>
+</g>
+
+<g id="node1" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node1)"><title>q1</title>
+<polygon fill="none" stroke="#d2b69a" points="90.75,-29.5 90.75,-74.5 234.25,-74.5 234.25,-29.5 90.75,-29.5" />
+<polygon fill="#b57b1f" stroke="none" points="91.75,-49.75 91.75,-73.5 233.25,-73.5 233.25,-49.75 91.75,-49.75" />
+<text xml:space="preserve" text-anchor="start" x="95.75" y="-59.1" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">¿qué hizo esta mascota?</text>
+<polygon fill="#ffffff" stroke="none" points="91.75,-30.5 91.75,-49.75 233.25,-49.75 233.25,-30.5 91.75,-30.5" />
+<text xml:space="preserve" text-anchor="start" x="95.75" y="-36.75" font-family="Inter" font-size="9.00">auditoria_actor(12, desde)</text>
+</g><rect x="90.75" y="-74.5" width="143.5" height="45.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="node2" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node2)"><title>i1</title>
+<polygon fill="none" stroke="#d2b69a" points="321,-19.88 321,-84.12 442.75,-84.12 442.75,-19.88 321,-19.88" />
+<polygon fill="#5c6b62" stroke="none" points="322,-59.38 322,-83.12 441.75,-83.12 441.75,-59.38 322,-59.38" />
+<text xml:space="preserve" text-anchor="start" x="354.12" y="-68.72" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">por_actor</text>
+<polygon fill="#ffffff" stroke="none" points="322,-40.12 322,-59.38 441.75,-59.38 441.75,-40.12 322,-40.12" />
+<text xml:space="preserve" text-anchor="start" x="326" y="-46.38" font-family="Inter" font-size="9.00">actor.id + fecha</text>
+<polygon fill="#ffffff" stroke="none" points="322,-20.88 322,-40.12 441.75,-40.12 441.75,-20.88 322,-20.88" />
+<text xml:space="preserve" text-anchor="start" x="326" y="-27.12" font-family="Inter" font-size="9.00">no lee a los demás actores</text>
+</g><rect x="321.0" y="-84.12" width="121.75" height="64.24000000000001" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge1" class="edge">
+<title>q1-&gt;i1</title>
+<path fill="none" stroke="#a3afa8" d="M241.98,-52C262.5,-52 284.58,-52 304.97,-52" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="304.77,-54.45 311.77,-52 304.77,-49.55 304.77,-54.45" />
+</g>
+
+<g id="node3" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node3)"><title>q2</title>
+<polygon fill="none" stroke="#d2b69a" points="74.62,-124.5 74.62,-169.5 250.38,-169.5 250.38,-124.5 74.62,-124.5" />
+<polygon fill="#b57b1f" stroke="none" points="75.62,-144.75 75.62,-168.5 249.38,-168.5 249.38,-144.75 75.62,-144.75" />
+<text xml:space="preserve" text-anchor="start" x="81.88" y="-154.1" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">¿quién tocó esta publicación?</text>
+<polygon fill="#ffffff" stroke="none" points="75.62,-125.5 75.62,-144.75 249.38,-144.75 249.38,-125.5 75.62,-125.5" />
+<text xml:space="preserve" text-anchor="start" x="79.62" y="-131.75" font-family="Inter" font-size="9.00">historial_entidad('PUBLICACION', 1207)</text>
+</g><rect x="74.62" y="-169.5" width="175.76" height="45.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="node4" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node4)"><title>i2</title>
+<polygon fill="none" stroke="#d2b69a" points="325.88,-124.5 325.88,-169.5 437.88,-169.5 437.88,-124.5 325.88,-124.5" />
+<polygon fill="#5c6b62" stroke="none" points="326.88,-144.75 326.88,-168.5 436.88,-168.5 436.88,-144.75 326.88,-144.75" />
+<text xml:space="preserve" text-anchor="start" x="347.38" y="-154.1" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">por_entidad</text>
+<polygon fill="#ffffff" stroke="none" points="326.88,-125.5 326.88,-144.75 436.88,-144.75 436.88,-125.5 326.88,-125.5" />
+<text xml:space="preserve" text-anchor="start" x="330.88" y="-131.75" font-family="Inter" font-size="9.00">entidad.tipo + id + fecha</text>
+</g><rect x="325.88" y="-169.5" width="112.0" height="45.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge2" class="edge">
+<title>q2-&gt;i2</title>
+<path fill="none" stroke="#a3afa8" d="M258.21,-147C275.46,-147 293.18,-147 309.6,-147" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="309.55,-149.45 316.55,-147 309.55,-144.55 309.55,-149.45" />
+</g>
+
+<g id="node5" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node5)"><title>q3</title>
+<polygon fill="none" stroke="#d2b69a" points="73.5,-219.5 73.5,-264.5 251.5,-264.5 251.5,-219.5 73.5,-219.5" />
+<polygon fill="#b57b1f" stroke="none" points="74.5,-239.75 74.5,-263.5 250.5,-263.5 250.5,-239.75 74.5,-239.75" />
+<text xml:space="preserve" text-anchor="start" x="99.5" y="-249.1" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">¿qué accesos fallaron?</text>
+<polygon fill="#ffffff" stroke="none" points="74.5,-220.5 74.5,-239.75 250.5,-239.75 250.5,-220.5 74.5,-220.5" />
+<text xml:space="preserve" text-anchor="start" x="78.5" y="-226.75" font-family="Inter" font-size="9.00">intentos_fallidos(motivo='credenciales')</text>
+</g><rect x="73.5" y="-264.5" width="178.0" height="45.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="node6" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node6)"><title>i3</title>
+<polygon fill="none" stroke="#d2b69a" points="329.62,-209.88 329.62,-274.12 434.12,-274.12 434.12,-209.88 329.62,-209.88" />
+<polygon fill="#5c6b62" stroke="none" points="330.62,-249.38 330.62,-273.12 433.12,-273.12 433.12,-249.38 330.62,-249.38" />
+<text xml:space="preserve" text-anchor="start" x="351.12" y="-258.73" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">por_accion</text>
+<polygon fill="#ffffff" stroke="none" points="330.62,-230.12 330.62,-249.38 433.12,-249.38 433.12,-230.12 330.62,-230.12" />
+<text xml:space="preserve" text-anchor="start" x="334.62" y="-236.38" font-family="Inter" font-size="9.00">el verbo + fecha</text>
+<polygon fill="#ffffff" stroke="none" points="330.62,-210.88 330.62,-230.12 433.12,-230.12 433.12,-210.88 330.62,-210.88" />
+<text xml:space="preserve" text-anchor="start" x="334.62" y="-217.12" font-family="Inter" font-size="9.00">del correo sólo el hash</text>
+</g><rect x="329.62" y="-274.12" width="104.5" height="64.24000000000001" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge3" class="edge">
+<title>q3-&gt;i3</title>
+<path fill="none" stroke="#a3afa8" d="M259.48,-242C277.66,-242 296.32,-242 313.39,-242" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="313.12,-244.45 320.12,-242 313.12,-239.55 313.12,-244.45" />
+</g>
+
+<g id="node7" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node7)"><title>q4</title>
+<polygon fill="none" stroke="#d2b69a" points="90.38,-338.5 90.38,-383.5 234.62,-383.5 234.62,-338.5 90.38,-338.5" />
+<polygon fill="#b57b1f" stroke="none" points="91.38,-358.75 91.38,-382.5 233.62,-382.5 233.62,-358.75 91.38,-358.75" />
+<text xml:space="preserve" text-anchor="start" x="95.38" y="-368.1" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">¿cuáles son las sesiones?</text>
+<polygon fill="#ffffff" stroke="none" points="91.38,-339.5 91.38,-358.75 233.62,-358.75 233.62,-339.5 91.38,-339.5" />
+<text xml:space="preserve" text-anchor="start" x="95.38" y="-345.75" font-family="Inter" font-size="9.00">sesiones_en(abiertas=True)</text>
+</g><rect x="90.38" y="-383.5" width="144.24" height="45.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="node8" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node8)"><title>i4</title>
+<polygon fill="none" stroke="#d2b69a" points="323.25,-328.88 323.25,-393.12 440.5,-393.12 440.5,-328.88 323.25,-328.88" />
+<polygon fill="#5c6b62" stroke="none" points="324.25,-368.38 324.25,-392.12 439.5,-392.12 439.5,-368.38 324.25,-368.38" />
+<text xml:space="preserve" text-anchor="start" x="353" y="-377.73" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">por_fecha</text>
+<polygon fill="#ffffff" stroke="none" points="324.25,-349.12 324.25,-368.38 439.5,-368.38 439.5,-349.12 324.25,-349.12" />
+<text xml:space="preserve" text-anchor="start" x="328.25" y="-355.38" font-family="Inter" font-size="9.00">iniciada_en</text>
+<polygon fill="#ffffff" stroke="none" points="324.25,-329.88 324.25,-349.12 439.5,-349.12 439.5,-329.88 324.25,-329.88" />
+<text xml:space="preserve" text-anchor="start" x="328.25" y="-336.12" font-family="Inter" font-size="9.00">y por_actor si se pide uno</text>
+</g><rect x="323.25" y="-393.12" width="117.25" height="64.24000000000001" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge4" class="edge">
+<title>q4-&gt;i4</title>
+<path fill="none" stroke="#a3afa8" d="M242.59,-361C263.61,-361 286.23,-361 306.96,-361" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="306.9,-363.45 313.9,-361 306.9,-358.55 306.9,-363.45" />
+</g>
+
+<g id="node9" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node9)"><title>q5</title>
+<polygon fill="none" stroke="#d2b69a" points="73.88,-442.5 73.88,-487.5 251.12,-487.5 251.12,-442.5 73.88,-442.5" />
+<polygon fill="#b57b1f" stroke="none" points="74.88,-462.75 74.88,-486.5 250.12,-486.5 250.12,-462.75 74.88,-462.75" />
+<text xml:space="preserve" text-anchor="start" x="78.88" y="-472.1" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">¿qué pasó dentro de la sesión?</text>
+<polygon fill="#ffffff" stroke="none" points="74.88,-443.5 74.88,-462.75 250.12,-462.75 250.12,-443.5 74.88,-443.5" />
+<text xml:space="preserve" text-anchor="start" x="78.88" y="-449.75" font-family="Inter" font-size="9.00">sesion_completa('ses_001a1a…')</text>
+</g><rect x="73.88" y="-487.5" width="177.24" height="45.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="node10" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node10)"><title>i5</title>
+<polygon fill="none" stroke="#d2b69a" points="317.25,-432.88 317.25,-497.12 446.5,-497.12 446.5,-432.88 317.25,-432.88" />
+<polygon fill="#5c6b62" stroke="none" points="318.25,-472.38 318.25,-496.12 445.5,-496.12 445.5,-472.38 318.25,-472.38" />
+<text xml:space="preserve" text-anchor="start" x="352.25" y="-481.73" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">por_sesion</text>
+<polygon fill="#ffffff" stroke="none" points="318.25,-453.12 318.25,-472.38 445.5,-472.38 445.5,-453.12 318.25,-453.12" />
+<text xml:space="preserve" text-anchor="start" x="322.25" y="-459.38" font-family="Inter" font-size="9.00">sesion_id + fecha</text>
+<polygon fill="#ffffff" stroke="none" points="318.25,-433.88 318.25,-453.12 445.5,-453.12 445.5,-433.88 318.25,-433.88" />
+<text xml:space="preserve" text-anchor="start" x="322.25" y="-440.12" font-family="Inter" font-size="9.00">devuelve los pasos en orden</text>
+</g><rect x="317.25" y="-497.12" width="129.25" height="64.24000000000001" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge5" class="edge">
+<title>q5-&gt;i5</title>
+<path fill="none" stroke="#a3afa8" d="M258.84,-465C272.92,-465 287.3,-465 301.02,-465" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="300.95,-467.45 307.95,-465 300.95,-462.55 300.95,-467.45" />
+</g>
+
+<g id="node11" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node11)"><title>q6</title>
+<polygon fill="none" stroke="#d2b69a" points="91.88,-561.5 91.88,-606.5 233.12,-606.5 233.12,-561.5 91.88,-561.5" />
+<polygon fill="#b57b1f" stroke="none" points="92.88,-581.75 92.88,-605.5 232.12,-605.5 232.12,-581.75 92.88,-581.75" />
+<text xml:space="preserve" text-anchor="start" x="114.88" y="-591.1" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">¿cómo fue el día?</text>
+<polygon fill="#ffffff" stroke="none" points="92.88,-562.5 92.88,-581.75 232.12,-581.75 232.12,-562.5 92.88,-562.5" />
+<text xml:space="preserve" text-anchor="start" x="96.88" y="-568.75" font-family="Inter" font-size="9.00">resumen_del_dia('2026-11-06')</text>
+</g><rect x="91.88" y="-606.5" width="141.24" height="45.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="node12" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node12)"><title>i6</title>
+<polygon fill="none" stroke="#d2b69a" points="310.5,-551.88 310.5,-616.12 453.25,-616.12 453.25,-551.88 310.5,-551.88" />
+<polygon fill="#5c6b62" stroke="none" points="311.5,-591.38 311.5,-615.12 452.25,-615.12 452.25,-591.38 311.5,-591.38" />
+<text xml:space="preserve" text-anchor="start" x="344.75" y="-600.73" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">preagregado</text>
+<polygon fill="#ffffff" stroke="none" points="311.5,-572.12 311.5,-591.38 452.25,-591.38 452.25,-572.12 311.5,-572.12" />
+<text xml:space="preserve" text-anchor="start" x="315.5" y="-578.38" font-family="Inter" font-size="9.00">lee 1 documento, no 52 eventos</text>
+<polygon fill="#ffffff" stroke="none" points="311.5,-552.88 311.5,-572.12 452.25,-572.12 452.25,-552.88 311.5,-552.88" />
+<text xml:space="preserve" text-anchor="start" x="315.5" y="-559.12" font-family="Inter" font-size="9.00">lo llena 04-resumen-diario.js</text>
+</g><rect x="310.5" y="-616.12" width="142.75" height="64.24000000000001" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge6" class="edge">
+<title>q6-&gt;i6</title>
+<path fill="none" stroke="#a3afa8" d="M241.06,-584C258.4,-584 276.89,-584 294.56,-584" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="294.1,-586.45 301.1,-584 294.1,-581.55 294.1,-586.45" />
+</g>
+</g>
+<defs><filter id="sombra" x="-15%" y="-15%" width="130%" height="140%"><feDropShadow dx="0" dy="4" stdDeviation="6.0" flood-color="#1F2A24" flood-opacity="0.1" /></filter><clipPath id="corte_node1"><rect x="90.75" y="-74.5" width="143.5" height="45.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node2"><rect x="321.0" y="-84.12" width="121.75" height="64.24000000000001" rx="12" ry="12" /></clipPath><clipPath id="corte_node3"><rect x="74.62" y="-169.5" width="175.76" height="45.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node4"><rect x="325.88" y="-169.5" width="112.0" height="45.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node5"><rect x="73.5" y="-264.5" width="178.0" height="45.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node6"><rect x="329.62" y="-274.12" width="104.5" height="64.24000000000001" rx="12" ry="12" /></clipPath><clipPath id="corte_node7"><rect x="90.38" y="-383.5" width="144.24" height="45.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node8"><rect x="323.25" y="-393.12" width="117.25" height="64.24000000000001" rx="12" ry="12" /></clipPath><clipPath id="corte_node9"><rect x="73.88" y="-487.5" width="177.24" height="45.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node10"><rect x="317.25" y="-497.12" width="129.25" height="64.24000000000001" rx="12" ry="12" /></clipPath><clipPath id="corte_node11"><rect x="91.88" y="-606.5" width="141.24" height="45.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node12"><rect x="310.5" y="-616.12" width="142.75" height="64.24000000000001" rx="12" ry="12" /></clipPath></defs></svg>

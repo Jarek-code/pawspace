@@ -48,7 +48,19 @@ class Auten_Token :
             FROM USUARIO u
             INNER JOIN USUARIO_CREDENCIALES uc ON u.id = uc.usuario_id
             WHERE u.email = :email""")
+
         return db.execute(consulta,{"email": email}).fetchone()
+
+
+    #datos provicionales en lo que traigo cosas de otra branch
+    @staticmethod
+    def log_login(db: Session, email:str, exitoso:bool, ip:str):
+        consulta = text("")
+        db.execute(consulta, {"email": email,"exitoso":exitoso, "ip":ip})
+        db.commit()
+
+
+
 
     @staticmethod
     #verifica que la contrasena que trajo de la base de datos sea la misma del usuario
@@ -65,5 +77,6 @@ class Auten_Token :
 
             "sub": str(usuario_id),
             "exp": expira,
+            "iat": fecha_actual
         }
         return jwt.encode(dato_guardao, Llave_super_secreta, algorithm=Algoritmo_Cifrador)

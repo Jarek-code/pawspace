@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1197pt" height="312pt" viewBox="0.00 0.00 1197.00 312.00">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(18 294.25)">
+<title>pawspace</title>
+<polygon fill="#fff8f0" stroke="none" points="-18,18 -18,-294.25 1179.25,-294.25 1179.25,18 -18,18" />
+<text xml:space="preserve" text-anchor="start" x="362.75" y="-252.35" font-family="Outfit" font-weight="bold" font-size="22.00">PawSpace · de una petición a un documento</text>
+<g id="clust1" class="cluster">
+<title>cluster_app</title>
+<path fill="#fff8f0" stroke="#c9d2cc" d="M20,-92.75C20,-92.75 891.5,-92.75 891.5,-92.75 897.5,-92.75 903.5,-98.75 903.5,-104.75 903.5,-104.75 903.5,-219.75 903.5,-219.75 903.5,-225.75 897.5,-231.75 891.5,-231.75 891.5,-231.75 20,-231.75 20,-231.75 14,-231.75 8,-225.75 8,-219.75 8,-219.75 8,-104.75 8,-104.75 8,-98.75 14,-92.75 20,-92.75" />
+<text xml:space="preserve" text-anchor="start" x="430.62" y="-217.35" font-family="Inter" font-weight="bold" font-size="12.00">backend</text>
+</g>
+
+<g id="node1" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node1)"><title>p1</title>
+<polygon fill="none" stroke="#d2b69a" points="24,-104.88 24,-196.62 194.5,-196.62 194.5,-104.88 24,-104.88" />
+<polygon fill="#5c6b62" stroke="none" points="25,-171.88 25,-195.62 193.5,-195.62 193.5,-171.88 25,-171.88" />
+<text xml:space="preserve" text-anchor="start" x="69.88" y="-181.22" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">1 · llega el login</text>
+<polygon fill="#ffffff" stroke="none" points="25,-152.62 25,-171.88 193.5,-171.88 193.5,-152.62 25,-152.62" />
+<text xml:space="preserve" text-anchor="start" x="29" y="-158.88" font-family="Inter" font-size="9.00">La dependencia de autenticación deja</text>
+<polygon fill="#ffffff" stroke="none" points="25,-133.38 25,-152.62 193.5,-152.62 193.5,-133.38 25,-133.38" />
+<text xml:space="preserve" text-anchor="start" x="29" y="-139.62" font-family="Inter" font-size="9.00">actor y sesión en request.state.</text>
+<polygon fill="#fbefe2" stroke="none" points="25,-105.88 25,-133.38 193.5,-133.38 193.5,-105.88 25,-105.88" />
+<text xml:space="preserve" text-anchor="start" x="29" y="-121.88" font-family="DejaVu Sans Mono" font-size="8.00">POST /login</text>
+<text xml:space="preserve" text-anchor="start" x="29" y="-112.12" font-family="DejaVu Sans Mono" font-size="8.00">actor = mascota(12, 3)</text>
+</g><rect x="24.0" y="-196.62" width="170.5" height="91.74000000000001" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="node2" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node2)"><title>p2</title>
+<polygon fill="none" stroke="#d2b69a" points="255.5,-104.88 255.5,-196.62 447,-196.62 447,-104.88 255.5,-104.88" />
+<polygon fill="#5c6b62" stroke="none" points="256.5,-171.88 256.5,-195.62 446,-195.62 446,-171.88 256.5,-171.88" />
+<text xml:space="preserve" text-anchor="start" x="297.62" y="-181.22" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">2 · el backend llama</text>
+<polygon fill="#ffffff" stroke="none" points="256.5,-152.62 256.5,-171.88 446,-171.88 446,-152.62 256.5,-152.62" />
+<text xml:space="preserve" text-anchor="start" x="260.5" y="-158.88" font-family="Inter" font-size="9.00">Una sola llamada; el verbo se valida aquí.</text>
+<polygon fill="#ffffff" stroke="none" points="256.5,-133.38 256.5,-152.62 446,-152.62 446,-133.38 256.5,-133.38" />
+<text xml:space="preserve" text-anchor="start" x="260.5" y="-139.62" font-family="Inter" font-size="9.00">Si el acceso falla, se anota y no hay sesión.</text>
+<polygon fill="#fbefe2" stroke="none" points="256.5,-105.88 256.5,-133.38 446,-133.38 446,-105.88 256.5,-105.88" />
+<text xml:space="preserve" text-anchor="start" x="260.5" y="-121.88" font-family="DejaVu Sans Mono" font-size="8.00">await logs.iniciar_sesion(...)</text>
+<text xml:space="preserve" text-anchor="start" x="260.5" y="-112.12" font-family="DejaVu Sans Mono" font-size="8.00">await logs.intento_fallido(...)</text>
+</g><rect x="255.5" y="-196.62" width="191.5" height="91.74000000000001" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge1" class="edge">
+<title>p1-&gt;p2</title>
+<path fill="none" stroke="#a3afa8" d="M202.35,-150.75C214.38,-150.75 226.81,-150.75 239.11,-150.75" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="239.08,-153.2 246.08,-150.75 239.08,-148.3 239.08,-153.2" />
+</g>
+
+<g id="node3" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node3)"><title>p3</title>
+<polygon fill="none" stroke="#d2b69a" points="508,-109.75 508,-191.75 677,-191.75 677,-109.75 508,-109.75" />
+<polygon fill="#5c6b62" stroke="none" points="509,-167 509,-190.75 676,-190.75 676,-167 509,-167" />
+<text xml:space="preserve" text-anchor="start" x="541.88" y="-176.35" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">3 · el cliente encola</text>
+<polygon fill="#ffffff" stroke="none" points="509,-147.75 509,-167 676,-167 676,-147.75 509,-147.75" />
+<text xml:space="preserve" text-anchor="start" x="513" y="-154" font-family="Inter" font-size="9.00">No espera a MongoDB: arma el JSON</text>
+<polygon fill="#ffffff" stroke="none" points="509,-128.5 509,-147.75 676,-147.75 676,-128.5 509,-128.5" />
+<text xml:space="preserve" text-anchor="start" x="513" y="-134.75" font-family="Inter" font-size="9.00">y lo deja en una cola de 10 000.</text>
+<polygon fill="#fbefe2" stroke="none" points="509,-110.75 509,-128.5 676,-128.5 676,-110.75 509,-110.75" />
+<text xml:space="preserve" text-anchor="start" x="513" y="-117" font-family="DejaVu Sans Mono" font-size="8.00">no toca el disco</text>
+</g><rect x="508.0" y="-191.75" width="169.0" height="82.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge2" class="edge">
+<title>p2-&gt;p3</title>
+<path fill="none" stroke="#a3afa8" d="M454.75,-150.75C467.02,-150.75 479.53,-150.75 491.75,-150.75" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="491.65,-153.2 498.64,-150.75 491.64,-148.3 491.65,-153.2" />
+</g>
+
+<g id="node4" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node4)"><title>p4</title>
+<polygon fill="none" stroke="#d2b69a" points="738,-112.75 738,-194.75 887.5,-194.75 887.5,-112.75 738,-112.75" />
+<polygon fill="#5c6b62" stroke="none" points="739,-170 739,-193.75 886.5,-193.75 886.5,-170 739,-170" />
+<text xml:space="preserve" text-anchor="start" x="760.25" y="-179.35" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">4 · escribe por lotes</text>
+<polygon fill="#ffffff" stroke="none" points="739,-150.75 739,-170 886.5,-170 886.5,-150.75 739,-150.75" />
+<text xml:space="preserve" text-anchor="start" x="743" y="-157" font-family="Inter" font-size="9.00">Cada 100 documentos o 500 ms.</text>
+<polygon fill="#ffffff" stroke="none" points="739,-131.5 739,-150.75 886.5,-150.75 886.5,-131.5 739,-131.5" />
+<text xml:space="preserve" text-anchor="start" x="743" y="-137.75" font-family="Inter" font-size="9.00">Al cerrar: vacía y termina.</text>
+<polygon fill="#fbefe2" stroke="none" points="739,-113.75 739,-131.5 886.5,-131.5 886.5,-113.75 739,-113.75" />
+<text xml:space="preserve" text-anchor="start" x="743" y="-120" font-family="DejaVu Sans Mono" font-size="8.00">insert_many · bulk_write</text>
+</g><rect x="738.0" y="-194.75" width="149.5" height="82.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge3" class="edge">
+<title>p3-&gt;p4</title>
+<path fill="none" stroke="#a3afa8" d="M684.79,-152C697.04,-152.17 709.59,-152.35 721.81,-152.51" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="721.66,-154.96 728.69,-152.61 721.73,-150.06 721.66,-154.96" />
+</g>
+
+<g id="node6" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node6)"><title>falla</title>
+<polygon fill="none" stroke="#d2b69a" points="970.38,-4 970.38,-87.5 1146.12,-87.5 1146.12,-4 970.38,-4" />
+<polygon fill="#d33a2e" stroke="none" points="971.38,-62.75 971.38,-86.5 1145.12,-86.5 1145.12,-62.75 971.38,-62.75" />
+<text xml:space="preserve" text-anchor="start" x="1011.75" y="-72.1" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">si MongoDB falla</text>
+<polygon fill="#ffffff" stroke="none" points="971.38,-43.5 971.38,-62.75 1145.12,-62.75 1145.12,-43.5 971.38,-43.5" />
+<text xml:space="preserve" text-anchor="start" x="975.38" y="-49.75" font-family="Inter" font-size="9.00">Avisa en una línea, suma a descartados</text>
+<polygon fill="#ffffff" stroke="none" points="971.38,-24.25 971.38,-43.5 1145.12,-43.5 1145.12,-24.25 971.38,-24.25" />
+<text xml:space="preserve" text-anchor="start" x="975.38" y="-30.5" font-family="Inter" font-size="9.00">y la petición responde igual.</text>
+<polygon fill="#ffffff" stroke="none" points="971.38,-5 971.38,-24.25 1145.12,-24.25 1145.12,-5 971.38,-5" />
+<text xml:space="preserve" text-anchor="start" x="975.38" y="-11.25" font-family="Inter" font-size="9.00">Sin MONGO_URL: todo es no-op.</text>
+</g><rect x="970.38" y="-87.5" width="175.7399999999999" height="83.5" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge5" class="edge">
+<title>p3-&gt;falla</title>
+<path fill="none" stroke="#a3afa8" stroke-dasharray="5,2" d="M670.17,-105.8C689.18,-96.37 709.88,-87.49 730,-81.5 803.02,-59.78 888.72,-50.98 954.1,-47.54" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="954,-50 960.87,-47.21 953.75,-45.11 954,-50" />
+<text xml:space="preserve" text-anchor="middle" x="812.75" y="-84.2" font-family="Inter" font-size="9.00">error</text>
+</g>
+
+<g id="node5" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node5)"><title>m1</title>
+<polygon fill="none" stroke="#d2b69a" points="963.25,-127.88 963.25,-219.62 1153.25,-219.62 1153.25,-127.88 963.25,-127.88" />
+<polygon fill="#b57b1f" stroke="none" points="964.25,-194.88 964.25,-218.62 1152.25,-218.62 1152.25,-194.88 964.25,-194.88" />
+<text xml:space="preserve" text-anchor="start" x="1031.25" y="-204.22" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">MongoDB</text>
+<polygon fill="#ffffff" stroke="none" points="964.25,-175.62 964.25,-194.88 1152.25,-194.88 1152.25,-175.62 964.25,-175.62" />
+<text xml:space="preserve" text-anchor="start" x="968.25" y="-181.88" font-family="Inter" font-size="9.00">Quedan dos documentos por un login:</text>
+<polygon fill="#ffffff" stroke="none" points="964.25,-156.38 964.25,-175.62 1152.25,-175.62 1152.25,-156.38 964.25,-156.38" />
+<text xml:space="preserve" text-anchor="start" x="968.25" y="-162.62" font-family="Inter" font-size="9.00">el evento del acceso y la sesión.</text>
+<polygon fill="#fbefe2" stroke="none" points="964.25,-128.88 964.25,-156.38 1152.25,-156.38 1152.25,-128.88 964.25,-128.88" />
+<text xml:space="preserve" text-anchor="start" x="968.25" y="-144.88" font-family="DejaVu Sans Mono" font-size="8.00">eventos:  { "accion": "cuenta.acceder" }</text>
+<text xml:space="preserve" text-anchor="start" x="968.25" y="-135.12" font-family="DejaVu Sans Mono" font-size="8.00">sesiones: { "motivo_fin": "logout" }</text>
+</g><rect x="963.25" y="-219.62" width="190.0" height="91.74000000000001" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge4" class="edge">
+<title>p4-&gt;m1</title>
+<path fill="none" stroke="#a3afa8" d="M895.17,-160.44C911.96,-161.82 929.89,-163.29 947.49,-164.74" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="946.87,-167.14 954.04,-165.27 947.27,-162.26 946.87,-167.14" />
+<text xml:space="preserve" text-anchor="middle" x="925.38" y="-165.85" font-family="Inter" font-size="9.00">lote</text>
+</g>
+</g>
+<defs><filter id="sombra" x="-15%" y="-15%" width="130%" height="140%"><feDropShadow dx="0" dy="4" stdDeviation="6.0" flood-color="#1F2A24" flood-opacity="0.1" /></filter><clipPath id="corte_node1"><rect x="24.0" y="-196.62" width="170.5" height="91.74000000000001" rx="12" ry="12" /></clipPath><clipPath id="corte_node2"><rect x="255.5" y="-196.62" width="191.5" height="91.74000000000001" rx="12" ry="12" /></clipPath><clipPath id="corte_node3"><rect x="508.0" y="-191.75" width="169.0" height="82.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node4"><rect x="738.0" y="-194.75" width="149.5" height="82.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node6"><rect x="970.38" y="-87.5" width="175.7399999999999" height="83.5" rx="12" ry="12" /></clipPath><clipPath id="corte_node5"><rect x="963.25" y="-219.62" width="190.0" height="91.74000000000001" rx="12" ry="12" /></clipPath></defs></svg>

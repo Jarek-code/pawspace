@@ -22,5 +22,7 @@ class TokenSesion(BaseModel):
     token_tipo : str = "bearer"
 
 class UserLogin(BaseModel):
+    #valisa el correo del usuario
     email: EmailStr
+    #valida la contrasena del usuario
     contrasena: str

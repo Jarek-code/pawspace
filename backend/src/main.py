@@ -12,6 +12,8 @@ app = FastAPI(
 #hace que las rutas de usuario_ruta se puedan visualizar en el main
 app.include_router(usuario_ruta)
 
+app.include_router(adjuntos.router)
+
 @app.get("/")
 async def root():
     return {"message": "Welcome to PawSpace API", "status": "ok"}
@@ -30,3 +32,4 @@ async def From_US():
         return Todo_usuarios
     finally:
         db.close()
+

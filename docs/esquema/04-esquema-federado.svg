@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1121pt" height="403pt" viewBox="0.00 0.00 1121.00 403.00">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(18 385.12)">
+<title>pawspace</title>
+<polygon fill="#fff8f0" stroke="none" points="-18,18 -18,-385.12 1103,-385.12 1103,18 -18,18" />
+<text xml:space="preserve" text-anchor="start" x="317.12" y="-343.23" font-family="Outfit" font-weight="bold" font-size="22.00">PawSpace · cómo encajan los cuatro modelos</text>
+
+<g id="node1" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node1)"><title>rel</title>
+<polygon fill="none" stroke="#d2b69a" points="8,-196.12 8,-326.62 198,-326.62 198,-196.12 8,-196.12" />
+<polygon fill="#2f5d4a" stroke="none" points="9,-301.88 9,-325.62 197,-325.62 197,-301.88 9,-301.88" />
+<text xml:space="preserve" text-anchor="start" x="36.25" y="-311.23" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">RELACIONAL · MariaDB</text>
+<polygon fill="#ffffff" stroke="none" points="9,-282.62 9,-301.88 197,-301.88 197,-282.62 9,-282.62" />
+<text xml:space="preserve" text-anchor="start" x="13" y="-288.88" font-family="Inter" font-size="9.00">Filas con columnas fijas.</text>
+<polygon fill="#ffffff" stroke="none" points="9,-263.38 9,-282.62 197,-282.62 197,-263.38 9,-263.38" />
+<text xml:space="preserve" text-anchor="start" x="13" y="-269.62" font-family="Inter" font-size="9.00">Clave primaria, claves foráneas, ACID.</text>
+<polygon fill="#ffffff" stroke="none" points="9,-244.12 9,-263.38 197,-263.38 197,-244.12 9,-244.12" />
+<text xml:space="preserve" text-anchor="start" x="13" y="-250.38" font-family="Inter" font-size="9.00">Se consulta con SQL y hace JOIN.</text>
+<polygon fill="#fbefe2" stroke="none" points="9,-197.12 9,-244.12 197,-244.12 197,-197.12 9,-197.12" />
+<text xml:space="preserve" text-anchor="start" x="13" y="-232.62" font-family="DejaVu Sans Mono" font-size="8.00">INSERT INTO PUBLICACION (id, mascota_id)</text>
+<text xml:space="preserve" text-anchor="start" x="13" y="-222.88" font-family="DejaVu Sans Mono" font-size="8.00">  VALUES (1207, 12);</text>
+<text xml:space="preserve" text-anchor="start" x="13" y="-213.12" font-family="DejaVu Sans Mono" font-size="8.00">SELECT * FROM vPUBLICACION</text>
+<text xml:space="preserve" text-anchor="start" x="13" y="-203.38" font-family="DejaVu Sans Mono" font-size="8.00"> WHERE id = 1207;</text>
+</g><rect x="8.0" y="-326.62" width="190.0" height="130.5" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="node2" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node2)"><title>ancla</title>
+<polygon fill="none" stroke="#d2b69a" points="350.25,-192.38 350.25,-274.38 435.25,-274.38 435.25,-192.38 350.25,-192.38" />
+<polygon fill="#5c6b62" stroke="none" points="351.25,-249.62 351.25,-273.38 434.25,-273.38 434.25,-249.62 351.25,-249.62" />
+<text xml:space="preserve" text-anchor="start" x="377.38" y="-258.98" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">ancla</text>
+<polygon fill="#ffffff" stroke="none" points="351.25,-230.38 351.25,-249.62 434.25,-249.62 434.25,-230.38 351.25,-230.38" />
+<text xml:space="preserve" text-anchor="start" x="355.25" y="-236.62" font-family="Inter" font-size="9.00">(tabla, registro_id)</text>
+<polygon fill="#ffffff" stroke="none" points="351.25,-211.12 351.25,-230.38 434.25,-230.38 434.25,-211.12 351.25,-211.12" />
+<text xml:space="preserve" text-anchor="start" x="355.25" y="-217.38" font-family="Inter" font-size="9.00">única, con índice</text>
+<polygon fill="#fbefe2" stroke="none" points="351.25,-193.38 351.25,-211.12 434.25,-211.12 434.25,-193.38 351.25,-193.38" />
+<text xml:space="preserve" text-anchor="start" x="355.25" y="-199.62" font-family="DejaVu Sans Mono" font-size="8.00">PUBLICACION:1207</text>
+</g><rect x="350.25" y="-274.38" width="85.0" height="82.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge1" class="edge">
+<title>rel-&gt;ancla</title>
+<path fill="none" stroke="#a3afa8" d="M205.85,-251.46C248.99,-247.27 297.65,-242.53 334.37,-238.96" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="334.25,-241.43 340.98,-238.32 333.77,-236.55 334.25,-241.43" />
+<text xml:space="preserve" text-anchor="middle" x="274.12" y="-251.75" font-family="Inter" font-size="9.00">el contenido vive aquí</text>
+</g>
+
+<g id="node5" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node5)"><title>doc</title>
+<polygon fill="none" stroke="#d2b69a" points="9.88,-4 9.88,-124.75 196.12,-124.75 196.12,-4 9.88,-4" />
+<polygon fill="#b57b1f" stroke="none" points="10.88,-100 10.88,-123.75 195.12,-123.75 195.12,-100 10.88,-100" />
+<text xml:space="preserve" text-anchor="start" x="29.5" y="-109.35" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">DOCUMENTOS · MongoDB</text>
+<polygon fill="#ffffff" stroke="none" points="10.88,-80.75 10.88,-100 195.12,-100 195.12,-80.75 10.88,-80.75" />
+<text xml:space="preserve" text-anchor="start" x="14.88" y="-87" font-family="Inter" font-size="9.00">JSON de forma libre, sin JOIN.</text>
+<polygon fill="#ffffff" stroke="none" points="10.88,-61.5 10.88,-80.75 195.12,-80.75 195.12,-61.5 10.88,-61.5" />
+<text xml:space="preserve" text-anchor="start" x="14.88" y="-67.75" font-family="Inter" font-size="9.00">Escritura por lotes, sin transacción global.</text>
+<polygon fill="#ffffff" stroke="none" points="10.88,-42.25 10.88,-61.5 195.12,-61.5 195.12,-42.25 10.88,-42.25" />
+<text xml:space="preserve" text-anchor="start" x="14.88" y="-48.5" font-family="Inter" font-size="9.00">Almacén derivado: se puede vaciar.</text>
+<polygon fill="#fbefe2" stroke="none" points="10.88,-5 10.88,-42.25 195.12,-42.25 195.12,-5 10.88,-5" />
+<text xml:space="preserve" text-anchor="start" x="14.88" y="-30.75" font-family="DejaVu Sans Mono" font-size="8.00">{ "_id": "evt_001a1a…",</text>
+<text xml:space="preserve" text-anchor="start" x="14.88" y="-21" font-family="DejaVu Sans Mono" font-size="8.00">  "accion": "publicacion.crear",</text>
+<text xml:space="preserve" text-anchor="start" x="14.88" y="-11.25" font-family="DejaVu Sans Mono" font-size="8.00">  "entidad": { "id": 1207 } }</text>
+</g><rect x="9.88" y="-124.75" width="186.24" height="120.75" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge4" class="edge">
+<title>rel-&gt;doc</title>
+<path fill="none" stroke="#a3afa8" stroke-dasharray="5,2" d="M103,-192.13C103,-174.22 103,-154.89 103,-136.81" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="105.45,-137.12 103,-130.12 100.55,-137.12 105.45,-137.12" />
+<text xml:space="preserve" text-anchor="middle" x="94.38" y="-157.51" font-family="Inter" font-size="9.00">los eventos lo referencian</text>
+</g>
+
+<g id="node3" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node3)"><title>obj</title>
+<polygon fill="none" stroke="#d2b69a" points="590.5,-85 590.5,-205.75 752,-205.75 752,-85 590.5,-85" />
+<polygon fill="#c94c41" stroke="none" points="591.5,-181 591.5,-204.75 751,-204.75 751,-181 591.5,-181" />
+<text xml:space="preserve" text-anchor="start" x="603.38" y="-190.35" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">OBJETOS · servicio oodb</text>
+<polygon fill="#ffffff" stroke="none" points="591.5,-161.75 591.5,-181 751,-181 751,-161.75 591.5,-161.75" />
+<text xml:space="preserve" text-anchor="start" x="595.5" y="-168" font-family="Inter" font-size="9.00">Objetos con clase y OID propio.</text>
+<polygon fill="#ffffff" stroke="none" points="591.5,-142.5 591.5,-161.75 751,-161.75 751,-142.5 591.5,-142.5" />
+<text xml:space="preserve" text-anchor="start" x="595.5" y="-148.75" font-family="Inter" font-size="9.00">Guardan referencias a otros objetos.</text>
+<polygon fill="#ffffff" stroke="none" points="591.5,-123.25 591.5,-142.5 751,-142.5 751,-123.25 591.5,-123.25" />
+<text xml:space="preserve" text-anchor="start" x="595.5" y="-129.5" font-family="Inter" font-size="9.00">Una transacción por archivo.</text>
+<polygon fill="#fbefe2" stroke="none" points="591.5,-86 591.5,-123.25 751,-123.25 751,-86 591.5,-86" />
+<text xml:space="preserve" text-anchor="start" x="595.5" y="-111.75" font-family="DejaVu Sans Mono" font-size="8.00">objeto #1 = Publicacion {</text>
+<text xml:space="preserve" text-anchor="start" x="595.5" y="-102" font-family="DejaVu Sans Mono" font-size="8.00">  ancla: PUBLICACION:1207,</text>
+<text xml:space="preserve" text-anchor="start" x="595.5" y="-92.25" font-family="DejaVu Sans Mono" font-size="8.00">  adjuntos: [#2] }</text>
+</g><rect x="590.5" y="-205.75" width="161.5" height="120.75" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge2" class="edge">
+<title>ancla-&gt;obj</title>
+<path fill="none" stroke="#a3afa8" d="M443.18,-217.64C479.67,-206.03 530.47,-189.86 574.77,-175.76" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="575.31,-178.16 581.24,-173.71 573.82,-173.49 575.31,-178.16" />
+<text xml:space="preserve" text-anchor="middle" x="512.88" y="-212.47" font-family="Inter" font-size="9.00">sin copiar el contenido</text>
+</g>
+
+<g id="node4" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node4)"><title>arch</title>
+<polygon fill="none" stroke="#d2b69a" points="871.25,-89.88 871.25,-200.88 1077,-200.88 1077,-89.88 871.25,-89.88" />
+<polygon fill="#8c725a" stroke="none" points="872.25,-176.12 872.25,-199.88 1076,-199.88 1076,-176.12 872.25,-176.12" />
+<text xml:space="preserve" text-anchor="start" x="917.12" y="-185.47" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">ARCHIVOS · carpeta</text>
+<polygon fill="#ffffff" stroke="none" points="872.25,-156.88 872.25,-176.12 1076,-176.12 1076,-156.88 872.25,-156.88" />
+<text xml:space="preserve" text-anchor="start" x="876.25" y="-163.12" font-family="Inter" font-size="9.00">Bytes con un nombre.</text>
+<polygon fill="#ffffff" stroke="none" points="872.25,-137.62 872.25,-156.88 1076,-156.88 1076,-137.62 872.25,-137.62" />
+<text xml:space="preserve" text-anchor="start" x="876.25" y="-143.88" font-family="Inter" font-size="9.00">Sin esquema ni consultas: se abre por nombre.</text>
+<polygon fill="#ffffff" stroke="none" points="872.25,-118.38 872.25,-137.62 1076,-137.62 1076,-118.38 872.25,-118.38" />
+<text xml:space="preserve" text-anchor="start" x="876.25" y="-124.62" font-family="Inter" font-size="9.00">Se sirve por HTTP con su tipo.</text>
+<polygon fill="#fbefe2" stroke="none" points="872.25,-90.88 872.25,-118.38 1076,-118.38 1076,-90.88 872.25,-90.88" />
+<text xml:space="preserve" text-anchor="start" x="876.25" y="-106.88" font-family="DejaVu Sans Mono" font-size="8.00">datos/archivos/1a1a…-0000.png</text>
+<text xml:space="preserve" text-anchor="start" x="876.25" y="-97.12" font-family="DejaVu Sans Mono" font-size="8.00">70 bytes · image/png</text>
+</g><rect x="871.25" y="-200.88" width="205.75" height="111.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge3" class="edge">
+<title>obj-&gt;arch</title>
+<path fill="none" stroke="#a3afa8" d="M759.68,-145.38C789.46,-145.38 823.27,-145.38 855.05,-145.38" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="855.01,-147.83 862.01,-145.38 855.01,-142.93 855.01,-147.83" />
+<text xml:space="preserve" text-anchor="middle" x="811.62" y="-148.07" font-family="Inter" font-size="9.00">guarda la URL</text>
+</g>
+
+<g id="edge5" class="edge">
+<title>doc-&gt;obj</title>
+<path fill="none" stroke="#a3afa8" stroke-dasharray="5,2" d="M203.93,-78.67C308.57,-93.64 471.72,-116.98 574.69,-131.71" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="574.15,-134.1 581.42,-132.67 574.84,-129.25 574.15,-134.1" />
+<text xml:space="preserve" text-anchor="middle" x="392.75" y="-114.3" font-family="Inter" font-size="9.00">referencia por id</text>
+</g>
+</g>
+<defs><filter id="sombra" x="-15%" y="-15%" width="130%" height="140%"><feDropShadow dx="0" dy="4" stdDeviation="6.0" flood-color="#1F2A24" flood-opacity="0.1" /></filter><clipPath id="corte_node1"><rect x="8.0" y="-326.62" width="190.0" height="130.5" rx="12" ry="12" /></clipPath><clipPath id="corte_node2"><rect x="350.25" y="-274.38" width="85.0" height="82.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node5"><rect x="9.88" y="-124.75" width="186.24" height="120.75" rx="12" ry="12" /></clipPath><clipPath id="corte_node3"><rect x="590.5" y="-205.75" width="161.5" height="120.75" rx="12" ry="12" /></clipPath><clipPath id="corte_node4"><rect x="871.25" y="-200.88" width="205.75" height="111.0" rx="12" ry="12" /></clipPath></defs></svg>
