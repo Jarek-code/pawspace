@@ -35,19 +35,26 @@ class UsuarioControl:
             )
 
     @staticmethod
-
+    #Verifica el el usuario exista para poder generarle su token 
     def chequea_login(credenciales: UserLogin, db: Session):
 
+        ip_cliente = request.client.host if request.client else "IP_desconocida"
+
+
+        #Confirma la existencia del usuario solicitando dos columnas la contrasena  y el id
         usuario_db = Auten_Token.dame_contra(db, credenciales.email)
 
+        #En caso de no encontrar nada arroja un error diciendo que el correo o contrasena es incorrecta
         if not usuario_db:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="Correo o contrasena incorrecta :( "
             )
+        #Toma los valores que necesita para poder verificarlos
         usuario_id = usuario_db[0]
         hash_guardado = usuario_db[1]
 
+        #Confirma si la contrasena existe y en caso de no existir te devuelve un error
         contrasena_valida = Auten_Token.verifica_contra(
             credenciales.contrasena,
             hash_guardado
@@ -58,8 +65,10 @@ class UsuarioControl:
                 detail="Correo o contrasena incorrecta"
             )
         
+        #Si todo sale bien se crea un nuevo token para el usuario
         nueo_token = Auten_Token.crea_token(usuario_id)
 
+        #Y te devuelve el token y que tipo de token es
         return{
             "token_acceso": nueo_token,
             "token_tipo": "bearer"

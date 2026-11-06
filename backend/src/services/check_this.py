@@ -36,26 +36,29 @@ class Check_This:
         nuevo_id = db.execute(text("SELECT @nuevo_id")).scalar()
         
         return nuevo_id
-
+#se crea la calse que nos creara los tokens de acceso
 class Auten_Token :
 
     @staticmethod
-
+    #este metodo le pide a la vase de datos que le de la contrasena (ya con hash)
     def dame_contra(db: Session, email: str):
 
         consulta = text(
-            "SELECT u.id, uc.contrasena_hash FROM USUARIO u INNER JOIN USUARIO_CREDENCIALES uc ON u.id = uc.usuario_id WHERE u.email = :email")
+            """SELECT u.id, uc.contrasena_hash, u.activo, u.actualizado_en
+            FROM USUARIO u
+            INNER JOIN USUARIO_CREDENCIALES uc ON u.id = uc.usuario_id
+            WHERE u.email = :email""")
         return db.execute(consulta,{"email": email}).fetchone()
 
     @staticmethod
-
+    #verifica que la contrasena que trajo de la base de datos sea la misma del usuario
     def verifica_contra(contra_plana: str, hash_guardao: str) -> bool:
         return contra_encrip.verify(contra_plana, hash_guardao)
 
     @staticmethod
-
+    #Despues de confirmar que es la misma contrasena genera el token para el usuario
     def crea_token(usuario_id : int) -> str:
-
+        #para que el token no funcione de forma indefinida tiene un tiempo de expiracion de una semana
         expira = datetime.now(timezone.utc) + timedelta(days=7)
 
         dato_guardao = {
