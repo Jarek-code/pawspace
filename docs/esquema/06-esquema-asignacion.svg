@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="859pt" height="631pt" viewBox="0.00 0.00 859.00 631.00">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(18 612.5)">
+<title>pawspace</title>
+<polygon fill="#fff8f0" stroke="none" points="-18,18 -18,-612.5 840.75,-612.5 840.75,18 -18,18" />
+<text xml:space="preserve" text-anchor="start" x="148.88" y="-570.6" font-family="Outfit" font-weight="bold" font-size="22.00">PawSpace · qué vive en cada sitio y cómo se respalda</text>
+<g id="clust1" class="cluster">
+<title>cluster_nodos</title>
+<path fill="#fff8f0" stroke="#b4d3c0" d="M42.5,-267C42.5,-267 802.75,-267 802.75,-267 808.75,-267 814.75,-273 814.75,-279 814.75,-279 814.75,-538 814.75,-538 814.75,-544 808.75,-550 802.75,-550 802.75,-550 42.5,-550 42.5,-550 36.5,-550 30.5,-544 30.5,-538 30.5,-538 30.5,-279 30.5,-279 30.5,-273 36.5,-267 42.5,-267" />
+<text xml:space="preserve" text-anchor="start" x="352.5" y="-535.6" font-family="Inter" font-weight="bold" font-size="12.00">nodos de base de datos</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_discos</title>
+<path fill="#fff8f0" stroke="#c9d2cc" d="M20,-8C20,-8 224,-8 224,-8 230,-8 236,-14 236,-20 236,-20 236,-247 236,-247 236,-253 230,-259 224,-259 224,-259 20,-259 20,-259 14,-259 8,-253 8,-247 8,-247 8,-20 8,-20 8,-14 14,-8 20,-8" />
+<text xml:space="preserve" text-anchor="start" x="66.5" y="-244.6" font-family="Inter" font-weight="bold" font-size="12.00">almacenes propios</text>
+</g>
+
+<g id="node1" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node1)"><title>dna</title>
+<polygon fill="none" stroke="#d2b69a" points="370.38,-279 370.38,-361 529.62,-361 529.62,-279 370.38,-279" />
+<polygon fill="#2f5d4a" stroke="none" points="371.38,-336.25 371.38,-360 528.62,-360 528.62,-336.25 371.38,-336.25" />
+<text xml:space="preserve" text-anchor="start" x="378" y="-345.6" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">dn_a · volumen dn_a_data</text>
+<polygon fill="#ffffff" stroke="none" points="371.38,-317 371.38,-336.25 528.62,-336.25 528.62,-317 371.38,-317" />
+<text xml:space="preserve" text-anchor="start" x="375.38" y="-323.25" font-family="Inter" font-size="9.00">Mitad impar de las 5 fragmentadas.</text>
+<polygon fill="#ffffff" stroke="none" points="371.38,-297.75 371.38,-317 528.62,-317 528.62,-297.75 371.38,-297.75" />
+<text xml:space="preserve" text-anchor="start" x="375.38" y="-304" font-family="Inter" font-size="9.00">Origen de las réplicas.</text>
+<polygon fill="#fbefe2" stroke="none" points="371.38,-280 371.38,-297.75 528.62,-297.75 528.62,-280 371.38,-280" />
+<text xml:space="preserve" text-anchor="start" x="375.38" y="-286.25" font-family="DejaVu Sans Mono" font-size="8.00">/var/lib/mysql</text>
+</g><rect x="370.38" y="-361.0" width="159.24" height="82.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="node2" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node2)"><title>dnb</title>
+<polygon fill="none" stroke="#d2b69a" points="344.5,-433 344.5,-515 555.5,-515 555.5,-433 344.5,-433" />
+<polygon fill="#2f5d4a" stroke="none" points="345.5,-490.25 345.5,-514 554.5,-514 554.5,-490.25 345.5,-490.25" />
+<text xml:space="preserve" text-anchor="start" x="378" y="-499.6" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">dn_b · volumen dn_b_data</text>
+<polygon fill="#ffffff" stroke="none" points="345.5,-471 345.5,-490.25 554.5,-490.25 554.5,-471 345.5,-471" />
+<text xml:space="preserve" text-anchor="start" x="349.5" y="-477.25" font-family="Inter" font-size="9.00">Mitad par.</text>
+<polygon fill="#ffffff" stroke="none" points="345.5,-451.75 345.5,-471 554.5,-471 554.5,-451.75 345.5,-451.75" />
+<text xml:space="preserve" text-anchor="start" x="349.5" y="-458" font-family="Inter" font-size="9.00">Recibe de dn_a todo menos las 5 fragmentadas.</text>
+<polygon fill="#fbefe2" stroke="none" points="345.5,-434 345.5,-451.75 554.5,-451.75 554.5,-434 345.5,-434" />
+<text xml:space="preserve" text-anchor="start" x="349.5" y="-440.25" font-family="DejaVu Sans Mono" font-size="8.00">replicate-ignore-table</text>
+</g><rect x="344.5" y="-515.0" width="211.0" height="82.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge2" class="edge">
+<title>dna-&gt;dnb</title>
+<path fill="none" stroke="#a3afa8" d="M450,-364.96C450,-382.51 450,-402.77 450,-421.02" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="447.55,-420.74 450,-427.74 452.45,-420.74 447.55,-420.74" />
+<text xml:space="preserve" text-anchor="middle" x="441.38" y="-394.07" font-family="Inter" font-size="9.00">parcial</text>
+</g>
+
+<g id="node3" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node3)"><title>repa</title>
+<polygon fill="none" stroke="#d2b69a" points="634.25,-287.88 634.25,-352.12 798.75,-352.12 798.75,-287.88 634.25,-287.88" />
+<polygon fill="#2f5d4a" stroke="none" points="635.25,-327.38 635.25,-351.12 797.75,-351.12 797.75,-327.38 635.25,-327.38" />
+<text xml:space="preserve" text-anchor="start" x="639.25" y="-336.73" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">rep_a · volumen rep_a_data</text>
+<polygon fill="#ffffff" stroke="none" points="635.25,-308.12 635.25,-327.38 797.75,-327.38 797.75,-308.12 635.25,-308.12" />
+<text xml:space="preserve" text-anchor="start" x="639.25" y="-314.38" font-family="Inter" font-size="9.00">Copia total de dn_a.</text>
+<polygon fill="#ffffff" stroke="none" points="635.25,-288.88 635.25,-308.12 797.75,-308.12 797.75,-288.88 635.25,-288.88" />
+<text xml:space="preserve" text-anchor="start" x="639.25" y="-295.12" font-family="Inter" font-size="9.00">read_only.</text>
+</g><rect x="634.25" y="-352.12" width="164.5" height="64.24000000000001" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge3" class="edge">
+<title>dna-&gt;repa</title>
+<path fill="none" stroke="#a3afa8" d="M537.61,-320C563.3,-320 591.62,-320 617.95,-320" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="617.92,-322.45 624.92,-320 617.92,-317.55 617.92,-322.45" />
+<text xml:space="preserve" text-anchor="middle" x="594.88" y="-322.7" font-family="Inter" font-size="9.00">total</text>
+</g>
+
+<g id="node4" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node4)"><title>repb</title>
+<polygon fill="none" stroke="#d2b69a" points="634.25,-441.88 634.25,-506.12 798.75,-506.12 798.75,-441.88 634.25,-441.88" />
+<polygon fill="#2f5d4a" stroke="none" points="635.25,-481.38 635.25,-505.12 797.75,-505.12 797.75,-481.38 635.25,-481.38" />
+<text xml:space="preserve" text-anchor="start" x="639.25" y="-490.73" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">rep_b · volumen rep_b_data</text>
+<polygon fill="#ffffff" stroke="none" points="635.25,-462.12 635.25,-481.38 797.75,-481.38 797.75,-462.12 635.25,-462.12" />
+<text xml:space="preserve" text-anchor="start" x="639.25" y="-468.38" font-family="Inter" font-size="9.00">Copia total de dn_b.</text>
+<polygon fill="#ffffff" stroke="none" points="635.25,-442.88 635.25,-462.12 797.75,-462.12 797.75,-442.88 635.25,-442.88" />
+<text xml:space="preserve" text-anchor="start" x="639.25" y="-449.12" font-family="Inter" font-size="9.00">read_only.</text>
+</g><rect x="634.25" y="-506.12" width="164.5" height="64.24000000000001" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge4" class="edge">
+<title>dnb-&gt;repb</title>
+<path fill="none" stroke="#a3afa8" d="M563.17,-474C581.49,-474 600.33,-474 618.25,-474" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="617.89,-476.45 624.89,-474 617.89,-471.55 617.89,-476.45" />
+<text xml:space="preserve" text-anchor="middle" x="594.88" y="-476.7" font-family="Inter" font-size="9.00">total</text>
+</g>
+
+<g id="node5" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node5)"><title>spider</title>
+<polygon fill="none" stroke="#d2b69a" points="46.5,-288.62 46.5,-351.38 197.5,-351.38 197.5,-288.62 46.5,-288.62" />
+<polygon fill="#2f5d4a" stroke="none" points="47.5,-326.62 47.5,-350.38 196.5,-350.38 196.5,-326.62 47.5,-326.62" />
+<text xml:space="preserve" text-anchor="start" x="69.12" y="-335.98" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">spider · sin volumen</text>
+<polygon fill="#ffffff" stroke="none" points="47.5,-307.38 47.5,-326.62 196.5,-326.62 196.5,-307.38 47.5,-307.38" />
+<text xml:space="preserve" text-anchor="start" x="51.5" y="-313.62" font-family="Inter" font-size="9.00">Nada: se reconstruye al arrancar.</text>
+<polygon fill="#fbefe2" stroke="none" points="47.5,-289.62 47.5,-307.38 196.5,-307.38 196.5,-289.62 47.5,-289.62" />
+<text xml:space="preserve" text-anchor="start" x="51.5" y="-295.88" font-family="DejaVu Sans Mono" font-size="8.00">00-plugin-y-servers.sql</text>
+</g><rect x="46.5" y="-351.38" width="151.0" height="62.75999999999999" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge1" class="edge">
+<title>spider-&gt;dna</title>
+<path fill="none" stroke="#a3afa8" d="M205.26,-320C250.55,-320 306.96,-320 354.1,-320" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="353.97,-322.45 360.97,-320 353.97,-317.55 353.97,-322.45" />
+<text xml:space="preserve" text-anchor="middle" x="282.25" y="-322.7" font-family="Inter" font-size="9.00">federación</text>
+</g>
+
+<g id="node6" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node6)"><title>oodb</title>
+<polygon fill="none" stroke="#d2b69a" points="24,-20 24,-102 220,-102 220,-20 24,-20" />
+<polygon fill="#c94c41" stroke="none" points="25,-77.25 25,-101 219,-101 219,-77.25 25,-77.25" />
+<text xml:space="preserve" text-anchor="start" x="66.88" y="-86.6" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">volumen oodb_data</text>
+<polygon fill="#ffffff" stroke="none" points="25,-58 25,-77.25 219,-77.25 219,-58 25,-58" />
+<text xml:space="preserve" text-anchor="start" x="29" y="-64.25" font-family="Inter" font-size="9.00">pawspace.redb y archivos/.</text>
+<polygon fill="#ffffff" stroke="none" points="25,-38.75 25,-58 219,-58 219,-38.75 25,-38.75" />
+<text xml:space="preserve" text-anchor="start" x="29" y="-45" font-family="Inter" font-size="9.00">Copia: parar el servicio y copiar el volumen.</text>
+<polygon fill="#fbefe2" stroke="none" points="25,-21 25,-38.75 219,-38.75 219,-21 25,-21" />
+<text xml:space="preserve" text-anchor="start" x="29" y="-27.25" font-family="DejaVu Sans Mono" font-size="8.00">docker compose stop oodb</text>
+</g><rect x="24.0" y="-102.0" width="196.0" height="82.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge5" class="edge">
+<title>oodb-&gt;dna</title>
+<path fill="none" stroke="#a3afa8" stroke-dasharray="5,2" d="M211.62,-106C220.04,-111.11 228.3,-116.48 236,-122 297.73,-166.25 360.45,-226.86 401.69,-269.33" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="399.69,-270.78 406.32,-274.11 403.21,-267.37 399.69,-270.78" />
+<text xml:space="preserve" text-anchor="middle" x="282.25" y="-184.76" font-family="Inter" font-size="9.00">ancla (tabla, id)</text>
+</g>
+
+<g id="node7" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node7)"><title>mongo</title>
+<polygon fill="none" stroke="#d2b69a" points="42,-142 42,-224 202,-224 202,-142 42,-142" />
+<polygon fill="#b57b1f" stroke="none" points="43,-199.25 43,-223 201,-223 201,-199.25 43,-199.25" />
+<text xml:space="preserve" text-anchor="start" x="62.38" y="-208.6" font-family="Outfit" font-weight="bold" font-size="12.00" fill="#ffffff">volumen mongo_data</text>
+<polygon fill="#ffffff" stroke="none" points="43,-180 43,-199.25 201,-199.25 201,-180 43,-180" />
+<text xml:space="preserve" text-anchor="start" x="47" y="-186.25" font-family="Inter" font-size="9.00">/data/db con las 4 colecciones.</text>
+<polygon fill="#ffffff" stroke="none" points="43,-160.75 43,-180 201,-180 201,-160.75 43,-160.75" />
+<text xml:space="preserve" text-anchor="start" x="47" y="-167" font-family="Inter" font-size="9.00">Prescindible: se purga solo por TTL.</text>
+<polygon fill="#fbefe2" stroke="none" points="43,-143 43,-160.75 201,-160.75 201,-143 43,-143" />
+<text xml:space="preserve" text-anchor="start" x="47" y="-149.25" font-family="DejaVu Sans Mono" font-size="8.00">mongodump --db pawspace_logs</text>
+</g><rect x="42.0" y="-224.0" width="160.0" height="82.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+</g>
+<defs><filter id="sombra" x="-15%" y="-15%" width="130%" height="140%"><feDropShadow dx="0" dy="4" stdDeviation="6.0" flood-color="#1F2A24" flood-opacity="0.1" /></filter><clipPath id="corte_node1"><rect x="370.38" y="-361.0" width="159.24" height="82.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node2"><rect x="344.5" y="-515.0" width="211.0" height="82.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node3"><rect x="634.25" y="-352.12" width="164.5" height="64.24000000000001" rx="12" ry="12" /></clipPath><clipPath id="corte_node4"><rect x="634.25" y="-506.12" width="164.5" height="64.24000000000001" rx="12" ry="12" /></clipPath><clipPath id="corte_node5"><rect x="46.5" y="-351.38" width="151.0" height="62.75999999999999" rx="12" ry="12" /></clipPath><clipPath id="corte_node6"><rect x="24.0" y="-102.0" width="196.0" height="82.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node7"><rect x="42.0" y="-224.0" width="160.0" height="82.0" rx="12" ry="12" /></clipPath></defs></svg>

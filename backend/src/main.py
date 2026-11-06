@@ -1,11 +1,12 @@
 from fastapi import FastAPI
 from .config import settings
 from .database import engine, Base
+from .routes import adjuntos
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
     version=settings.VERSION,
-    description="PawSpace - Social network for pets"
+    description="PawSpace - Social network for pets",
 )
 
 # Create tables (aun no sirve fladskfjlskjgfhkeriuh)
@@ -20,4 +21,10 @@ async def root():
 
 @app.get("/health")
 async def health():
-    return {"status": "healthy"}
+    return {
+        "status": "healthy",
+        "adjuntos": "conectados" if settings.OODB_DISPONIBLE else "sin servicio",
+    }
+
+# Los adjuntos viven en la OODB; estas rutas los exponen al frontend.
+app.include_router(adjuntos.router)

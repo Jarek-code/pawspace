@@ -10,6 +10,17 @@ class Settings(BaseSettings):
     DB_USER: str = "pawuser"
     DB_PASSWORD: str = "pawpass"
     DB_ROOT_PASSWORD: str = "rootpass"
+
+    # Servicio de la OODB. Si OODB_URL queda vacío, el backend trabaja sin adjuntos.
+    OODB_URL: str = ""
+    OODB_TOKEN: str = ""
+    OODB_TIEMPO_MAX: float = 2.0
+    # Base con la que se anuncian los archivos al frontend.
+    PUBLIC_URL: str = "http://localhost:8000"
+
+    @property
+    def OODB_DISPONIBLE(self) -> bool:
+        return bool(self.OODB_URL.strip())
     
     @property
     def DATABASE_URL(self) -> str:
