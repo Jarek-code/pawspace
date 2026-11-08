@@ -7,7 +7,7 @@ from typing import Optional
 from fastapi import APIRouter, Depends, File, Form, HTTPException, Response, UploadFile, status
 from pydantic import BaseModel, Field
 
-from ..config import settings
+from src.config.config import settings
 from ..services.oodb import ClienteOodb, OodbError
 
 router = APIRouter(prefix="/adjuntos", tags=["adjuntos"])

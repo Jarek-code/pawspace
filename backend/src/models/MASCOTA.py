@@ -73,8 +73,25 @@ CREATE TABLE MASCOTA (
 
 #-------------------------------------------------------------------------------------------
 class Raza(Base):
-  __tablename__ = 'RAZA'
+    __tablename__ = 'RAZA'
 
+    # INT UNSIGNED
+    id = Column(INTEGER(unsigned=True), primary_key=True, autoincrement=True)
+    
+    # SMALLINT UNSIGNED
+    especie_id = Column(SMALLINT(unsigned=True), nullable=False)
+    
+    # VARCHAR(100)
+    nombre = Column(String(100), nullable=False)
+
+    # Configuración del motor Spider
+    __table_args__ = (
+        {
+            'mysql_engine': 'Spider',
+            'mysql_comment': 'wrapper "mysql", srv "dn_a"'
+        }
+    )
+    
 '''
 CREATE TABLE RAZA (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -88,19 +105,13 @@ CREATE TABLE RAZA (
 #-------------------------------------------------------------------------------------------
 
 #-------------------------------------------------------------------------------------------
-class Raza(Base):
-    __tablename__ = 'RAZA'
+class Especie(Base):
+    __tablename__ = 'ESPECIE'
 
-    # INT UNSIGNED
-    id = Column(INTEGER(unsigned=True), primary_key=True, autoincrement=True)
-    
-    # SMALLINT UNSIGNED
-    especie_id = Column(SMALLINT(unsigned=True), nullable=False)
-    
-    # VARCHAR(100)
+    # Usamos el dialecto específico de MySQL para el SMALLINT UNSIGNED
+    id = Column(SMALLINT(unsigned=True), primary_key=True, autoincrement=True)
     nombre = Column(String(100), nullable=False)
 
-    # Configuración del motor Spider
     __table_args__ = (
         {
             'mysql_engine': 'Spider',

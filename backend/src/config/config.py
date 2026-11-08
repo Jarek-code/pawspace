@@ -18,6 +18,13 @@ class Settings(BaseSettings):
     # Base con la que se anuncian los archivos al frontend.
     PUBLIC_URL: str = "http://localhost:8000"
 
+    #Conexion con mondongo_db
+    MONGO_URL:str = ""
+    MONGO_BD: str ="pawspace_logs"
+    LOGS_SAL:str =""
+    LOGS_MUESTREO: float = 0.1
+    LOGS_RETENCION_DIAS: int = 180
+ 
     
     @property
     def DATABASE_URL(self) -> str:

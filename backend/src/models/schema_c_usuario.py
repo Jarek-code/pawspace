@@ -1,4 +1,5 @@
 from pydantic import BaseModel, EmailStr, Field
+from typing import Optional
 
 #Esta clase de aqui valida los datos que manda el forntend para que no pase o exite un error al momento de eviar los datos
 class UsuarioCrear(BaseModel):
@@ -20,6 +21,8 @@ class TokenSesion(BaseModel):
 
     #Indica el esquema que utilizara el token para ser creado
     token_tipo : str = "bearer"
+
+    sesion_id: Optional[str] = None
 
 class UserLogin(BaseModel):
     #valisa el correo del usuario

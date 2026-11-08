@@ -11,7 +11,7 @@ from typing import Any, Optional
 
 import httpx
 
-from ..config import settings
+from src.config.config import settings
 
 TABLAS = ("PUBLICACION", "HISTORIA", "COMENTARIO")
 
