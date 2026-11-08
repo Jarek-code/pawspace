@@ -87,6 +87,7 @@
   --ps-surface-sunken: var(--ps-color-cream-200);
   --ps-border: var(--ps-color-cream-300);
   --ps-border-strong: var(--ps-color-cream-400);
+  --ps-border-interactive: var(--ps-color-cream-600);
 
   --ps-text: var(--ps-color-ink-900);
   --ps-text-muted: var(--ps-color-ink-600);
@@ -106,6 +107,9 @@
 
   --ps-accent: var(--ps-color-sun-400);
   --ps-on-accent: var(--ps-color-ink-900);
+
+  --ps-disabled-bg: var(--ps-color-cream-200);
+  --ps-disabled-text: var(--ps-color-ink-600);
 
   --ps-success: var(--ps-color-success-600);
   --ps-success-soft: var(--ps-color-success-50);
@@ -220,6 +224,7 @@
   --ps-surface-sunken: #111613;
   --ps-border: #35423B;
   --ps-border-strong: #4A5A52;
+  --ps-border-interactive: #8A9A92;
 
   --ps-text: #F5EFE6;
   --ps-text-muted: #B8C4BD;
@@ -239,6 +244,9 @@
 
   --ps-accent: var(--ps-color-sun-400);
   --ps-on-accent: var(--ps-color-ink-900);
+
+  --ps-disabled-bg: #2B3831;
+  --ps-disabled-text: #96A79E;
 
   --ps-success: var(--ps-color-forest-400);
   --ps-success-soft: #163025;
