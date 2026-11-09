@@ -1,117 +1,100 @@
-# Contrato del registro de logs
+# Contrato del registro
 
-MongoDB guarda **auditoría**, no datos de negocio: es un almacén derivado, sin transacción con
-MariaDB. Si se pierde un evento se pierde trazabilidad, nunca información del sistema.
+MongoDB guarda el rastro de lo que ocurre en la plataforma. Es un almacén derivado: no participa de
+las transacciones de MariaDB y su fallo no detiene la aplicación.
 
 ## Colecciones
 
 | Colección | Documento | Índices |
 |---|---|---|
-| `eventos` | una acción | `por_actor`, `por_entidad`, `por_sesion`, `por_accion`, `purga_eventos` |
+| `eventos` | una acción con su actor, su resultado y su origen | `por_actor`, `por_entidad`, `por_sesion`, `por_accion`, `purga_eventos` |
 | `sesiones` | una sesión con contadores | `por_actor`, `actividad`, `por_fecha`, `purga_sesiones` |
-| `resumen_diario` | un día preagregado | `_id` = `AAAA-MM-DD` |
-| `acciones` | catálogo del vocabulario | `_id` = nombre de la acción |
+| `acciones` | catálogo del vocabulario | `_id` con el nombre de la acción |
+| `resumen_diario` | un día preagregado | `_id` con la fecha |
 
 ## Campos de un evento
 
 | Campo | Obligatorio | Contenido |
 |---|---|---|
-| `_id` | sí | Identificador con el instante delante. Con `id_evento=` lo fija el llamador y reintentar no duplica. |
-| `ocurrido_en` | sí | Fecha UTC. Base del índice TTL. |
-| `sesion_id` | no | Sesión en la que ocurrió. |
-| `actor` | sí | `{tipo: MASCOTA \| USUARIO \| SISTEMA, id, cuenta_id}`. En PawSpace el actor es la mascota. |
-| `accion` | sí | Verbo del vocabulario cerrado (`publicacion.crear`). |
-| `categoria` | sí | Derivada del catálogo (`contenido`, `interaccion`, `adjuntos`, `sesion`, `cuenta`, `moderacion`, `acceso`). |
-| `entidad` | no | `{tipo, id}` de la fila afectada: `PUBLICACION`, `HISTORIA`, `COMENTARIO`, `ADJUNTO`… |
-| `resultado` | sí | `ok` o `error`. |
-| `duracion_ms` | no | Tiempo de la operación. |
-| `origen` | no | `{ruta, metodo, ip_hash, agente}`. La IP va **hasheada**, nunca en claro. |
-| `metadatos` | no | Campos propios de la acción (`adjuntos`, `tipo`…). Nunca cuerpos ni credenciales. |
+| `_id` | sí | Identificador con el instante delante |
+| `ocurrido_en` | sí | Fecha en UTC, base del índice de retención |
+| `sesion_id` | no | Sesión en la que ocurrió |
+| `actor` | sí | `{tipo, id, cuenta_id}`, con `tipo` en `MASCOTA`, `USUARIO` o `SISTEMA` |
+| `accion` | sí | Verbo del vocabulario, por ejemplo `cuenta.acceder` |
+| `categoria` | sí | Familia de la acción, tomada del catálogo |
+| `entidad` | no | Fila afectada, por ejemplo `USUARIO` con su identificador |
+| `resultado` | sí | `ok` o `error` |
+| `duracion_ms` | no | Tiempo de la operación |
+| `origen` | no | Ruta, método, agente y hash de la dirección |
+| `metadatos` | no | Datos propios de la acción |
 
 ## Vocabulario
 
-`pawspace_logs.modelo.CATALOGO` y `database/mongo/initdb/01-colecciones.js` son la misma lista.
-Para añadir una acción hay que tocar los tres sitios: el enum `Accion`, `CATALOGO` y el script
-de colecciones. El cliente vuelve a cargar el catálogo en cada arranque.
-
 | Categoría | Acciones |
 |---|---|
-| `sesion` | `sesion.iniciar`, `sesion.latido`, `sesion.cerrar` |
-| `cuenta` | `cuenta.acceder`, `cuenta.fallar`, `cuenta.bloquear`, `cuenta.salir` |
-| `contenido` | `publicacion.crear`, `publicacion.editar`, `publicacion.borrar`, `comentario.crear`, `comentario.borrar`, `historia.crear`, `historia.ver` |
-| `interaccion` | `reaccion.crear`, `reaccion.quitar`, `seguimiento.crear`, `seguimiento.quitar` |
-| `adjuntos` | `adjunto.subir`, `adjunto.borrar`, `adjunto.reordenar`, `contenido.anclar`, `contenido.borrar` |
-| `moderacion` | `reporte.crear` |
-| `acceso` | `peticion.leer`, `peticion.escribir` |
+| Sesión | `sesion.iniciar`, `sesion.latido`, `sesion.cerrar` |
+| Cuenta | `cuenta.acceder`, `cuenta.fallar`, `cuenta.bloquear`, `cuenta.salir`, `cuenta.actualizar` |
+| Contenido | `publicacion.crear`, `publicacion.editar`, `publicacion.borrar`, `comentario.crear`, `comentario.borrar`, `historia.crear`, `historia.ver` |
+| Interacción | `reaccion.crear`, `reaccion.quitar`, `seguimiento.crear`, `seguimiento.quitar` |
+| Adjuntos | `adjunto.subir`, `adjunto.borrar`, `adjunto.reordenar`, `contenido.anclar`, `contenido.borrar` |
+| Moderación y acceso | `reporte.crear`, `peticion.leer`, `peticion.escribir` |
 
-## Inicio, cierre e intentos fallidos
+Para agregar una acción hay que tocar el enumerado y el catálogo del paquete `logs/`, y el script de
+colecciones en `database/mongo/initdb`.
 
-Una sesión se abre con `abrir_sesion` y se cierra con `cerrar_sesion`. El documento guarda
-`iniciada_en`, `cerrada_en`, `motivo_fin`, `duracion_seg`, `pasos` y el actor.
+## Accesos e intentos fallidos
 
 | Situación | Qué se registra |
 |---|---|
-| Acceso correcto | sesión en `sesiones` + `cuenta.acceder` en `eventos` |
-| Acceso rechazado | sólo `cuenta.fallar`: **no se abre sesión** |
-| Cuenta bloqueada | `cuenta.bloquear` (es `cuenta.fallar` con `metadatos.bloqueo`) |
-| Cierre | `cerrada_en`, `motivo_fin` y `cuenta.salir` |
+| Acceso correcto | Documento en `sesiones` y evento `cuenta.acceder` |
+| Acceso rechazado | Solo evento `cuenta.fallar`, sin sesión |
+| Cuenta desactivada | `cuenta.fallar` con el motivo `cuenta_inactiva` |
+| Cambio de estado | Evento `cuenta.actualizar` con el valor nuevo |
 
-`motivo_fin` sale de `MOTIVOS_FIN` (`logout`, `expiracion`, `cierre_navegador`, `revocada`,
-`error`) y el motivo de un fallo, de `MOTIVOS_FALLO` (`credenciales`, `cuenta_inactiva`,
-`sin_mascota`, `token_invalido`, `bloqueada`).
-
-Un intento fallido guarda `metadatos.identificador_hash`, nunca el correo ni el usuario en
-claro: el mismo identificador produce el mismo hash con la misma sal, así que se pueden contar
-los intentos por cuenta sin almacenar el dato personal. Si la cuenta es conocida se pasa `actor`;
-si no, el evento queda como `SISTEMA`.
+Un intento fallido guarda un hash del identificador, calculado con la sal del registro. Nunca se
+guarda el correo ni la contraseña.
 
 ## Garantías
 
-- **Nunca lanza hacia la petición.** Encola y escribe por lotes; si MongoDB falla, avisa por
-  `logging` y suma a `logs.descartados`. La API responde igual.
-- **Sin MongoDB configurado no es un error**: `MONGO_URL` vacío deja el registro deshabilitado y
-  todas las llamadas son no-op.
-- **Idempotencia**: `_id` propio por evento; con `id_evento=` el llamador impone uno determinista.
-- **Sin transacción global**: no hay 2PC con MariaDB. Un evento puede perderse; nunca se
-  duplica un dato de negocio por culpa del log.
-- **Retención**: eventos 180 días, sesiones 400, por índice TTL y configurable.
-- **Privacidad**: ni IPs en claro, ni cuerpos de petición, ni credenciales. El hash de IP usa
-  `LOGS_SAL`; si se cambia la sal, los hashes antiguos dejan de corresponderse.
-
-## Consultas que cubre
-
-| Pregunta | Índice | Método |
-|---|---|---|
-| Qué hizo un actor entre fechas | `por_actor` | `auditoria_actor` |
-| Quién tocó esta entidad | `por_entidad` | `historial_entidad` |
-| Pasos de una sesión, en orden | `por_sesion` | `sesion_completa` |
-| Acciones más usadas de un día | `por_accion`, TTL aparte | `resumen_del_dia` |
-| Intentos fallidos, por motivo | `por_accion` | `intentos_fallidos` |
-| Lista de sesiones (todas, de un actor o abiertas) | `por_fecha`, `por_actor` | `sesiones_en` |
-| Actividad por día | preagregado | `resumen_entre` |
+| Garantía | Cómo se cumple |
+|---|---|
+| La API responde aunque el registro falle | El cliente escribe por lotes y no lanza errores hacia la petición |
+| Sin configurar no estorba | Con la cadena de conexión vacía, todas las llamadas no hacen nada |
+| Retención | Índices de caducidad: 180 días para eventos y 400 para sesiones |
+| Privacidad | Direcciones y correos se guardan con hash, con la sal de la configuración |
 
 ## Operación
 
 ```bash
-# esquema, índices y catálogo (también los crea el cliente al iniciar)
-mongosh pawspace_logs database/mongo/initdb/01-colecciones.js
-# datos de ejemplo, solo en desarrollo
-mongosh pawspace_logs database/mongo/02-datos-ejemplo.js
-# las tres familias de consulta, con plan de ejecución
-mongosh pawspace_logs database/mongo/03-consultas.js
-# preagregado del día (cron cada pocos minutos)
-DIA=2026-11-06 mongosh pawspace_logs database/mongo/04-resumen-diario.js
+# esquema, índices y catálogo
+docker exec -i pawspace-mongo mongosh pawspace_logs < database/mongo/initdb/01-colecciones.js
+
+# datos de ejemplo
+docker exec -i pawspace-mongo mongosh pawspace_logs < database/mongo/02-datos-ejemplo.js
+
+# consultas con plan de ejecución
+docker exec -i pawspace-mongo mongosh pawspace_logs < database/mongo/03-consultas.js
+
+# preagregado del día
+docker exec -i -e DIA=2026-11-08 pawspace-mongo mongosh pawspace_logs \
+  < database/mongo/04-resumen-diario.js
 ```
 
-## Láminas de apoyo
+El validador de las colecciones se aplica al crear la base. Si cambia, hay que ajustarlo con
+`collMod` o rehacer el volumen:
 
-| Archivo | Qué muestra |
+```bash
+docker exec -i pawspace-mongo mongosh pawspace_logs --eval 'db.runCommand({collMod: "eventos"})'
+```
+
+## Consultas de apoyo
+
+| Pregunta | Método del paquete |
 |---|---|
-| `docs/mongo/01-modelo-documentos` | Las cuatro colecciones con un documento real de cada una y cómo se referencian |
-| `docs/mongo/02-flujo-escritura` | De una petición a un documento, con la rama de fallo de MongoDB |
-| `docs/mongo/03-consultas-indices` | Cada pregunta con su método, su índice y un ejemplo del resultado |
+| Qué hizo un actor entre dos fechas | `auditoria_actor` |
+| Quién tocó una entidad | `historial_entidad` |
+| Pasos de una sesión | `sesion_completa` |
+| Intentos fallidos por motivo | `intentos_fallidos` |
+| Sesiones de un actor | `sesiones_de_actor` |
 
-Son diagramas de cajas y flechas con un documento de ejemplo en cada caja, en la paleta del
-design system y con la notación habitual para MongoDB: la cardinalidad va en la arista y las
-referencias se marcan como virtuales (sin clave foránea, la mantiene la aplicación). Se regeneran con `dot` desde el `.dot` de al lado, igual que los esquemas de
-`docs/esquema`.
+Los diagramas de las colecciones están en esta misma carpeta, en formato PNG y SVG.
