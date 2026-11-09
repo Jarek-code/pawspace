@@ -1,0 +1,23 @@
+# DbGate Community con el plugin de la OODB dentro.
+#
+# DbGate distingue dos carpetas de plugins:
+#   · la de la aplicación (/home/dbgate-docker/plugins), donde solo reconoce los que
+#     vienen empaquetados en su bundle;
+#   · la del usuario ($PLUGINS_DIR, por omisión /root/.dbgate/plugins), de donde sí
+#     carga plugins de terceros.
+#
+# La segunda es un volumen, así que el plugin no puede vivir ahí en la imagen: viaja
+# en /opt/pawspace/dbgate-plugins y el entrypoint lo copia en cada arranque.
+#
+# El contexto de build es la raíz del repositorio: ver docker-compose.yml.
+FROM dbgate/dbgate:7.1.5
+
+COPY tools/dbgate-plugin-oodb /opt/pawspace/dbgate-plugins/dbgate-plugin-oodb
+COPY devops/docker/dbgate-entrypoint.sh /usr/local/bin/pawspace-dbgate-entrypoint.sh
+
+RUN chmod +x /usr/local/bin/pawspace-dbgate-entrypoint.sh
+
+ENTRYPOINT ["/usr/local/bin/pawspace-dbgate-entrypoint.sh"]
+# Al redefinir el entrypoint hay que volver a fijar el comando de la imagen
+# base: si queda vacío, el entrypoint de DbGate arranca `node` sin argumentos.
+CMD ["/home/dbgate-docker/entrypoint.sh"]

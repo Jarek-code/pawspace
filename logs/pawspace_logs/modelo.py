@@ -23,6 +23,7 @@ class Accion(str, Enum):
     CUENTA_FALLAR = "cuenta.fallar"
     CUENTA_BLOQUEAR = "cuenta.bloquear"
     CUENTA_SALIR = "cuenta.salir"
+    CUENTA_ACTUALIZAR = "cuenta.actualizar"
 
     # contenido
     PUBLICACION_CREAR = "publicacion.crear"
@@ -76,6 +77,7 @@ CATALOGO: dict[str, tuple[str, str, bool]] = {
     "cuenta.fallar": ("cuenta", "Intento de acceso fallido", True),
     "cuenta.bloquear": ("cuenta", "Cuenta bloqueada por intentos", True),
     "cuenta.salir": ("cuenta", "Cierre de sesión explícito", False),
+    "cuenta.actualizar": ("cuenta", "Cuenta modificada desde la aplicación", True),
     "publicacion.crear": ("contenido", "Publicación creada", False),
     "publicacion.editar": ("contenido", "Publicación modificada", False),
     "publicacion.borrar": ("contenido", "Publicación eliminada", True),

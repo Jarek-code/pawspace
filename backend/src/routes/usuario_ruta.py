@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, Request
 from sqlalchemy.orm import Session
 from src.config.database import get_db
 from src.config.database import get_logs
-from src.models.schema_c_usuario import UsuarioCrear, TokenSesion, UserLogin
+from src.models.schema_c_usuario import UsuarioCrear, TokenSesion, UserLogin, CambioEstado
 from src.controllers.usuario_controller import UsuarioControl
 from pawspace_logs import ClienteLogs
 
@@ -24,3 +24,19 @@ async def sesion_sesiada(credenciales: UserLogin, request: Request ,db: Session 
 logs: ClienteLogs = Depends(get_logs)):
  
     return await UsuarioControl.chequea_login(credenciales, db, request, logs)
+
+#Consulta global: cuenta en MariaDB + actividad en MongoDB
+@router.get("/{usuario_id}/actividad")
+
+async def ruta_actividad(usuario_id: int, request: Request, db: Session = Depends(get_db),
+logs: ClienteLogs = Depends(get_logs)):
+
+    return await UsuarioControl.actividad_us(usuario_id, db, logs)
+
+#Actualiza el estado de la cuenta en las dos fuentes
+@router.patch("/{usuario_id}/estado")
+
+async def ruta_cambia_estado(usuario_id: int, cambio: CambioEstado, request: Request,
+db: Session = Depends(get_db), logs: ClienteLogs = Depends(get_logs)):
+
+    return await UsuarioControl.cambia_estado_us(usuario_id, cambio, db, request, logs)

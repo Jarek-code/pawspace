@@ -8,11 +8,14 @@ llamadas no hacen nada, para que la API pueda arrancar sin MongoDB.
 from __future__ import annotations
 
 import asyncio
+import json
 import logging
+import os
 import secrets
 import time
 from collections import defaultdict
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Any, Optional
 
 from .consultas import Consultas
@@ -26,6 +29,36 @@ PARAR = "parar"
 
 # Campos que espera el validador para una entidad.
 TIPOS_ENTIDAD = ("PUBLICACION", "HISTORIA", "COMENTARIO", "MENSAJE", "USUARIO", "MASCOTA", "ADJUNTO")
+
+
+def _ruta_cola() -> Path:
+    """Archivo donde se guardan las operaciones cuando MongoDB no responde."""
+    fijada = os.environ.get("LOGS_COLA", "").strip()
+    if fijada:
+        return Path(fijada)
+    return Path.home() / ".pawspace" / "logs-pendientes.jsonl"
+
+
+def _a_json(valor: Any) -> Any:
+    """Serializa fechas para poder guardarlas en disco."""
+    if isinstance(valor, datetime):
+        return {"$fecha": valor.isoformat()}
+    if isinstance(valor, dict):
+        return {clave: _a_json(dato) for clave, dato in valor.items()}
+    if isinstance(valor, (list, tuple)):
+        return [_a_json(dato) for dato in valor]
+    return valor
+
+
+def _de_json(valor: Any) -> Any:
+    """Devuelve las fechas a su tipo al recuperar la cola."""
+    if isinstance(valor, dict):
+        if set(valor) == {"$fecha"}:
+            return datetime.fromisoformat(valor["$fecha"])
+        return {clave: _de_json(dato) for clave, dato in valor.items()}
+    if isinstance(valor, list):
+        return [_de_json(dato) for dato in valor]
+    return valor
 
 
 def _instante() -> datetime:
@@ -72,6 +105,7 @@ class ClienteLogs(Consultas):
         muestreo: float = 1.0,
         retencion_eventos: int = 180,
         retencion_sesiones: int = 400,
+        cola: str = "",
         registrador: Optional[logging.Logger] = None,
     ) -> None:
         self.url = (url or "").strip()
@@ -84,6 +118,8 @@ class ClienteLogs(Consultas):
         self.retencion_sesiones = max(int(retencion_sesiones), 1)
         self.escritos = 0
         self.descartados = 0
+        self.encolados = 0
+        self.cola = Path(cola) if cola else _ruta_cola()
         self._registro = registrador or logging.getLogger("pawspace_logs")
         self._cliente: Any = None
         self._base: Any = None
@@ -124,6 +160,7 @@ class ClienteLogs(Consultas):
         self._base = self._cliente[self.bd]
         await self._preparar()
         self._cola = asyncio.Queue(maxsize=CAPACIDAD_COLA)
+        await self._volcar_cola()
         self._tarea = asyncio.create_task(self._bucle())
 
     async def cerrar(self) -> None:
@@ -152,6 +189,21 @@ class ClienteLogs(Consultas):
             self._cliente = None
         self._base = None
         self._cola = None
+
+    async def disponible(self) -> bool:
+        """Si el registro esta configurado y responde en este momento.
+
+        Sirve para que quien integre datos de las dos fuentes pueda decir si la
+        parte de auditoria esta al dia o si el resultado viene incompleto.
+        """
+        if not self.activo or self._base is None:
+            return False
+        try:
+            await self._base.command("ping")
+            return True
+        except Exception as error:  # noqa: BLE001 - un fallo de logs no debe tumbar la API
+            self._avisar("el registro no responde", error)
+            return False
 
     async def __aenter__(self) -> "ClienteLogs":
         await self.iniciar()
@@ -389,9 +441,14 @@ class ClienteLogs(Consultas):
                 await self._aplicar(pendientes)
                 pendientes = []
 
-    async def _aplicar(self, operaciones: list[tuple[Any, ...]]) -> None:
+    async def _aplicar(self, operaciones: list[tuple[Any, ...]], *, respaldo: bool = True) -> bool:
+        """Escribe el lote; si falla, lo deja en disco para reenviarlo después.
+
+        Devuelve si el lote se pudo aplicar. Con `respaldo` en falso (reenvío de la
+        cola) no se vuelve a escribir el archivo, para no duplicar operaciones.
+        """
         if not operaciones or self._base is None:
-            return
+            return False
         from pymongo import UpdateOne
 
         inserciones: dict[str, list[dict[str, Any]]] = defaultdict(list)
@@ -407,11 +464,79 @@ class ClienteLogs(Consultas):
                 self.escritos += len(documentos)
             for coleccion, lista in actualizaciones.items():
                 await self._base[coleccion].bulk_write(lista, ordered=False)
+            return True
         except Exception as error:  # noqa: BLE001 - jamás hacia la petición
-            self.descartados += len(operaciones)
+            if respaldo:
+                self._guardar_en_cola(operaciones)
+            else:
+                self.encolados += len(operaciones)
             self._avisar(
-                f"se descartaron {len(operaciones)} operaciones de log (¿MongoDB caído?)", error
+                f"se guardaron {len(operaciones)} operaciones de log para después "
+                f"(¿MongoDB caído?)",
+                error,
             )
+            return False
+
+    def _guardar_en_cola(self, operaciones: list[tuple[Any, ...]]) -> None:
+        """Añade el lote al archivo de pendientes, una operación por línea."""
+        try:
+            self.cola.parent.mkdir(parents=True, exist_ok=True)
+            with self.cola.open("a", encoding="utf-8") as archivo:
+                for operacion in operaciones:
+                    if operacion[0] == "insertar":
+                        linea = {"o": "i", "c": operacion[1], "d": _a_json(operacion[2])}
+                    else:
+                        linea = {
+                            "o": "u",
+                            "c": operacion[1],
+                            "f": _a_json(operacion[2]),
+                            "u": _a_json(operacion[3]),
+                        }
+                    archivo.write(json.dumps(linea, ensure_ascii=False) + "\n")
+            self.encolados += len(operaciones)
+        except Exception as error:  # noqa: BLE001
+            self.descartados += len(operaciones)
+            self._avisar("no se pudo guardar la cola de pendientes", error)
+
+    async def _volcar_cola(self) -> None:
+        """Reenvía lo pendiente cuando MongoDB vuelve a responder."""
+        if self._base is None or not self.cola.exists():
+            return
+        try:
+            lineas = self.cola.read_text(encoding="utf-8").splitlines()
+        except OSError as error:
+            self._avisar("no se pudo leer la cola de pendientes", error)
+            return
+
+        operaciones: list[tuple[Any, ...]] = []
+        for linea in lineas:
+            try:
+                dato = json.loads(linea)
+            except ValueError:
+                continue
+            if dato.get("o") == "i":
+                operaciones.append(("insertar", dato["c"], _de_json(dato["d"])))
+            elif dato.get("o") == "u":
+                operaciones.append(
+                    ("actualizar", dato["c"], _de_json(dato["f"]), _de_json(dato["u"]))
+                )
+
+        if not operaciones:
+            self._borrar_cola()
+            return
+
+        for inicio in range(0, len(operaciones), self.lote):
+            trozo = operaciones[inicio : inicio + self.lote]
+            if not await self._aplicar(trozo, respaldo=False):
+                return
+        self._registro.info("cola de logs reenviada: %s operaciones", len(operaciones))
+        self._borrar_cola()
+
+    def _borrar_cola(self) -> None:
+        try:
+            self.cola.unlink()
+        except OSError:
+            pass
 
     async def _preparar(self) -> None:
         """Crea índices y catálogo si faltan; es idempotente."""

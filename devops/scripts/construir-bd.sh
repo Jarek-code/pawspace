@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Construye la base de datos distribuida de PawSpace sobre los cinco nodos.
+# Construye la base de datos distribuida de PawSpace sobre los cinco nodos y deja
+# la aplicacion en pie, con el registro de logs ya apuntando a MongoDB.
 set -uo pipefail
 
 RAIZ="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
@@ -67,9 +68,9 @@ if [ "$DESDE_CERO" = "1" ]; then
   docker compose down -v --remove-orphans >/dev/null 2>&1
 fi
 
-# Se levanta SOLO el cluster de la base de datos: el backend abre la conexion al
-# arrancar y, como el usuario de la aplicacion y el esquema se crean mas abajo,
-# fallaria con "Access denied for user 'pawuser'". La app se levanta en el paso 12.
+# Se levanta SOLO el cluster de la base de datos: el esquema y el usuario de la
+# aplicacion se crean mas abajo, y hasta entonces las rutas del backend fallan con
+# "Access denied for user 'pawuser'". La app se levanta en el paso 12.
 docker compose up -d spider dn_a dn_b rep_a rep_b >/dev/null 2>&1
 docker compose ps
 
@@ -221,6 +222,29 @@ docker compose ps --format '  {{.Name}}  {{.Status}}'
 echo -n "  la API responde: "
 curl -s --max-time 10 http://localhost:8000/health || echo "(sin respuesta)"
 echo
+
+echo
+echo "### 12b. MongoDB: colecciones e indices del registro de logs"
+# El registro de auditoria es un almacen DERIVADO: si Mongo no arranca, el login funciona
+# igual, pero no queda rastro de quien entro. Conviene verlo aqui y no descubrirlo despues.
+BD_MONGO="${MONGO_BD:-pawspace_logs}"
+if [ "$(docker inspect -f '{{.State.Health.Status}}' pawspace-mongo 2>/dev/null)" = "healthy" ]; then
+  docker exec -i pawspace-mongo mongosh --quiet "$BD_MONGO" --eval '
+    print("colecciones : " + db.getCollectionNames().sort().join(", "));
+    print("catalogo    : " + db.acciones.countDocuments() + " acciones");
+    print("eventos     : " + db.eventos.countDocuments()
+          + "   sesiones: " + db.sesiones.countDocuments());
+  ' 2>&1 | sed 's/^/  /'
+  mongo_url=$(docker exec pawspace-backend printenv MONGO_URL 2>/dev/null)
+  if [ -n "$mongo_url" ]; then
+    echo "  backend     : MONGO_URL=$mongo_url"
+  else
+    echo "  !! el backend no tiene MONGO_URL: el registro queda deshabilitado (no-op)"
+  fi
+else
+  echo "  !! mongo no esta healthy: revisa 'docker compose logs mongo'"
+  echo "     la API funciona igual, pero sin auditoria"
+fi
 
 echo
 echo "### 13. estado final del nodo spider"

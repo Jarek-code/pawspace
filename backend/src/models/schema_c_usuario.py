@@ -29,3 +29,8 @@ class UserLogin(BaseModel):
     email: EmailStr
     #valida la contrasena del usuario
     contrasena: str
+
+#Cuerpo del cambio de estado de una cuenta: solo si queda activa o inactiva
+class CambioEstado(BaseModel):
+
+    activo: bool
