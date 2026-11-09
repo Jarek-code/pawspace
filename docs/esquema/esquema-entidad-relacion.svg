@@ -1,0 +1,1271 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1488pt" height="2003pt" viewBox="0.00 0.00 1488.00 2003.00">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 1998.5)">
+<title>pawspace_er</title>
+<polygon fill="#fff8f0" stroke="none" points="-4,4 -4,-1998.5 1483.62,-1998.5 1483.62,4 -4,4" />
+<text xml:space="preserve" text-anchor="start" x="552.31" y="-1970.6" font-family="Outfit" font-weight="bold" font-size="22.00">PawSpace - modelo entidad-relacion</text>
+
+<g id="node1" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node1)"><title>er_USUARIO</title>
+<polygon fill="#d8e9de" stroke="none" points="410.75,-1936.75 410.75,-1954 605.75,-1954 605.75,-1936.75 410.75,-1936.75" />
+<polygon fill="none" stroke="black" points="410.75,-1936.75 410.75,-1954 605.75,-1954 605.75,-1936.75 410.75,-1936.75" />
+<text xml:space="preserve" text-anchor="start" x="487.62" y="-1943.45" font-family="Inter" font-weight="bold" font-size="9.00">USUARIO</text>
+<polygon fill="none" stroke="black" points="410.75,-1919.5 410.75,-1936.75 489.5,-1936.75 489.5,-1919.5 410.75,-1919.5" />
+<text xml:space="preserve" text-anchor="start" x="413.75" y="-1924.75" font-family="Inter" font-size="9.00">id</text>
+<polygon fill="none" stroke="black" points="489.5,-1919.5 489.5,-1936.75 575,-1936.75 575,-1919.5 489.5,-1919.5" />
+<text xml:space="preserve" text-anchor="start" x="492.5" y="-1924.75" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="575,-1919.5 575,-1936.75 605.75,-1936.75 605.75,-1919.5 575,-1919.5" />
+<text xml:space="preserve" text-anchor="start" x="578" y="-1924.75" font-family="Inter" font-size="9.00">PK, AI</text>
+<polygon fill="none" stroke="black" points="410.75,-1902.25 410.75,-1919.5 489.5,-1919.5 489.5,-1902.25 410.75,-1902.25" />
+<text xml:space="preserve" text-anchor="start" x="413.75" y="-1907.5" font-family="Inter" font-size="9.00">nombre</text>
+<polygon fill="none" stroke="black" points="489.5,-1902.25 489.5,-1919.5 575,-1919.5 575,-1902.25 489.5,-1902.25" />
+<text xml:space="preserve" text-anchor="start" x="492.5" y="-1907.5" font-family="Inter" font-size="9.00">VARCHAR(255)</text>
+<polygon fill="none" stroke="black" points="575,-1902.25 575,-1919.5 605.75,-1919.5 605.75,-1902.25 575,-1902.25" />
+<text xml:space="preserve" text-anchor="start" x="589.25" y="-1907.5" font-family="Inter" font-size="9.00"> </text>
+<polygon fill="none" stroke="black" points="410.75,-1885 410.75,-1902.25 489.5,-1902.25 489.5,-1885 410.75,-1885" />
+<text xml:space="preserve" text-anchor="start" x="413.75" y="-1890.25" font-family="Inter" font-size="9.00">email</text>
+<polygon fill="none" stroke="black" points="489.5,-1885 489.5,-1902.25 575,-1902.25 575,-1885 489.5,-1885" />
+<text xml:space="preserve" text-anchor="start" x="492.5" y="-1890.25" font-family="Inter" font-size="9.00">VARCHAR(320)</text>
+<polygon fill="none" stroke="black" points="575,-1885 575,-1902.25 605.75,-1902.25 605.75,-1885 575,-1885" />
+<text xml:space="preserve" text-anchor="start" x="589.25" y="-1890.25" font-family="Inter" font-size="9.00"> </text>
+<polygon fill="none" stroke="black" points="410.75,-1867.75 410.75,-1885 489.5,-1885 489.5,-1867.75 410.75,-1867.75" />
+<text xml:space="preserve" text-anchor="start" x="413.75" y="-1873" font-family="Inter" font-size="9.00">contrasena_hash</text>
+<polygon fill="none" stroke="black" points="489.5,-1867.75 489.5,-1885 575,-1885 575,-1867.75 489.5,-1867.75" />
+<text xml:space="preserve" text-anchor="start" x="492.5" y="-1873" font-family="Inter" font-size="9.00">VARCHAR(255)</text>
+<polygon fill="none" stroke="black" points="575,-1867.75 575,-1885 605.75,-1885 605.75,-1867.75 575,-1867.75" />
+<text xml:space="preserve" text-anchor="start" x="589.25" y="-1873" font-family="Inter" font-size="9.00"> </text>
+<polygon fill="none" stroke="black" points="410.75,-1850.5 410.75,-1867.75 489.5,-1867.75 489.5,-1850.5 410.75,-1850.5" />
+<text xml:space="preserve" text-anchor="start" x="413.75" y="-1855.75" font-family="Inter" font-size="9.00">creado_en</text>
+<polygon fill="none" stroke="black" points="489.5,-1850.5 489.5,-1867.75 575,-1867.75 575,-1850.5 489.5,-1850.5" />
+<text xml:space="preserve" text-anchor="start" x="492.5" y="-1855.75" font-family="Inter" font-size="9.00">DATETIME</text>
+<polygon fill="none" stroke="black" points="575,-1850.5 575,-1867.75 605.75,-1867.75 605.75,-1850.5 575,-1850.5" />
+<text xml:space="preserve" text-anchor="start" x="589.25" y="-1855.75" font-family="Inter" font-size="9.00"> </text>
+<polygon fill="none" stroke="black" points="410.75,-1833.25 410.75,-1850.5 489.5,-1850.5 489.5,-1833.25 410.75,-1833.25" />
+<text xml:space="preserve" text-anchor="start" x="413.75" y="-1838.5" font-family="Inter" font-size="9.00">actualizado_en</text>
+<polygon fill="none" stroke="black" points="489.5,-1833.25 489.5,-1850.5 575,-1850.5 575,-1833.25 489.5,-1833.25" />
+<text xml:space="preserve" text-anchor="start" x="492.5" y="-1838.5" font-family="Inter" font-size="9.00">DATETIME</text>
+<polygon fill="none" stroke="black" points="575,-1833.25 575,-1850.5 605.75,-1850.5 605.75,-1833.25 575,-1833.25" />
+<text xml:space="preserve" text-anchor="start" x="589.25" y="-1838.5" font-family="Inter" font-size="9.00"> </text>
+<polygon fill="none" stroke="black" points="410.75,-1816 410.75,-1833.25 489.5,-1833.25 489.5,-1816 410.75,-1816" />
+<text xml:space="preserve" text-anchor="start" x="413.75" y="-1821.25" font-family="Inter" font-size="9.00">activo</text>
+<polygon fill="none" stroke="black" points="489.5,-1816 489.5,-1833.25 575,-1833.25 575,-1816 489.5,-1816" />
+<text xml:space="preserve" text-anchor="start" x="492.5" y="-1821.25" font-family="Inter" font-size="9.00">BOOLEAN</text>
+<polygon fill="none" stroke="black" points="575,-1816 575,-1833.25 605.75,-1833.25 605.75,-1816 575,-1816" />
+<text xml:space="preserve" text-anchor="start" x="589.25" y="-1821.25" font-family="Inter" font-size="9.00"> </text>
+</g><rect x="410.75" y="-1954.0" width="195.0" height="138.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="node2" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node2)"><title>er_MASCOTA</title>
+<polygon fill="#b4d3c0" stroke="none" points="393.5,-1765.75 393.5,-1783 623,-1783 623,-1765.75 393.5,-1765.75" />
+<polygon fill="none" stroke="black" points="393.5,-1765.75 393.5,-1783 623,-1783 623,-1765.75 393.5,-1765.75" />
+<text xml:space="preserve" text-anchor="start" x="485" y="-1772.45" font-family="Inter" font-weight="bold" font-size="9.00">MASCOTA</text>
+<polygon fill="none" stroke="black" points="393.5,-1748.5 393.5,-1765.75 488.75,-1765.75 488.75,-1748.5 393.5,-1748.5" />
+<text xml:space="preserve" text-anchor="start" x="396.5" y="-1753.75" font-family="Inter" font-size="9.00">id</text>
+<polygon fill="none" stroke="black" points="488.75,-1748.5 488.75,-1765.75 592.25,-1765.75 592.25,-1748.5 488.75,-1748.5" />
+<text xml:space="preserve" text-anchor="start" x="491.75" y="-1753.75" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="592.25,-1748.5 592.25,-1765.75 623,-1765.75 623,-1748.5 592.25,-1748.5" />
+<text xml:space="preserve" text-anchor="start" x="595.25" y="-1753.75" font-family="Inter" font-size="9.00">PK, AI</text>
+<polygon fill="none" stroke="black" points="393.5,-1731.25 393.5,-1748.5 488.75,-1748.5 488.75,-1731.25 393.5,-1731.25" />
+<text xml:space="preserve" text-anchor="start" x="396.5" y="-1736.5" font-family="Inter" font-size="9.00">nombre</text>
+<polygon fill="none" stroke="black" points="488.75,-1731.25 488.75,-1748.5 592.25,-1748.5 592.25,-1731.25 488.75,-1731.25" />
+<text xml:space="preserve" text-anchor="start" x="491.75" y="-1736.5" font-family="Inter" font-size="9.00">VARCHAR(100)</text>
+<polygon fill="none" stroke="black" points="592.25,-1731.25 592.25,-1748.5 623,-1748.5 623,-1731.25 592.25,-1731.25" />
+<text xml:space="preserve" text-anchor="start" x="606.5" y="-1736.5" font-family="Inter" font-size="9.00"> </text>
+<polygon fill="none" stroke="black" points="393.5,-1714 393.5,-1731.25 488.75,-1731.25 488.75,-1714 393.5,-1714" />
+<text xml:space="preserve" text-anchor="start" x="396.5" y="-1719.25" font-family="Inter" font-size="9.00">nombre_usuario</text>
+<polygon fill="none" stroke="black" points="488.75,-1714 488.75,-1731.25 592.25,-1731.25 592.25,-1714 488.75,-1714" />
+<text xml:space="preserve" text-anchor="start" x="491.75" y="-1719.25" font-family="Inter" font-size="9.00">VARCHAR(50)</text>
+<polygon fill="none" stroke="black" points="592.25,-1714 592.25,-1731.25 623,-1731.25 623,-1714 592.25,-1714" />
+<text xml:space="preserve" text-anchor="start" x="606.5" y="-1719.25" font-family="Inter" font-size="9.00"> </text>
+<polygon fill="none" stroke="black" points="393.5,-1696.75 393.5,-1714 488.75,-1714 488.75,-1696.75 393.5,-1696.75" />
+<text xml:space="preserve" text-anchor="start" x="396.5" y="-1703.45" font-family="Inter" font-size="9.00">especie_id</text>
+<text xml:space="preserve" text-anchor="start" x="441.5" y="-1703.45" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → ESPECIE</text>
+<polygon fill="none" stroke="black" points="488.75,-1696.75 488.75,-1714 592.25,-1714 592.25,-1696.75 488.75,-1696.75" />
+<text xml:space="preserve" text-anchor="start" x="491.75" y="-1702" font-family="Inter" font-size="9.00">SMALLINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="592.25,-1696.75 592.25,-1714 623,-1714 623,-1696.75 592.25,-1696.75" />
+<text xml:space="preserve" text-anchor="start" x="595.25" y="-1702" font-family="Inter" font-size="9.00">FK</text>
+<polygon fill="none" stroke="black" points="393.5,-1679.5 393.5,-1696.75 488.75,-1696.75 488.75,-1679.5 393.5,-1679.5" />
+<text xml:space="preserve" text-anchor="start" x="396.5" y="-1686.2" font-family="Inter" font-size="9.00">raza_id</text>
+<text xml:space="preserve" text-anchor="start" x="428" y="-1686.2" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → RAZA</text>
+<polygon fill="none" stroke="black" points="488.75,-1679.5 488.75,-1696.75 592.25,-1696.75 592.25,-1679.5 488.75,-1679.5" />
+<text xml:space="preserve" text-anchor="start" x="491.75" y="-1684.75" font-family="Inter" font-size="9.00">INT UNSIGNED NULL</text>
+<polygon fill="none" stroke="black" points="592.25,-1679.5 592.25,-1696.75 623,-1696.75 623,-1679.5 592.25,-1679.5" />
+<text xml:space="preserve" text-anchor="start" x="595.25" y="-1684.75" font-family="Inter" font-size="9.00">FK</text>
+<polygon fill="none" stroke="black" points="393.5,-1662.25 393.5,-1679.5 488.75,-1679.5 488.75,-1662.25 393.5,-1662.25" />
+<text xml:space="preserve" text-anchor="start" x="396.5" y="-1667.5" font-family="Inter" font-size="9.00">sexo</text>
+<polygon fill="none" stroke="black" points="488.75,-1662.25 488.75,-1679.5 592.25,-1679.5 592.25,-1662.25 488.75,-1662.25" />
+<text xml:space="preserve" text-anchor="start" x="491.75" y="-1667.5" font-family="Inter" font-size="9.00">CHAR(1) NULL</text>
+<polygon fill="none" stroke="black" points="592.25,-1662.25 592.25,-1679.5 623,-1679.5 623,-1662.25 592.25,-1662.25" />
+<text xml:space="preserve" text-anchor="start" x="606.5" y="-1667.5" font-family="Inter" font-size="9.00"> </text>
+<polygon fill="none" stroke="black" points="393.5,-1645 393.5,-1662.25 488.75,-1662.25 488.75,-1645 393.5,-1645" />
+<text xml:space="preserve" text-anchor="start" x="396.5" y="-1650.25" font-family="Inter" font-size="9.00">fecha_nacimiento</text>
+<polygon fill="none" stroke="black" points="488.75,-1645 488.75,-1662.25 592.25,-1662.25 592.25,-1645 488.75,-1645" />
+<text xml:space="preserve" text-anchor="start" x="491.75" y="-1650.25" font-family="Inter" font-size="9.00">DATE NULL</text>
+<polygon fill="none" stroke="black" points="592.25,-1645 592.25,-1662.25 623,-1662.25 623,-1645 592.25,-1645" />
+<text xml:space="preserve" text-anchor="start" x="606.5" y="-1650.25" font-family="Inter" font-size="9.00"> </text>
+<polygon fill="none" stroke="black" points="393.5,-1627.75 393.5,-1645 488.75,-1645 488.75,-1627.75 393.5,-1627.75" />
+<text xml:space="preserve" text-anchor="start" x="396.5" y="-1633" font-family="Inter" font-size="9.00">biografia</text>
+<polygon fill="none" stroke="black" points="488.75,-1627.75 488.75,-1645 592.25,-1645 592.25,-1627.75 488.75,-1627.75" />
+<text xml:space="preserve" text-anchor="start" x="491.75" y="-1633" font-family="Inter" font-size="9.00">VARCHAR(1000) NULL</text>
+<polygon fill="none" stroke="black" points="592.25,-1627.75 592.25,-1645 623,-1645 623,-1627.75 592.25,-1627.75" />
+<text xml:space="preserve" text-anchor="start" x="606.5" y="-1633" font-family="Inter" font-size="9.00"> </text>
+<polygon fill="none" stroke="black" points="393.5,-1610.5 393.5,-1627.75 488.75,-1627.75 488.75,-1610.5 393.5,-1610.5" />
+<text xml:space="preserve" text-anchor="start" x="396.5" y="-1615.75" font-family="Inter" font-size="9.00">foto_perfil_url</text>
+<polygon fill="none" stroke="black" points="488.75,-1610.5 488.75,-1627.75 592.25,-1627.75 592.25,-1610.5 488.75,-1610.5" />
+<text xml:space="preserve" text-anchor="start" x="491.75" y="-1615.75" font-family="Inter" font-size="9.00">VARCHAR(2048) NULL</text>
+<polygon fill="none" stroke="black" points="592.25,-1610.5 592.25,-1627.75 623,-1627.75 623,-1610.5 592.25,-1610.5" />
+<text xml:space="preserve" text-anchor="start" x="606.5" y="-1615.75" font-family="Inter" font-size="9.00"> </text>
+<polygon fill="none" stroke="black" points="393.5,-1593.25 393.5,-1610.5 488.75,-1610.5 488.75,-1593.25 393.5,-1593.25" />
+<text xml:space="preserve" text-anchor="start" x="396.5" y="-1598.5" font-family="Inter" font-size="9.00">es_privada</text>
+<polygon fill="none" stroke="black" points="488.75,-1593.25 488.75,-1610.5 592.25,-1610.5 592.25,-1593.25 488.75,-1593.25" />
+<text xml:space="preserve" text-anchor="start" x="491.75" y="-1598.5" font-family="Inter" font-size="9.00">BOOLEAN</text>
+<polygon fill="none" stroke="black" points="592.25,-1593.25 592.25,-1610.5 623,-1610.5 623,-1593.25 592.25,-1593.25" />
+<text xml:space="preserve" text-anchor="start" x="606.5" y="-1598.5" font-family="Inter" font-size="9.00"> </text>
+<polygon fill="none" stroke="black" points="393.5,-1576 393.5,-1593.25 488.75,-1593.25 488.75,-1576 393.5,-1576" />
+<text xml:space="preserve" text-anchor="start" x="396.5" y="-1581.25" font-family="Inter" font-size="9.00">creado_en</text>
+<polygon fill="none" stroke="black" points="488.75,-1576 488.75,-1593.25 592.25,-1593.25 592.25,-1576 488.75,-1576" />
+<text xml:space="preserve" text-anchor="start" x="491.75" y="-1581.25" font-family="Inter" font-size="9.00">DATETIME</text>
+<polygon fill="none" stroke="black" points="592.25,-1576 592.25,-1593.25 623,-1593.25 623,-1576 592.25,-1576" />
+<text xml:space="preserve" text-anchor="start" x="606.5" y="-1581.25" font-family="Inter" font-size="9.00"> </text>
+<polygon fill="none" stroke="black" points="393.5,-1558.75 393.5,-1576 488.75,-1576 488.75,-1558.75 393.5,-1558.75" />
+<text xml:space="preserve" text-anchor="start" x="396.5" y="-1564" font-family="Inter" font-size="9.00">actualizado_en</text>
+<polygon fill="none" stroke="black" points="488.75,-1558.75 488.75,-1576 592.25,-1576 592.25,-1558.75 488.75,-1558.75" />
+<text xml:space="preserve" text-anchor="start" x="491.75" y="-1564" font-family="Inter" font-size="9.00">DATETIME</text>
+<polygon fill="none" stroke="black" points="592.25,-1558.75 592.25,-1576 623,-1576 623,-1558.75 592.25,-1558.75" />
+<text xml:space="preserve" text-anchor="start" x="606.5" y="-1564" font-family="Inter" font-size="9.00"> </text>
+</g><rect x="393.5" y="-1783.0" width="229.5" height="224.25" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+
+<g id="node3" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node3)"><title>er_ESPECIE</title>
+<polygon fill="#b4d3c0" stroke="none" points="661.12,-1679.5 661.12,-1696.75 831.38,-1696.75 831.38,-1679.5 661.12,-1679.5" />
+<polygon fill="none" stroke="black" points="661.12,-1679.5 661.12,-1696.75 831.38,-1696.75 831.38,-1679.5 661.12,-1679.5" />
+<text xml:space="preserve" text-anchor="start" x="727.88" y="-1686.2" font-family="Inter" font-weight="bold" font-size="9.00">ESPECIE</text>
+<polygon fill="none" stroke="black" points="661.12,-1662.25 661.12,-1679.5 699.38,-1679.5 699.38,-1662.25 661.12,-1662.25" />
+<text xml:space="preserve" text-anchor="start" x="664.12" y="-1667.5" font-family="Inter" font-size="9.00">id</text>
+<polygon fill="none" stroke="black" points="699.38,-1662.25 699.38,-1679.5 800.62,-1679.5 800.62,-1662.25 699.38,-1662.25" />
+<text xml:space="preserve" text-anchor="start" x="702.38" y="-1667.5" font-family="Inter" font-size="9.00">SMALLINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="800.62,-1662.25 800.62,-1679.5 831.38,-1679.5 831.38,-1662.25 800.62,-1662.25" />
+<text xml:space="preserve" text-anchor="start" x="803.62" y="-1667.5" font-family="Inter" font-size="9.00">PK, AI</text>
+<polygon fill="none" stroke="black" points="661.12,-1645 661.12,-1662.25 699.38,-1662.25 699.38,-1645 661.12,-1645" />
+<text xml:space="preserve" text-anchor="start" x="664.12" y="-1650.25" font-family="Inter" font-size="9.00">nombre</text>
+<polygon fill="none" stroke="black" points="699.38,-1645 699.38,-1662.25 800.62,-1662.25 800.62,-1645 699.38,-1645" />
+<text xml:space="preserve" text-anchor="start" x="702.38" y="-1650.25" font-family="Inter" font-size="9.00">VARCHAR(100)</text>
+<polygon fill="none" stroke="black" points="800.62,-1645 800.62,-1662.25 831.38,-1662.25 831.38,-1645 800.62,-1645" />
+<text xml:space="preserve" text-anchor="start" x="814.88" y="-1650.25" font-family="Inter" font-size="9.00"> </text>
+</g><rect x="661.12" y="-1696.75" width="170.26" height="51.75" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+
+<g id="edge25" class="edge">
+<title>er_MASCOTA-&gt;er_ESPECIE</title>
+<path fill="none" stroke="#a3afa8" d="M630.74,-1681C630.74,-1681 644.93,-1681 644.93,-1681" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="644.93,-1683.45 651.93,-1681 644.93,-1678.55 644.93,-1683.45" />
+</g>
+
+<g id="node4" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node4)"><title>er_RAZA</title>
+<polygon fill="#b4d3c0" stroke="none" points="869.62,-1688.12 869.62,-1705.38 1096.88,-1705.38 1096.88,-1688.12 869.62,-1688.12" />
+<polygon fill="none" stroke="black" points="869.62,-1688.12 869.62,-1705.38 1096.88,-1705.38 1096.88,-1688.12 869.62,-1688.12" />
+<text xml:space="preserve" text-anchor="start" x="970.5" y="-1694.83" font-family="Inter" font-weight="bold" font-size="9.00">RAZA</text>
+<polygon fill="none" stroke="black" points="869.62,-1670.88 869.62,-1688.12 964.88,-1688.12 964.88,-1670.88 869.62,-1670.88" />
+<text xml:space="preserve" text-anchor="start" x="872.62" y="-1676.12" font-family="Inter" font-size="9.00">id</text>
+<polygon fill="none" stroke="black" points="964.88,-1670.88 964.88,-1688.12 1066.12,-1688.12 1066.12,-1670.88 964.88,-1670.88" />
+<text xml:space="preserve" text-anchor="start" x="967.88" y="-1676.12" font-family="Inter" font-size="9.00">INT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="1066.12,-1670.88 1066.12,-1688.12 1096.88,-1688.12 1096.88,-1670.88 1066.12,-1670.88" />
+<text xml:space="preserve" text-anchor="start" x="1069.12" y="-1676.12" font-family="Inter" font-size="9.00">PK, AI</text>
+<polygon fill="none" stroke="black" points="869.62,-1653.62 869.62,-1670.88 964.88,-1670.88 964.88,-1653.62 869.62,-1653.62" />
+<text xml:space="preserve" text-anchor="start" x="872.62" y="-1660.33" font-family="Inter" font-size="9.00">especie_id</text>
+<text xml:space="preserve" text-anchor="start" x="917.62" y="-1660.33" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → ESPECIE</text>
+<polygon fill="none" stroke="black" points="964.88,-1653.62 964.88,-1670.88 1066.12,-1670.88 1066.12,-1653.62 964.88,-1653.62" />
+<text xml:space="preserve" text-anchor="start" x="967.88" y="-1658.88" font-family="Inter" font-size="9.00">SMALLINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="1066.12,-1653.62 1066.12,-1670.88 1096.88,-1670.88 1096.88,-1653.62 1066.12,-1653.62" />
+<text xml:space="preserve" text-anchor="start" x="1069.12" y="-1658.88" font-family="Inter" font-size="9.00">FK</text>
+<polygon fill="none" stroke="black" points="869.62,-1636.38 869.62,-1653.62 964.88,-1653.62 964.88,-1636.38 869.62,-1636.38" />
+<text xml:space="preserve" text-anchor="start" x="872.62" y="-1641.62" font-family="Inter" font-size="9.00">nombre</text>
+<polygon fill="none" stroke="black" points="964.88,-1636.38 964.88,-1653.62 1066.12,-1653.62 1066.12,-1636.38 964.88,-1636.38" />
+<text xml:space="preserve" text-anchor="start" x="967.88" y="-1641.62" font-family="Inter" font-size="9.00">VARCHAR(100)</text>
+<polygon fill="none" stroke="black" points="1066.12,-1636.38 1066.12,-1653.62 1096.88,-1653.62 1096.88,-1636.38 1066.12,-1636.38" />
+<text xml:space="preserve" text-anchor="start" x="1080.38" y="-1641.62" font-family="Inter" font-size="9.00"> </text>
+</g><rect x="869.62" y="-1705.38" width="227.2600000000001" height="69.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge26" class="edge">
+<title>er_MASCOTA-&gt;er_RAZA</title>
+<path fill="none" stroke="#a3afa8" d="M630.88,-1637C630.88,-1637 853.39,-1637 853.39,-1637" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="853.39,-1639.45 860.39,-1637 853.39,-1634.55 853.39,-1639.45" />
+</g>
+
+<g id="node6" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node6)"><title>er_SEGUIMIENTO</title>
+<polygon fill="#fff1ef" stroke="none" points="326.38,-1508.5 326.38,-1525.75 690.12,-1525.75 690.12,-1508.5 326.38,-1508.5" />
+<polygon fill="none" stroke="black" points="326.38,-1508.5 326.38,-1525.75 690.12,-1525.75 690.12,-1508.5 326.38,-1508.5" />
+<text xml:space="preserve" text-anchor="start" x="477.12" y="-1515.2" font-family="Inter" font-weight="bold" font-size="9.00">SEGUIMIENTO</text>
+<polygon fill="none" stroke="black" points="326.38,-1491.25 326.38,-1508.5 432.88,-1508.5 432.88,-1491.25 326.38,-1491.25" />
+<text xml:space="preserve" text-anchor="start" x="329.38" y="-1497.95" font-family="Inter" font-size="9.00">seguidor_id</text>
+<text xml:space="preserve" text-anchor="start" x="378.12" y="-1497.95" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → MASCOTA</text>
+<polygon fill="none" stroke="black" points="432.88,-1491.25 432.88,-1508.5 656.38,-1508.5 656.38,-1491.25 432.88,-1491.25" />
+<text xml:space="preserve" text-anchor="start" x="435.88" y="-1496.5" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="656.38,-1491.25 656.38,-1508.5 690.12,-1508.5 690.12,-1491.25 656.38,-1491.25" />
+<text xml:space="preserve" text-anchor="start" x="659.38" y="-1496.5" font-family="Inter" font-size="9.00">PK, FK</text>
+<polygon fill="none" stroke="black" points="326.38,-1474 326.38,-1491.25 432.88,-1491.25 432.88,-1474 326.38,-1474" />
+<text xml:space="preserve" text-anchor="start" x="329.38" y="-1480.7" font-family="Inter" font-size="9.00">seguido_id</text>
+<text xml:space="preserve" text-anchor="start" x="374.38" y="-1480.7" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → MASCOTA</text>
+<polygon fill="none" stroke="black" points="432.88,-1474 432.88,-1491.25 656.38,-1491.25 656.38,-1474 432.88,-1474" />
+<text xml:space="preserve" text-anchor="start" x="435.88" y="-1479.25" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="656.38,-1474 656.38,-1491.25 690.12,-1491.25 690.12,-1474 656.38,-1474" />
+<text xml:space="preserve" text-anchor="start" x="659.38" y="-1479.25" font-family="Inter" font-size="9.00">PK, FK</text>
+<polygon fill="none" stroke="black" points="326.38,-1456.75 326.38,-1474 432.88,-1474 432.88,-1456.75 326.38,-1456.75" />
+<text xml:space="preserve" text-anchor="start" x="329.38" y="-1462" font-family="Inter" font-size="9.00">estado</text>
+<polygon fill="none" stroke="black" points="432.88,-1456.75 432.88,-1474 656.38,-1474 656.38,-1456.75 432.88,-1456.75" />
+<text xml:space="preserve" text-anchor="start" x="435.88" y="-1462" font-family="Inter" font-size="9.00">ENUM( 'PENDIENTE', 'ACEPTADO', 'RECHAZADO' )</text>
+<polygon fill="none" stroke="black" points="656.38,-1456.75 656.38,-1474 690.12,-1474 690.12,-1456.75 656.38,-1456.75" />
+<text xml:space="preserve" text-anchor="start" x="672.12" y="-1462" font-family="Inter" font-size="9.00"> </text>
+<polygon fill="none" stroke="black" points="326.38,-1439.5 326.38,-1456.75 432.88,-1456.75 432.88,-1439.5 326.38,-1439.5" />
+<text xml:space="preserve" text-anchor="start" x="329.38" y="-1444.75" font-family="Inter" font-size="9.00">creado_en</text>
+<polygon fill="none" stroke="black" points="432.88,-1439.5 432.88,-1456.75 656.38,-1456.75 656.38,-1439.5 432.88,-1439.5" />
+<text xml:space="preserve" text-anchor="start" x="435.88" y="-1444.75" font-family="Inter" font-size="9.00">DATETIME</text>
+<polygon fill="none" stroke="black" points="656.38,-1439.5 656.38,-1456.75 690.12,-1456.75 690.12,-1439.5 656.38,-1439.5" />
+<text xml:space="preserve" text-anchor="start" x="672.12" y="-1444.75" font-family="Inter" font-size="9.00"> </text>
+<polygon fill="none" stroke="black" points="326.38,-1422.25 326.38,-1439.5 432.88,-1439.5 432.88,-1422.25 326.38,-1422.25" />
+<text xml:space="preserve" text-anchor="start" x="329.38" y="-1427.5" font-family="Inter" font-size="9.00">actualizado_en</text>
+<polygon fill="none" stroke="black" points="432.88,-1422.25 432.88,-1439.5 656.38,-1439.5 656.38,-1422.25 432.88,-1422.25" />
+<text xml:space="preserve" text-anchor="start" x="435.88" y="-1427.5" font-family="Inter" font-size="9.00">DATETIME</text>
+<polygon fill="none" stroke="black" points="656.38,-1422.25 656.38,-1439.5 690.12,-1439.5 690.12,-1422.25 656.38,-1422.25" />
+<text xml:space="preserve" text-anchor="start" x="672.12" y="-1427.5" font-family="Inter" font-size="9.00"> </text>
+</g><rect x="326.38" y="-1525.75" width="363.74" height="103.5" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+
+
+<g id="edge24" class="edge">
+<title>er_RAZA-&gt;er_ESPECIE</title>
+<path fill="none" stroke="#a3afa8" d="M861.63,-1681C861.63,-1681 847.81,-1681 847.81,-1681" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="847.81,-1678.55 840.81,-1681 847.81,-1683.45 847.81,-1678.55" />
+</g>
+
+<g id="node5" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node5)"><title>er_USUARIO_MASCOTA</title>
+<polygon fill="#b4d3c0" stroke="none" points="1135.38,-1688.12 1135.38,-1705.38 1361.12,-1705.38 1361.12,-1688.12 1135.38,-1688.12" />
+<polygon fill="none" stroke="black" points="1135.38,-1688.12 1135.38,-1705.38 1361.12,-1705.38 1361.12,-1688.12 1135.38,-1688.12" />
+<text xml:space="preserve" text-anchor="start" x="1202.12" y="-1694.83" font-family="Inter" font-weight="bold" font-size="9.00">USUARIO_MASCOTA</text>
+<polygon fill="none" stroke="black" points="1135.38,-1670.88 1135.38,-1688.12 1241.88,-1688.12 1241.88,-1670.88 1135.38,-1670.88" />
+<text xml:space="preserve" text-anchor="start" x="1138.38" y="-1677.58" font-family="Inter" font-size="9.00">usuario_id</text>
+<text xml:space="preserve" text-anchor="start" x="1181.88" y="-1677.58" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → USUARIO</text>
+<polygon fill="none" stroke="black" points="1241.88,-1670.88 1241.88,-1688.12 1327.38,-1688.12 1327.38,-1670.88 1241.88,-1670.88" />
+<text xml:space="preserve" text-anchor="start" x="1244.88" y="-1676.12" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="1327.38,-1670.88 1327.38,-1688.12 1361.12,-1688.12 1361.12,-1670.88 1327.38,-1670.88" />
+<text xml:space="preserve" text-anchor="start" x="1330.38" y="-1676.12" font-family="Inter" font-size="9.00">PK, FK</text>
+<polygon fill="none" stroke="black" points="1135.38,-1653.62 1135.38,-1670.88 1241.88,-1670.88 1241.88,-1653.62 1135.38,-1653.62" />
+<text xml:space="preserve" text-anchor="start" x="1138.38" y="-1660.33" font-family="Inter" font-size="9.00">mascota_id</text>
+<text xml:space="preserve" text-anchor="start" x="1187.12" y="-1660.33" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → MASCOTA</text>
+<polygon fill="none" stroke="black" points="1241.88,-1653.62 1241.88,-1670.88 1327.38,-1670.88 1327.38,-1653.62 1241.88,-1653.62" />
+<text xml:space="preserve" text-anchor="start" x="1244.88" y="-1658.88" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="1327.38,-1653.62 1327.38,-1670.88 1361.12,-1670.88 1361.12,-1653.62 1327.38,-1653.62" />
+<text xml:space="preserve" text-anchor="start" x="1330.38" y="-1658.88" font-family="Inter" font-size="9.00">PK, FK</text>
+<polygon fill="none" stroke="black" points="1135.38,-1636.38 1135.38,-1653.62 1241.88,-1653.62 1241.88,-1636.38 1135.38,-1636.38" />
+<text xml:space="preserve" text-anchor="start" x="1138.38" y="-1641.62" font-family="Inter" font-size="9.00">creado_en</text>
+<polygon fill="none" stroke="black" points="1241.88,-1636.38 1241.88,-1653.62 1327.38,-1653.62 1327.38,-1636.38 1241.88,-1636.38" />
+<text xml:space="preserve" text-anchor="start" x="1244.88" y="-1641.62" font-family="Inter" font-size="9.00">DATETIME</text>
+<polygon fill="none" stroke="black" points="1327.38,-1636.38 1327.38,-1653.62 1361.12,-1653.62 1361.12,-1636.38 1327.38,-1636.38" />
+<text xml:space="preserve" text-anchor="start" x="1343.12" y="-1641.62" font-family="Inter" font-size="9.00"> </text>
+</g><rect x="1135.38" y="-1705.38" width="225.73999999999978" height="69.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+
+<g id="edge27" class="edge">
+<title>er_USUARIO_MASCOTA-&gt;er_USUARIO</title>
+<path fill="none" stroke="#a3afa8" d="M1169.12,-1709.12C1169.12,-1754.47 1169.12,-1824 1169.12,-1824 1169.12,-1824 622.21,-1824 622.21,-1824" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="622.21,-1821.55 615.21,-1824 622.21,-1826.45 622.21,-1821.55" />
+</g>
+
+<g id="edge28" class="edge">
+<title>er_USUARIO_MASCOTA-&gt;er_MASCOTA</title>
+<path fill="none" stroke="#a3afa8" d="M1158,-1632.6C1158,-1627.5 1158,-1624 1158,-1624 1158,-1624 639.36,-1624 639.36,-1624" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="639.36,-1621.55 632.36,-1624 639.36,-1626.45 639.36,-1621.55" />
+</g>
+
+<g id="edge29" class="edge">
+<title>er_SEGUIMIENTO-&gt;er_MASCOTA</title>
+<path fill="none" stroke="#a3afa8" d="M508.25,-1529.63C508.25,-1529.63 508.25,-1546.48 508.25,-1546.48" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="505.8,-1546.48 508.25,-1553.48 510.7,-1546.48 505.8,-1546.48" />
+</g>
+
+<g id="edge30" class="edge">
+<title>er_SEGUIMIENTO-&gt;er_MASCOTA</title>
+<path fill="none" stroke="#a3afa8" d="M569.62,-1529.63C569.62,-1529.63 569.62,-1546.48 569.62,-1546.48" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="567.18,-1546.48 569.63,-1553.48 572.08,-1546.48 567.18,-1546.48" />
+</g>
+
+<g id="node7" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node7)"><title>er_BLOQUEO</title>
+<polygon fill="#fff1ef" stroke="none" points="727.75,-1491.25 727.75,-1508.5 964.75,-1508.5 964.75,-1491.25 727.75,-1491.25" />
+<polygon fill="none" stroke="black" points="727.75,-1491.25 727.75,-1508.5 964.75,-1508.5 964.75,-1491.25 727.75,-1491.25" />
+<text xml:space="preserve" text-anchor="start" x="824.88" y="-1497.95" font-family="Inter" font-weight="bold" font-size="9.00">BLOQUEO</text>
+<polygon fill="none" stroke="black" points="727.75,-1474 727.75,-1491.25 845.5,-1491.25 845.5,-1474 727.75,-1474" />
+<text xml:space="preserve" text-anchor="start" x="730.75" y="-1480.7" font-family="Inter" font-size="9.00">bloqueador_id</text>
+<text xml:space="preserve" text-anchor="start" x="790.75" y="-1480.7" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → MASCOTA</text>
+<polygon fill="none" stroke="black" points="845.5,-1474 845.5,-1491.25 931,-1491.25 931,-1474 845.5,-1474" />
+<text xml:space="preserve" text-anchor="start" x="848.5" y="-1479.25" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="931,-1474 931,-1491.25 964.75,-1491.25 964.75,-1474 931,-1474" />
+<text xml:space="preserve" text-anchor="start" x="934" y="-1479.25" font-family="Inter" font-size="9.00">PK, FK</text>
+<polygon fill="none" stroke="black" points="727.75,-1456.75 727.75,-1474 845.5,-1474 845.5,-1456.75 727.75,-1456.75" />
+<text xml:space="preserve" text-anchor="start" x="730.75" y="-1463.45" font-family="Inter" font-size="9.00">bloqueado_id</text>
+<text xml:space="preserve" text-anchor="start" x="787" y="-1463.45" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → MASCOTA</text>
+<polygon fill="none" stroke="black" points="845.5,-1456.75 845.5,-1474 931,-1474 931,-1456.75 845.5,-1456.75" />
+<text xml:space="preserve" text-anchor="start" x="848.5" y="-1462" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="931,-1456.75 931,-1474 964.75,-1474 964.75,-1456.75 931,-1456.75" />
+<text xml:space="preserve" text-anchor="start" x="934" y="-1462" font-family="Inter" font-size="9.00">PK, FK</text>
+<polygon fill="none" stroke="black" points="727.75,-1439.5 727.75,-1456.75 845.5,-1456.75 845.5,-1439.5 727.75,-1439.5" />
+<text xml:space="preserve" text-anchor="start" x="730.75" y="-1444.75" font-family="Inter" font-size="9.00">creado_en</text>
+<polygon fill="none" stroke="black" points="845.5,-1439.5 845.5,-1456.75 931,-1456.75 931,-1439.5 845.5,-1439.5" />
+<text xml:space="preserve" text-anchor="start" x="848.5" y="-1444.75" font-family="Inter" font-size="9.00">DATETIME</text>
+<polygon fill="none" stroke="black" points="931,-1439.5 931,-1456.75 964.75,-1456.75 964.75,-1439.5 931,-1439.5" />
+<text xml:space="preserve" text-anchor="start" x="946.75" y="-1444.75" font-family="Inter" font-size="9.00"> </text>
+</g><rect x="727.75" y="-1508.5" width="237.0" height="69.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+
+<g id="node8" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node8)"><title>er_PUBLICACION</title>
+<polygon fill="#ffc7c0" stroke="none" points="354.88,-1372 354.88,-1389.25 661.62,-1389.25 661.62,-1372 354.88,-1372" />
+<polygon fill="none" stroke="black" points="354.88,-1372 354.88,-1389.25 661.62,-1389.25 661.62,-1372 354.88,-1372" />
+<text xml:space="preserve" text-anchor="start" x="477.5" y="-1378.7" font-family="Inter" font-weight="bold" font-size="9.00">PUBLICACION</text>
+<polygon fill="none" stroke="black" points="354.88,-1354.75 354.88,-1372 519.12,-1372 519.12,-1354.75 354.88,-1354.75" />
+<text xml:space="preserve" text-anchor="start" x="357.88" y="-1360" font-family="Inter" font-size="9.00">id</text>
+<polygon fill="none" stroke="black" points="519.12,-1354.75 519.12,-1372 630.88,-1372 630.88,-1354.75 519.12,-1354.75" />
+<text xml:space="preserve" text-anchor="start" x="522.12" y="-1360" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="630.88,-1354.75 630.88,-1372 661.62,-1372 661.62,-1354.75 630.88,-1354.75" />
+<text xml:space="preserve" text-anchor="start" x="633.88" y="-1360" font-family="Inter" font-size="9.00">PK, AI</text>
+<polygon fill="none" stroke="black" points="354.88,-1337.5 354.88,-1354.75 519.12,-1354.75 519.12,-1337.5 354.88,-1337.5" />
+<text xml:space="preserve" text-anchor="start" x="357.88" y="-1344.2" font-family="Inter" font-size="9.00">mascota_id</text>
+<text xml:space="preserve" text-anchor="start" x="406.62" y="-1344.2" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → MASCOTA</text>
+<polygon fill="none" stroke="black" points="519.12,-1337.5 519.12,-1354.75 630.88,-1354.75 630.88,-1337.5 519.12,-1337.5" />
+<text xml:space="preserve" text-anchor="start" x="522.12" y="-1342.75" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="630.88,-1337.5 630.88,-1354.75 661.62,-1354.75 661.62,-1337.5 630.88,-1337.5" />
+<text xml:space="preserve" text-anchor="start" x="633.88" y="-1342.75" font-family="Inter" font-size="9.00">FK</text>
+<polygon fill="none" stroke="black" points="354.88,-1320.25 354.88,-1337.5 519.12,-1337.5 519.12,-1320.25 354.88,-1320.25" />
+<text xml:space="preserve" text-anchor="start" x="357.88" y="-1326.95" font-family="Inter" font-size="9.00">publicacion_origen_id</text>
+<text xml:space="preserve" text-anchor="start" x="449.38" y="-1326.95" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → PUBLICACION</text>
+<polygon fill="none" stroke="black" points="519.12,-1320.25 519.12,-1337.5 630.88,-1337.5 630.88,-1320.25 519.12,-1320.25" />
+<text xml:space="preserve" text-anchor="start" x="522.12" y="-1325.5" font-family="Inter" font-size="9.00">BIGINT UNSIGNED NULL</text>
+<polygon fill="none" stroke="black" points="630.88,-1320.25 630.88,-1337.5 661.62,-1337.5 661.62,-1320.25 630.88,-1320.25" />
+<text xml:space="preserve" text-anchor="start" x="633.88" y="-1325.5" font-family="Inter" font-size="9.00">FK</text>
+<polygon fill="none" stroke="black" points="354.88,-1303 354.88,-1320.25 519.12,-1320.25 519.12,-1303 354.88,-1303" />
+<text xml:space="preserve" text-anchor="start" x="357.88" y="-1308.25" font-family="Inter" font-size="9.00">texto</text>
+<polygon fill="none" stroke="black" points="519.12,-1303 519.12,-1320.25 630.88,-1320.25 630.88,-1303 519.12,-1303" />
+<text xml:space="preserve" text-anchor="start" x="522.12" y="-1308.25" font-family="Inter" font-size="9.00">TEXT NULL</text>
+<polygon fill="none" stroke="black" points="630.88,-1303 630.88,-1320.25 661.62,-1320.25 661.62,-1303 630.88,-1303" />
+<text xml:space="preserve" text-anchor="start" x="645.12" y="-1308.25" font-family="Inter" font-size="9.00"> </text>
+<polygon fill="none" stroke="black" points="354.88,-1285.75 354.88,-1303 519.12,-1303 519.12,-1285.75 354.88,-1285.75" />
+<text xml:space="preserve" text-anchor="start" x="357.88" y="-1291" font-family="Inter" font-size="9.00">creado_en</text>
+<polygon fill="none" stroke="black" points="519.12,-1285.75 519.12,-1303 630.88,-1303 630.88,-1285.75 519.12,-1285.75" />
+<text xml:space="preserve" text-anchor="start" x="522.12" y="-1291" font-family="Inter" font-size="9.00">DATETIME</text>
+<polygon fill="none" stroke="black" points="630.88,-1285.75 630.88,-1303 661.62,-1303 661.62,-1285.75 630.88,-1285.75" />
+<text xml:space="preserve" text-anchor="start" x="645.12" y="-1291" font-family="Inter" font-size="9.00"> </text>
+<polygon fill="none" stroke="black" points="354.88,-1268.5 354.88,-1285.75 519.12,-1285.75 519.12,-1268.5 354.88,-1268.5" />
+<text xml:space="preserve" text-anchor="start" x="357.88" y="-1273.75" font-family="Inter" font-size="9.00">actualizado_en</text>
+<polygon fill="none" stroke="black" points="519.12,-1268.5 519.12,-1285.75 630.88,-1285.75 630.88,-1268.5 519.12,-1268.5" />
+<text xml:space="preserve" text-anchor="start" x="522.12" y="-1273.75" font-family="Inter" font-size="9.00">DATETIME</text>
+<polygon fill="none" stroke="black" points="630.88,-1268.5 630.88,-1285.75 661.62,-1285.75 661.62,-1268.5 630.88,-1268.5" />
+<text xml:space="preserve" text-anchor="start" x="645.12" y="-1273.75" font-family="Inter" font-size="9.00"> </text>
+<polygon fill="none" stroke="black" points="354.88,-1251.25 354.88,-1268.5 519.12,-1268.5 519.12,-1251.25 354.88,-1251.25" />
+<text xml:space="preserve" text-anchor="start" x="357.88" y="-1256.5" font-family="Inter" font-size="9.00">eliminado_en</text>
+<polygon fill="none" stroke="black" points="519.12,-1251.25 519.12,-1268.5 630.88,-1268.5 630.88,-1251.25 519.12,-1251.25" />
+<text xml:space="preserve" text-anchor="start" x="522.12" y="-1256.5" font-family="Inter" font-size="9.00">DATETIME NULL</text>
+<polygon fill="none" stroke="black" points="630.88,-1251.25 630.88,-1268.5 661.62,-1268.5 661.62,-1251.25 630.88,-1251.25" />
+<text xml:space="preserve" text-anchor="start" x="645.12" y="-1256.5" font-family="Inter" font-size="9.00"> </text>
+</g><rect x="354.88" y="-1389.25" width="306.74" height="138.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+
+<g id="edge31" class="edge">
+<title>er_BLOQUEO-&gt;er_MASCOTA</title>
+<path fill="none" stroke="#a3afa8" d="M759.62,-1512.29C759.62,-1545.75 759.62,-1589 759.62,-1589 759.62,-1589 639.51,-1589 639.51,-1589" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="639.51,-1586.55 632.51,-1589 639.51,-1591.45 639.51,-1586.55" />
+</g>
+
+<g id="edge32" class="edge">
+<title>er_BLOQUEO-&gt;er_MASCOTA</title>
+<path fill="none" stroke="#a3afa8" d="M799.5,-1512.22C799.5,-1548.65 799.5,-1598 799.5,-1598 799.5,-1598 639.44,-1598 639.44,-1598" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="639.44,-1595.55 632.44,-1598 639.44,-1600.45 639.44,-1595.55" />
+</g>
+
+<g id="edge33" class="edge">
+<title>er_PUBLICACION-&gt;er_MASCOTA</title>
+<path fill="none" stroke="#a3afa8" d="M669.52,-1364C689.75,-1364 703.53,-1364 703.53,-1364 703.53,-1364 703.53,-1563 703.53,-1563 703.53,-1563 639.33,-1563 639.33,-1563" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="639.33,-1560.55 632.33,-1563 639.33,-1565.45 639.33,-1560.55" />
+</g>
+
+<g id="edge34" class="edge">
+<title>er_PUBLICACION-&gt;er_PUBLICACION</title>
+<path fill="none" stroke="#a3afa8" d="M562.04,-1392.98C562.04,-1400.81 562.04,-1406 562.04,-1406 562.04,-1406 688.62,-1406 688.62,-1406 688.62,-1406 688.62,-1239 688.62,-1239 688.62,-1239 603.95,-1239 603.95,-1239 603.95,-1239 603.95,-1239.84 603.95,-1239.84" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="601.5,-1238.88 603.95,-1245.88 606.4,-1238.88 601.5,-1238.88" />
+</g>
+
+<g id="node10" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node10)"><title>er_COMENTARIO</title>
+<polygon fill="#f4e2cf" stroke="none" points="356.75,-1201 356.75,-1218.25 659.75,-1218.25 659.75,-1201 356.75,-1201" />
+<polygon fill="none" stroke="black" points="356.75,-1201 356.75,-1218.25 659.75,-1218.25 659.75,-1201 356.75,-1201" />
+<text xml:space="preserve" text-anchor="start" x="477.88" y="-1207.7" font-family="Inter" font-weight="bold" font-size="9.00">COMENTARIO</text>
+<polygon fill="none" stroke="black" points="356.75,-1183.75 356.75,-1201 517.25,-1201 517.25,-1183.75 356.75,-1183.75" />
+<text xml:space="preserve" text-anchor="start" x="359.75" y="-1189" font-family="Inter" font-size="9.00">id</text>
+<polygon fill="none" stroke="black" points="517.25,-1183.75 517.25,-1201 629,-1201 629,-1183.75 517.25,-1183.75" />
+<text xml:space="preserve" text-anchor="start" x="520.25" y="-1189" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="629,-1183.75 629,-1201 659.75,-1201 659.75,-1183.75 629,-1183.75" />
+<text xml:space="preserve" text-anchor="start" x="632" y="-1189" font-family="Inter" font-size="9.00">PK, AI</text>
+<polygon fill="none" stroke="black" points="356.75,-1166.5 356.75,-1183.75 517.25,-1183.75 517.25,-1166.5 356.75,-1166.5" />
+<text xml:space="preserve" text-anchor="start" x="359.75" y="-1173.2" font-family="Inter" font-size="9.00">publicacion_id</text>
+<text xml:space="preserve" text-anchor="start" x="420.5" y="-1173.2" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → PUBLICACION</text>
+<polygon fill="none" stroke="black" points="517.25,-1166.5 517.25,-1183.75 629,-1183.75 629,-1166.5 517.25,-1166.5" />
+<text xml:space="preserve" text-anchor="start" x="520.25" y="-1171.75" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="629,-1166.5 629,-1183.75 659.75,-1183.75 659.75,-1166.5 629,-1166.5" />
+<text xml:space="preserve" text-anchor="start" x="632" y="-1171.75" font-family="Inter" font-size="9.00">FK</text>
+<polygon fill="none" stroke="black" points="356.75,-1149.25 356.75,-1166.5 517.25,-1166.5 517.25,-1149.25 356.75,-1149.25" />
+<text xml:space="preserve" text-anchor="start" x="359.75" y="-1155.95" font-family="Inter" font-size="9.00">mascota_id</text>
+<text xml:space="preserve" text-anchor="start" x="408.5" y="-1155.95" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → MASCOTA</text>
+<polygon fill="none" stroke="black" points="517.25,-1149.25 517.25,-1166.5 629,-1166.5 629,-1149.25 517.25,-1149.25" />
+<text xml:space="preserve" text-anchor="start" x="520.25" y="-1154.5" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="629,-1149.25 629,-1166.5 659.75,-1166.5 659.75,-1149.25 629,-1149.25" />
+<text xml:space="preserve" text-anchor="start" x="632" y="-1154.5" font-family="Inter" font-size="9.00">FK</text>
+<polygon fill="none" stroke="black" points="356.75,-1132 356.75,-1149.25 517.25,-1149.25 517.25,-1132 356.75,-1132" />
+<text xml:space="preserve" text-anchor="start" x="359.75" y="-1138.7" font-family="Inter" font-size="9.00">comentario_padre_id</text>
+<text xml:space="preserve" text-anchor="start" x="449" y="-1138.7" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → COMENTARIO</text>
+<polygon fill="none" stroke="black" points="517.25,-1132 517.25,-1149.25 629,-1149.25 629,-1132 517.25,-1132" />
+<text xml:space="preserve" text-anchor="start" x="520.25" y="-1137.25" font-family="Inter" font-size="9.00">BIGINT UNSIGNED NULL</text>
+<polygon fill="none" stroke="black" points="629,-1132 629,-1149.25 659.75,-1149.25 659.75,-1132 629,-1132" />
+<text xml:space="preserve" text-anchor="start" x="632" y="-1137.25" font-family="Inter" font-size="9.00">FK</text>
+<polygon fill="none" stroke="black" points="356.75,-1114.75 356.75,-1132 517.25,-1132 517.25,-1114.75 356.75,-1114.75" />
+<text xml:space="preserve" text-anchor="start" x="359.75" y="-1120" font-family="Inter" font-size="9.00">texto</text>
+<polygon fill="none" stroke="black" points="517.25,-1114.75 517.25,-1132 629,-1132 629,-1114.75 517.25,-1114.75" />
+<text xml:space="preserve" text-anchor="start" x="520.25" y="-1120" font-family="Inter" font-size="9.00">TEXT</text>
+<polygon fill="none" stroke="black" points="629,-1114.75 629,-1132 659.75,-1132 659.75,-1114.75 629,-1114.75" />
+<text xml:space="preserve" text-anchor="start" x="643.25" y="-1120" font-family="Inter" font-size="9.00"> </text>
+<polygon fill="none" stroke="black" points="356.75,-1097.5 356.75,-1114.75 517.25,-1114.75 517.25,-1097.5 356.75,-1097.5" />
+<text xml:space="preserve" text-anchor="start" x="359.75" y="-1102.75" font-family="Inter" font-size="9.00">fijado_en</text>
+<polygon fill="none" stroke="black" points="517.25,-1097.5 517.25,-1114.75 629,-1114.75 629,-1097.5 517.25,-1097.5" />
+<text xml:space="preserve" text-anchor="start" x="520.25" y="-1102.75" font-family="Inter" font-size="9.00">DATETIME NULL</text>
+<polygon fill="none" stroke="black" points="629,-1097.5 629,-1114.75 659.75,-1114.75 659.75,-1097.5 629,-1097.5" />
+<text xml:space="preserve" text-anchor="start" x="643.25" y="-1102.75" font-family="Inter" font-size="9.00"> </text>
+<polygon fill="none" stroke="black" points="356.75,-1080.25 356.75,-1097.5 517.25,-1097.5 517.25,-1080.25 356.75,-1080.25" />
+<text xml:space="preserve" text-anchor="start" x="359.75" y="-1085.5" font-family="Inter" font-size="9.00">creado_en</text>
+<polygon fill="none" stroke="black" points="517.25,-1080.25 517.25,-1097.5 629,-1097.5 629,-1080.25 517.25,-1080.25" />
+<text xml:space="preserve" text-anchor="start" x="520.25" y="-1085.5" font-family="Inter" font-size="9.00">DATETIME</text>
+<polygon fill="none" stroke="black" points="629,-1080.25 629,-1097.5 659.75,-1097.5 659.75,-1080.25 629,-1080.25" />
+<text xml:space="preserve" text-anchor="start" x="643.25" y="-1085.5" font-family="Inter" font-size="9.00"> </text>
+<polygon fill="none" stroke="black" points="356.75,-1063 356.75,-1080.25 517.25,-1080.25 517.25,-1063 356.75,-1063" />
+<text xml:space="preserve" text-anchor="start" x="359.75" y="-1068.25" font-family="Inter" font-size="9.00">actualizado_en</text>
+<polygon fill="none" stroke="black" points="517.25,-1063 517.25,-1080.25 629,-1080.25 629,-1063 517.25,-1063" />
+<text xml:space="preserve" text-anchor="start" x="520.25" y="-1068.25" font-family="Inter" font-size="9.00">DATETIME</text>
+<polygon fill="none" stroke="black" points="629,-1063 629,-1080.25 659.75,-1080.25 659.75,-1063 629,-1063" />
+<text xml:space="preserve" text-anchor="start" x="643.25" y="-1068.25" font-family="Inter" font-size="9.00"> </text>
+<polygon fill="none" stroke="black" points="356.75,-1045.75 356.75,-1063 517.25,-1063 517.25,-1045.75 356.75,-1045.75" />
+<text xml:space="preserve" text-anchor="start" x="359.75" y="-1051" font-family="Inter" font-size="9.00">eliminado_en</text>
+<polygon fill="none" stroke="black" points="517.25,-1045.75 517.25,-1063 629,-1063 629,-1045.75 517.25,-1045.75" />
+<text xml:space="preserve" text-anchor="start" x="520.25" y="-1051" font-family="Inter" font-size="9.00">DATETIME NULL</text>
+<polygon fill="none" stroke="black" points="629,-1045.75 629,-1063 659.75,-1063 659.75,-1045.75 629,-1045.75" />
+<text xml:space="preserve" text-anchor="start" x="643.25" y="-1051" font-family="Inter" font-size="9.00"> </text>
+</g><rect x="356.75" y="-1218.25" width="303.0" height="172.5" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+
+<g id="node9" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node9)"><title>er_PUBLICACION_GUARDADA</title>
+<polygon fill="#ffc7c0" stroke="none" points="1218.88,-1902.25 1218.88,-1919.5 1471.62,-1919.5 1471.62,-1902.25 1218.88,-1902.25" />
+<polygon fill="none" stroke="black" points="1218.88,-1902.25 1218.88,-1919.5 1471.62,-1919.5 1471.62,-1902.25 1218.88,-1902.25" />
+<text xml:space="preserve" text-anchor="start" x="1286.75" y="-1908.95" font-family="Inter" font-weight="bold" font-size="9.00">PUBLICACION_GUARDADA</text>
+<polygon fill="none" stroke="black" points="1218.88,-1885 1218.88,-1902.25 1352.38,-1902.25 1352.38,-1885 1218.88,-1885" />
+<text xml:space="preserve" text-anchor="start" x="1221.88" y="-1891.7" font-family="Inter" font-size="9.00">usuario_id</text>
+<text xml:space="preserve" text-anchor="start" x="1265.38" y="-1891.7" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → USUARIO</text>
+<polygon fill="none" stroke="black" points="1352.38,-1885 1352.38,-1902.25 1437.88,-1902.25 1437.88,-1885 1352.38,-1885" />
+<text xml:space="preserve" text-anchor="start" x="1355.38" y="-1890.25" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="1437.88,-1885 1437.88,-1902.25 1471.62,-1902.25 1471.62,-1885 1437.88,-1885" />
+<text xml:space="preserve" text-anchor="start" x="1440.88" y="-1890.25" font-family="Inter" font-size="9.00">PK, FK</text>
+<polygon fill="none" stroke="black" points="1218.88,-1867.75 1218.88,-1885 1352.38,-1885 1352.38,-1867.75 1218.88,-1867.75" />
+<text xml:space="preserve" text-anchor="start" x="1221.88" y="-1874.45" font-family="Inter" font-size="9.00">publicacion_id</text>
+<text xml:space="preserve" text-anchor="start" x="1282.62" y="-1874.45" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → PUBLICACION</text>
+<polygon fill="none" stroke="black" points="1352.38,-1867.75 1352.38,-1885 1437.88,-1885 1437.88,-1867.75 1352.38,-1867.75" />
+<text xml:space="preserve" text-anchor="start" x="1355.38" y="-1873" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="1437.88,-1867.75 1437.88,-1885 1471.62,-1885 1471.62,-1867.75 1437.88,-1867.75" />
+<text xml:space="preserve" text-anchor="start" x="1440.88" y="-1873" font-family="Inter" font-size="9.00">PK, FK</text>
+<polygon fill="none" stroke="black" points="1218.88,-1850.5 1218.88,-1867.75 1352.38,-1867.75 1352.38,-1850.5 1218.88,-1850.5" />
+<text xml:space="preserve" text-anchor="start" x="1221.88" y="-1855.75" font-family="Inter" font-size="9.00">creado_en</text>
+<polygon fill="none" stroke="black" points="1352.38,-1850.5 1352.38,-1867.75 1437.88,-1867.75 1437.88,-1850.5 1352.38,-1850.5" />
+<text xml:space="preserve" text-anchor="start" x="1355.38" y="-1855.75" font-family="Inter" font-size="9.00">DATETIME</text>
+<polygon fill="none" stroke="black" points="1437.88,-1850.5 1437.88,-1867.75 1471.62,-1867.75 1471.62,-1850.5 1437.88,-1850.5" />
+<text xml:space="preserve" text-anchor="start" x="1453.62" y="-1855.75" font-family="Inter" font-size="9.00"> </text>
+</g><rect x="1218.88" y="-1919.5" width="252.73999999999978" height="69.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge52" class="edge">
+<title>er_PUBLICACION_GUARDADA-&gt;er_USUARIO</title>
+<path fill="none" stroke="#a3afa8" d="M1290,-1846.6C1290,-1839.88 1290,-1835 1290,-1835 1290,-1835 622.19,-1835 622.19,-1835" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="622.19,-1832.55 615.19,-1835 622.19,-1837.45 622.19,-1832.55" />
+</g>
+
+<g id="edge53" class="edge">
+<title>er_PUBLICACION_GUARDADA-&gt;er_PUBLICACION</title>
+<path fill="none" stroke="#a3afa8" d="M1413.88,-1846.76C1413.88,-1722.03 1413.88,-1335 1413.88,-1335 1413.88,-1335 677.89,-1335 677.89,-1335" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="677.89,-1332.55 670.89,-1335 677.89,-1337.45 677.89,-1332.55" />
+</g>
+
+<g id="edge38" class="edge">
+<title>er_COMENTARIO-&gt;er_MASCOTA</title>
+<path fill="none" stroke="#a3afa8" d="M667.35,-1162C691.71,-1162 708.94,-1162 708.94,-1162 708.94,-1162 708.94,-1572 708.94,-1572 708.94,-1572 639.29,-1572 639.29,-1572" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="639.29,-1569.55 632.29,-1572 639.29,-1574.45 639.29,-1569.55" />
+</g>
+
+<g id="edge37" class="edge">
+<title>er_COMENTARIO-&gt;er_PUBLICACION</title>
+<path fill="none" stroke="#a3afa8" d="M540.15,-1221.99C540.15,-1221.99 540.15,-1238.86 540.15,-1238.86" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="537.7,-1238.86 540.15,-1245.86 542.6,-1238.86 537.7,-1238.86" />
+</g>
+
+<g id="edge39" class="edge">
+<title>er_COMENTARIO-&gt;er_COMENTARIO</title>
+<path fill="none" stroke="#a3afa8" d="M412.55,-1222.21C412.55,-1227.66 412.55,-1231 412.55,-1231 412.55,-1231 339.75,-1231 339.75,-1231 339.75,-1231 339.75,-1025 339.75,-1025 339.75,-1025 368.16,-1025 368.16,-1025 368.16,-1025 368.16,-1033.68 368.16,-1033.68" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="365.71,-1033.68 368.16,-1040.68 370.61,-1033.68 365.71,-1033.68" />
+</g>
+
+<g id="node11" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node11)"><title>er_ME_GUSTA_PUBLICACION</title>
+<polygon fill="#fff8e6" stroke="none" points="383.38,-995.5 383.38,-1012.75 633.12,-1012.75 633.12,-995.5 383.38,-995.5" />
+<polygon fill="none" stroke="black" points="383.38,-995.5 383.38,-1012.75 633.12,-1012.75 633.12,-995.5 383.38,-995.5" />
+<text xml:space="preserve" text-anchor="start" x="450.88" y="-1002.2" font-family="Inter" font-weight="bold" font-size="9.00">ME_GUSTA_PUBLICACION</text>
+<polygon fill="none" stroke="black" points="383.38,-978.25 383.38,-995.5 516.88,-995.5 516.88,-978.25 383.38,-978.25" />
+<text xml:space="preserve" text-anchor="start" x="386.38" y="-983.5" font-family="Inter" font-size="9.00">id</text>
+<polygon fill="none" stroke="black" points="516.88,-978.25 516.88,-995.5 602.38,-995.5 602.38,-978.25 516.88,-978.25" />
+<text xml:space="preserve" text-anchor="start" x="519.88" y="-983.5" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="602.38,-978.25 602.38,-995.5 633.12,-995.5 633.12,-978.25 602.38,-978.25" />
+<text xml:space="preserve" text-anchor="start" x="605.38" y="-983.5" font-family="Inter" font-size="9.00">PK, AI</text>
+<polygon fill="none" stroke="black" points="383.38,-961 383.38,-978.25 516.88,-978.25 516.88,-961 383.38,-961" />
+<text xml:space="preserve" text-anchor="start" x="386.38" y="-967.7" font-family="Inter" font-size="9.00">publicacion_id</text>
+<text xml:space="preserve" text-anchor="start" x="447.12" y="-967.7" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → PUBLICACION</text>
+<polygon fill="none" stroke="black" points="516.88,-961 516.88,-978.25 602.38,-978.25 602.38,-961 516.88,-961" />
+<text xml:space="preserve" text-anchor="start" x="519.88" y="-966.25" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="602.38,-961 602.38,-978.25 633.12,-978.25 633.12,-961 602.38,-961" />
+<text xml:space="preserve" text-anchor="start" x="605.38" y="-966.25" font-family="Inter" font-size="9.00">FK</text>
+<polygon fill="none" stroke="black" points="383.38,-943.75 383.38,-961 516.88,-961 516.88,-943.75 383.38,-943.75" />
+<text xml:space="preserve" text-anchor="start" x="386.38" y="-950.45" font-family="Inter" font-size="9.00">mascota_id</text>
+<text xml:space="preserve" text-anchor="start" x="435.12" y="-950.45" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → MASCOTA</text>
+<polygon fill="none" stroke="black" points="516.88,-943.75 516.88,-961 602.38,-961 602.38,-943.75 516.88,-943.75" />
+<text xml:space="preserve" text-anchor="start" x="519.88" y="-949" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="602.38,-943.75 602.38,-961 633.12,-961 633.12,-943.75 602.38,-943.75" />
+<text xml:space="preserve" text-anchor="start" x="605.38" y="-949" font-family="Inter" font-size="9.00">FK</text>
+<polygon fill="none" stroke="black" points="383.38,-926.5 383.38,-943.75 516.88,-943.75 516.88,-926.5 383.38,-926.5" />
+<text xml:space="preserve" text-anchor="start" x="386.38" y="-931.75" font-family="Inter" font-size="9.00">creado_en</text>
+<polygon fill="none" stroke="black" points="516.88,-926.5 516.88,-943.75 602.38,-943.75 602.38,-926.5 516.88,-926.5" />
+<text xml:space="preserve" text-anchor="start" x="519.88" y="-931.75" font-family="Inter" font-size="9.00">DATETIME</text>
+<polygon fill="none" stroke="black" points="602.38,-926.5 602.38,-943.75 633.12,-943.75 633.12,-926.5 602.38,-926.5" />
+<text xml:space="preserve" text-anchor="start" x="616.62" y="-931.75" font-family="Inter" font-size="9.00"> </text>
+</g><rect x="383.38" y="-1012.75" width="249.74" height="86.25" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+
+<g id="edge36" class="edge">
+<title>er_ME_GUSTA_PUBLICACION-&gt;er_MASCOTA</title>
+<path fill="none" stroke="#a3afa8" d="M375.66,-954C329.74,-954 289.54,-954 289.54,-954 289.54,-954 289.54,-1576 289.54,-1576 289.54,-1576 377.27,-1576 377.27,-1576" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="377.27,-1578.45 384.27,-1576 377.27,-1573.55 377.27,-1578.45" />
+</g>
+
+<g id="edge35" class="edge">
+<title>er_ME_GUSTA_PUBLICACION-&gt;er_PUBLICACION</title>
+<path fill="none" stroke="#a3afa8" d="M375.59,-985C350.86,-985 332.62,-985 332.62,-985 332.62,-985 332.62,-1284 332.62,-1284 332.62,-1284 338.48,-1284 338.48,-1284" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="338.48,-1286.45 345.48,-1284 338.48,-1281.55 338.48,-1286.45" />
+</g>
+
+<g id="node12" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node12)"><title>er_ME_GUSTA_COMENTARIO</title>
+<polygon fill="#fff8e6" stroke="none" points="671.12,-995.5 671.12,-1012.75 919.38,-1012.75 919.38,-995.5 671.12,-995.5" />
+<polygon fill="none" stroke="black" points="671.12,-995.5 671.12,-1012.75 919.38,-1012.75 919.38,-995.5 671.12,-995.5" />
+<text xml:space="preserve" text-anchor="start" x="738.62" y="-1002.2" font-family="Inter" font-weight="bold" font-size="9.00">ME_GUSTA_COMENTARIO</text>
+<polygon fill="none" stroke="black" points="671.12,-978.25 671.12,-995.5 803.12,-995.5 803.12,-978.25 671.12,-978.25" />
+<text xml:space="preserve" text-anchor="start" x="674.12" y="-983.5" font-family="Inter" font-size="9.00">id</text>
+<polygon fill="none" stroke="black" points="803.12,-978.25 803.12,-995.5 888.62,-995.5 888.62,-978.25 803.12,-978.25" />
+<text xml:space="preserve" text-anchor="start" x="806.12" y="-983.5" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="888.62,-978.25 888.62,-995.5 919.38,-995.5 919.38,-978.25 888.62,-978.25" />
+<text xml:space="preserve" text-anchor="start" x="891.62" y="-983.5" font-family="Inter" font-size="9.00">PK, AI</text>
+<polygon fill="none" stroke="black" points="671.12,-961 671.12,-978.25 803.12,-978.25 803.12,-961 671.12,-961" />
+<text xml:space="preserve" text-anchor="start" x="674.12" y="-967.7" font-family="Inter" font-size="9.00">comentario_id</text>
+<text xml:space="preserve" text-anchor="start" x="734.88" y="-967.7" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → COMENTARIO</text>
+<polygon fill="none" stroke="black" points="803.12,-961 803.12,-978.25 888.62,-978.25 888.62,-961 803.12,-961" />
+<text xml:space="preserve" text-anchor="start" x="806.12" y="-966.25" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="888.62,-961 888.62,-978.25 919.38,-978.25 919.38,-961 888.62,-961" />
+<text xml:space="preserve" text-anchor="start" x="891.62" y="-966.25" font-family="Inter" font-size="9.00">FK</text>
+<polygon fill="none" stroke="black" points="671.12,-943.75 671.12,-961 803.12,-961 803.12,-943.75 671.12,-943.75" />
+<text xml:space="preserve" text-anchor="start" x="674.12" y="-950.45" font-family="Inter" font-size="9.00">mascota_id</text>
+<text xml:space="preserve" text-anchor="start" x="722.88" y="-950.45" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → MASCOTA</text>
+<polygon fill="none" stroke="black" points="803.12,-943.75 803.12,-961 888.62,-961 888.62,-943.75 803.12,-943.75" />
+<text xml:space="preserve" text-anchor="start" x="806.12" y="-949" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="888.62,-943.75 888.62,-961 919.38,-961 919.38,-943.75 888.62,-943.75" />
+<text xml:space="preserve" text-anchor="start" x="891.62" y="-949" font-family="Inter" font-size="9.00">FK</text>
+<polygon fill="none" stroke="black" points="671.12,-926.5 671.12,-943.75 803.12,-943.75 803.12,-926.5 671.12,-926.5" />
+<text xml:space="preserve" text-anchor="start" x="674.12" y="-931.75" font-family="Inter" font-size="9.00">creado_en</text>
+<polygon fill="none" stroke="black" points="803.12,-926.5 803.12,-943.75 888.62,-943.75 888.62,-926.5 803.12,-926.5" />
+<text xml:space="preserve" text-anchor="start" x="806.12" y="-931.75" font-family="Inter" font-size="9.00">DATETIME</text>
+<polygon fill="none" stroke="black" points="888.62,-926.5 888.62,-943.75 919.38,-943.75 919.38,-926.5 888.62,-926.5" />
+<text xml:space="preserve" text-anchor="start" x="902.88" y="-931.75" font-family="Inter" font-size="9.00"> </text>
+</g><rect x="671.12" y="-1012.75" width="248.26" height="86.25" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+
+<g id="node14" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node14)"><title>er_HASHTAG</title>
+<polygon fill="#ffe2de" stroke="none" points="436.25,-876.25 436.25,-893.5 580.25,-893.5 580.25,-876.25 436.25,-876.25" />
+<polygon fill="none" stroke="black" points="436.25,-876.25 436.25,-893.5 580.25,-893.5 580.25,-876.25 436.25,-876.25" />
+<text xml:space="preserve" text-anchor="start" x="486.12" y="-882.95" font-family="Inter" font-weight="bold" font-size="9.00">HASHTAG</text>
+<polygon fill="none" stroke="black" points="436.25,-859 436.25,-876.25 464,-876.25 464,-859 436.25,-859" />
+<text xml:space="preserve" text-anchor="start" x="439.25" y="-864.25" font-family="Inter" font-size="9.00">id</text>
+<polygon fill="none" stroke="black" points="464,-859 464,-876.25 549.5,-876.25 549.5,-859 464,-859" />
+<text xml:space="preserve" text-anchor="start" x="467" y="-864.25" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="549.5,-859 549.5,-876.25 580.25,-876.25 580.25,-859 549.5,-859" />
+<text xml:space="preserve" text-anchor="start" x="552.5" y="-864.25" font-family="Inter" font-size="9.00">PK, AI</text>
+<polygon fill="none" stroke="black" points="436.25,-841.75 436.25,-859 464,-859 464,-841.75 436.25,-841.75" />
+<text xml:space="preserve" text-anchor="start" x="439.25" y="-847" font-family="Inter" font-size="9.00">texto</text>
+<polygon fill="none" stroke="black" points="464,-841.75 464,-859 549.5,-859 549.5,-841.75 464,-841.75" />
+<text xml:space="preserve" text-anchor="start" x="467" y="-847" font-family="Inter" font-size="9.00">VARCHAR(255)</text>
+<polygon fill="none" stroke="black" points="549.5,-841.75 549.5,-859 580.25,-859 580.25,-841.75 549.5,-841.75" />
+<text xml:space="preserve" text-anchor="start" x="563.75" y="-847" font-family="Inter" font-size="9.00"> </text>
+</g><rect x="436.25" y="-893.5" width="144.0" height="51.75" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+
+<g id="edge41" class="edge">
+<title>er_ME_GUSTA_COMENTARIO-&gt;er_MASCOTA</title>
+<path fill="none" stroke="#a3afa8" d="M714.34,-1016.58C714.34,-1159.74 714.34,-1581 714.34,-1581 714.34,-1581 639.33,-1581 639.33,-1581" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="639.33,-1578.55 632.33,-1581 639.33,-1583.45 639.33,-1578.55" />
+</g>
+
+<g id="edge40" class="edge">
+<title>er_ME_GUSTA_COMENTARIO-&gt;er_COMENTARIO</title>
+<path fill="none" stroke="#a3afa8" d="M663.29,-985C658.55,-985 655.79,-985 655.79,-985 655.79,-985 655.79,-1033.32 655.79,-1033.32" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="653.34,-1033.32 655.79,-1040.32 658.24,-1033.32 653.34,-1033.32" />
+</g>
+
+<g id="node13" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node13)"><title>er_ME_GUSTA_HISTORIA</title>
+<polygon fill="#fff8e6" stroke="none" points="957.88,-995.5 957.88,-1012.75 1180.62,-1012.75 1180.62,-995.5 957.88,-995.5" />
+<polygon fill="none" stroke="black" points="957.88,-995.5 957.88,-1012.75 1180.62,-1012.75 1180.62,-995.5 957.88,-995.5" />
+<text xml:space="preserve" text-anchor="start" x="1021.25" y="-1002.2" font-family="Inter" font-weight="bold" font-size="9.00">ME_GUSTA_HISTORIA</text>
+<polygon fill="none" stroke="black" points="957.88,-978.25 957.88,-995.5 1064.38,-995.5 1064.38,-978.25 957.88,-978.25" />
+<text xml:space="preserve" text-anchor="start" x="960.88" y="-983.5" font-family="Inter" font-size="9.00">id</text>
+<polygon fill="none" stroke="black" points="1064.38,-978.25 1064.38,-995.5 1149.88,-995.5 1149.88,-978.25 1064.38,-978.25" />
+<text xml:space="preserve" text-anchor="start" x="1067.38" y="-983.5" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="1149.88,-978.25 1149.88,-995.5 1180.62,-995.5 1180.62,-978.25 1149.88,-978.25" />
+<text xml:space="preserve" text-anchor="start" x="1152.88" y="-983.5" font-family="Inter" font-size="9.00">PK, AI</text>
+<polygon fill="none" stroke="black" points="957.88,-961 957.88,-978.25 1064.38,-978.25 1064.38,-961 957.88,-961" />
+<text xml:space="preserve" text-anchor="start" x="960.88" y="-967.7" font-family="Inter" font-size="9.00">historia_id</text>
+<text xml:space="preserve" text-anchor="start" x="1004.38" y="-967.7" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → HISTORIA</text>
+<polygon fill="none" stroke="black" points="1064.38,-961 1064.38,-978.25 1149.88,-978.25 1149.88,-961 1064.38,-961" />
+<text xml:space="preserve" text-anchor="start" x="1067.38" y="-966.25" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="1149.88,-961 1149.88,-978.25 1180.62,-978.25 1180.62,-961 1149.88,-961" />
+<text xml:space="preserve" text-anchor="start" x="1152.88" y="-966.25" font-family="Inter" font-size="9.00">FK</text>
+<polygon fill="none" stroke="black" points="957.88,-943.75 957.88,-961 1064.38,-961 1064.38,-943.75 957.88,-943.75" />
+<text xml:space="preserve" text-anchor="start" x="960.88" y="-950.45" font-family="Inter" font-size="9.00">mascota_id</text>
+<text xml:space="preserve" text-anchor="start" x="1009.62" y="-950.45" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → MASCOTA</text>
+<polygon fill="none" stroke="black" points="1064.38,-943.75 1064.38,-961 1149.88,-961 1149.88,-943.75 1064.38,-943.75" />
+<text xml:space="preserve" text-anchor="start" x="1067.38" y="-949" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="1149.88,-943.75 1149.88,-961 1180.62,-961 1180.62,-943.75 1149.88,-943.75" />
+<text xml:space="preserve" text-anchor="start" x="1152.88" y="-949" font-family="Inter" font-size="9.00">FK</text>
+<polygon fill="none" stroke="black" points="957.88,-926.5 957.88,-943.75 1064.38,-943.75 1064.38,-926.5 957.88,-926.5" />
+<text xml:space="preserve" text-anchor="start" x="960.88" y="-931.75" font-family="Inter" font-size="9.00">creado_en</text>
+<polygon fill="none" stroke="black" points="1064.38,-926.5 1064.38,-943.75 1149.88,-943.75 1149.88,-926.5 1064.38,-926.5" />
+<text xml:space="preserve" text-anchor="start" x="1067.38" y="-931.75" font-family="Inter" font-size="9.00">DATETIME</text>
+<polygon fill="none" stroke="black" points="1149.88,-926.5 1149.88,-943.75 1180.62,-943.75 1180.62,-926.5 1149.88,-926.5" />
+<text xml:space="preserve" text-anchor="start" x="1164.12" y="-931.75" font-family="Inter" font-size="9.00"> </text>
+</g><rect x="957.88" y="-1012.75" width="222.7399999999999" height="86.25" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+
+<g id="edge58" class="edge">
+<title>er_ME_GUSTA_HISTORIA-&gt;er_MASCOTA</title>
+<path fill="none" stroke="#a3afa8" d="M1038.81,-1016.49C1038.81,-1163.69 1038.81,-1607 1038.81,-1607 1038.81,-1607 639.49,-1607 639.49,-1607" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="639.49,-1604.55 632.49,-1607 639.48,-1609.45 639.49,-1604.55" />
+</g>
+
+<g id="node20" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node20)"><title>er_HISTORIA</title>
+<polygon fill="#fbefe2" stroke="none" points="396.88,-689.5 396.88,-706.75 619.62,-706.75 619.62,-689.5 396.88,-689.5" />
+<polygon fill="none" stroke="black" points="396.88,-689.5 396.88,-706.75 619.62,-706.75 619.62,-689.5 396.88,-689.5" />
+<text xml:space="preserve" text-anchor="start" x="486.88" y="-696.2" font-family="Inter" font-weight="bold" font-size="9.00">HISTORIA</text>
+<polygon fill="none" stroke="black" points="396.88,-672.25 396.88,-689.5 503.38,-689.5 503.38,-672.25 396.88,-672.25" />
+<text xml:space="preserve" text-anchor="start" x="399.88" y="-677.5" font-family="Inter" font-size="9.00">id</text>
+<polygon fill="none" stroke="black" points="503.38,-672.25 503.38,-689.5 588.88,-689.5 588.88,-672.25 503.38,-672.25" />
+<text xml:space="preserve" text-anchor="start" x="506.38" y="-677.5" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="588.88,-672.25 588.88,-689.5 619.62,-689.5 619.62,-672.25 588.88,-672.25" />
+<text xml:space="preserve" text-anchor="start" x="591.88" y="-677.5" font-family="Inter" font-size="9.00">PK, AI</text>
+<polygon fill="none" stroke="black" points="396.88,-655 396.88,-672.25 503.38,-672.25 503.38,-655 396.88,-655" />
+<text xml:space="preserve" text-anchor="start" x="399.88" y="-661.7" font-family="Inter" font-size="9.00">mascota_id</text>
+<text xml:space="preserve" text-anchor="start" x="448.62" y="-661.7" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → MASCOTA</text>
+<polygon fill="none" stroke="black" points="503.38,-655 503.38,-672.25 588.88,-672.25 588.88,-655 503.38,-655" />
+<text xml:space="preserve" text-anchor="start" x="506.38" y="-660.25" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="588.88,-655 588.88,-672.25 619.62,-672.25 619.62,-655 588.88,-655" />
+<text xml:space="preserve" text-anchor="start" x="591.88" y="-660.25" font-family="Inter" font-size="9.00">FK</text>
+<polygon fill="none" stroke="black" points="396.88,-637.75 396.88,-655 503.38,-655 503.38,-637.75 396.88,-637.75" />
+<text xml:space="preserve" text-anchor="start" x="399.88" y="-643" font-family="Inter" font-size="9.00">creado_en</text>
+<polygon fill="none" stroke="black" points="503.38,-637.75 503.38,-655 588.88,-655 588.88,-637.75 503.38,-637.75" />
+<text xml:space="preserve" text-anchor="start" x="506.38" y="-643" font-family="Inter" font-size="9.00">DATETIME</text>
+<polygon fill="none" stroke="black" points="588.88,-637.75 588.88,-655 619.62,-655 619.62,-637.75 588.88,-637.75" />
+<text xml:space="preserve" text-anchor="start" x="603.12" y="-643" font-family="Inter" font-size="9.00"> </text>
+<polygon fill="none" stroke="black" points="396.88,-620.5 396.88,-637.75 503.38,-637.75 503.38,-620.5 396.88,-620.5" />
+<text xml:space="preserve" text-anchor="start" x="399.88" y="-625.75" font-family="Inter" font-size="9.00">vence_en</text>
+<polygon fill="none" stroke="black" points="503.38,-620.5 503.38,-637.75 588.88,-637.75 588.88,-620.5 503.38,-620.5" />
+<text xml:space="preserve" text-anchor="start" x="506.38" y="-625.75" font-family="Inter" font-size="9.00">DATETIME</text>
+<polygon fill="none" stroke="black" points="588.88,-620.5 588.88,-637.75 619.62,-637.75 619.62,-620.5 588.88,-620.5" />
+<text xml:space="preserve" text-anchor="start" x="603.12" y="-625.75" font-family="Inter" font-size="9.00"> </text>
+</g><rect x="396.88" y="-706.75" width="222.74" height="86.25" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge57" class="edge">
+<title>er_ME_GUSTA_HISTORIA-&gt;er_HISTORIA</title>
+<path fill="none" stroke="#a3afa8" d="M1178.25,-922.54C1178.25,-836.81 1178.25,-664 1178.25,-664 1178.25,-664 635.77,-664 635.77,-664" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="635.77,-661.55 628.77,-664 635.77,-666.45 635.77,-661.55" />
+</g>
+
+<g id="node15" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node15)"><title>er_PUBLICACION_HASHTAG</title>
+<polygon fill="#ffe2de" stroke="none" points="617.88,-876.25 617.88,-893.5 870.62,-893.5 870.62,-876.25 617.88,-876.25" />
+<polygon fill="none" stroke="black" points="617.88,-876.25 617.88,-893.5 870.62,-893.5 870.62,-876.25 617.88,-876.25" />
+<text xml:space="preserve" text-anchor="start" x="689.12" y="-882.95" font-family="Inter" font-weight="bold" font-size="9.00">PUBLICACION_HASHTAG</text>
+<polygon fill="none" stroke="black" points="617.88,-859 617.88,-876.25 751.38,-876.25 751.38,-859 617.88,-859" />
+<text xml:space="preserve" text-anchor="start" x="620.88" y="-865.7" font-family="Inter" font-size="9.00">publicacion_id</text>
+<text xml:space="preserve" text-anchor="start" x="681.62" y="-865.7" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → PUBLICACION</text>
+<polygon fill="none" stroke="black" points="751.38,-859 751.38,-876.25 836.88,-876.25 836.88,-859 751.38,-859" />
+<text xml:space="preserve" text-anchor="start" x="754.38" y="-864.25" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="836.88,-859 836.88,-876.25 870.62,-876.25 870.62,-859 836.88,-859" />
+<text xml:space="preserve" text-anchor="start" x="839.88" y="-864.25" font-family="Inter" font-size="9.00">PK, FK</text>
+<polygon fill="none" stroke="black" points="617.88,-841.75 617.88,-859 751.38,-859 751.38,-841.75 617.88,-841.75" />
+<text xml:space="preserve" text-anchor="start" x="620.88" y="-848.45" font-family="Inter" font-size="9.00">hashtag_id</text>
+<text xml:space="preserve" text-anchor="start" x="666.62" y="-848.45" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → HASHTAG</text>
+<polygon fill="none" stroke="black" points="751.38,-841.75 751.38,-859 836.88,-859 836.88,-841.75 751.38,-841.75" />
+<text xml:space="preserve" text-anchor="start" x="754.38" y="-847" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="836.88,-841.75 836.88,-859 870.62,-859 870.62,-841.75 836.88,-841.75" />
+<text xml:space="preserve" text-anchor="start" x="839.88" y="-847" font-family="Inter" font-size="9.00">PK, FK</text>
+</g><rect x="617.88" y="-893.5" width="252.74" height="51.75" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+
+<g id="node18" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node18)"><title>er_COMENTARIO_MENCION</title>
+<polygon fill="#ffe2de" stroke="none" points="382.62,-782.88 382.62,-800.12 633.88,-800.12 633.88,-782.88 382.62,-782.88" />
+<polygon fill="none" stroke="black" points="382.62,-782.88 382.62,-800.12 633.88,-800.12 633.88,-782.88 382.62,-782.88" />
+<text xml:space="preserve" text-anchor="start" x="454.25" y="-789.58" font-family="Inter" font-weight="bold" font-size="9.00">COMENTARIO_MENCION</text>
+<polygon fill="none" stroke="black" points="382.62,-765.62 382.62,-782.88 514.62,-782.88 514.62,-765.62 382.62,-765.62" />
+<text xml:space="preserve" text-anchor="start" x="385.62" y="-772.33" font-family="Inter" font-size="9.00">comentario_id</text>
+<text xml:space="preserve" text-anchor="start" x="446.38" y="-772.33" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → COMENTARIO</text>
+<polygon fill="none" stroke="black" points="514.62,-765.62 514.62,-782.88 600.12,-782.88 600.12,-765.62 514.62,-765.62" />
+<text xml:space="preserve" text-anchor="start" x="517.62" y="-770.88" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="600.12,-765.62 600.12,-782.88 633.88,-782.88 633.88,-765.62 600.12,-765.62" />
+<text xml:space="preserve" text-anchor="start" x="603.12" y="-770.88" font-family="Inter" font-size="9.00">PK, FK</text>
+<polygon fill="none" stroke="black" points="382.62,-748.38 382.62,-765.62 514.62,-765.62 514.62,-748.38 382.62,-748.38" />
+<text xml:space="preserve" text-anchor="start" x="385.62" y="-755.08" font-family="Inter" font-size="9.00">mascota_id</text>
+<text xml:space="preserve" text-anchor="start" x="434.38" y="-755.08" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → MASCOTA</text>
+<polygon fill="none" stroke="black" points="514.62,-748.38 514.62,-765.62 600.12,-765.62 600.12,-748.38 514.62,-748.38" />
+<text xml:space="preserve" text-anchor="start" x="517.62" y="-753.62" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="600.12,-748.38 600.12,-765.62 633.88,-765.62 633.88,-748.38 600.12,-748.38" />
+<text xml:space="preserve" text-anchor="start" x="603.12" y="-753.62" font-family="Inter" font-size="9.00">PK, FK</text>
+</g><rect x="382.62" y="-800.12" width="251.26" height="51.74000000000001" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+
+<g id="edge42" class="edge">
+<title>er_PUBLICACION_HASHTAG-&gt;er_PUBLICACION</title>
+<path fill="none" stroke="#a3afa8" d="M648.46,-897.19C648.46,-944.76 648.46,-1033 648.46,-1033 648.46,-1033 679.12,-1033 679.12,-1033 679.12,-1033 679.12,-1276 679.12,-1276 679.12,-1276 677.96,-1276 677.96,-1276" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="677.96,-1273.55 670.96,-1276 677.96,-1278.45 677.96,-1273.55" />
+</g>
+
+<g id="edge43" class="edge">
+<title>er_PUBLICACION_HASHTAG-&gt;er_HASHTAG</title>
+<path fill="none" stroke="#a3afa8" d="M610.05,-878C610.05,-878 596.53,-878 596.53,-878" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="596.53,-875.55 589.53,-878 596.53,-880.45 596.53,-875.55" />
+</g>
+
+<g id="node16" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node16)"><title>er_COMENTARIO_HASHTAG</title>
+<polygon fill="#ffe2de" stroke="none" points="908.62,-876.25 908.62,-893.5 1159.88,-893.5 1159.88,-876.25 908.62,-876.25" />
+<polygon fill="none" stroke="black" points="908.62,-876.25 908.62,-893.5 1159.88,-893.5 1159.88,-876.25 908.62,-876.25" />
+<text xml:space="preserve" text-anchor="start" x="979.5" y="-882.95" font-family="Inter" font-weight="bold" font-size="9.00">COMENTARIO_HASHTAG</text>
+<polygon fill="none" stroke="black" points="908.62,-859 908.62,-876.25 1040.62,-876.25 1040.62,-859 908.62,-859" />
+<text xml:space="preserve" text-anchor="start" x="911.62" y="-865.7" font-family="Inter" font-size="9.00">comentario_id</text>
+<text xml:space="preserve" text-anchor="start" x="972.38" y="-865.7" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → COMENTARIO</text>
+<polygon fill="none" stroke="black" points="1040.62,-859 1040.62,-876.25 1126.12,-876.25 1126.12,-859 1040.62,-859" />
+<text xml:space="preserve" text-anchor="start" x="1043.62" y="-864.25" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="1126.12,-859 1126.12,-876.25 1159.88,-876.25 1159.88,-859 1126.12,-859" />
+<text xml:space="preserve" text-anchor="start" x="1129.12" y="-864.25" font-family="Inter" font-size="9.00">PK, FK</text>
+<polygon fill="none" stroke="black" points="908.62,-841.75 908.62,-859 1040.62,-859 1040.62,-841.75 908.62,-841.75" />
+<text xml:space="preserve" text-anchor="start" x="911.62" y="-848.45" font-family="Inter" font-size="9.00">hashtag_id</text>
+<text xml:space="preserve" text-anchor="start" x="957.38" y="-848.45" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → HASHTAG</text>
+<polygon fill="none" stroke="black" points="1040.62,-841.75 1040.62,-859 1126.12,-859 1126.12,-841.75 1040.62,-841.75" />
+<text xml:space="preserve" text-anchor="start" x="1043.62" y="-847" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="1126.12,-841.75 1126.12,-859 1159.88,-859 1159.88,-841.75 1126.12,-841.75" />
+<text xml:space="preserve" text-anchor="start" x="1129.12" y="-847" font-family="Inter" font-size="9.00">PK, FK</text>
+</g><rect x="908.62" y="-893.5" width="251.2600000000001" height="51.75" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+
+<g id="edge44" class="edge">
+<title>er_COMENTARIO_HASHTAG-&gt;er_COMENTARIO</title>
+<path fill="none" stroke="#a3afa8" d="M938.62,-897.31C938.62,-960.38 938.62,-1102 938.62,-1102 938.62,-1102 676.1,-1102 676.1,-1102" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="676.1,-1099.55 669.1,-1102 676.1,-1104.45 676.1,-1099.55" />
+</g>
+
+<g id="edge45" class="edge">
+<title>er_COMENTARIO_HASHTAG-&gt;er_HASHTAG</title>
+<path fill="none" stroke="#a3afa8" d="M914,-897.06C914,-904.29 914,-910 914,-910 914,-910 534.92,-910 534.92,-910 534.92,-910 534.92,-905.57 534.92,-905.57" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="537.37,-905.57 534.92,-898.57 532.47,-905.57 537.37,-905.57" />
+</g>
+
+<g id="node17" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node17)"><title>er_PUBLICACION_MENCION</title>
+<polygon fill="#ffe2de" stroke="none" points="1197.88,-876.25 1197.88,-893.5 1450.62,-893.5 1450.62,-876.25 1197.88,-876.25" />
+<polygon fill="none" stroke="black" points="1197.88,-876.25 1197.88,-893.5 1450.62,-893.5 1450.62,-876.25 1197.88,-876.25" />
+<text xml:space="preserve" text-anchor="start" x="1269.88" y="-882.95" font-family="Inter" font-weight="bold" font-size="9.00">PUBLICACION_MENCION</text>
+<polygon fill="none" stroke="black" points="1197.88,-859 1197.88,-876.25 1331.38,-876.25 1331.38,-859 1197.88,-859" />
+<text xml:space="preserve" text-anchor="start" x="1200.88" y="-865.7" font-family="Inter" font-size="9.00">publicacion_id</text>
+<text xml:space="preserve" text-anchor="start" x="1261.62" y="-865.7" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → PUBLICACION</text>
+<polygon fill="none" stroke="black" points="1331.38,-859 1331.38,-876.25 1416.88,-876.25 1416.88,-859 1331.38,-859" />
+<text xml:space="preserve" text-anchor="start" x="1334.38" y="-864.25" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="1416.88,-859 1416.88,-876.25 1450.62,-876.25 1450.62,-859 1416.88,-859" />
+<text xml:space="preserve" text-anchor="start" x="1419.88" y="-864.25" font-family="Inter" font-size="9.00">PK, FK</text>
+<polygon fill="none" stroke="black" points="1197.88,-841.75 1197.88,-859 1331.38,-859 1331.38,-841.75 1197.88,-841.75" />
+<text xml:space="preserve" text-anchor="start" x="1200.88" y="-848.45" font-family="Inter" font-size="9.00">mascota_id</text>
+<text xml:space="preserve" text-anchor="start" x="1249.62" y="-848.45" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → MASCOTA</text>
+<polygon fill="none" stroke="black" points="1331.38,-841.75 1331.38,-859 1416.88,-859 1416.88,-841.75 1331.38,-841.75" />
+<text xml:space="preserve" text-anchor="start" x="1334.38" y="-847" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="1416.88,-841.75 1416.88,-859 1450.62,-859 1450.62,-841.75 1416.88,-841.75" />
+<text xml:space="preserve" text-anchor="start" x="1419.88" y="-847" font-family="Inter" font-size="9.00">PK, FK</text>
+</g><rect x="1197.88" y="-893.5" width="252.73999999999978" height="51.75" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+
+<g id="edge47" class="edge">
+<title>er_PUBLICACION_MENCION-&gt;er_MASCOTA</title>
+<path fill="none" stroke="#a3afa8" d="M1309.38,-897.38C1309.38,-1036.39 1309.38,-1615 1309.38,-1615 1309.38,-1615 639.31,-1615 639.31,-1615" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="639.31,-1612.55 632.31,-1615 639.31,-1617.45 639.31,-1612.55" />
+</g>
+
+<g id="edge46" class="edge">
+<title>er_PUBLICACION_MENCION-&gt;er_PUBLICACION</title>
+<path fill="none" stroke="#a3afa8" d="M1249.62,-897.41C1249.62,-996.08 1249.62,-1306 1249.62,-1306 1249.62,-1306 678.09,-1306 678.09,-1306" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="678.09,-1303.55 671.09,-1306 678.09,-1308.45 678.09,-1303.55" />
+</g>
+
+<g id="edge49" class="edge">
+<title>er_COMENTARIO_MENCION-&gt;er_MASCOTA</title>
+<path fill="none" stroke="#a3afa8" d="M374.91,-764C304.24,-764 231.86,-764 231.86,-764 231.86,-764 231.86,-1597 231.86,-1597 231.86,-1597 377.3,-1597 377.3,-1597" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="377.3,-1599.45 384.3,-1597 377.3,-1594.55 377.3,-1599.45" />
+</g>
+
+<g id="edge48" class="edge">
+<title>er_COMENTARIO_MENCION-&gt;er_COMENTARIO</title>
+<path fill="none" stroke="#a3afa8" d="M374.69,-784C366.63,-784 361.69,-784 361.69,-784 361.69,-784 361.69,-1033.42 361.69,-1033.42" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="359.24,-1033.42 361.69,-1040.42 364.14,-1033.42 359.24,-1033.42" />
+</g>
+
+<g id="node19" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node19)"><title>er_HASHTAG_SEGUIDOR</title>
+<polygon fill="#ffe2de" stroke="none" points="672.38,-791.5 672.38,-808.75 898.12,-808.75 898.12,-791.5 672.38,-791.5" />
+<polygon fill="none" stroke="black" points="672.38,-791.5 672.38,-808.75 898.12,-808.75 898.12,-791.5 672.38,-791.5" />
+<text xml:space="preserve" text-anchor="start" x="737.62" y="-798.2" font-family="Inter" font-weight="bold" font-size="9.00">HASHTAG_SEGUIDOR</text>
+<polygon fill="none" stroke="black" points="672.38,-774.25 672.38,-791.5 778.88,-791.5 778.88,-774.25 672.38,-774.25" />
+<text xml:space="preserve" text-anchor="start" x="675.38" y="-780.95" font-family="Inter" font-size="9.00">hashtag_id</text>
+<text xml:space="preserve" text-anchor="start" x="721.12" y="-780.95" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → HASHTAG</text>
+<polygon fill="none" stroke="black" points="778.88,-774.25 778.88,-791.5 864.38,-791.5 864.38,-774.25 778.88,-774.25" />
+<text xml:space="preserve" text-anchor="start" x="781.88" y="-779.5" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="864.38,-774.25 864.38,-791.5 898.12,-791.5 898.12,-774.25 864.38,-774.25" />
+<text xml:space="preserve" text-anchor="start" x="867.38" y="-779.5" font-family="Inter" font-size="9.00">PK, FK</text>
+<polygon fill="none" stroke="black" points="672.38,-757 672.38,-774.25 778.88,-774.25 778.88,-757 672.38,-757" />
+<text xml:space="preserve" text-anchor="start" x="675.38" y="-763.7" font-family="Inter" font-size="9.00">mascota_id</text>
+<text xml:space="preserve" text-anchor="start" x="724.12" y="-763.7" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → MASCOTA</text>
+<polygon fill="none" stroke="black" points="778.88,-757 778.88,-774.25 864.38,-774.25 864.38,-757 778.88,-757" />
+<text xml:space="preserve" text-anchor="start" x="781.88" y="-762.25" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="864.38,-757 864.38,-774.25 898.12,-774.25 898.12,-757 864.38,-757" />
+<text xml:space="preserve" text-anchor="start" x="867.38" y="-762.25" font-family="Inter" font-size="9.00">PK, FK</text>
+<polygon fill="none" stroke="black" points="672.38,-739.75 672.38,-757 778.88,-757 778.88,-739.75 672.38,-739.75" />
+<text xml:space="preserve" text-anchor="start" x="675.38" y="-745" font-family="Inter" font-size="9.00">creado_en</text>
+<polygon fill="none" stroke="black" points="778.88,-739.75 778.88,-757 864.38,-757 864.38,-739.75 778.88,-739.75" />
+<text xml:space="preserve" text-anchor="start" x="781.88" y="-745" font-family="Inter" font-size="9.00">DATETIME</text>
+<polygon fill="none" stroke="black" points="864.38,-739.75 864.38,-757 898.12,-757 898.12,-739.75 864.38,-739.75" />
+<text xml:space="preserve" text-anchor="start" x="880.12" y="-745" font-family="Inter" font-size="9.00"> </text>
+</g><rect x="672.38" y="-808.75" width="225.74" height="69.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+
+
+<g id="edge51" class="edge">
+<title>er_HASHTAG_SEGUIDOR-&gt;er_MASCOTA</title>
+<path fill="none" stroke="#a3afa8" d="M664.58,-807C509.69,-807 260.7,-807 260.7,-807 260.7,-807 260.7,-1618 260.7,-1618 260.7,-1618 377.05,-1618 377.05,-1618" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="377.05,-1620.45 384.05,-1618 377.05,-1615.55 377.05,-1620.45" />
+</g>
+
+<g id="edge50" class="edge">
+<title>er_HASHTAG_SEGUIDOR-&gt;er_HASHTAG</title>
+<path fill="none" stroke="#a3afa8" d="M664.48,-810C600.47,-810 534.92,-810 534.92,-810 534.92,-810 534.92,-829.29 534.92,-829.29" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="532.47,-829.29 534.92,-836.29 537.37,-829.29 532.47,-829.29" />
+</g>
+
+<g id="edge54" class="edge">
+<title>er_HISTORIA-&gt;er_MASCOTA</title>
+<path fill="none" stroke="#a3afa8" d="M389.06,-664C293.12,-664 174.19,-664 174.19,-664 174.19,-664 174.19,-1639 174.19,-1639 174.19,-1639 377.24,-1639 377.24,-1639" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="377.24,-1641.45 384.24,-1639 377.24,-1636.55 377.24,-1641.45" />
+</g>
+
+<g id="node22" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node22)"><title>er_CONVERSACION</title>
+<polygon fill="#b4d3c0" stroke="none" points="425.38,-535.75 425.38,-553 591.12,-553 591.12,-535.75 425.38,-535.75" />
+<polygon fill="none" stroke="black" points="425.38,-535.75 425.38,-553 591.12,-553 591.12,-535.75 425.38,-535.75" />
+<text xml:space="preserve" text-anchor="start" x="471.88" y="-542.45" font-family="Inter" font-weight="bold" font-size="9.00">CONVERSACION</text>
+<polygon fill="none" stroke="black" points="425.38,-518.5 425.38,-535.75 474.88,-535.75 474.88,-518.5 425.38,-518.5" />
+<text xml:space="preserve" text-anchor="start" x="428.38" y="-523.75" font-family="Inter" font-size="9.00">id</text>
+<polygon fill="none" stroke="black" points="474.88,-518.5 474.88,-535.75 560.38,-535.75 560.38,-518.5 474.88,-518.5" />
+<text xml:space="preserve" text-anchor="start" x="477.88" y="-523.75" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="560.38,-518.5 560.38,-535.75 591.12,-535.75 591.12,-518.5 560.38,-518.5" />
+<text xml:space="preserve" text-anchor="start" x="563.38" y="-523.75" font-family="Inter" font-size="9.00">PK, AI</text>
+<polygon fill="none" stroke="black" points="425.38,-501.25 425.38,-518.5 474.88,-518.5 474.88,-501.25 425.38,-501.25" />
+<text xml:space="preserve" text-anchor="start" x="428.38" y="-506.5" font-family="Inter" font-size="9.00">creado_en</text>
+<polygon fill="none" stroke="black" points="474.88,-501.25 474.88,-518.5 560.38,-518.5 560.38,-501.25 474.88,-501.25" />
+<text xml:space="preserve" text-anchor="start" x="477.88" y="-506.5" font-family="Inter" font-size="9.00">DATETIME</text>
+<polygon fill="none" stroke="black" points="560.38,-501.25 560.38,-518.5 591.12,-518.5 591.12,-501.25 560.38,-501.25" />
+<text xml:space="preserve" text-anchor="start" x="574.62" y="-506.5" font-family="Inter" font-size="9.00"> </text>
+</g><rect x="425.38" y="-553.0" width="165.74" height="51.75" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+
+<g id="node21" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node21)"><title>er_HISTORIA_VISTA</title>
+<polygon fill="#fbefe2" stroke="none" points="851.38,-1902.25 851.38,-1919.5 1077.12,-1919.5 1077.12,-1902.25 851.38,-1902.25" />
+<polygon fill="none" stroke="black" points="851.38,-1902.25 851.38,-1919.5 1077.12,-1919.5 1077.12,-1902.25 851.38,-1902.25" />
+<text xml:space="preserve" text-anchor="start" x="927.5" y="-1908.95" font-family="Inter" font-weight="bold" font-size="9.00">HISTORIA_VISTA</text>
+<polygon fill="none" stroke="black" points="851.38,-1885 851.38,-1902.25 957.88,-1902.25 957.88,-1885 851.38,-1885" />
+<text xml:space="preserve" text-anchor="start" x="854.38" y="-1891.7" font-family="Inter" font-size="9.00">historia_id</text>
+<text xml:space="preserve" text-anchor="start" x="897.88" y="-1891.7" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → HISTORIA</text>
+<polygon fill="none" stroke="black" points="957.88,-1885 957.88,-1902.25 1043.38,-1902.25 1043.38,-1885 957.88,-1885" />
+<text xml:space="preserve" text-anchor="start" x="960.88" y="-1890.25" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="1043.38,-1885 1043.38,-1902.25 1077.12,-1902.25 1077.12,-1885 1043.38,-1885" />
+<text xml:space="preserve" text-anchor="start" x="1046.38" y="-1890.25" font-family="Inter" font-size="9.00">PK, FK</text>
+<polygon fill="none" stroke="black" points="851.38,-1867.75 851.38,-1885 957.88,-1885 957.88,-1867.75 851.38,-1867.75" />
+<text xml:space="preserve" text-anchor="start" x="854.38" y="-1874.45" font-family="Inter" font-size="9.00">mascota_id</text>
+<text xml:space="preserve" text-anchor="start" x="903.12" y="-1874.45" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → MASCOTA</text>
+<polygon fill="none" stroke="black" points="957.88,-1867.75 957.88,-1885 1043.38,-1885 1043.38,-1867.75 957.88,-1867.75" />
+<text xml:space="preserve" text-anchor="start" x="960.88" y="-1873" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="1043.38,-1867.75 1043.38,-1885 1077.12,-1885 1077.12,-1867.75 1043.38,-1867.75" />
+<text xml:space="preserve" text-anchor="start" x="1046.38" y="-1873" font-family="Inter" font-size="9.00">PK, FK</text>
+<polygon fill="none" stroke="black" points="851.38,-1850.5 851.38,-1867.75 957.88,-1867.75 957.88,-1850.5 851.38,-1850.5" />
+<text xml:space="preserve" text-anchor="start" x="854.38" y="-1855.75" font-family="Inter" font-size="9.00">vista_en</text>
+<polygon fill="none" stroke="black" points="957.88,-1850.5 957.88,-1867.75 1043.38,-1867.75 1043.38,-1850.5 957.88,-1850.5" />
+<text xml:space="preserve" text-anchor="start" x="960.88" y="-1855.75" font-family="Inter" font-size="9.00">DATETIME</text>
+<polygon fill="none" stroke="black" points="1043.38,-1850.5 1043.38,-1867.75 1077.12,-1867.75 1077.12,-1850.5 1043.38,-1850.5" />
+<text xml:space="preserve" text-anchor="start" x="1059.12" y="-1855.75" font-family="Inter" font-size="9.00"> </text>
+</g><rect x="851.38" y="-1919.5" width="225.7399999999999" height="69.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+<g id="edge56" class="edge">
+<title>er_HISTORIA_VISTA-&gt;er_MASCOTA</title>
+<path fill="none" stroke="#a3afa8" d="M849.46,-1846.84C849.46,-1806.3 849.46,-1748 849.46,-1748 849.46,-1748 639.47,-1748 639.47,-1748" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="639.47,-1745.55 632.47,-1748 639.47,-1750.45 639.47,-1745.55" />
+</g>
+
+<g id="edge55" class="edge">
+<title>er_HISTORIA_VISTA-&gt;er_HISTORIA</title>
+<path fill="none" stroke="#a3afa8" d="M855.54,-1846.65C855.54,-1757.15 855.54,-1542 855.54,-1542 855.54,-1542 203.02,-1542 203.02,-1542 203.02,-1542 203.02,-687 203.02,-687 203.02,-687 380.42,-687 380.42,-687" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="380.42,-689.45 387.42,-687 380.42,-684.55 380.42,-689.45" />
+</g>
+
+<g id="node23" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node23)"><title>er_CONVERSACION_PARTICIPANTE</title>
+<polygon fill="#b4d3c0" stroke="none" points="628.88,-544.38 628.88,-561.62 899.62,-561.62 899.62,-544.38 628.88,-544.38" />
+<polygon fill="none" stroke="black" points="628.88,-544.38 628.88,-561.62 899.62,-561.62 899.62,-544.38 628.88,-544.38" />
+<text xml:space="preserve" text-anchor="start" x="693" y="-551.08" font-family="Inter" font-weight="bold" font-size="9.00">CONVERSACION_PARTICIPANTE</text>
+<polygon fill="none" stroke="black" points="628.88,-527.12 628.88,-544.38 780.38,-544.38 780.38,-527.12 628.88,-527.12" />
+<text xml:space="preserve" text-anchor="start" x="631.88" y="-533.83" font-family="Inter" font-size="9.00">conversacion_id</text>
+<text xml:space="preserve" text-anchor="start" x="701.62" y="-533.83" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → CONVERSACION</text>
+<polygon fill="none" stroke="black" points="780.38,-527.12 780.38,-544.38 865.88,-544.38 865.88,-527.12 780.38,-527.12" />
+<text xml:space="preserve" text-anchor="start" x="783.38" y="-532.38" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="865.88,-527.12 865.88,-544.38 899.62,-544.38 899.62,-527.12 865.88,-527.12" />
+<text xml:space="preserve" text-anchor="start" x="868.88" y="-532.38" font-family="Inter" font-size="9.00">PK, FK</text>
+<polygon fill="none" stroke="black" points="628.88,-509.88 628.88,-527.12 780.38,-527.12 780.38,-509.88 628.88,-509.88" />
+<text xml:space="preserve" text-anchor="start" x="631.88" y="-516.58" font-family="Inter" font-size="9.00">mascota_id</text>
+<text xml:space="preserve" text-anchor="start" x="680.62" y="-516.58" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → MASCOTA</text>
+<polygon fill="none" stroke="black" points="780.38,-509.88 780.38,-527.12 865.88,-527.12 865.88,-509.88 780.38,-509.88" />
+<text xml:space="preserve" text-anchor="start" x="783.38" y="-515.12" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="865.88,-509.88 865.88,-527.12 899.62,-527.12 899.62,-509.88 865.88,-509.88" />
+<text xml:space="preserve" text-anchor="start" x="868.88" y="-515.12" font-family="Inter" font-size="9.00">PK, FK</text>
+<polygon fill="none" stroke="black" points="628.88,-492.62 628.88,-509.88 780.38,-509.88 780.38,-492.62 628.88,-492.62" />
+<text xml:space="preserve" text-anchor="start" x="631.88" y="-497.88" font-family="Inter" font-size="9.00">creado_en</text>
+<polygon fill="none" stroke="black" points="780.38,-492.62 780.38,-509.88 865.88,-509.88 865.88,-492.62 780.38,-492.62" />
+<text xml:space="preserve" text-anchor="start" x="783.38" y="-497.88" font-family="Inter" font-size="9.00">DATETIME</text>
+<polygon fill="none" stroke="black" points="865.88,-492.62 865.88,-509.88 899.62,-509.88 899.62,-492.62 865.88,-492.62" />
+<text xml:space="preserve" text-anchor="start" x="881.62" y="-497.88" font-family="Inter" font-size="9.00"> </text>
+</g><rect x="628.88" y="-561.62" width="270.74" height="69.0" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+
+<g id="node25" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node25)"><title>er_NOTIFICACION</title>
+<polygon fill="#f4e2cf" stroke="none" points="38,-416.5 38,-433.75 978.5,-433.75 978.5,-416.5 38,-416.5" />
+<polygon fill="none" stroke="black" points="38,-416.5 38,-433.75 978.5,-433.75 978.5,-416.5 38,-416.5" />
+<text xml:space="preserve" text-anchor="start" x="476" y="-423.2" font-family="Inter" font-weight="bold" font-size="9.00">NOTIFICACION</text>
+<polygon fill="none" stroke="black" points="38,-399.25 38,-416.5 171.5,-416.5 171.5,-399.25 38,-399.25" />
+<text xml:space="preserve" text-anchor="start" x="41" y="-404.5" font-family="Inter" font-size="9.00">id</text>
+<polygon fill="none" stroke="black" points="171.5,-399.25 171.5,-416.5 947.75,-416.5 947.75,-399.25 171.5,-399.25" />
+<text xml:space="preserve" text-anchor="start" x="174.5" y="-404.5" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="947.75,-399.25 947.75,-416.5 978.5,-416.5 978.5,-399.25 947.75,-399.25" />
+<text xml:space="preserve" text-anchor="start" x="950.75" y="-404.5" font-family="Inter" font-size="9.00">PK, AI</text>
+<polygon fill="none" stroke="black" points="38,-382 38,-399.25 171.5,-399.25 171.5,-382 38,-382" />
+<text xml:space="preserve" text-anchor="start" x="41" y="-388.7" font-family="Inter" font-size="9.00">destinatario_id</text>
+<text xml:space="preserve" text-anchor="start" x="103.25" y="-388.7" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → MASCOTA</text>
+<polygon fill="none" stroke="black" points="171.5,-382 171.5,-399.25 947.75,-399.25 947.75,-382 171.5,-382" />
+<text xml:space="preserve" text-anchor="start" x="174.5" y="-387.25" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="947.75,-382 947.75,-399.25 978.5,-399.25 978.5,-382 947.75,-382" />
+<text xml:space="preserve" text-anchor="start" x="950.75" y="-387.25" font-family="Inter" font-size="9.00">FK</text>
+<polygon fill="none" stroke="black" points="38,-364.75 38,-382 171.5,-382 171.5,-364.75 38,-364.75" />
+<text xml:space="preserve" text-anchor="start" x="41" y="-371.45" font-family="Inter" font-size="9.00">actor_id</text>
+<text xml:space="preserve" text-anchor="start" x="75.5" y="-371.45" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → MASCOTA</text>
+<polygon fill="none" stroke="black" points="171.5,-364.75 171.5,-382 947.75,-382 947.75,-364.75 171.5,-364.75" />
+<text xml:space="preserve" text-anchor="start" x="174.5" y="-370" font-family="Inter" font-size="9.00">BIGINT UNSIGNED NULL</text>
+<polygon fill="none" stroke="black" points="947.75,-364.75 947.75,-382 978.5,-382 978.5,-364.75 947.75,-364.75" />
+<text xml:space="preserve" text-anchor="start" x="950.75" y="-370" font-family="Inter" font-size="9.00">FK</text>
+<polygon fill="none" stroke="black" points="38,-347.5 38,-364.75 171.5,-364.75 171.5,-347.5 38,-347.5" />
+<text xml:space="preserve" text-anchor="start" x="41" y="-352.75" font-family="Inter" font-size="9.00">tipo</text>
+<polygon fill="none" stroke="black" points="171.5,-347.5 171.5,-364.75 947.75,-364.75 947.75,-347.5 171.5,-347.5" />
+<text xml:space="preserve" text-anchor="start" x="174.5" y="-352.75" font-family="Inter" font-size="9.00">ENUM( 'SEGUIMIENTO', 'SOLICITUD_SEGUIMIENTO', 'LIKE_PUBLICACION', 'LIKE_COMENTARIO', 'LIKE_HISTORIA', 'COMENTARIO', 'RESPUESTA', 'MENCION', 'REPOST', 'MENSAJE' )</text>
+<polygon fill="none" stroke="black" points="947.75,-347.5 947.75,-364.75 978.5,-364.75 978.5,-347.5 947.75,-347.5" />
+<text xml:space="preserve" text-anchor="start" x="962" y="-352.75" font-family="Inter" font-size="9.00"> </text>
+<polygon fill="none" stroke="black" points="38,-330.25 38,-347.5 171.5,-347.5 171.5,-330.25 38,-330.25" />
+<text xml:space="preserve" text-anchor="start" x="41" y="-336.95" font-family="Inter" font-size="9.00">publicacion_id</text>
+<text xml:space="preserve" text-anchor="start" x="101.75" y="-336.95" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → PUBLICACION</text>
+<polygon fill="none" stroke="black" points="171.5,-330.25 171.5,-347.5 947.75,-347.5 947.75,-330.25 171.5,-330.25" />
+<text xml:space="preserve" text-anchor="start" x="174.5" y="-335.5" font-family="Inter" font-size="9.00">BIGINT UNSIGNED NULL</text>
+<polygon fill="none" stroke="black" points="947.75,-330.25 947.75,-347.5 978.5,-347.5 978.5,-330.25 947.75,-330.25" />
+<text xml:space="preserve" text-anchor="start" x="950.75" y="-335.5" font-family="Inter" font-size="9.00">FK</text>
+<polygon fill="none" stroke="black" points="38,-313 38,-330.25 171.5,-330.25 171.5,-313 38,-313" />
+<text xml:space="preserve" text-anchor="start" x="41" y="-319.7" font-family="Inter" font-size="9.00">comentario_id</text>
+<text xml:space="preserve" text-anchor="start" x="101.75" y="-319.7" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → COMENTARIO</text>
+<polygon fill="none" stroke="black" points="171.5,-313 171.5,-330.25 947.75,-330.25 947.75,-313 171.5,-313" />
+<text xml:space="preserve" text-anchor="start" x="174.5" y="-318.25" font-family="Inter" font-size="9.00">BIGINT UNSIGNED NULL</text>
+<polygon fill="none" stroke="black" points="947.75,-313 947.75,-330.25 978.5,-330.25 978.5,-313 947.75,-313" />
+<text xml:space="preserve" text-anchor="start" x="950.75" y="-318.25" font-family="Inter" font-size="9.00">FK</text>
+<polygon fill="none" stroke="black" points="38,-295.75 38,-313 171.5,-313 171.5,-295.75 38,-295.75" />
+<text xml:space="preserve" text-anchor="start" x="41" y="-302.45" font-family="Inter" font-size="9.00">historia_id</text>
+<text xml:space="preserve" text-anchor="start" x="84.5" y="-302.45" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → HISTORIA</text>
+<polygon fill="none" stroke="black" points="171.5,-295.75 171.5,-313 947.75,-313 947.75,-295.75 171.5,-295.75" />
+<text xml:space="preserve" text-anchor="start" x="174.5" y="-301" font-family="Inter" font-size="9.00">BIGINT UNSIGNED NULL</text>
+<polygon fill="none" stroke="black" points="947.75,-295.75 947.75,-313 978.5,-313 978.5,-295.75 947.75,-295.75" />
+<text xml:space="preserve" text-anchor="start" x="950.75" y="-301" font-family="Inter" font-size="9.00">FK</text>
+<polygon fill="none" stroke="black" points="38,-278.5 38,-295.75 171.5,-295.75 171.5,-278.5 38,-278.5" />
+<text xml:space="preserve" text-anchor="start" x="41" y="-283.75" font-family="Inter" font-size="9.00">leida_en</text>
+<polygon fill="none" stroke="black" points="171.5,-278.5 171.5,-295.75 947.75,-295.75 947.75,-278.5 171.5,-278.5" />
+<text xml:space="preserve" text-anchor="start" x="174.5" y="-283.75" font-family="Inter" font-size="9.00">DATETIME NULL</text>
+<polygon fill="none" stroke="black" points="947.75,-278.5 947.75,-295.75 978.5,-295.75 978.5,-278.5 947.75,-278.5" />
+<text xml:space="preserve" text-anchor="start" x="962" y="-283.75" font-family="Inter" font-size="9.00"> </text>
+<polygon fill="none" stroke="black" points="38,-261.25 38,-278.5 171.5,-278.5 171.5,-261.25 38,-261.25" />
+<text xml:space="preserve" text-anchor="start" x="41" y="-266.5" font-family="Inter" font-size="9.00">creado_en</text>
+<polygon fill="none" stroke="black" points="171.5,-261.25 171.5,-278.5 947.75,-278.5 947.75,-261.25 171.5,-261.25" />
+<text xml:space="preserve" text-anchor="start" x="174.5" y="-266.5" font-family="Inter" font-size="9.00">DATETIME</text>
+<polygon fill="none" stroke="black" points="947.75,-261.25 947.75,-278.5 978.5,-278.5 978.5,-261.25 947.75,-261.25" />
+<text xml:space="preserve" text-anchor="start" x="962" y="-266.5" font-family="Inter" font-size="9.00"> </text>
+</g><rect x="38.0" y="-433.75" width="940.5" height="172.5" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+
+<g id="edge60" class="edge">
+<title>er_CONVERSACION_PARTICIPANTE-&gt;er_MASCOTA</title>
+<path fill="none" stroke="#a3afa8" d="M620.9,-561C430.11,-561 116.51,-561 116.51,-561 116.51,-561 116.51,-1660 116.51,-1660 116.51,-1660 377.13,-1660 377.13,-1660" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="377.13,-1662.45 384.13,-1660 377.13,-1657.55 377.13,-1662.45" />
+</g>
+
+<g id="edge59" class="edge">
+<title>er_CONVERSACION_PARTICIPANTE-&gt;er_CONVERSACION</title>
+<path fill="none" stroke="#a3afa8" d="M620.91,-537C620.91,-537 607.45,-537 607.45,-537" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="607.45,-534.55 600.45,-537 607.45,-539.45 607.45,-534.55" />
+</g>
+
+<g id="node24" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node24)"><title>er_MENSAJE</title>
+<polygon fill="#b4d3c0" stroke="none" points="937.38,-570.25 937.38,-587.5 1205.12,-587.5 1205.12,-570.25 937.38,-570.25" />
+<polygon fill="none" stroke="black" points="937.38,-570.25 937.38,-587.5 1205.12,-587.5 1205.12,-570.25 937.38,-570.25" />
+<text xml:space="preserve" text-anchor="start" x="1049.5" y="-576.95" font-family="Inter" font-weight="bold" font-size="9.00">MENSAJE</text>
+<polygon fill="none" stroke="black" points="937.38,-553 937.38,-570.25 1088.88,-570.25 1088.88,-553 937.38,-553" />
+<text xml:space="preserve" text-anchor="start" x="940.38" y="-558.25" font-family="Inter" font-size="9.00">id</text>
+<polygon fill="none" stroke="black" points="1088.88,-553 1088.88,-570.25 1174.38,-570.25 1174.38,-553 1088.88,-553" />
+<text xml:space="preserve" text-anchor="start" x="1091.88" y="-558.25" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="1174.38,-553 1174.38,-570.25 1205.12,-570.25 1205.12,-553 1174.38,-553" />
+<text xml:space="preserve" text-anchor="start" x="1177.38" y="-558.25" font-family="Inter" font-size="9.00">PK, AI</text>
+<polygon fill="none" stroke="black" points="937.38,-535.75 937.38,-553 1088.88,-553 1088.88,-535.75 937.38,-535.75" />
+<text xml:space="preserve" text-anchor="start" x="940.38" y="-542.45" font-family="Inter" font-size="9.00">conversacion_id</text>
+<text xml:space="preserve" text-anchor="start" x="1010.12" y="-542.45" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → CONVERSACION</text>
+<polygon fill="none" stroke="black" points="1088.88,-535.75 1088.88,-553 1174.38,-553 1174.38,-535.75 1088.88,-535.75" />
+<text xml:space="preserve" text-anchor="start" x="1091.88" y="-541" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="1174.38,-535.75 1174.38,-553 1205.12,-553 1205.12,-535.75 1174.38,-535.75" />
+<text xml:space="preserve" text-anchor="start" x="1177.38" y="-541" font-family="Inter" font-size="9.00">FK</text>
+<polygon fill="none" stroke="black" points="937.38,-518.5 937.38,-535.75 1088.88,-535.75 1088.88,-518.5 937.38,-518.5" />
+<text xml:space="preserve" text-anchor="start" x="940.38" y="-525.2" font-family="Inter" font-size="9.00">remitente_id</text>
+<text xml:space="preserve" text-anchor="start" x="992.88" y="-525.2" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → MASCOTA</text>
+<polygon fill="none" stroke="black" points="1088.88,-518.5 1088.88,-535.75 1174.38,-535.75 1174.38,-518.5 1088.88,-518.5" />
+<text xml:space="preserve" text-anchor="start" x="1091.88" y="-523.75" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="1174.38,-518.5 1174.38,-535.75 1205.12,-535.75 1205.12,-518.5 1174.38,-518.5" />
+<text xml:space="preserve" text-anchor="start" x="1177.38" y="-523.75" font-family="Inter" font-size="9.00">FK</text>
+<polygon fill="none" stroke="black" points="937.38,-501.25 937.38,-518.5 1088.88,-518.5 1088.88,-501.25 937.38,-501.25" />
+<text xml:space="preserve" text-anchor="start" x="940.38" y="-506.5" font-family="Inter" font-size="9.00">texto</text>
+<polygon fill="none" stroke="black" points="1088.88,-501.25 1088.88,-518.5 1174.38,-518.5 1174.38,-501.25 1088.88,-501.25" />
+<text xml:space="preserve" text-anchor="start" x="1091.88" y="-506.5" font-family="Inter" font-size="9.00">TEXT</text>
+<polygon fill="none" stroke="black" points="1174.38,-501.25 1174.38,-518.5 1205.12,-518.5 1205.12,-501.25 1174.38,-501.25" />
+<text xml:space="preserve" text-anchor="start" x="1188.62" y="-506.5" font-family="Inter" font-size="9.00"> </text>
+<polygon fill="none" stroke="black" points="937.38,-484 937.38,-501.25 1088.88,-501.25 1088.88,-484 937.38,-484" />
+<text xml:space="preserve" text-anchor="start" x="940.38" y="-489.25" font-family="Inter" font-size="9.00">creado_en</text>
+<polygon fill="none" stroke="black" points="1088.88,-484 1088.88,-501.25 1174.38,-501.25 1174.38,-484 1088.88,-484" />
+<text xml:space="preserve" text-anchor="start" x="1091.88" y="-489.25" font-family="Inter" font-size="9.00">DATETIME</text>
+<polygon fill="none" stroke="black" points="1174.38,-484 1174.38,-501.25 1205.12,-501.25 1205.12,-484 1174.38,-484" />
+<text xml:space="preserve" text-anchor="start" x="1188.62" y="-489.25" font-family="Inter" font-size="9.00"> </text>
+<polygon fill="none" stroke="black" points="937.38,-466.75 937.38,-484 1088.88,-484 1088.88,-466.75 937.38,-466.75" />
+<text xml:space="preserve" text-anchor="start" x="940.38" y="-472" font-family="Inter" font-size="9.00">eliminado_en</text>
+<polygon fill="none" stroke="black" points="1088.88,-466.75 1088.88,-484 1174.38,-484 1174.38,-466.75 1088.88,-466.75" />
+<text xml:space="preserve" text-anchor="start" x="1091.88" y="-472" font-family="Inter" font-size="9.00">DATETIME NULL</text>
+<polygon fill="none" stroke="black" points="1174.38,-466.75 1174.38,-484 1205.12,-484 1205.12,-466.75 1174.38,-466.75" />
+<text xml:space="preserve" text-anchor="start" x="1188.62" y="-472" font-family="Inter" font-size="9.00"> </text>
+</g><rect x="937.38" y="-587.5" width="267.7399999999999" height="120.75" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+
+<g id="edge62" class="edge">
+<title>er_MENSAJE-&gt;er_MASCOTA</title>
+<path fill="none" stroke="#a3afa8" d="M929.62,-583C670.25,-583 145.35,-583 145.35,-583 145.35,-583 145.35,-1681 145.35,-1681 145.35,-1681 377.13,-1681 377.13,-1681" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="377.13,-1683.45 384.13,-1681 377.13,-1678.55 377.13,-1683.45" />
+</g>
+
+<g id="edge61" class="edge">
+<title>er_MENSAJE-&gt;er_CONVERSACION</title>
+<path fill="none" stroke="#a3afa8" d="M929.54,-574C771.73,-574 538.54,-574 538.54,-574 538.54,-574 538.54,-565.33 538.54,-565.33" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="540.99,-565.33 538.54,-558.33 536.09,-565.33 540.99,-565.33" />
+</g>
+
+<g id="edge69" class="edge">
+<title>er_NOTIFICACION-&gt;er_MASCOTA</title>
+<path fill="none" stroke="#a3afa8" d="M58.84,-437.55C58.84,-743.48 58.84,-1724 58.84,-1724 58.84,-1724 377.23,-1724 377.23,-1724" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="377.23,-1726.45 384.23,-1724 377.23,-1721.55 377.23,-1726.45" />
+</g>
+
+<g id="edge70" class="edge">
+<title>er_NOTIFICACION-&gt;er_MASCOTA</title>
+<path fill="none" stroke="#a3afa8" d="M87.67,-437.49C87.67,-740.23 87.67,-1703 87.67,-1703 87.67,-1703 377.24,-1703 377.24,-1703" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="377.24,-1705.45 384.24,-1703 377.24,-1700.55 377.24,-1705.45" />
+</g>
+
+<g id="edge71" class="edge">
+<title>er_NOTIFICACION-&gt;er_PUBLICACION</title>
+<path fill="none" stroke="#a3afa8" d="M325.5,-437.68C325.5,-678.77 325.5,-1320 325.5,-1320 325.5,-1320 338.67,-1320 338.67,-1320" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="338.67,-1322.45 345.67,-1320 338.67,-1317.55 338.67,-1322.45" />
+</g>
+
+<g id="edge72" class="edge">
+<title>er_NOTIFICACION-&gt;er_COMENTARIO</title>
+<path fill="none" stroke="#a3afa8" d="M355.22,-437.49C355.22,-437.49 355.22,-1033.34 355.22,-1033.34" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="352.77,-1033.34 355.22,-1040.34 357.67,-1033.34 352.77,-1033.34" />
+</g>
+
+<g id="edge73" class="edge">
+<title>er_NOTIFICACION-&gt;er_HISTORIA</title>
+<path fill="none" stroke="#a3afa8" d="M403.12,-437.67C403.12,-437.67 403.12,-608.25 403.12,-608.25" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="400.68,-608.25 403.13,-615.25 405.58,-608.25 400.68,-608.25" />
+</g>
+
+<g id="node26" class="node" filter="url(#sombra)">
+<g clip-path="url(#corte_node26)"><title>er_REPORTE</title>
+<polygon fill="#f4e2cf" stroke="none" points="151.62,-211 151.62,-228.25 864.88,-228.25 864.88,-211 151.62,-211" />
+<polygon fill="none" stroke="black" points="151.62,-211 151.62,-228.25 864.88,-228.25 864.88,-211 151.62,-211" />
+<text xml:space="preserve" text-anchor="start" x="487.62" y="-217.7" font-family="Inter" font-weight="bold" font-size="9.00">REPORTE</text>
+<polygon fill="none" stroke="black" points="151.62,-193.75 151.62,-211 322.62,-211 322.62,-193.75 151.62,-193.75" />
+<text xml:space="preserve" text-anchor="start" x="154.62" y="-199" font-family="Inter" font-size="9.00">id</text>
+<polygon fill="none" stroke="black" points="322.62,-193.75 322.62,-211 834.12,-211 834.12,-193.75 322.62,-193.75" />
+<text xml:space="preserve" text-anchor="start" x="325.62" y="-199" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="834.12,-193.75 834.12,-211 864.88,-211 864.88,-193.75 834.12,-193.75" />
+<text xml:space="preserve" text-anchor="start" x="837.12" y="-199" font-family="Inter" font-size="9.00">PK, AI</text>
+<polygon fill="none" stroke="black" points="151.62,-176.5 151.62,-193.75 322.62,-193.75 322.62,-176.5 151.62,-176.5" />
+<text xml:space="preserve" text-anchor="start" x="154.62" y="-183.2" font-family="Inter" font-size="9.00">reportado_por_mascota_id</text>
+<text xml:space="preserve" text-anchor="start" x="267.88" y="-183.2" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → MASCOTA</text>
+<polygon fill="none" stroke="black" points="322.62,-176.5 322.62,-193.75 834.12,-193.75 834.12,-176.5 322.62,-176.5" />
+<text xml:space="preserve" text-anchor="start" x="325.62" y="-181.75" font-family="Inter" font-size="9.00">BIGINT UNSIGNED</text>
+<polygon fill="none" stroke="black" points="834.12,-176.5 834.12,-193.75 864.88,-193.75 864.88,-176.5 834.12,-176.5" />
+<text xml:space="preserve" text-anchor="start" x="837.12" y="-181.75" font-family="Inter" font-size="9.00">FK</text>
+<polygon fill="none" stroke="black" points="151.62,-159.25 151.62,-176.5 322.62,-176.5 322.62,-159.25 151.62,-159.25" />
+<text xml:space="preserve" text-anchor="start" x="154.62" y="-164.5" font-family="Inter" font-size="9.00">categoria</text>
+<polygon fill="none" stroke="black" points="322.62,-159.25 322.62,-176.5 834.12,-176.5 834.12,-159.25 322.62,-159.25" />
+<text xml:space="preserve" text-anchor="start" x="325.62" y="-164.5" font-family="Inter" font-size="9.00">ENUM( 'SPAM', 'ACOSO', 'CONTENIDO_INAPROPIADO', 'VIOLENCIA', 'SUPLANTACION', 'DERECHOS_AUTOR', 'OTRO' )</text>
+<polygon fill="none" stroke="black" points="834.12,-159.25 834.12,-176.5 864.88,-176.5 864.88,-159.25 834.12,-159.25" />
+<text xml:space="preserve" text-anchor="start" x="848.38" y="-164.5" font-family="Inter" font-size="9.00"> </text>
+<polygon fill="none" stroke="black" points="151.62,-142 151.62,-159.25 322.62,-159.25 322.62,-142 151.62,-142" />
+<text xml:space="preserve" text-anchor="start" x="154.62" y="-148.7" font-family="Inter" font-size="9.00">publicacion_id</text>
+<text xml:space="preserve" text-anchor="start" x="215.38" y="-148.7" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → PUBLICACION</text>
+<polygon fill="none" stroke="black" points="322.62,-142 322.62,-159.25 834.12,-159.25 834.12,-142 322.62,-142" />
+<text xml:space="preserve" text-anchor="start" x="325.62" y="-147.25" font-family="Inter" font-size="9.00">BIGINT UNSIGNED NULL</text>
+<polygon fill="none" stroke="black" points="834.12,-142 834.12,-159.25 864.88,-159.25 864.88,-142 834.12,-142" />
+<text xml:space="preserve" text-anchor="start" x="837.12" y="-147.25" font-family="Inter" font-size="9.00">FK</text>
+<polygon fill="none" stroke="black" points="151.62,-124.75 151.62,-142 322.62,-142 322.62,-124.75 151.62,-124.75" />
+<text xml:space="preserve" text-anchor="start" x="154.62" y="-131.45" font-family="Inter" font-size="9.00">comentario_id</text>
+<text xml:space="preserve" text-anchor="start" x="215.38" y="-131.45" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → COMENTARIO</text>
+<polygon fill="none" stroke="black" points="322.62,-124.75 322.62,-142 834.12,-142 834.12,-124.75 322.62,-124.75" />
+<text xml:space="preserve" text-anchor="start" x="325.62" y="-130" font-family="Inter" font-size="9.00">BIGINT UNSIGNED NULL</text>
+<polygon fill="none" stroke="black" points="834.12,-124.75 834.12,-142 864.88,-142 864.88,-124.75 834.12,-124.75" />
+<text xml:space="preserve" text-anchor="start" x="837.12" y="-130" font-family="Inter" font-size="9.00">FK</text>
+<polygon fill="none" stroke="black" points="151.62,-107.5 151.62,-124.75 322.62,-124.75 322.62,-107.5 151.62,-107.5" />
+<text xml:space="preserve" text-anchor="start" x="154.62" y="-114.2" font-family="Inter" font-size="9.00">historia_id</text>
+<text xml:space="preserve" text-anchor="start" x="198.12" y="-114.2" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → HISTORIA</text>
+<polygon fill="none" stroke="black" points="322.62,-107.5 322.62,-124.75 834.12,-124.75 834.12,-107.5 322.62,-107.5" />
+<text xml:space="preserve" text-anchor="start" x="325.62" y="-112.75" font-family="Inter" font-size="9.00">BIGINT UNSIGNED NULL</text>
+<polygon fill="none" stroke="black" points="834.12,-107.5 834.12,-124.75 864.88,-124.75 864.88,-107.5 834.12,-107.5" />
+<text xml:space="preserve" text-anchor="start" x="837.12" y="-112.75" font-family="Inter" font-size="9.00">FK</text>
+<polygon fill="none" stroke="black" points="151.62,-90.25 151.62,-107.5 322.62,-107.5 322.62,-90.25 151.62,-90.25" />
+<text xml:space="preserve" text-anchor="start" x="154.62" y="-96.95" font-family="Inter" font-size="9.00">mensaje_id</text>
+<text xml:space="preserve" text-anchor="start" x="202.62" y="-96.95" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → MENSAJE</text>
+<polygon fill="none" stroke="black" points="322.62,-90.25 322.62,-107.5 834.12,-107.5 834.12,-90.25 322.62,-90.25" />
+<text xml:space="preserve" text-anchor="start" x="325.62" y="-95.5" font-family="Inter" font-size="9.00">BIGINT UNSIGNED NULL</text>
+<polygon fill="none" stroke="black" points="834.12,-90.25 834.12,-107.5 864.88,-107.5 864.88,-90.25 834.12,-90.25" />
+<text xml:space="preserve" text-anchor="start" x="837.12" y="-95.5" font-family="Inter" font-size="9.00">FK</text>
+<polygon fill="none" stroke="black" points="151.62,-73 151.62,-90.25 322.62,-90.25 322.62,-73 151.62,-73" />
+<text xml:space="preserve" text-anchor="start" x="154.62" y="-79.7" font-family="Inter" font-size="9.00">mascota_id</text>
+<text xml:space="preserve" text-anchor="start" x="203.38" y="-79.7" font-family="Inter" font-size="8.00" fill="#2f5d4a"> → MASCOTA</text>
+<polygon fill="none" stroke="black" points="322.62,-73 322.62,-90.25 834.12,-90.25 834.12,-73 322.62,-73" />
+<text xml:space="preserve" text-anchor="start" x="325.62" y="-78.25" font-family="Inter" font-size="9.00">BIGINT UNSIGNED NULL</text>
+<polygon fill="none" stroke="black" points="834.12,-73 834.12,-90.25 864.88,-90.25 864.88,-73 834.12,-73" />
+<text xml:space="preserve" text-anchor="start" x="837.12" y="-78.25" font-family="Inter" font-size="9.00">FK</text>
+<polygon fill="none" stroke="black" points="151.62,-55.75 151.62,-73 322.62,-73 322.62,-55.75 151.62,-55.75" />
+<text xml:space="preserve" text-anchor="start" x="154.62" y="-61" font-family="Inter" font-size="9.00">detalle</text>
+<polygon fill="none" stroke="black" points="322.62,-55.75 322.62,-73 834.12,-73 834.12,-55.75 322.62,-55.75" />
+<text xml:space="preserve" text-anchor="start" x="325.62" y="-61" font-family="Inter" font-size="9.00">VARCHAR(2000) NULL</text>
+<polygon fill="none" stroke="black" points="834.12,-55.75 834.12,-73 864.88,-73 864.88,-55.75 834.12,-55.75" />
+<text xml:space="preserve" text-anchor="start" x="848.38" y="-61" font-family="Inter" font-size="9.00"> </text>
+<polygon fill="none" stroke="black" points="151.62,-38.5 151.62,-55.75 322.62,-55.75 322.62,-38.5 151.62,-38.5" />
+<text xml:space="preserve" text-anchor="start" x="154.62" y="-43.75" font-family="Inter" font-size="9.00">estado</text>
+<polygon fill="none" stroke="black" points="322.62,-38.5 322.62,-55.75 834.12,-55.75 834.12,-38.5 322.62,-38.5" />
+<text xml:space="preserve" text-anchor="start" x="325.62" y="-43.75" font-family="Inter" font-size="9.00">ENUM( 'PENDIENTE', 'EN_REVISION', 'RESUELTO', 'RECHAZADO' )</text>
+<polygon fill="none" stroke="black" points="834.12,-38.5 834.12,-55.75 864.88,-55.75 864.88,-38.5 834.12,-38.5" />
+<text xml:space="preserve" text-anchor="start" x="848.38" y="-43.75" font-family="Inter" font-size="9.00"> </text>
+<polygon fill="none" stroke="black" points="151.62,-21.25 151.62,-38.5 322.62,-38.5 322.62,-21.25 151.62,-21.25" />
+<text xml:space="preserve" text-anchor="start" x="154.62" y="-26.5" font-family="Inter" font-size="9.00">creado_en</text>
+<polygon fill="none" stroke="black" points="322.62,-21.25 322.62,-38.5 834.12,-38.5 834.12,-21.25 322.62,-21.25" />
+<text xml:space="preserve" text-anchor="start" x="325.62" y="-26.5" font-family="Inter" font-size="9.00">DATETIME</text>
+<polygon fill="none" stroke="black" points="834.12,-21.25 834.12,-38.5 864.88,-38.5 864.88,-21.25 834.12,-21.25" />
+<text xml:space="preserve" text-anchor="start" x="848.38" y="-26.5" font-family="Inter" font-size="9.00"> </text>
+<polygon fill="none" stroke="black" points="151.62,-4 151.62,-21.25 322.62,-21.25 322.62,-4 151.62,-4" />
+<text xml:space="preserve" text-anchor="start" x="154.62" y="-9.25" font-family="Inter" font-size="9.00">resuelto_en</text>
+<polygon fill="none" stroke="black" points="322.62,-4 322.62,-21.25 834.12,-21.25 834.12,-4 322.62,-4" />
+<text xml:space="preserve" text-anchor="start" x="325.62" y="-9.25" font-family="Inter" font-size="9.00">DATETIME NULL</text>
+<polygon fill="none" stroke="black" points="834.12,-4 834.12,-21.25 864.88,-21.25 864.88,-4 834.12,-4" />
+<text xml:space="preserve" text-anchor="start" x="848.38" y="-9.25" font-family="Inter" font-size="9.00"> </text>
+</g><rect x="151.62" y="-228.25" width="713.26" height="224.25" rx="12" ry="12" fill="none" stroke="#D2B69A" stroke-width="2" /></g>
+
+
+<g id="edge63" class="edge">
+<title>er_REPORTE-&gt;er_MASCOTA</title>
+<path fill="none" stroke="#a3afa8" d="M143.91,-77C65.69,-77 6,-77 6,-77 6,-77 6,-1745 6,-1745 6,-1745 377.19,-1745 377.19,-1745" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="377.19,-1747.45 384.19,-1745 377.19,-1742.55 377.19,-1747.45" />
+</g>
+
+<g id="edge68" class="edge">
+<title>er_REPORTE-&gt;er_MASCOTA</title>
+<path fill="none" stroke="#a3afa8" d="M143.95,-39C62.64,-39 0,-39 0,-39 0,-39 0,-1766 0,-1766 0,-1766 377.03,-1766 377.03,-1766" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="377.03,-1768.45 384.03,-1766 377.03,-1763.55 377.03,-1768.45" />
+</g>
+
+<g id="edge64" class="edge">
+<title>er_REPORTE-&gt;er_PUBLICACION</title>
+<path fill="none" stroke="#a3afa8" d="M143.68,-116C68.66,-116 12,-116 12,-116 12,-116 12,-1357 12,-1357 12,-1357 338.62,-1357 338.62,-1357" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="338.62,-1359.45 345.62,-1357 338.62,-1354.55 338.62,-1359.45" />
+</g>
+
+<g id="edge65" class="edge">
+<title>er_REPORTE-&gt;er_COMENTARIO</title>
+<path fill="none" stroke="#a3afa8" d="M143.93,-155C71.89,-155 18,-155 18,-155 18,-155 18,-1132 18,-1132 18,-1132 340.57,-1132 340.57,-1132" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="340.57,-1134.45 347.57,-1132 340.57,-1129.55 340.57,-1134.45" />
+</g>
+
+<g id="edge66" class="edge">
+<title>er_REPORTE-&gt;er_HISTORIA</title>
+<path fill="none" stroke="#a3afa8" d="M143.7,-194C74.9,-194 24,-194 24,-194 24,-194 24,-640 24,-640 24,-640 380.66,-640 380.66,-640" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="380.66,-642.45 387.66,-640 380.66,-637.55 380.66,-642.45" />
+</g>
+
+<g id="edge67" class="edge">
+<title>er_REPORTE-&gt;er_MENSAJE</title>
+<path fill="none" stroke="#a3afa8" d="M872.79,-116C994.53,-116 1099.81,-116 1099.81,-116 1099.81,-116 1099.81,-454.37 1099.81,-454.37" />
+<polygon fill="#a3afa8" stroke="#a3afa8" points="1097.36,-454.37 1099.81,-461.37 1102.26,-454.37 1097.36,-454.37" />
+</g>
+</g>
+<defs><filter id="sombra" x="-15%" y="-15%" width="130%" height="140%"><feDropShadow dx="0" dy="4" stdDeviation="6.0" flood-color="#1F2A24" flood-opacity="0.1" /></filter><clipPath id="corte_node1"><rect x="410.75" y="-1954.0" width="195.0" height="138.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node2"><rect x="393.5" y="-1783.0" width="229.5" height="224.25" rx="12" ry="12" /></clipPath><clipPath id="corte_node3"><rect x="661.12" y="-1696.75" width="170.26" height="51.75" rx="12" ry="12" /></clipPath><clipPath id="corte_node4"><rect x="869.62" y="-1705.38" width="227.2600000000001" height="69.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node6"><rect x="326.38" y="-1525.75" width="363.74" height="103.5" rx="12" ry="12" /></clipPath><clipPath id="corte_node5"><rect x="1135.38" y="-1705.38" width="225.73999999999978" height="69.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node7"><rect x="727.75" y="-1508.5" width="237.0" height="69.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node8"><rect x="354.88" y="-1389.25" width="306.74" height="138.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node10"><rect x="356.75" y="-1218.25" width="303.0" height="172.5" rx="12" ry="12" /></clipPath><clipPath id="corte_node9"><rect x="1218.88" y="-1919.5" width="252.73999999999978" height="69.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node11"><rect x="383.38" y="-1012.75" width="249.74" height="86.25" rx="12" ry="12" /></clipPath><clipPath id="corte_node12"><rect x="671.12" y="-1012.75" width="248.26" height="86.25" rx="12" ry="12" /></clipPath><clipPath id="corte_node14"><rect x="436.25" y="-893.5" width="144.0" height="51.75" rx="12" ry="12" /></clipPath><clipPath id="corte_node13"><rect x="957.88" y="-1012.75" width="222.7399999999999" height="86.25" rx="12" ry="12" /></clipPath><clipPath id="corte_node20"><rect x="396.88" y="-706.75" width="222.74" height="86.25" rx="12" ry="12" /></clipPath><clipPath id="corte_node15"><rect x="617.88" y="-893.5" width="252.74" height="51.75" rx="12" ry="12" /></clipPath><clipPath id="corte_node18"><rect x="382.62" y="-800.12" width="251.26" height="51.74000000000001" rx="12" ry="12" /></clipPath><clipPath id="corte_node16"><rect x="908.62" y="-893.5" width="251.2600000000001" height="51.75" rx="12" ry="12" /></clipPath><clipPath id="corte_node17"><rect x="1197.88" y="-893.5" width="252.73999999999978" height="51.75" rx="12" ry="12" /></clipPath><clipPath id="corte_node19"><rect x="672.38" y="-808.75" width="225.74" height="69.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node22"><rect x="425.38" y="-553.0" width="165.74" height="51.75" rx="12" ry="12" /></clipPath><clipPath id="corte_node21"><rect x="851.38" y="-1919.5" width="225.7399999999999" height="69.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node23"><rect x="628.88" y="-561.62" width="270.74" height="69.0" rx="12" ry="12" /></clipPath><clipPath id="corte_node25"><rect x="38.0" y="-433.75" width="940.5" height="172.5" rx="12" ry="12" /></clipPath><clipPath id="corte_node24"><rect x="937.38" y="-587.5" width="267.7399999999999" height="120.75" rx="12" ry="12" /></clipPath><clipPath id="corte_node26"><rect x="151.62" y="-228.25" width="713.26" height="224.25" rx="12" ry="12" /></clipPath></defs></svg>

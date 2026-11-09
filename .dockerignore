@@ -1,0 +1,15 @@
+# Contexto de build de las imágenes que se construyen desde la raíz del repo
+# (context: . en docker-compose.yml):
+#   · backend        → backend/ y logs/
+#   · dbgate         → tools/ y devops/docker/
+# Se excluye lo que ninguna de las dos necesita, sobre todo oodb/ (con su target).
+.git
+.gitignore
+.env
+**/__pycache__
+**/*.pyc
+oodb
+ui-ux
+docs
+frontend
+database

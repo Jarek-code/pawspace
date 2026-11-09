@@ -5,3 +5,10 @@ pymysql==1.1.1
 python-dotenv==1.0.1
 pydantic-settings==2.6.1
 alembic==1.14.0
+pydantic[email]==2.9.2
+passlib[bcrypt]==1.7.4
+argon2-cffi==23.1.0
+PyJWT==2.15.1
+httpx==0.28.1
+python-multipart==0.0.20
+pymongo>=4.9

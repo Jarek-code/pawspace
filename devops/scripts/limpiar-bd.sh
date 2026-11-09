@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
-# Borra el cluster de la base de datos distribuida: contenedores, red y
-# volumenes. No toca database/schema.sql ni la imagen del nodo spider.
+# Borra TODO el estado en contenedores de PawSpace: los cinco nodos de MariaDB,
+# MongoDB (logs), la OODB (adjuntos) y sus volumenes, mas la red.
+# No toca el codigo ni el SQL de database/ ni las imagenes.
 set -uo pipefail
 
 RAIZ="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 cd "$RAIZ"
 
 echo "### bajando contenedores, red y volumenes"
+echo "    (se pierden la base distribuida, los logs de MongoDB y los adjuntos de la OODB)"
 docker compose down -v --remove-orphans
 
 echo
@@ -16,5 +18,6 @@ docker volume ls --format '{{.Name}}' | grep '^pawspace_' | sed 's/^/  volumen: 
 docker network ls --format '{{.Name}}' | grep -E '^pawspace' | sed 's/^/  red: /' || true
 
 echo
-echo "### la imagen del nodo spider se conserva"
-echo "  para borrarla tambien:  docker rmi pawspace-mariadb-spider:11.4"
+echo "### las imagenes se conservan"
+echo "  para borrarlas tambien:"
+echo "    docker rmi pawspace-mariadb-spider:11.4 pawspace-backend:latest pawspace-oodb:0.1.0"

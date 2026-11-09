@@ -1,22 +1,27 @@
 # PawSpace
 
-Red social para mascotas. Proyecto en construcción: **la capa de datos está terminada y la
-aplicación no**.
+Red social para mascotas. El actor es la mascota: es quien publica, comenta y recibe avisos. La
+persona administra la cuenta.
 
-En PawSpace **el actor es la mascota**, no la persona: quien publica, comenta, reacciona y
-recibe avisos es la mascota; la persona administra la cuenta. Esa decisión es la que gobierna
-todo el diseño de la base de datos.
+La plataforma guarda su información en dos fuentes que funcionan por separado. MariaDB conserva las
+cuentas y la operación, distribuidas en cinco nodos. MongoDB conserva el registro de accesos y
+sesiones. La base de objetos para los adjuntos está construida, pero los módulos que la usarán
+todavía no existen.
 
-## Stack
+## Contenido del repositorio
 
-| Capa | Tecnología |
+| Carpeta | Qué hay |
 |---|---|
-| Backend | Python 3.11 + FastAPI + SQLAlchemy |
-| Base de datos | MariaDB 11.4, **distribuida en 5 nodos**: fragmentación horizontal y vertical con Spider + replicación asíncrona |
-| Frontend | HTML, CSS y JavaScript, sin framework por ahora |
-| Infraestructura | Docker Compose + nginx |
+| `backend/` | API en FastAPI: registro, inicio de sesión, consulta de actividad y cambio de estado |
+| `frontend/` | Pantalla de acceso en HTML, CSS y JavaScript |
+| `database/` | Esquema relacional, configuración de los nodos, SQL de la distribución y colecciones de MongoDB |
+| `logs/` | Paquete `pawspace-logs`, cliente del registro de accesos |
+| `oodb/` | Base de datos de objetos para los adjuntos |
+| `tools/` | Plugin de DBGate para revisar la base de objetos |
+| `devops/` | Imágenes de Docker y scripts de construcción |
+| `docs/` | Guías de uso, API, requisitos y contrato del registro |
 
-## Arranque rápido
+## Arranque
 
 ```bash
 cp .env.example .env
@@ -24,57 +29,50 @@ docker compose up -d
 ./devops/scripts/construir-bd.sh
 ```
 
-El último comando construye la base distribuida, arranca la replicación y **después** levanta la
-aplicación.
+El primer comando levanta los contenedores. El segundo construye la base distribuida y deja la
+aplicación en marcha. Los detalles están en [`docs/instalacion.md`](docs/instalacion.md).
 
-| Servicio | URL |
+| Servicio | Dirección |
 |---|---|
 | API | http://localhost:8000 |
 | Documentación de la API | http://localhost:8000/docs |
-| Frontend | http://localhost:3000 |
-| Adminer (gestor de base de datos) | http://localhost:8081 |
+| Interfaz web | http://localhost:3000 |
+| Adminer | http://localhost:8081 |
+| DBGate | http://localhost:8082 |
+| MongoDB | `127.0.0.1:27017` |
+| Base de objetos | `127.0.0.1:8787` |
 
-## La base de datos
+## Las dos fuentes
 
-La base de datos se distribuye en cinco servidores:
+<details>
+<summary>MariaDB: cinco nodos y una sola conexión para la aplicación</summary>
 
-```
-                        aplicación
-                            |
-                            v
-                  spider  172.30.0.10   (acceso, sin datos)
-                            |
-              +-------------+-------------+
-              v                           v
-       dn_a  172.30.0.11            dn_b  172.30.0.12
-       fragmento PAR                 fragmento IMPAR
-       maestro de lo replicado       réplica parcial de dn_a
-              |                           |
-              v                           v
-       rep_a 172.30.0.13            rep_b 172.30.0.14
-       respaldo total                respaldo total
-```
+La aplicación entra por un nodo de acceso que reparte las escrituras y reconstruye las lecturas. Las
+tablas de actividad se fragmentan por la paridad del dueño y tres cortes verticales mueven columnas a
+tablas satélite. Los respaldos reciben la replicación.
+</details>
 
-- **Fragmentación horizontal**: 5 tablas de actividad, repartidas por la paridad del dueño
-  (la mascota). Pares a `dn_a`, impares a `dn_b`.
-- **Fragmentación vertical**: 3 cortes por columnas, a tablas satélite con su vista.
-- **Replicación parcial** `dn_a → dn_b` (solo las tablas no fragmentadas) y **total** a los dos
-  respaldos.
+<details>
+<summary>MongoDB: eventos, sesiones y catálogo de acciones, sin datos de negocio</summary>
 
-La aplicación se conecta a un solo nodo y no sabe nada de la distribución.
+Cada acceso correcto abre un documento de sesión y escribe un evento. Cada intento rechazado escribe
+un evento con el motivo y un hash del identificador, sin guardar el correo. Los documentos caducan por
+índice de retención.
+</details>
 
-## Estructura
+## Adjuntos
 
-```
-pawspace/
-├── backend/      API REST (FastAPI)
-├── frontend/     Interfaz web
-├── database/     Esquema, configuración de los nodos y SQL de la distribución
-│   ├── schema.sql        Esquema lógico (29 tablas). Fuente de verdad
-│   ├── conf/             server-id, binlog y filtros de cada nodo
-│   └── distribuida/      Fragmentos, Spider, replicación y validaciones
-├── devops/       Docker y scripts de construcción
-├── docs/         Notas operativas y el diagrama entidad-relación
-└── ui-ux/        Diseño, wireframes y mockups
-```
+La base de objetos guarda imágenes y vídeos anclados a la fila que los originó, por pareja de tabla e
+identificador. Está en `oodb/` y se consulta por HTTP en el puerto 8787. Para revisarla desde una
+interfaz está el plugin de DBGate en `tools/dbgate-plugin-oodb`.
 
+## Documentación
+
+| Archivo | Contenido |
+|---|---|
+| [`docs/instalacion.md`](docs/instalacion.md) | Puesta en marcha paso a paso |
+| [`docs/requisitos.md`](docs/requisitos.md) | Software, recursos y puertos |
+| [`docs/api.md`](docs/api.md) | Rutas de la API y respuestas |
+| [`docs/dbgate.md`](docs/dbgate.md) | Gestor de bases de datos del entorno |
+| [`docs/mongo/contrato.md`](docs/mongo/contrato.md) | Colecciones, campos y garantías del registro |
+| [`docs/esquema/README.md`](docs/esquema/README.md) | Diagramas del esquema |

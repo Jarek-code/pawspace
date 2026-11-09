@@ -1,0 +1,136 @@
+En esta seccion documentare para que mi yo del futuro no tenga problemas en hacer todo este chow.
+Recordando que todo esto se debe hacer en la carpeta donde se ubica el programa.
+Lo primero que se debe hacer es iniciar un entorno virtual en python con el comando en terminal.
+
+#python -m venv (nombre del entorno)
+
+El siguiente paso es activar el entorno virtual con el comando.
+
+#source (nombre del entorno)/bin/activate.fish
+
+Despues de que el entorno este creado y activado ya se pueden descargar las paquerias necesarias
+con los siguientes comandos en terminal.
+
+#pip install fastapi uvicorn sqlalchemy
+
+El comando anterior se define de la siguiente manera. FastAPI es un FrameWork el cual facilita la creacion de 
+API's (Interfaz de programacion de aplicaciones),
+uvicorn nos permite crear servidores locales para poder probar el programa,
+sqlalchemy es un ORM (Mapeo Relacional de Objetos) que transforma las secuencias SQL (Como SELECT*FROM USUARIOS;)
+en codigo python
+
+se utilizaron varios procesos al momento de creear las tablas que van en el contenedor
+primero vamos con definiciones de docker pero como son para mi voy a hacer rapido
+primero utilizo el comando 
+
+#docker compose up -d
+
+este comando lo que hace es crea los contenedores espesificados en el docker-compose.yml con todas sus espesicaciones 
+para confirmar que se crearon de forma correcta su utiliza el comando:
+
+#docker compose ps 
+
+este comando revisa que todos los contenedores esten corriendo de forma correcta ahora cuendo terminemos de
+utilizar los contenedores el siguiente comado los apaga todos para que ya no consuman recursos
+
+#docker compose  down
+
+ahora con los contenedores creados tenemos que creear las tablas para la base de datos y poder empezar a 
+tabajar en ellas primero nos vamos a enfocar en el contenedor de "pawspace-adminer" por que este nos permite
+creear las bases de datos y sus tablas apara poder utilizarlo primero nos tenemos que enfocar en cual es el
+puerto asignado de este contenedor en este caso es el : 127.0.0.1 : 8081 esto nos permite acceder a una 
+pagina que se ejecuta de forma local al momento de acceder a la pagina te va a pedir el servidor 
+que en este caso es "spider" un usuario que es "root" la contrasena "rootpass" y el nombre de la base de datos
+que es "pawspace" al momento de hacer login ya se pueden descargar todos los recursos necesarias
+estando en la carpeta principal de pawspace (en terminal) se utiliza el comando
+
+#bash .devops/scripts/construir-bd.sh
+
+y las tablas estaran creadas 
+
+RED_SOCIAL_API/
+│
+├── docker-compose.yml        # Configuración de tus contenedores (API + MariaDB)
+├── .env                      # Variables secretas (contraseñas de BD, clave JWT)
+├── requirements.txt          # Dependencias (fastapi, uvicorn, pymysql, sqlalchemy)
+├── .gitignore                # Ignora carpetas como el entorno virtual (venv) y el .env
+│
+└── src/                      # Código fuente de tu aplicación
+    │
+    ├── main.py               # Punto de inicio. Levanta Uvicorn y registra las rutas
+    │
+    ├── config/
+    │   ├── database.py       # Tu conexión a MariaDB (aquí va tu cnt_database)
+    │   └── settings.py       # Carga las variables del .env de forma segura
+    │
+    ├── middleware/
+    │   ├── auth_jwt.py       # Bloquea peticiones si el usuario no tiene sesión iniciada
+    │   └── rate_limit.py     # Evita que un bot haga spam de "Me gusta" (limita peticiones)
+    │
+    ├── models/
+    │   ├── db_models.py      # Estructura de tablas MariaDB: Usuario, Publicacion, Comentario
+    │   └── schemas.py        # Validaciones Pydantic: Exige que un post no supere 280 caracteres
+    │
+    ├── routes/
+    │   ├── auth_routes.py    # Endpoints: POST /login, POST /registro
+    │   ├── users_routes.py   # Endpoints: GET /usuarios/{id}, PUT /usuarios/perfil
+    │   └── posts_routes.py   # Endpoints: POST /publicaciones, GET /feed
+    │
+    ├── controllers/
+    │   ├── auth_ctrl.py      # Recibe credenciales, se las pasa al servicio y devuelve el Token
+    │   ├── users_ctrl.py     # Recibe peticiones para seguir a un usuario o editar perfil
+    │   └── posts_ctrl.py     # Recibe el JSON de un nuevo post y decide qué responder (200 o 400)
+    │
+    ├── services/
+    │   ├── auth_srv.py       # Lógica: Compara contraseñas encriptadas y genera el token de sesión
+    │   ├── users_srv.py      # Lógica: Ejecuta el "INSERT INTO" o "SELECT" del usuario en MariaDB
+    │   └── posts_srv.py      # Lógica: Guarda el post y actualiza el muro de los seguidores
+    │
+    └── uploads/
+        └── .gitkeep          # Carpeta vacía forzada en Git para guardar fotos subidas en el futuro
+
+
+
+
+RED_SOCIAL_API/
+│
+├── docker-compose.yml        # Configuración de tus contenedores (API + MariaDB)
+├── .env                      # Variables secretas
+├── requirements.txt          # AHORA INCLUYE: fastapi, uvicorn, pymysql, passlib, bcrypt
+├── .gitignore                
+│
+└── src/
+    ├── main.py               
+    │
+    ├── config/
+    │   ├── database.py       
+    │   └── settings.py       
+    │
+    ├── utils/                # NUEVA CARPETA: Herramientas globales e independientes
+    │   └── security.py       # NUEVO ARCHIVO: Configuración de CryptContext (Bcrypt)
+    │
+    ├── middleware/
+    │   ├── auth_jwt.py       
+    │   └── rate_limit.py     
+    │
+    ├── models/
+    │   ├── db_models.py      
+    │   └── schemas.py        
+    │
+    ├── routes/
+    │   ├── auth_routes.py    
+    │   ├── users_routes.py   
+    │   └── posts_routes.py   
+    │
+    ├── controllers/
+    │   ├── auth_ctrl.py      
+    │   ├── users_ctrl.py     
+    │   └── posts_ctrl.py     
+    │
+    ├── services/
+    │   ├── auth_srv.py       # AHORA: Importa las funciones de utils/security.py
+    │   ├── users_srv.py      
+    │   └── posts_srv.py      
+    │
+    └── uploads/
+        └── .gitkeep

@@ -191,29 +191,6 @@ CREATE TABLE PUBLICACION (
         (eliminado_en)
 ) ENGINE=InnoDB;;
 
-CREATE TABLE PUBLICACION_ADJUNTO (
-    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    publicacion_id BIGINT UNSIGNED NOT NULL,
-    tipo ENUM(
-        'IMAGEN',
-        'VIDEO'
-    ) NOT NULL,
-    posicion SMALLINT UNSIGNED NOT NULL,
-    archivo_url VARCHAR(2048) NOT NULL,
-    duracion_seg INT UNSIGNED NULL,
-    CONSTRAINT pk_publicacion_adjunto
-        PRIMARY KEY (id),
-    CONSTRAINT fk_pa_publicacion
-        FOREIGN KEY (publicacion_id)
-        REFERENCES PUBLICACION(id)
-        ON UPDATE CASCADE
-        ON DELETE CASCADE,
-    CONSTRAINT uq_pa_posicion
-        UNIQUE (publicacion_id, posicion),
-    INDEX idx_pa_publicacion
-        (publicacion_id)
-) ENGINE=InnoDB;;
-
 CREATE TABLE COMENTARIO (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
     publicacion_id BIGINT UNSIGNED NOT NULL,
@@ -250,24 +227,6 @@ CREATE TABLE COMENTARIO (
         (comentario_padre_id),
     INDEX idx_comentario_eliminado
         (eliminado_en)
-) ENGINE=InnoDB;;
-
-CREATE TABLE COMENTARIO_IMAGEN (
-    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    comentario_id BIGINT UNSIGNED NOT NULL,
-    posicion SMALLINT UNSIGNED NOT NULL,
-    archivo_url VARCHAR(2048) NOT NULL,
-    CONSTRAINT pk_comentario_imagen
-        PRIMARY KEY (id),
-    CONSTRAINT fk_ci_comentario
-        FOREIGN KEY (comentario_id)
-        REFERENCES COMENTARIO(id)
-        ON UPDATE CASCADE
-        ON DELETE CASCADE,
-    CONSTRAINT uq_ci_posicion
-        UNIQUE (comentario_id, posicion),
-    INDEX idx_ci_comentario
-        (comentario_id)
 ) ENGINE=InnoDB;;
 
 CREATE TABLE HASHTAG (
@@ -411,29 +370,6 @@ CREATE TABLE HISTORIA (
         (mascota_id, creado_en),
     INDEX idx_historia_vence
         (vence_en)
-) ENGINE=InnoDB;;
-
-CREATE TABLE HISTORIA_ADJUNTO (
-    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    historia_id BIGINT UNSIGNED NOT NULL,
-    tipo ENUM(
-        'IMAGEN',
-        'VIDEO'
-    ) NOT NULL,
-    posicion SMALLINT UNSIGNED NOT NULL,
-    archivo_url VARCHAR(2048) NOT NULL,
-    duracion_seg INT UNSIGNED NULL,
-    CONSTRAINT pk_historia_adjunto
-        PRIMARY KEY (id),
-    CONSTRAINT fk_ha_historia
-        FOREIGN KEY (historia_id)
-        REFERENCES HISTORIA(id)
-        ON UPDATE CASCADE
-        ON DELETE CASCADE,
-    CONSTRAINT uq_ha_posicion
-        UNIQUE (historia_id, posicion),
-    INDEX idx_ha_historia
-        (historia_id)
 ) ENGINE=InnoDB;;
 
 CREATE TABLE CONVERSACION (

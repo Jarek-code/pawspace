@@ -2,7 +2,7 @@
 
 CREATE USER IF NOT EXISTS 'pawuser'@'%' IDENTIFIED BY 'pawpass';
 
-GRANT SELECT, INSERT, UPDATE, DELETE ON pawspace.* TO 'pawuser'@'%';
+GRANT SELECT, INSERT, UPDATE, DELETE, EXECUTE ON pawspace.* TO 'pawuser'@'%';
 
 FLUSH PRIVILEGES;
 
