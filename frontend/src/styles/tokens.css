@@ -1,0 +1,116 @@
+/*
+ * Tokens de PawSpace para el frontend sin framework.
+ * Los valores replican ui-ux/design-system/02-color.md y 04-layout.md.
+ * No se inventan colores, espacios ni radios fuera de esta escala.
+ */
+
+:root {
+  /* Coral - accion y acento */
+  --coral-50: #FFF1EF;
+  --coral-100: #FFE2DE;
+  --coral-200: #FFC7C0;
+  --coral-300: #FFA79D;
+  --coral-400: #F9867A;
+  --coral-500: #F26B5E;
+  --coral-600: #D9564A;
+  --coral-700: #C94C41;
+  --coral-800: #A63A32;
+  --coral-900: #7E2B25;
+
+  /* Verde bosque - confianza y secundario */
+  --forest-50: #EEF5F0;
+  --forest-100: #D8E9DE;
+  --forest-200: #B4D3C0;
+  --forest-300: #86B59D;
+  --forest-400: #5D9479;
+  --forest-500: #41785F;
+  --forest-600: #2F5D4A;
+  --forest-700: #244A3B;
+  --forest-800: #1B3A2E;
+  --forest-900: #132A21;
+
+  /* Crema - fondos calidos */
+  --cream-50: #FFF8F0;
+  --cream-100: #FBEFE2;
+  --cream-200: #F4E2CF;
+  --cream-300: #E8D0B8;
+  --cream-400: #D2B69A;
+  --cream-500: #B3967A;
+  --cream-600: #8C725A;
+  --cream-700: #6B5745;
+  --cream-800: #4A3D32;
+  --cream-900: #2E2721;
+
+  /* Tinta - texto y neutros */
+  --ink-50: #F7FAF8;
+  --ink-100: #F0F4F1;
+  --ink-200: #E3E9E5;
+  --ink-300: #C9D2CC;
+  --ink-400: #A3AFA8;
+  --ink-500: #7A8880;
+  --ink-600: #5C6B62;
+  --ink-700: #3E4C44;
+  --ink-800: #2B3831;
+  --ink-900: #1F2A24;
+
+  /* Acentos y estados */
+  --sun-400: #F2B24C;
+  --success-600: #2E7D5B;
+  --warning-600: #B7791F;
+  --warning-50: #FDF5E6;
+  --danger-600: #B42318;
+  --danger-50: #FDECEA;
+
+  /* Semanticos del tema claro */
+  --bg: var(--cream-50);
+  --surface: #FFFFFF;
+  --border: var(--cream-300);
+  --border-interactive: var(--cream-600);
+  --text: var(--ink-900);
+  --text-muted: var(--ink-600);
+  --primary: var(--coral-700);
+  --primary-hover: var(--coral-800);
+  --primary-active: var(--coral-900);
+  --on-primary: #FFFFFF;
+  --secondary: var(--forest-600);
+  --secondary-hover: var(--forest-700);
+  --accent: var(--sun-400);
+  --focus: var(--forest-600);
+  --danger: var(--danger-600);
+
+  /* Tipografia */
+  --font-display: "Outfit", system-ui, -apple-system, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+
+  /* Espaciado base de 4 px */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* Radios */
+  --radius-xs: 6px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 999px;
+
+  /* Sombras */
+  --shadow-sm: 0 1px 2px rgba(31, 42, 36, 0.08);
+  --shadow-md: 0 4px 12px rgba(31, 42, 36, 0.10);
+  --shadow-lg: 0 12px 32px rgba(31, 42, 36, 0.14);
+
+  /* Movimiento */
+  --motion-fast: 120ms;
+  --motion-base: 200ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+}

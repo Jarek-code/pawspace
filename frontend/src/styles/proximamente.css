@@ -1,0 +1,71 @@
+/*
+ * Pantalla posterior al login.
+ * Fondo blanco, logo monocromo centrado y el texto Proximamente.
+ */
+
+@import url("./tokens.css");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: #FFFFFF;
+  color: var(--text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.proximamente {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 32px;
+}
+
+.proximamente__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.proximamente__logo {
+  display: block;
+  width: clamp(190px, 22vw, 260px);
+  height: auto;
+}
+
+.proximamente__title {
+  margin: 32px 0 0;
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+@media (max-width: 640px) {
+  .proximamente {
+    padding: 24px;
+  }
+
+  .proximamente__logo {
+    width: 180px;
+  }
+
+  .proximamente__title {
+    margin-top: 24px;
+    font-size: 32px;
+  }
+}

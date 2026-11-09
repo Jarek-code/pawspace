@@ -150,13 +150,14 @@ services:
     image: nginx:alpine
     container_name: pawspace-frontend
     restart: unless-stopped
+    extra_hosts:
+      # Permite que nginx alcance el backend que corre en el host durante la prueba.
+      - "host.docker.internal:host-gateway"
     volumes:
       - ./frontend/src:/usr/share/nginx/html:ro
       - ./frontend/nginx.conf:/etc/nginx/conf.d/default.conf:ro
     ports:
       - "3000:80"
-    depends_on:
-      - backend
     networks:
       - pawspace-net
 

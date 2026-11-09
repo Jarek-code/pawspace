@@ -1,14 +1,170 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PawSpace</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Entra a PawSpace y administra el espacio de tus mascotas.">
+  <title>Entrar a PawSpace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Outfit:wght@700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/login.css">
 </head>
 <body>
-    <h1>Bienvenido a PawSpace</h1>
-    <p>Frontend en construcción...</p>
-    <script src="app.js"></script>
+  <main class="auth-page">
+    <!-- Panel de marca de escritorio. Se oculta por debajo de 1024 px. -->
+    <section class="brand-panel" aria-label="Presentación de PawSpace">
+      <div class="brand-header">
+        <img class="brand-header__logo" src="/assets/pawspace-logo-light.svg" alt="" width="36" height="48">
+        <p class="brand-header__name">PawSpace</p>
+      </div>
+
+      <div class="brand-illustration">
+        <img src="/assets/logo-gata-astronauta.svg" alt="Gato astronauta de PawSpace">
+      </div>
+
+      <p class="brand-headline">Un espacio hecho<br>para tu mascota.</p>
+
+      <ul class="brand-benefits">
+        <li class="brand-benefit">
+          <span class="brand-benefit__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 6 9 17l-5-5"></path>
+            </svg>
+          </span>
+          <span>Perfil propio para cada mascota</span>
+        </li>
+        <li class="brand-benefit">
+          <span class="brand-benefit__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 6 9 17l-5-5"></path>
+            </svg>
+          </span>
+          <span>Historias, publicaciones y mensajes</span>
+        </li>
+        <li class="brand-benefit">
+          <span class="brand-benefit__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 6 9 17l-5-5"></path>
+            </svg>
+          </span>
+          <span>Privacidad bajo tu control</span>
+        </li>
+      </ul>
+
+      <p class="brand-legal">© 2026 PawSpace · Términos de uso · Aviso de privacidad</p>
+    </section>
+
+    <!-- Formulario de acceso. -->
+    <section class="form-panel" aria-label="Iniciar sesión">
+      <div class="mobile-brand">
+        <img class="mobile-brand__logo" src="/assets/pawspace-logo-light.svg" alt="" width="29" height="38">
+        <p class="mobile-brand__name">PawSpace</p>
+      </div>
+
+      <div class="auth-card">
+        <header class="auth-card__header">
+          <h1 class="auth-card__title">Entra a PawSpace</h1>
+          <p class="auth-card__subtitle">Administra el espacio de tus mascotas.</p>
+        </header>
+
+        <!-- Error general de autenticacion. Se muestra desde login.js. -->
+        <div class="auth-alert" id="auth-alert" role="alert" aria-live="assertive" hidden>
+          <svg class="auth-alert__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 8v4"></path>
+            <path d="M12 16h.01"></path>
+          </svg>
+          <div>
+            <p class="auth-alert__title" id="auth-alert-title"></p>
+            <p class="auth-alert__body" id="auth-alert-body"></p>
+          </div>
+        </div>
+
+        <form id="login-form" novalidate>
+          <div class="field" id="email-field">
+            <label class="field__label" for="email">Correo electrónico</label>
+            <div class="field__control">
+              <span class="field__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                </svg>
+              </span>
+              <input
+                class="field__input"
+                id="email"
+                name="email"
+                type="email"
+                inputmode="email"
+                autocomplete="username"
+                maxlength="320"
+                placeholder="nombre@correo.com"
+                aria-describedby="email-message auth-alert"
+                required
+              >
+            </div>
+            <p class="field__message" id="email-message" role="alert"></p>
+          </div>
+
+          <div class="field field--password" id="password-field">
+            <label class="field__label" for="password">Contraseña</label>
+            <div class="field__control">
+              <span class="field__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="11" width="18" height="11" rx="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </span>
+              <input
+                class="field__input"
+                id="password"
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                maxlength="255"
+                placeholder="••••••••"
+                aria-describedby="password-message password-warning auth-alert"
+                required
+              >
+              <button
+                class="field__toggle"
+                id="password-toggle"
+                type="button"
+                aria-pressed="false"
+                aria-label="Mostrar contraseña"
+              >Mostrar</button>
+            </div>
+            <p class="field__message" id="password-message" role="alert"></p>
+            <!-- Aviso de Bloq Mayus. Se muestra desde login.js. -->
+            <p class="field__warning" id="password-warning" role="status" aria-live="polite" hidden>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+                <path d="M12 9v4"></path>
+                <path d="M12 17h.01"></path>
+              </svg>
+              <span>El bloqueo de mayúsculas está activado.</span>
+            </p>
+          </div>
+
+          <label class="remember" for="remember">
+            <input type="checkbox" id="remember" name="remember" checked>
+            <span>Mantener sesión iniciada</span>
+          </label>
+
+          <button class="auth-submit" id="login-submit" type="submit">
+            <span class="auth-submit__spinner" aria-hidden="true"></span>
+            <span class="auth-submit__label" id="login-submit-label">Entrar</span>
+          </button>
+        </form>
+
+        <noscript>
+          <p class="field__message">Activa JavaScript para iniciar sesión.</p>
+        </noscript>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="/pages/login.js"></script>
 </body>
 </html>
