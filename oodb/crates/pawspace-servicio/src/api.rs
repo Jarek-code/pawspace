@@ -82,7 +82,9 @@ pub fn router(estado: Estado) -> Router {
             post(adjuntar).patch(reordenar),
         )
         .route("/adjuntos/{oid}", delete(quitar_adjunto))
+        .route("/clases", get(clases))
         .route("/clases/{clase}", get(por_clase))
+        .route("/objetos/{oid}", get(objeto_por_oid))
         .route("/archivos", post(subir))
         .route("/archivos/{nombre}", get(servir))
         .route("/revisar", post(revisar))
@@ -299,6 +301,81 @@ async fn servir(
     Ok(([(axum::http::header::CONTENT_TYPE, tipo)], bytes).into_response())
 }
 
+/// Texto del objeto, si su clase lo tiene.
+fn texto_de(objeto: &dyn oodb::Objeto) -> Option<String> {
+    objeto
+        .as_any()
+        .downcast_ref::<Publicacion>()
+        .and_then(|publicacion| publicacion.texto().map(str::to_string))
+        .or_else(|| {
+            objeto
+                .as_any()
+                .downcast_ref::<Comentario>()
+                .map(|comentario| comentario.texto().to_string())
+        })
+}
+
+/// Ficha de un objeto para un cliente genérico: lo mismo que `vista` más los
+/// campos propios de su clase, y sin exigir que sea un contenido.
+fn ficha(db: &Db, oid: Oid) -> Resultado<Value> {
+    let objeto = db.objeto(oid)?;
+    let mut campos = serde_json::Map::new();
+    if let Some(texto) = texto_de(objeto) {
+        campos.insert("texto".into(), json!(texto));
+    }
+    if let Some(adjunto) = como_adjunto(objeto) {
+        campos.insert("tipo".into(), json!(adjunto.tipo().nombre()));
+        campos.insert("url".into(), json!(adjunto.url()));
+        campos.insert("posicion".into(), json!(adjunto.posicion()));
+        campos.insert("duracion_seg".into(), json!(adjunto.duracion()));
+    }
+
+    let mut ficha = if como_contenido(objeto).is_some() {
+        vista(db, oid)?
+    } else {
+        json!({
+            "oid": oid.valor(),
+            "clase": objeto.clase(),
+            "ancla": Value::Null,
+            "tabla": Value::Null,
+            "registro_id": Value::Null,
+            "texto": Value::Null,
+            "adjuntos": [],
+        })
+    };
+    if let Some(mapa) = ficha.as_object_mut() {
+        mapa.insert("campos".to_string(), Value::Object(campos));
+    }
+    Ok(ficha)
+}
+
+/// Clases del almacén y cuántos objetos tiene cada una.
+async fn clases(State(estado): State<Estado>) -> Result<Json<Value>, Fallo> {
+    let lista = con_db(&estado, |db| {
+        Ok(db
+            .conteo_clases()
+            .into_iter()
+            .map(|(clase, objetos)| json!({ "clase": clase, "objetos": objetos }))
+            .collect::<Vec<_>>())
+    })
+    .await
+    .map_err(Fallo)?;
+    Ok(Json(json!({ "clases": lista })))
+}
+
+/// Un objeto suelto, por su oid, con sus campos. Es la vista que consume el
+/// plugin de DBGate para enseñar la ficha de cada fila.
+async fn objeto_por_oid(
+    State(estado): State<Estado>,
+    Path(oid): Path<String>,
+) -> Result<Json<Value>, Fallo> {
+    let oid = oid_de(&oid).map_err(Fallo)?;
+    let detalle = con_db(&estado, move |db| ficha(db, oid))
+        .await
+        .map_err(Fallo)?;
+    Ok(Json(detalle))
+}
+
 async fn por_clase(
     State(estado): State<Estado>,
     Path(clase): Path<String>,
@@ -312,10 +389,14 @@ async fn por_clase(
                 Some(contenido) => (contenido.ancla().clave(), contenido.adjuntos().len()),
                 None => (String::new(), 0),
             };
+            // El texto viaja con la fila: así un cliente genérico (DBGate) pinta
+            // la tabla completa de una sola petición.
+            let texto = texto_de(objeto);
             filas.push(json!({
                 "oid": oid.valor(),
                 "clase": objeto.clase(),
                 "ancla": ancla,
+                "texto": texto,
                 "adjuntos": adjuntos,
             }));
         }

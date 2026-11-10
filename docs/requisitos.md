@@ -2,43 +2,48 @@
 
 ## Software necesario
 
-- Docker
-- Docker Compose (viene incluido con Docker)
-- Git
+| Pieza | Para qué |
+|---|---|
+| Docker | Contenedores de las dos fuentes y de la API |
+| Docker Compose | Arranque del conjunto |
+| Git | Control de versiones |
 
-## Opcional, para trabajar sin Docker
+## Software opcional
 
-- Python 3.11 o superior
-- Node.js y npm, para el frontend
-- MariaDB 11.4 o superior
-
-## Opcional, para regenerar el SQL distribuido
-
-- Python 3, sin dependencias: `devops/scripts/generar_sql.py` solo usa la librería estándar.
-
-No hace falta para levantar el proyecto: el SQL de `database/distribuida/` ya está generado en el
-repositorio.
+| Pieza | Para qué |
+|---|---|
+| Python 3.11 o superior | Ejecutar la API fuera de Docker |
+| MariaDB 11.4 | Revisar el esquema sin contenedores |
+| Rust y Cargo | Compilar la base de objetos |
+| `mongosh` | Consultar el registro desde el equipo |
 
 ## Recursos
 
-- **4 GB de RAM** como mínimo. Son 8 contenedores, y cinco de ellos son MariaDB. Cada nodo de
-  base de datos con el juego de datos de ejemplo consume del orden de 150 a 250 MB.
-- **Unos 2 GB de disco** para las imágenes y los volúmenes.
-
-## Puertos que tienen que estar libres
-
-| Puerto | Qué es |
+| Recurso | Mínimo |
 |---|---|
-| 3000 | Frontend |
+| Memoria | 5 GB |
+| Disco | 3 GB para imágenes y volúmenes |
+| Contenedores | 11 en ejecución |
+
+Las cinco instancias de MariaDB consumen entre 150 y 250 MB cada una con los datos de ejemplo.
+MongoDB ocupa alrededor de 300 MB.
+
+## Puertos
+
+| Puerto | Servicio |
+|---|---|
+| 3000 | Interfaz web |
 | 8000 | API |
 | 8081 | Adminer |
-| 14306 a 14310 | Los cinco nodos de base de datos (`spider`, `dn_a`, `dn_b`, `rep_a`, `rep_b`) |
+| 8082 | DBGate |
+| 27017 | MongoDB |
+| 8787 | Base de objetos |
+| 14306 a 14310 | Nodos de MariaDB |
 
-Los de la base de datos se publican en `127.0.0.1`, así que no hace falta abrirlos al exterior.
-El 8081 se puede cambiar con `ADMINER_PORT` en `.env` (por defecto no es el 8080: en la máquina
-de desarrollo ese puerto lo ocupa otro proyecto).
+Los puertos de las bases se publican solo en `127.0.0.1`. Se cambian con las variables del archivo
+`.env`.
 
-## Comprobar que están instalados
+## Comprobación
 
 ```bash
 docker --version
@@ -46,16 +51,10 @@ docker compose version
 git --version
 ```
 
-## Permisos
-
-El usuario tiene que poder ejecutar `docker` sin `sudo`. Si no:
+El usuario del equipo necesita permisos para ejecutar `docker` sin `sudo`. Si no los tiene:
 
 ```bash
-sudo usermod -aG docker "$USER"      # y volver a iniciar sesión
+sudo usermod -aG docker "$USER"
 ```
 
-O ejecutar los guiones dentro del grupo, sin tocar la sesión:
-
-```bash
-sg docker -c './devops/scripts/construir-bd.sh'
-```
+Después hay que cerrar y abrir la sesión.

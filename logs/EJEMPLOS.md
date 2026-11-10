@@ -1,121 +1,96 @@
-# Integrar el registro de logs
+# Guía del paquete
 
-Paquete `pawspace-logs`. Tres pasos y no hay que tocar las rutas.
+Cómo se usa `pawspace-logs` desde la API.
 
-## 1. Instalar y configurar
+## 1. Instalar
 
 ```bash
-pip install -e ./logs            # o ./logs[fastapi] si vas a usar el middleware
+pip install -e ./logs
 ```
+
+El paquete no está publicado. El middleware necesita además Starlette, que ya trae FastAPI.
+
+## 2. Configurar
 
 ```env
-MONGO_URL=mongodb://mongo:27017
+MONGO_URL=mongodb://127.0.0.1:27017
 MONGO_BD=pawspace_logs
 LOGS_SAL=cambia-esta-sal
+LOGS_MUESTREO=0.1
 ```
 
-## 2. Arrancar y cerrar el cliente con la aplicación
+Con `MONGO_URL` vacío el registro queda apagado y las llamadas no hacen nada.
+
+## 3. Arrancar y cerrar
 
 ```python
+from contextlib import asynccontextmanager
+from fastapi import FastAPI
 from pawspace_logs import ClienteLogs
 
-logs = ClienteLogs(
-    url=settings.MONGO_URL,          # vacío ⇒ registro deshabilitado, todo es no-op
-    bd=settings.MONGO_BD,
-    sal_ip=settings.LOGS_SAL,
-    muestreo=0.1,                    # 10 % de las lecturas; las escrituras se registran siempre
-)
+logs = ClienteLogs(url=MONGO_URL, bd="pawspace_logs", sal_ip=LOGS_SAL)
 
-@app.on_event("startup")
-async def arranque():
-    await logs.iniciar()             # crea índices y catálogo (idempotente)
+@asynccontextmanager
+async def lifespan(app):
+    await logs.iniciar()
+    app.state.logs = logs
+    yield
+    await logs.cerrar()
 
-@app.on_event("shutdown")
-async def parada():
-    await logs.cerrar()              # vacía la cola
+app = FastAPI(lifespan=lifespan)
 ```
 
-## 3. Registrar en cada operación
+## 4. Registrar en las rutas
 
 ```python
-from pawspace_logs import Accion, entidad, mascota
+from pawspace_logs import Accion, entidad, usuario
 
-sesion = await logs.abrir_sesion(mascota(12, cuenta_id=3), origen=logs.origen(request))
-
-await logs.evento(
-    Accion.PUBLICACION_CREAR,
-    mascota(12, cuenta_id=3),
-    sesion=sesion,
-    entidad=entidad("PUBLICACION", 1207),     # a qué fila afecta
-    metadatos={"adjuntos": 2},
-    origen=logs.origen(request),
-)
-
-await logs.cerrar_sesion(sesion, motivo="logout")
+sesion = await logs.iniciar_sesion(usuario(12), origen=logs.origen(request))
+await logs.evento(Accion.PUBLICACION_CREAR, usuario(12), sesion=sesion,
+                  entidad=entidad("PUBLICACION", 1207))
+await logs.terminar_sesion(sesion, motivo="logout")
 ```
 
-Y si el acceso falla, no se abre sesión: se anota el intento.
+Un acceso rechazado no abre sesión:
 
 ```python
 await logs.intento_fallido(correo, "credenciales", origen=logs.origen(request))
-# tras N intentos:
-await logs.cuenta_bloqueada(correo)
 ```
 
-El middleware evita repetir esto en cada ruta:
+## 5. Middleware
+
+Anota cada petición sin tocar las rutas. Toma el actor y la sesión del estado de la petición.
 
 ```python
 from pawspace_logs.middleware import MiddlewareLogs
 
-app.add_middleware(MiddlewareLogs, cliente=logs, excluir=("/health",))
+app.add_middleware(MiddlewareLogs, cliente=logs, excluir=("/health", "/docs"))
 ```
 
-Para que el middleware sepa quién actúa, la dependencia de autenticación debe dejar:
+Si una ruta no deja esos datos, la petición se registra como `SISTEMA` y sin sesión.
 
-```python
-request.state.actor = mascota(mascota_id, cuenta_id)   # Actor
-request.state.sesion_id = sesion_id                    # str
-```
+## 6. Consultar
 
-Si no los deja, registra como `SISTEMA` y sin sesión.
-
-## Acciones disponibles
-
-Las de `Accion` y nada más. El catálogo con categorías vive en `pawspace_logs.modelo.CATALOGO`
-y en la colección `acciones`.
-
-| Categoría | Acciones |
+| Método | Devuelve |
 |---|---|
-| sesión y cuenta | `sesion.iniciar`, `sesion.latido`, `sesion.cerrar`, `cuenta.acceder`, `cuenta.fallar`, `cuenta.bloquear`, `cuenta.salir` |
-| contenido | `publicacion.crear/editar/borrar`, `comentario.crear/borrar`, `historia.crear/ver` |
-| interacción | `reaccion.crear/quitar`, `seguimiento.crear/quitar` |
-| adjuntos | `adjunto.subir/borrar/reordenar`, `contenido.anclar/borrar` |
-| moderación y acceso | `reporte.crear`, `peticion.leer`, `peticion.escribir` |
+| `auditoria_actor(id, desde, hasta, limite)` | Eventos de un actor |
+| `historial_entidad(tipo, id)` | Eventos de una fila |
+| `sesion_completa(sesion_id)` | La sesión y sus pasos |
+| `sesiones_de_actor(id, limite)` | Sesiones de un actor |
+| `intentos_fallidos(motivo, limite)` | Intentos rechazados |
+| `resumen_del_dia(dia)` | Día preagregado |
 
-Para añadir una acción: al enum `Accion`, a `CATALOGO` y al script de colecciones. El cliente
-vuelve a cargar el catálogo en cada arranque.
-
-## Consultar
+## 7. Comprobar disponibilidad
 
 ```python
-await logs.auditoria_actor(12, desde="2026-11-01", hasta="2026-11-05", limite=50)
-await logs.historial_entidad("PUBLICACION", 1207)
-await logs.sesion_completa("ses_01JAB…")        # {"sesion": {...}, "pasos": [...]}
-await logs.sesiones_en(desde="2026-11-01", hasta="2026-11-05", abiertas=True)
-await logs.intentos_fallidos(motivo="credenciales", limite=50)
-await logs.sesiones_de_actor(12, limite=20)
-await logs.resumen_del_dia("2026-11-05")        # preagregado por el job diario
-await logs.resumen_entre("2026-11-01", "2026-11-05")
+if await logs.disponible():
+    ...  # se puede leer el registro
 ```
 
-## Qué garantiza y qué no
+Sirve para que una respuesta que combina datos de dos fuentes pueda decir si la parte de auditoría
+está al día.
 
-- **No lanza nunca** hacia la petición: encola y escribe por lotes; si MongoDB falla, avisa por
-  `logging` y suma a `logs.descartados`.
-- **Idempotencia**: cada evento lleva `_id` propio; con `id_evento=` el llamador impone uno
-  determinista y reintentar no duplica.
-- **No hay transacción con MariaDB**: es un almacén derivado, sin 2PC. Si se pierde un evento se
-  pierde auditoría, nunca datos de negocio.
-- **Privacidad**: la IP se guarda hasheada con `LOGS_SAL`; nunca en claro, y no se guardan
-  cuerpos de petición ni contraseñas.
-- Retención: eventos 180 días, sesiones 400 (índices TTL), configurable por entorno.
+## 8. Agregar una acción
+
+Hay que tocar tres sitios: el enumerado `Accion`, el catálogo `CATALOGO` del paquete y la lista de
+`database/mongo/initdb/01-colecciones.js`. El cliente vuelve a cargar el catálogo en cada arranque.

@@ -1,48 +1,38 @@
 # pawspace-logs
 
-Registro de acciones y sesiones para el backend. MongoDB es un almacén **derivado**: si se
-pierde un evento se pierde auditoría, nunca datos de negocio.
+Paquete del registro de accesos y sesiones. Escribe en MongoDB desde la API.
 
-## Lo mínimo para el endpoint de login
-
-```python
-from pawspace_logs import Accion, ClienteLogs, mascota
-
-logs = ClienteLogs.desde_entorno()          # lee MONGO_URL, MONGO_BD, LOGS_SAL
-await logs.iniciar()                        # en el startup
-
-sesion = await logs.iniciar_sesion(mascota(mascota_id, cuenta_id), origen=logs.origen(request))
-# ... y devuelves `sesion` junto al token
-```
-
-Si el acceso falla, **no** abras sesión: anota el intento.
+## Uso mínimo
 
 ```python
-await logs.intento_fallido(correo, "credenciales", origen=logs.origen(request))
+from pawspace_logs import ClienteLogs
+
+logs = ClienteLogs(url="mongodb://127.0.0.1:27017", bd="pawspace_logs", sal_ip="...")
+await logs.iniciar()        # crea índices y catálogo
+await logs.cerrar()         # vacía la cola antes de salir
 ```
 
-En el `logout`:
+En la API se crea una sola vez y se guarda en el estado de la aplicación. El arranque y el cierre van
+en el ciclo de vida de FastAPI.
 
-```python
-await logs.terminar_sesion(sesion, motivo="logout")
-```
+## Lo que registra
 
-Y en el `shutdown`, para no perder la cola: `await logs.cerrar()`.
+| Acción | Cuándo |
+|---|---|
+| `cuenta.acceder` | Inicio de sesión correcto, junto con un documento de sesión |
+| `cuenta.fallar` | Intento rechazado, con el motivo y un hash del identificador |
+| `cuenta.actualizar` | Cambio de estado de la cuenta |
+| `peticion.leer` y `peticion.escribir` | Cada petición, desde el middleware |
 
-Cualquier otra acción se anota igual:
+## Comportamiento
 
-```python
-await logs.evento(Accion.PUBLICACION_CREAR, mascota(12, 3), sesion=sesion,
-                  entidad=("PUBLICACION", 1207))
-```
+| Situación | Qué pasa |
+|---|---|
+| MongoDB no responde | Avisa por el registro de la aplicación y descarta el lote |
+| Sin cadena de conexión | Todas las llamadas no hacen nada y la API arranca igual |
+| Muchas peticiones | Escribe por lotes desde una cola en memoria |
 
-## Lo que no tienes que hacer
+El paquete no está publicado. Se instala desde el repositorio con `pip install -e ./logs`.
 
-- No falla si MongoDB está caído: avisa por `logging`, cuenta en `logs.descartados` y sigue.
-- Con `MONGO_URL` vacío queda deshabilitado y todo es no-op: el backend arranca igual.
-- Los índices y el catálogo se crean solos al iniciar (`iniciar()` es idempotente).
-- `iniciar()` tiene que correr en el bucle de eventos de la aplicación (el `startup`); el
-  cliente se ata a ese bucle.
-
-Detalles de acciones, middleware y consultas en [`EJEMPLOS.md`](EJEMPLOS.md), y el contrato
-completo en `docs/mongo/contrato.md`.
+Los detalles de cada método están en [`EJEMPLOS.md`](EJEMPLOS.md), y el contrato de los documentos en
+[`docs/mongo/contrato.md`](../docs/mongo/contrato.md).

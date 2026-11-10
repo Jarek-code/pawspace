@@ -107,8 +107,10 @@ services:
 
   backend:
     build:
-      context: ./backend
-      dockerfile: Dockerfile
+      # La raiz del repositorio: la imagen necesita tambien el paquete ./logs,
+      # que se instala con pip y no esta publicado en PyPI.
+      context: .
+      dockerfile: backend/Dockerfile
     container_name: pawspace-backend
     restart: unless-stopped
     environment:
@@ -120,14 +122,26 @@ services:
       DB_USER: ${DB_USER:-pawuser}
       DB_PASSWORD: ${DB_PASSWORD:-pawpass}
       DB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootpass}
+      # Logs de acciones y sesiones. Sin MONGO_URL el cliente queda deshabilitado
+      # y el login no deja rastro en MongoDB.
+      MONGO_URL: mongodb://mongo:27017
+      MONGO_BD: ${MONGO_BD:-pawspace_logs}
+      LOGS_SAL: ${LOGS_SAL:-cambia-esta-sal}
+      LOGS_MUESTREO: ${LOGS_MUESTREO:-0.1}
+      LOGS_RETENCION_DIAS: ${LOGS_RETENCION_DIAS:-180}
+      # Si MongoDB no responde, los eventos se guardan aquí y se reenvían al volver.
+      LOGS_COLA: /app/datos/logs-pendientes.jsonl
     ports:
       - "8000:8000"
     depends_on:
       spider:
         condition: service_healthy
+      mongo:
+        condition: service_healthy
     volumes:
       - ./backend/src:/app/src
       - ./backend/tests:/app/tests
+      - backend_datos:/app/datos
     networks:
       - pawspace-net
 
@@ -145,18 +159,63 @@ services:
     networks:
       - pawspace-net
 
+  # Gestor de bases de datos para desarrollo: MariaDB, MongoDB y la OODB por HTTP.
+  # Trae el plugin de la OODB dentro de la imagen (devops/docker/Dockerfile.dbgate),
+  # así que las tres conexiones salen ya configuradas de aquí.
+  dbgate:
+    build:
+      context: .
+      dockerfile: devops/docker/Dockerfile.dbgate
+    image: pawspace-dbgate:7.1.5
+    container_name: pawspace-dbgate
+    restart: unless-stopped
+    environment:
+      # MariaDB: la app entra por el spider, que reparte y reconstruye las vistas.
+      CONNECTIONS: pawspace,logs,oodb
+      ENGINE_pawspace: mysql@dbgate-plugin-mysql
+      LABEL_pawspace: PawSpace · MariaDB (spider)
+      SERVER_pawspace: spider
+      PORT_pawspace: 3306
+      USER_pawspace: ${DB_USER:-pawuser}
+      PASSWORD_pawspace: ${DB_PASSWORD:-pawpass}
+      # MongoDB: el registro de acciones y sesiones.
+      ENGINE_logs: mongo@dbgate-plugin-mongo
+      LABEL_logs: PawSpace · MongoDB (logs)
+      URL_logs: mongodb://mongo:27017
+      # OODB: adjuntos, con el plugin de tools/dbgate-plugin-oodb.
+      ENGINE_oodb: oodb@dbgate-plugin-oodb
+      LABEL_oodb: PawSpace · OODB (adjuntos)
+      SERVER_oodb: oodb
+      PORT_oodb: 8787
+      PASSWORD_oodb: ${OODB_TOKEN:-}
+    ports:
+      - "127.0.0.1:${DBGATE_PORT:-8082}:3000"
+    depends_on:
+      spider:
+        condition: service_healthy
+      mongo:
+        condition: service_healthy
+      oodb:
+        condition: service_started
+    volumes:
+      # Conexiones guardadas desde la interfaz, historial y archivos exportados.
+      - dbgate_data:/root/.dbgate
+    networks:
+      - pawspace-net
+
   # Optional frontend static server (nginx)
   frontend:
     image: nginx:alpine
     container_name: pawspace-frontend
     restart: unless-stopped
+    extra_hosts:
+      # Permite que nginx alcance el backend que corre en el host durante la prueba.
+      - "host.docker.internal:host-gateway"
     volumes:
       - ./frontend/src:/usr/share/nginx/html:ro
       - ./frontend/nginx.conf:/etc/nginx/conf.d/default.conf:ro
     ports:
       - "3000:80"
-    depends_on:
-      - backend
     networks:
       - pawspace-net
 
@@ -217,6 +276,8 @@ volumes:
   rep_b_data:
   oodb_data:
   mongo_data:
+  backend_datos:
+  dbgate_data:
 
 networks:
   # Red de la aplicacion: backend, adminer, frontend y el spider.

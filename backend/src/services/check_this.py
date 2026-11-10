@@ -36,7 +36,34 @@ class Check_This:
         nuevo_id = db.execute(text("SELECT @nuevo_id")).scalar()
         
         return nuevo_id
+<<<<<<< HEAD
         
+=======
+class Cuenta:
+
+      #Lee de la base relacional los datos publicos de la cuenta
+    @staticmethod
+    def dame_cuenta(db: Session, usuario_id: int):
+
+        consulta = text(
+            """SELECT id, nombre, email, activo, creado_en, actualizado_en
+            FROM USUARIO
+            WHERE id = :id""")
+
+        return db.execute(consulta, {"id": usuario_id}).fetchone()
+
+    #Cambia el estado de la cuenta y devuelve cuantas filas se modificaron
+    @staticmethod
+    def cambia_activo(db: Session, usuario_id: int, activo: bool) -> int:
+
+        resultado = db.execute(
+            text("UPDATE USUARIO SET activo = :activo WHERE id = :id"),
+            {"activo": 1 if activo else 0, "id": usuario_id})
+
+        return resultado.rowcount
+
+
+>>>>>>> cc0021076a6435aef96d1f02525e2c1be4dbd6ba
 #se crea la calse que nos creara los tokens de acceso
 class Auten_Token :
 

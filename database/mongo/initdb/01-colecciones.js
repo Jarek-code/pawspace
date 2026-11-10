@@ -23,7 +23,9 @@ const actor = {
   properties: {
     tipo: { enum: ["MASCOTA", "USUARIO", "SISTEMA"] },
     id: { bsonType: ["long", "int"] },
-    cuenta_id: { bsonType: ["long", "null"] },
+    // El cliente manda los ids como enteros de Python (int32 cuando caben): el
+    // validador tiene que aceptarlos igual que `id`, o cada documento avisa.
+    cuenta_id: { bsonType: ["long", "int", "null"] },
   },
 };
 
@@ -137,6 +139,7 @@ const catalogo = [
   ["cuenta.fallar", "cuenta", "Intento de acceso fallido", true],
   ["cuenta.bloquear", "cuenta", "Cuenta bloqueada por intentos", true],
   ["cuenta.salir", "cuenta", "Cierre de sesión explícito"],
+  ["cuenta.actualizar", "cuenta", "Cuenta modificada desde la aplicación", true],
   ["publicacion.crear", "contenido", "Publicación creada"],
   ["publicacion.editar", "contenido", "Publicación modificada"],
   ["publicacion.borrar", "contenido", "Publicación eliminada", true],
