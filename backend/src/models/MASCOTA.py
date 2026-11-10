@@ -13,7 +13,7 @@ class Mascota(Base):
     
     nombre = Column(String(100), nullable=False)
     
-    nombre_usuario = Column(String(50), nullable=False)
+    nombre_usuario = Column(String(50), nullable=False, unique=True)
     
     # SMALLINT UNSIGNED de MySQL
     especie_id = Column(SMALLINT(unsigned=True), nullable=False)

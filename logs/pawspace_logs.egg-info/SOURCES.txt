@@ -1,0 +1,12 @@
+README.md
+pyproject.toml
+pawspace_logs/__init__.py
+pawspace_logs/cliente.py
+pawspace_logs/consultas.py
+pawspace_logs/middleware.py
+pawspace_logs/modelo.py
+pawspace_logs.egg-info/PKG-INFO
+pawspace_logs.egg-info/SOURCES.txt
+pawspace_logs.egg-info/dependency_links.txt
+pawspace_logs.egg-info/requires.txt
+pawspace_logs.egg-info/top_level.txt

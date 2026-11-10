@@ -5,7 +5,6 @@ from sqlalchemy import text
 from passlib.context import CryptContext
 from datetime import datetime, timedelta, timezone
 from src.models.schema_c_usuario import UsuarioCrear
-from pymongo.database import Database
 
 #Se utilizo el schemes argon2 por que permite contrasenas mas largar y deprecated verifica la contrasena
 contra_encrip = CryptContext(schemes=["argon2"], deprecated="auto")
@@ -37,10 +36,12 @@ class Check_This:
         nuevo_id = db.execute(text("SELECT @nuevo_id")).scalar()
         
         return nuevo_id
+        
 #se crea la calse que nos creara los tokens de acceso
 class Auten_Token :
 
     @staticmethod
+
     #este metodo le pide a la vase de datos que le de la contrasena (ya con hash)
     def dame_contra(db: Session, email: str):
 
@@ -53,68 +54,38 @@ class Auten_Token :
         return db.execute(consulta,{"email": email}).fetchone()
 
 
-    #datos provicionales en lo que traigo cosas de otra branch
     @staticmethod
-    def log_evento_malo(mongo: Database, email: str, ip: str, motivo: str):
-        evento = {
-            "accion": "cuenta.fallar",
-            "ocurrio_en": datetime.now(timezone.utc),
-            "resultado" : "error",
-            "detalles" : {
-                "email_intento": email,
-                "ip_origen": ip,
-                "motivo" : motivo
 
-            }
-        }
-        mongo["eventos"].insert_one(evento)
-
-    @staticmethod
-    def log_evento_bueno(mongo: Database, usuario_id: int, ip:str) -> str:
-        rig_now= datetime.now(timezone.utc)
-        sesion_id = f"ses-{uuid.uuid4().hex[:12]}"
-
-        sesion_doc = {
-            "_id": sesion_id,
-            "usuario_id" : usuario_id,
-            "iniciado_en" : ahora,
-            "cerrado_en" : None,
-            "duracion_seg": 0,
-            "ip_origen" : ip
-        }
-        mongo["eventos"].insert_one(sesion_doc)
-
-        evento_doc = {
-            "accion":"cuenta.acceder",
-            "ocurrido_en": ahora,
-            "resultado":"ok",
-            "actor":{"id": usuario_id},
-            "sesion_id" : sesion_id,
-            "entidad": {"tipo":"USUARIO","id":usuario_id}           
-        }
-        mongo["eventos"].insert_one(evento_doc)
-
-        return sesion_id
-
-    @staticmethod
     #verifica que la contrasena que trajo de la base de datos sea la misma del usuario
     def verifica_contra(contra_plana: str, hash_guardao: str) -> bool:
         return contra_encrip.verify(contra_plana, hash_guardao)
 
     @staticmethod
+
     #Despues de confirmar que es la misma contrasena genera el token para el usuario
     def crea_token(usuario_id : int, sesion_id: str | None = None) -> str:
+
         #para que el token no funcione de forma indefinida tiene un tiempo de expiracion de una semana
         fecha_actual = datetime.now(timezone.utc)
 
+        #inica el tiempo de vida del token
         expira = datetime.now(timezone.utc) + timedelta(days=7)
 
+        #Encapsula los datos que posterior mente seran enviados
         dato_guardao = {
 
+            #Abrebiacion de sujeto por que es al que le pertenece el token
             "sub": str(usuario_id),
+
+            #Abrebiacion de expiracion indica el tiempo de vida del token
             "exp": expira,
+
+            #Abrebiacion de emitido en indica cuando se creo el token
             "iat": fecha_actual
         }
+        #Verifica que la sesion exista y de ser vedad guarda un sid que es la sesion id
         if sesion_id:
             dato_guardao["sid"] = sesion_id
+
+        #Despues de confirmar los datos ahora crea el token con su algoritmo y los datos del usuario
         return jwt.encode(dato_guardao, Llave_super_secreta, algorithm=Algoritmo_Cifrador)

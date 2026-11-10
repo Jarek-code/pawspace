@@ -51,7 +51,7 @@ class UsuarioControl:
         
         #En caso de no encontrar nada arroja un error diciendo que el correo o contrasena es incorrecta
         
-        #Esta seccion es para el caso en el que el correo sea incorrecto
+        #Esta seccion es para el caso en el que el correo sea incorrecto y se manda el tipo de error que fue
         if not usuario_db:
             await logs.intento_fallido(credenciales.email, "credenciales", origen = origen)
             raise HTTPException(

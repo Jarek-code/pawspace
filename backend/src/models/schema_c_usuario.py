@@ -19,9 +19,11 @@ class TokenSesion(BaseModel):
     #iniciada y no tenga que tener que inciar otra vez (Duarante un tiempo limitado claro)
     token_acceso : str
 
-    #Indica el esquema que utilizara el token para ser creado
+    #El tipo del token es bearer esto debido a que es un standar de seguridad e indica como se le bede pasar el token al frontend
     token_tipo : str = "bearer"
-
+   
+    #Este campo indica que es opcional que se escriba el token directamente el campo puede estar vacio o con texto esto hace que la api
+    #no falle cuando llegue a faltar
     sesion_id: Optional[str] = None
 
 class UserLogin(BaseModel):

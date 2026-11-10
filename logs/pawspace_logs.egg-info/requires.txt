@@ -1,0 +1,4 @@
+pymongo>=4.9
+
+[fastapi]
+starlette>=0.37

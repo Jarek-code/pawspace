@@ -1,0 +1,8 @@
+Metadata-Version: 2.4
+Name: pawspace-logs
+Version: 0.1.0
+Summary: Registro de acciones y sesiones de PawSpace en MongoDB.
+Requires-Python: >=3.11
+Requires-Dist: pymongo>=4.9
+Provides-Extra: fastapi
+Requires-Dist: starlette>=0.37; extra == "fastapi"
