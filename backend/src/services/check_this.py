@@ -36,9 +36,6 @@ class Check_This:
         nuevo_id = db.execute(text("SELECT @nuevo_id")).scalar()
         
         return nuevo_id
-<<<<<<< HEAD
-        
-=======
 class Cuenta:
 
       #Lee de la base relacional los datos publicos de la cuenta
@@ -62,8 +59,6 @@ class Cuenta:
 
         return resultado.rowcount
 
-
->>>>>>> cc0021076a6435aef96d1f02525e2c1be4dbd6ba
 #se crea la calse que nos creara los tokens de acceso
 class Auten_Token :
 
