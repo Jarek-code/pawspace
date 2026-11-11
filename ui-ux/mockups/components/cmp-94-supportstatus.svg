@@ -1,0 +1,324 @@
+<svg width="1400" height="460" viewBox="0 0 1400 460" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1" id="screenshot-df7ee9d9-e074-80a7-8008-edb4785158b2"><style>@font-face {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 700;
+    font-display: block;
+    src: url(http://localhost:9001/assets/by-id/d4f69431-9393-4d66-9e03-c6db21829def) format('woff');
+  }
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url(http://localhost:9001/assets/by-id/4f02faa0-6e5f-42b2-9d32-ca72c88f54b3) format('woff');
+  }
+@font-face {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 800;
+    font-display: block;
+    src: url(http://localhost:9001/assets/by-id/7bd30219-f405-4b32-b53f-ec5efda5886e) format('woff');
+  }
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url(http://localhost:9001/internal/gfonts/font/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuFuYAZJhiI2B.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: block;
+  src: url(http://localhost:9001/internal/gfonts/font/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYAZJhiI2B.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}</style><g transform="translate(-7000, -9720)"><g id="shape-df7ee9d9-e074-80a7-8008-edb4785158b2">
+    <defs>
+      <clipPath id="frame-clip-df7ee9d9-e074-80a7-8008-edb4785158b2-render-133702" class="frame-clip frame-clip-def">
+        <rect rx="0" ry="0" x="7000" y="9720" width="1400" height="460" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)">
+        </rect>
+      </clipPath>
+    </defs>
+    <g class="frame-container-wrapper">
+      <g class="frame-container-blur">
+        <g class="frame-container-shadows">
+          <g clip-path="url(#frame-clip-df7ee9d9-e074-80a7-8008-edb4785158b2-render-133702)" fill="none">
+            <g class="fills" id="fills-df7ee9d9-e074-80a7-8008-edb4785158b2">
+              <rect rx="0" ry="0" x="7000" y="9720" width="1400" height="460" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="frame-background" style="fill:#fff8f0;fill-opacity:1">
+              </rect>
+            </g>
+            <g class="frame-children">
+              <g id="shape-df7ee9d9-e074-80a7-8008-edb4787b28b2">
+                <g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="7064" y="9768" width="397" height="44" rx="0" ry="0">
+                  <defs>
+                    <pattern patternUnits="objectBoundingBox" width="396.3500061035156" height="45" id="fill-0-render-133703-0">
+                      <g>
+                        <rect width="396.3500061035156" height="45" style="fill:#1f2a24;fill-opacity:1">
+                        </rect>
+                      </g>
+                    </pattern>
+                  </defs>
+                  <g class="fills" id="fills-df7ee9d9-e074-80a7-8008-edb4787b28b2">
+                    <text x="7064" y="9812.100006103516" dominant-baseline="ideographic" textLength="396.3500061035156" lengthAdjust="spacingAndGlyphs" style="text-transform:none;font-family:&quot;Outfit&quot;;letter-spacing:normal;font-style:normal;font-weight:700;white-space:pre;font-size:36px;text-decoration:none;direction:ltr;fill:#1f2a24;fill-opacity:1">CMP-94 · SupportStatus</text>
+                  </g>
+                </g>
+              </g>
+              <g id="shape-df7ee9d9-e074-80a7-8008-edb478aee754">
+                <g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="7064" y="9812" width="483" height="29" rx="0" ry="0">
+                  <defs>
+                    <pattern patternUnits="objectBoundingBox" width="482.183349609375" height="30" id="fill-0-render-133704-0">
+                      <g>
+                        <rect width="482.183349609375" height="30" style="fill:#5c6b62;fill-opacity:1">
+                        </rect>
+                      </g>
+                    </pattern>
+                  </defs>
+                  <g class="fills" id="fills-df7ee9d9-e074-80a7-8008-edb478aee754">
+                    <text x="7064" y="9841.399993896484" dominant-baseline="ideographic" textLength="482.183349609375" lengthAdjust="spacingAndGlyphs" style="text-transform:none;font-family:&quot;Inter 18pt&quot;;letter-spacing:normal;font-style:normal;font-weight:400;white-space:pre;font-size:24px;text-decoration:none;direction:ltr;fill:#5c6b62;fill-opacity:1">Estado del servicio: operativo y degradado.</text>
+                  </g>
+                </g>
+              </g>
+              <g id="shape-df7ee9d9-e074-80a7-8008-edb478dcced1">
+                <defs>
+                  <clipPath id="frame-clip-df7ee9d9-e074-80a7-8008-edb478dcced1-render-133705" class="frame-clip frame-clip-def">
+                    <rect rx="16" ry="16" x="7064" y="9880" width="620" height="140" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)">
+                    </rect>
+                  </clipPath>
+                </defs>
+                <g class="frame-container-wrapper">
+                  <g class="frame-container-blur">
+                    <defs>
+                      <filter id="filter-shadow-render-133705" x="-0.03387096774193549" y="-0.15" width="1.0677419354838709" height="1.3214285714285714" filterUnits="objectBoundingBox" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0">
+                        </feFlood>
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0">
+                        </feColorMatrix>
+                        <feOffset dx="0" dy="1">
+                        </feOffset>
+                        <feGaussianBlur stdDeviation="1">
+                        </feGaussianBlur>
+                        <feColorMatrix type="matrix" values="0 0 0 0 0.12156862745098039 0 0 0 0 0.16470588235294117 0 0 0 0 0.1411764705882353 0 0 0 0.08 0">
+                        </feColorMatrix>
+                        <feBlend mode="normal">
+                        </feBlend>
+                        <feBlend mode="normal" in="SourceGraphic">
+                        </feBlend>
+                      </filter>
+                    </defs>
+                    <g class="frame-container-shadows" filter="url(#filter-shadow-render-133705)">
+                      <g clip-path="url(#frame-clip-df7ee9d9-e074-80a7-8008-edb478dcced1-render-133705)" fill="none">
+                        <g class="fills" id="fills-df7ee9d9-e074-80a7-8008-edb478dcced1">
+                          <rect rx="16" ry="16" x="7064" y="9880" width="620" height="140" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="frame-background" style="fill:#ffffff;fill-opacity:1">
+                          </rect>
+                        </g>
+                        <g class="frame-children">
+                          <g id="shape-df7ee9d9-e074-80a7-8008-edb4791380e2">
+                            <g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="7088" y="9900" width="155" height="22" rx="0" ry="0">
+                              <defs>
+                                <pattern patternUnits="objectBoundingBox" width="154.3333282470703" height="22.5" id="fill-0-render-133706-0">
+                                  <g>
+                                    <rect width="154.3333282470703" height="22.5" style="fill:#1f2a24;fill-opacity:1">
+                                    </rect>
+                                  </g>
+                                </pattern>
+                              </defs>
+                              <g class="fills" id="fills-df7ee9d9-e074-80a7-8008-edb4791380e2">
+                                <text x="7088" y="9922.050003051758" dominant-baseline="ideographic" textLength="154.3333282470703" lengthAdjust="spacingAndGlyphs" style="text-transform:none;font-family:&quot;Outfit&quot;;letter-spacing:normal;font-style:normal;font-weight:700;white-space:pre;font-size:18px;text-decoration:none;direction:ltr;fill:#1f2a24;fill-opacity:1">Estado del servicio</text>
+                              </g>
+                            </g>
+                          </g>
+                          <g id="shape-df7ee9d9-e074-80a7-8008-edb479452837">
+                            <g class="fills" id="fills-df7ee9d9-e074-80a7-8008-edb479452837">
+                              <ellipse cx="7093" cy="9945" rx="5" ry="5" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" style="fill:#3c9470;fill-opacity:1">
+                              </ellipse>
+                            </g>
+                          </g>
+                          <g id="shape-df7ee9d9-e074-80a7-8008-edb4796fedc4">
+                            <g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="7106" y="9936" width="202" height="17" rx="0" ry="0">
+                              <defs>
+                                <pattern patternUnits="objectBoundingBox" width="201.0833282470703" height="17.5" id="fill-0-render-133708-0">
+                                  <g>
+                                    <rect width="201.0833282470703" height="17.5" style="fill:#1f2a24;fill-opacity:1">
+                                    </rect>
+                                  </g>
+                                </pattern>
+                              </defs>
+                              <g class="fills" id="fills-df7ee9d9-e074-80a7-8008-edb4796fedc4">
+                                <text x="7106" y="9953.149993896484" dominant-baseline="ideographic" textLength="201.0833282470703" lengthAdjust="spacingAndGlyphs" style="text-transform:none;font-family:&quot;Inter 18pt&quot;;letter-spacing:normal;font-style:normal;font-weight:600;white-space:pre;font-size:14px;text-decoration:none;direction:ltr;fill:#1f2a24;fill-opacity:1">Todos los sistemas operativos</text>
+                              </g>
+                            </g>
+                          </g>
+                          <g id="shape-df7ee9d9-e074-80a7-8008-edb4799a2c85">
+                            <g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="7088" y="9964" width="187" height="15" rx="0" ry="0">
+                              <defs>
+                                <pattern patternUnits="objectBoundingBox" width="186.5500030517578" height="13.75" id="fill-0-render-133709-0">
+                                  <g>
+                                    <rect width="186.5500030517578" height="13.75" style="fill:#5c6b62;fill-opacity:1">
+                                    </rect>
+                                  </g>
+                                </pattern>
+                              </defs>
+                              <g class="fills" id="fills-df7ee9d9-e074-80a7-8008-edb4799a2c85">
+                                <text x="7088" y="9978.066665649414" dominant-baseline="ideographic" textLength="186.5500030517578" lengthAdjust="spacingAndGlyphs" style="text-transform:none;font-family:&quot;Inter 18pt&quot;;letter-spacing:normal;font-style:normal;font-weight:400;white-space:pre;font-size:12px;text-decoration:none;direction:ltr;fill:#5c6b62;fill-opacity:1">Última comprobación: hace 2 min</text>
+                              </g>
+                            </g>
+                          </g>
+                          <g id="shape-df7ee9d9-e074-80a7-8008-edb479c9efd1">
+                            <g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="7088" y="9988" width="139" height="16" rx="0" ry="0">
+                              <defs>
+                                <pattern patternUnits="objectBoundingBox" width="138.46665954589844" height="16.25" id="fill-0-render-133710-0">
+                                  <g>
+                                    <rect width="138.46665954589844" height="16.25" style="fill:#2f5d4a;fill-opacity:1">
+                                    </rect>
+                                  </g>
+                                </pattern>
+                              </defs>
+                              <g class="fills" id="fills-df7ee9d9-e074-80a7-8008-edb479c9efd1">
+                                <text x="7088" y="10003.933334350586" dominant-baseline="ideographic" textLength="138.46665954589844" lengthAdjust="spacingAndGlyphs" style="text-transform:none;font-family:&quot;Inter 18pt&quot;;letter-spacing:normal;font-style:normal;font-weight:600;white-space:pre;font-size:13px;text-decoration:none;direction:ltr;fill:#2f5d4a;fill-opacity:1">Ver historial de estado</text>
+                              </g>
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                    <g id="strokes-df7ee9d9-e074-80a7-8008-edb4d54cca8d-df7ee9d9-e074-80a7-8008-edb478dcced1" class="strokes">
+                      <g class="stroke-shape">
+                        <defs>
+                          <clipPath id="inner-stroke-render-133705-df7ee9d9-e074-80a7-8008-edb478dcced1-0">
+                            <use href="#stroke-shape-render-133705-df7ee9d9-e074-80a7-8008-edb478dcced1-0">
+                            </use>
+                          </clipPath>
+                        </defs>
+                        <rect rx="16" ry="16" x="7064" y="9880" width="620" height="140" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="frame-background" style="fill:none;fill-opacity:none;stroke-width:1;stroke:#e8d0b8;stroke-opacity:1">
+                        </rect>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </g>
+              <g id="shape-df7ee9d9-e074-80a7-8008-edb479f92927">
+                <defs>
+                  <clipPath id="frame-clip-df7ee9d9-e074-80a7-8008-edb479f92927-render-133711" class="frame-clip frame-clip-def">
+                    <rect rx="16" ry="16" x="7064" y="10036" width="620" height="120" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)">
+                    </rect>
+                  </clipPath>
+                </defs>
+                <g class="frame-container-wrapper">
+                  <g class="frame-container-blur">
+                    <defs>
+                      <filter id="filter-shadow-render-133711" x="-0.03387096774193549" y="-0.175" width="1.0677419354838709" height="1.375" filterUnits="objectBoundingBox" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0">
+                        </feFlood>
+                        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0">
+                        </feColorMatrix>
+                        <feOffset dx="0" dy="1">
+                        </feOffset>
+                        <feGaussianBlur stdDeviation="1">
+                        </feGaussianBlur>
+                        <feColorMatrix type="matrix" values="0 0 0 0 0.12156862745098039 0 0 0 0 0.16470588235294117 0 0 0 0 0.1411764705882353 0 0 0 0.08 0">
+                        </feColorMatrix>
+                        <feBlend mode="normal">
+                        </feBlend>
+                        <feBlend mode="normal" in="SourceGraphic">
+                        </feBlend>
+                      </filter>
+                    </defs>
+                    <g class="frame-container-shadows" filter="url(#filter-shadow-render-133711)">
+                      <g clip-path="url(#frame-clip-df7ee9d9-e074-80a7-8008-edb479f92927-render-133711)" fill="none">
+                        <g class="fills" id="fills-df7ee9d9-e074-80a7-8008-edb479f92927">
+                          <rect rx="16" ry="16" x="7064" y="10036" width="620" height="120" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="frame-background" style="fill:#ffffff;fill-opacity:1">
+                          </rect>
+                        </g>
+                        <g class="frame-children">
+                          <g id="shape-df7ee9d9-e074-80a7-8008-edb47a2d46dc">
+                            <g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="7088" y="10056" width="155" height="22" rx="0" ry="0">
+                              <defs>
+                                <pattern patternUnits="objectBoundingBox" width="154.3333282470703" height="22.5" id="fill-0-render-133712-0">
+                                  <g>
+                                    <rect width="154.3333282470703" height="22.5" style="fill:#1f2a24;fill-opacity:1">
+                                    </rect>
+                                  </g>
+                                </pattern>
+                              </defs>
+                              <g class="fills" id="fills-df7ee9d9-e074-80a7-8008-edb47a2d46dc">
+                                <text x="7088" y="10078.050003051758" dominant-baseline="ideographic" textLength="154.3333282470703" lengthAdjust="spacingAndGlyphs" style="text-transform:none;font-family:&quot;Outfit&quot;;letter-spacing:normal;font-style:normal;font-weight:700;white-space:pre;font-size:18px;text-decoration:none;direction:ltr;fill:#1f2a24;fill-opacity:1">Estado del servicio</text>
+                              </g>
+                            </g>
+                          </g>
+                          <g id="shape-df7ee9d9-e074-80a7-8008-edb47a5eb6d7">
+                            <g class="fills" id="fills-df7ee9d9-e074-80a7-8008-edb47a5eb6d7">
+                              <ellipse cx="7093" cy="10101" rx="5" ry="5" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" style="fill:#d18f27;fill-opacity:1">
+                              </ellipse>
+                            </g>
+                          </g>
+                          <g id="shape-df7ee9d9-e074-80a7-8008-edb47a8bfa0f">
+                            <g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="7106" y="10092" width="160" height="17" rx="0" ry="0">
+                              <defs>
+                                <pattern patternUnits="objectBoundingBox" width="159.26666259765625" height="17.5" id="fill-0-render-133714-0">
+                                  <g>
+                                    <rect width="159.26666259765625" height="17.5" style="fill:#1f2a24;fill-opacity:1">
+                                    </rect>
+                                  </g>
+                                </pattern>
+                              </defs>
+                              <g class="fills" id="fills-df7ee9d9-e074-80a7-8008-edb47a8bfa0f">
+                                <text x="7106" y="10109.149993896484" dominant-baseline="ideographic" textLength="159.26666259765625" lengthAdjust="spacingAndGlyphs" style="text-transform:none;font-family:&quot;Inter 18pt&quot;;letter-spacing:normal;font-style:normal;font-weight:600;white-space:pre;font-size:14px;text-decoration:none;direction:ltr;fill:#1f2a24;fill-opacity:1">Rendimiento degradado</text>
+                              </g>
+                            </g>
+                          </g>
+                          <g id="shape-df7ee9d9-e074-80a7-8008-edb47ab77735">
+                            <g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="7088" y="10124" width="139" height="16" rx="0" ry="0">
+                              <defs>
+                                <pattern patternUnits="objectBoundingBox" width="138.46665954589844" height="16.25" id="fill-0-render-133715-0">
+                                  <g>
+                                    <rect width="138.46665954589844" height="16.25" style="fill:#2f5d4a;fill-opacity:1">
+                                    </rect>
+                                  </g>
+                                </pattern>
+                              </defs>
+                              <g class="fills" id="fills-df7ee9d9-e074-80a7-8008-edb47ab77735">
+                                <text x="7088" y="10139.933334350586" dominant-baseline="ideographic" textLength="138.46665954589844" lengthAdjust="spacingAndGlyphs" style="text-transform:none;font-family:&quot;Inter 18pt&quot;;letter-spacing:normal;font-style:normal;font-weight:600;white-space:pre;font-size:13px;text-decoration:none;direction:ltr;fill:#2f5d4a;fill-opacity:1">Ver historial de estado</text>
+                              </g>
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                    <g id="strokes-df7ee9d9-e074-80a7-8008-edb4d54d8400-df7ee9d9-e074-80a7-8008-edb479f92927" class="strokes">
+                      <g class="stroke-shape">
+                        <defs>
+                          <clipPath id="inner-stroke-render-133711-df7ee9d9-e074-80a7-8008-edb479f92927-0">
+                            <use href="#stroke-shape-render-133711-df7ee9d9-e074-80a7-8008-edb479f92927-0">
+                            </use>
+                          </clipPath>
+                        </defs>
+                        <rect rx="16" ry="16" x="7064" y="10036" width="620" height="120" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="frame-background" style="fill:none;fill-opacity:none;stroke-width:1;stroke:#e8d0b8;stroke-opacity:1">
+                        </rect>
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </g>
+              <g id="shape-df7ee9d9-e074-80a7-8008-edb47ae96e7d">
+                <g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="7760" y="9900" width="479" height="24" rx="0" ry="0">
+                  <defs>
+                    <pattern patternUnits="objectBoundingBox" width="478.04998779296875" height="25" id="fill-0-render-133716-0">
+                      <g>
+                        <rect width="478.04998779296875" height="25" style="fill:#5c6b62;fill-opacity:1">
+                        </rect>
+                      </g>
+                    </pattern>
+                  </defs>
+                  <g class="fills" id="fills-df7ee9d9-e074-80a7-8008-edb47ae96e7d">
+                    <text x="7760" y="9924.5" dominant-baseline="ideographic" textLength="478.04998779296875" lengthAdjust="spacingAndGlyphs" style="text-transform:none;font-family:&quot;Inter 18pt&quot;;letter-spacing:normal;font-style:normal;font-weight:600;white-space:pre;font-size:20px;text-decoration:none;direction:ltr;fill:#5c6b62;fill-opacity:1">Degradado muestra banner con enlace al historial.</text>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g></g></svg>

@@ -1,0 +1,169 @@
+<svg width="1400" height="420" viewBox="0 0 1400 420" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1" id="screenshot-df7ee9d9-e074-80a7-8008-eda9adce4913"><style>@font-face {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 700;
+    font-display: block;
+    src: url(http://localhost:9001/assets/by-id/d4f69431-9393-4d66-9e03-c6db21829def) format('woff');
+  }
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url(http://localhost:9001/assets/by-id/4f02faa0-6e5f-42b2-9d32-ca72c88f54b3) format('woff');
+  }
+@font-face {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 800;
+    font-display: block;
+    src: url(http://localhost:9001/assets/by-id/7bd30219-f405-4b32-b53f-ec5efda5886e) format('woff');
+  }
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+  src: url(http://localhost:9001/internal/gfonts/font/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuFuYAZJhiI2B.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: block;
+  src: url(http://localhost:9001/internal/gfonts/font/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYAZJhiI2B.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}</style><g transform="translate(-7000, -2620)"><g id="shape-df7ee9d9-e074-80a7-8008-eda9adce4913">
+    <defs>
+      <clipPath id="frame-clip-df7ee9d9-e074-80a7-8008-eda9adce4913-render-99875" class="frame-clip frame-clip-def">
+        <rect rx="0" ry="0" x="7000" y="2620" width="1400" height="420" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)">
+        </rect>
+      </clipPath>
+    </defs>
+    <g class="frame-container-wrapper">
+      <g class="frame-container-blur">
+        <g class="frame-container-shadows">
+          <g clip-path="url(#frame-clip-df7ee9d9-e074-80a7-8008-eda9adce4913-render-99875)" fill="none">
+            <g class="fills" id="fills-df7ee9d9-e074-80a7-8008-eda9adce4913">
+              <rect rx="0" ry="0" x="7000" y="2620" width="1400" height="420" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="frame-background" style="fill:#fff8f0;fill-opacity:1">
+              </rect>
+            </g>
+            <g class="frame-children">
+              <g id="shape-df7ee9d9-e074-80a7-8008-eda9adf572c7">
+                <g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="7064" y="2668" width="355" height="44" rx="0" ry="0">
+                  <defs>
+                    <pattern patternUnits="objectBoundingBox" width="354.54998779296875" height="45" id="fill-0-render-99876-0">
+                      <g>
+                        <rect width="354.54998779296875" height="45" style="fill:#1f2a24;fill-opacity:1">
+                        </rect>
+                      </g>
+                    </pattern>
+                  </defs>
+                  <g class="fills" id="fills-df7ee9d9-e074-80a7-8008-eda9adf572c7">
+                    <text x="7064" y="2712.1000061035156" dominant-baseline="ideographic" textLength="354.54998779296875" lengthAdjust="spacingAndGlyphs" style="text-transform:none;font-family:&quot;Outfit&quot;;letter-spacing:normal;font-style:normal;font-weight:700;white-space:pre;font-size:36px;text-decoration:none;direction:ltr;fill:#1f2a24;fill-opacity:1">CMP-83 · SettingsNav</text>
+                  </g>
+                </g>
+              </g>
+              <g id="shape-df7ee9d9-e074-80a7-8008-eda9ae231241">
+                <g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="7064" y="2712" width="792" height="29" rx="0" ry="0">
+                  <defs>
+                    <pattern patternUnits="objectBoundingBox" width="791.2333374023438" height="30" id="fill-0-render-99877-0">
+                      <g>
+                        <rect width="791.2333374023438" height="30" style="fill:#5c6b62;fill-opacity:1">
+                        </rect>
+                      </g>
+                    </pattern>
+                  </defs>
+                  <g class="fills" id="fills-df7ee9d9-e074-80a7-8008-eda9ae231241">
+                    <text x="7064" y="2741.3999938964844" dominant-baseline="ideographic" textLength="791.2333374023438" lengthAdjust="spacingAndGlyphs" style="text-transform:none;font-family:&quot;Inter 18pt&quot;;letter-spacing:normal;font-style:normal;font-weight:400;white-space:pre;font-size:24px;text-decoration:none;direction:ltr;fill:#5c6b62;fill-opacity:1">Cuenta, Privacidad y Seguridad: cambia de sección sin salir de ajustes.</text>
+                  </g>
+                </g>
+              </g>
+              <g id="shape-df7ee9d9-e074-80a7-8008-eda9ae4ca621">
+                <g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="7064" y="2796" width="56" height="20" rx="0" ry="0">
+                  <defs>
+                    <pattern patternUnits="objectBoundingBox" width="56" height="18.75" id="fill-0-render-99878-0">
+                      <g>
+                        <rect width="56" height="18.75" style="fill:#1f2a24;fill-opacity:1">
+                        </rect>
+                      </g>
+                    </pattern>
+                  </defs>
+                  <g class="fills" id="fills-df7ee9d9-e074-80a7-8008-eda9ae4ca621">
+                    <text x="7064" y="2814.9666595458984" dominant-baseline="ideographic" textLength="56" lengthAdjust="spacingAndGlyphs" style="text-transform:none;font-family:&quot;Inter 18pt&quot;;letter-spacing:normal;font-style:normal;font-weight:700;white-space:pre;font-size:16px;text-decoration:none;direction:ltr;fill:#1f2a24;fill-opacity:1">Cuenta</text>
+                  </g>
+                </g>
+              </g>
+              <g id="shape-df7ee9d9-e074-80a7-8008-eda9ae78b1ef">
+                <g class="fills" id="fills-df7ee9d9-e074-80a7-8008-eda9ae78b1ef">
+                  <rect rx="0" ry="0" x="7064" y="2826" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" width="54" height="2" style="fill:#2f5d4a;fill-opacity:1">
+                  </rect>
+                </g>
+              </g>
+              <g id="shape-df7ee9d9-e074-80a7-8008-eda9ae9c437b">
+                <g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="7158" y="2796" width="79" height="20" rx="0" ry="0">
+                  <defs>
+                    <pattern patternUnits="objectBoundingBox" width="78.13333129882812" height="18.75" id="fill-0-render-99880-0">
+                      <g>
+                        <rect width="78.13333129882812" height="18.75" style="fill:#5c6b62;fill-opacity:1">
+                        </rect>
+                      </g>
+                    </pattern>
+                  </defs>
+                  <g class="fills" id="fills-df7ee9d9-e074-80a7-8008-eda9ae9c437b">
+                    <text x="7158" y="2814.9666595458984" dominant-baseline="ideographic" textLength="78.13333129882812" lengthAdjust="spacingAndGlyphs" style="text-transform:none;font-family:&quot;Inter 18pt&quot;;letter-spacing:normal;font-style:normal;font-weight:400;white-space:pre;font-size:16px;text-decoration:none;direction:ltr;fill:#5c6b62;fill-opacity:1">Privacidad</text>
+                  </g>
+                </g>
+              </g>
+              <g id="shape-df7ee9d9-e074-80a7-8008-eda9aec24380">
+                <g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="7276" y="2796" width="77" height="20" rx="0" ry="0">
+                  <defs>
+                    <pattern patternUnits="objectBoundingBox" width="76.06666564941406" height="18.75" id="fill-0-render-99881-0">
+                      <g>
+                        <rect width="76.06666564941406" height="18.75" style="fill:#5c6b62;fill-opacity:1">
+                        </rect>
+                      </g>
+                    </pattern>
+                  </defs>
+                  <g class="fills" id="fills-df7ee9d9-e074-80a7-8008-eda9aec24380">
+                    <text x="7276" y="2814.9666595458984" dominant-baseline="ideographic" textLength="76.06666564941406" lengthAdjust="spacingAndGlyphs" style="text-transform:none;font-family:&quot;Inter 18pt&quot;;letter-spacing:normal;font-style:normal;font-weight:400;white-space:pre;font-size:16px;text-decoration:none;direction:ltr;fill:#5c6b62;fill-opacity:1">Seguridad</text>
+                  </g>
+                </g>
+              </g>
+              <g id="shape-df7ee9d9-e074-80a7-8008-eda9aee9b27c">
+                <g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="7760" y="2800" width="431" height="24" rx="0" ry="0">
+                  <defs>
+                    <pattern patternUnits="objectBoundingBox" width="430.54998779296875" height="25" id="fill-0-render-99882-0">
+                      <g>
+                        <rect width="430.54998779296875" height="25" style="fill:#5c6b62;fill-opacity:1">
+                        </rect>
+                      </g>
+                    </pattern>
+                  </defs>
+                  <g class="fills" id="fills-df7ee9d9-e074-80a7-8008-eda9aee9b27c">
+                    <text x="7760" y="2824.5" dominant-baseline="ideographic" textLength="430.54998779296875" lengthAdjust="spacingAndGlyphs" style="text-transform:none;font-family:&quot;Inter 18pt&quot;;letter-spacing:normal;font-style:normal;font-weight:600;white-space:pre;font-size:20px;text-decoration:none;direction:ltr;fill:#5c6b62;fill-opacity:1">Activa: texto ink.900 y subrayado forest.600.</text>
+                  </g>
+                </g>
+              </g>
+              <g id="shape-df7ee9d9-e074-80a7-8008-eda9af105002">
+                <g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="7760" y="2844" width="472" height="24" rx="0" ry="0">
+                  <defs>
+                    <pattern patternUnits="objectBoundingBox" width="471.433349609375" height="25" id="fill-0-render-99883-0">
+                      <g>
+                        <rect width="471.433349609375" height="25" style="fill:#5c6b62;fill-opacity:1">
+                        </rect>
+                      </g>
+                    </pattern>
+                  </defs>
+                  <g class="fills" id="fills-df7ee9d9-e074-80a7-8008-eda9af105002">
+                    <text x="7760" y="2868.5" dominant-baseline="ideographic" textLength="471.433349609375" lengthAdjust="spacingAndGlyphs" style="text-transform:none;font-family:&quot;Inter 18pt&quot;;letter-spacing:normal;font-style:normal;font-weight:600;white-space:pre;font-size:20px;text-decoration:none;direction:ltr;fill:#5c6b62;fill-opacity:1">En móvil ocupa la misma fila bajo el título Ajustes.</text>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g></g></svg>
