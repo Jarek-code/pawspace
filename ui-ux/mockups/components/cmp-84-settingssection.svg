@@ -36,7 +36,7 @@
   unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }</style><g transform="translate(-7000, -3120)"><g id="shape-df7ee9d9-e074-80a7-8008-eda9af37c524">
     <defs>
-      <clipPath id="frame-clip-df7ee9d9-e074-80a7-8008-eda9af37c524-render-99892" class="frame-clip frame-clip-def">
+      <clipPath id="frame-clip-df7ee9d9-e074-80a7-8008-eda9af37c524-render-54445" class="frame-clip frame-clip-def">
         <rect rx="0" ry="0" x="7000" y="3120" width="1400" height="540" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)">
         </rect>
       </clipPath>
@@ -44,7 +44,7 @@
     <g class="frame-container-wrapper">
       <g class="frame-container-blur">
         <g class="frame-container-shadows">
-          <g clip-path="url(#frame-clip-df7ee9d9-e074-80a7-8008-eda9af37c524-render-99892)" fill="none">
+          <g clip-path="url(#frame-clip-df7ee9d9-e074-80a7-8008-eda9af37c524-render-54445)" fill="none">
             <g class="fills" id="fills-df7ee9d9-e074-80a7-8008-eda9af37c524">
               <rect rx="0" ry="0" x="7000" y="3120" width="1400" height="540" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="frame-background" style="fill:#fff8f0;fill-opacity:1">
               </rect>
@@ -53,7 +53,7 @@
               <g id="shape-df7ee9d9-e074-80a7-8008-eda9af581db4">
                 <g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="7064" y="3168" width="413" height="44" rx="0" ry="0">
                   <defs>
-                    <pattern patternUnits="objectBoundingBox" width="412.73333740234375" height="45" id="fill-0-render-99893-0">
+                    <pattern patternUnits="objectBoundingBox" width="412.73333740234375" height="45" id="fill-0-render-54446-0">
                       <g>
                         <rect width="412.73333740234375" height="45" style="fill:#1f2a24;fill-opacity:1">
                         </rect>
@@ -68,7 +68,7 @@
               <g id="shape-df7ee9d9-e074-80a7-8008-eda9af812574">
                 <g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="7064" y="3212" width="675" height="29" rx="0" ry="0">
                   <defs>
-                    <pattern patternUnits="objectBoundingBox" width="674.0999755859375" height="30" id="fill-0-render-99894-0">
+                    <pattern patternUnits="objectBoundingBox" width="674.0999755859375" height="30" id="fill-0-render-54447-0">
                       <g>
                         <rect width="674.0999755859375" height="30" style="fill:#5c6b62;fill-opacity:1">
                         </rect>
@@ -82,7 +82,7 @@
               </g>
               <g id="shape-df7ee9d9-e074-80a7-8008-eda9afae7622">
                 <defs>
-                  <clipPath id="frame-clip-df7ee9d9-e074-80a7-8008-eda9afae7622-render-99895" class="frame-clip frame-clip-def">
+                  <clipPath id="frame-clip-df7ee9d9-e074-80a7-8008-eda9afae7622-render-54448" class="frame-clip frame-clip-def">
                     <rect rx="16" ry="16" x="7064" y="3280" width="620" height="260" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)">
                     </rect>
                   </clipPath>
@@ -90,7 +90,7 @@
                 <g class="frame-container-wrapper">
                   <g class="frame-container-blur">
                     <defs>
-                      <filter id="filter-shadow-render-99895" x="-0.03387096774193549" y="-0.08076923076923077" width="1.0677419354838709" height="1.1730769230769231" filterUnits="objectBoundingBox" color-interpolation-filters="sRGB">
+                      <filter id="filter-shadow-render-54448" x="-0.03387096774193549" y="-0.08076923076923077" width="1.0677419354838709" height="1.1730769230769231" filterUnits="objectBoundingBox" color-interpolation-filters="sRGB">
                         <feFlood flood-opacity="0">
                         </feFlood>
                         <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0">
@@ -107,8 +107,8 @@
                         </feBlend>
                       </filter>
                     </defs>
-                    <g class="frame-container-shadows" filter="url(#filter-shadow-render-99895)">
-                      <g clip-path="url(#frame-clip-df7ee9d9-e074-80a7-8008-eda9afae7622-render-99895)" fill="none">
+                    <g class="frame-container-shadows" filter="url(#filter-shadow-render-54448)">
+                      <g clip-path="url(#frame-clip-df7ee9d9-e074-80a7-8008-eda9afae7622-render-54448)" fill="none">
                         <g class="fills" id="fills-df7ee9d9-e074-80a7-8008-eda9afae7622">
                           <rect rx="16" ry="16" x="7064" y="3280" width="620" height="260" transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="frame-background" style="fill:#ffffff;fill-opacity:1">
                           </rect>
@@ -117,7 +117,7 @@
                           <g id="shape-df7ee9d9-e074-80a7-8008-eda9afdb2d15">
                             <g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="7088" y="3300" width="156" height="22" rx="0" ry="0">
                               <defs>
-                                <pattern patternUnits="objectBoundingBox" width="155.53334045410156" height="22.5" id="fill-0-render-99896-0">
+                                <pattern patternUnits="objectBoundingBox" width="155.53334045410156" height="22.5" id="fill-0-render-54449-0">
                                   <g>
                                     <rect width="155.53334045410156" height="22.5" style="fill:#1f2a24;fill-opacity:1">
                                     </rect>
@@ -132,7 +132,7 @@
                           <g id="shape-df7ee9d9-e074-80a7-8008-eda9b003f768">
                             <g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="7088" y="3326" width="226" height="16" rx="0" ry="0">
                               <defs>
-                                <pattern patternUnits="objectBoundingBox" width="225.26666259765625" height="16.25" id="fill-0-render-99897-0">
+                                <pattern patternUnits="objectBoundingBox" width="225.26666259765625" height="16.25" id="fill-0-render-54450-0">
                                   <g>
                                     <rect width="225.26666259765625" height="16.25" style="fill:#5c6b62;fill-opacity:1">
                                     </rect>
@@ -153,7 +153,7 @@
                           <g id="shape-df7ee9d9-e074-80a7-8008-eda9b059c33d">
                             <g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="7088" y="3504" width="229" height="16" rx="0" ry="0">
                               <defs>
-                                <pattern patternUnits="objectBoundingBox" width="228.81666564941406" height="16.25" id="fill-0-render-99899-0">
+                                <pattern patternUnits="objectBoundingBox" width="228.81666564941406" height="16.25" id="fill-0-render-54452-0">
                                   <g>
                                     <rect width="228.81666564941406" height="16.25" style="fill:#7a8880;fill-opacity:1">
                                     </rect>
@@ -168,11 +168,11 @@
                         </g>
                       </g>
                     </g>
-                    <g id="strokes-df7ee9d9-e074-80a7-8008-edaa4e0a5b52-df7ee9d9-e074-80a7-8008-eda9afae7622" class="strokes">
+                    <g id="strokes-58edcae8-4831-80b5-8008-eef81cfb81d2-df7ee9d9-e074-80a7-8008-eda9afae7622" class="strokes">
                       <g class="stroke-shape">
                         <defs>
-                          <clipPath id="inner-stroke-render-99895-df7ee9d9-e074-80a7-8008-eda9afae7622-0">
-                            <use href="#stroke-shape-render-99895-df7ee9d9-e074-80a7-8008-eda9afae7622-0">
+                          <clipPath id="inner-stroke-render-54448-df7ee9d9-e074-80a7-8008-eda9afae7622-0">
+                            <use href="#stroke-shape-render-54448-df7ee9d9-e074-80a7-8008-eda9afae7622-0">
                             </use>
                           </clipPath>
                         </defs>
@@ -186,7 +186,7 @@
               <g id="shape-df7ee9d9-e074-80a7-8008-eda9b085637a">
                 <g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="7760" y="3300" width="448" height="24" rx="0" ry="0">
                   <defs>
-                    <pattern patternUnits="objectBoundingBox" width="447.566650390625" height="25" id="fill-0-render-99900-0">
+                    <pattern patternUnits="objectBoundingBox" width="447.566650390625" height="25" id="fill-0-render-54453-0">
                       <g>
                         <rect width="447.566650390625" height="25" style="fill:#5c6b62;fill-opacity:1">
                         </rect>
@@ -201,7 +201,7 @@
               <g id="shape-df7ee9d9-e074-80a7-8008-eda9b0af201b">
                 <g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="7760" y="3344" width="474" height="24" rx="0" ry="0">
                   <defs>
-                    <pattern patternUnits="objectBoundingBox" width="473.70001220703125" height="25" id="fill-0-render-99901-0">
+                    <pattern patternUnits="objectBoundingBox" width="473.70001220703125" height="25" id="fill-0-render-54454-0">
                       <g>
                         <rect width="473.70001220703125" height="25" style="fill:#5c6b62;fill-opacity:1">
                         </rect>
@@ -216,7 +216,7 @@
               <g id="shape-df7ee9d9-e074-80a7-8008-eda9b0d79746">
                 <g transform="matrix(1.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000)" class="text-container" x="7760" y="3388" width="661" height="24" rx="0" ry="0">
                   <defs>
-                    <pattern patternUnits="objectBoundingBox" width="660.183349609375" height="25" id="fill-0-render-99902-0">
+                    <pattern patternUnits="objectBoundingBox" width="660.183349609375" height="25" id="fill-0-render-54455-0">
                       <g>
                         <rect width="660.183349609375" height="25" style="fill:#5c6b62;fill-opacity:1">
                         </rect>
