@@ -3,7 +3,9 @@
 
 --     USUARIO      -> USUARIO_CREDENCIALES  (contrasena_hash)
 --       sensibilidad: el hash no debe viajar en cada listado de usuarios
---     MASCOTA      -> MASCOTA_PERFIL        (biografia, foto_perfil_url)
+--     USUARIO      -> USUARIO_PERFIL        (telefono, ubicacion_ciudad, ubicacion_pais, biografia)
+--       datos personales del tutor: no viajan en cada listado de cuentas
+--     MASCOTA      -> MASCOTA_PERFIL        (biografia, foto_perfil_url, foto_portada_url, sitio_web, ubicacion_ciudad, ubicacion_pais, latitud, longitud)
 --       columnas frias, de tamano variable, que no se filtran ni se ordenan
 --     PUBLICACION  -> PUBLICACION_TEXTO     (texto)
 --       el TEXT del post: la fila caliente del feed deja de arrastrarlo
@@ -17,21 +19,28 @@ CREATE DATABASE pawspace
 
 USE pawspace;
 
--- USUARIO: sin contrasena_hash (viven en el satelite vertical)
+-- USUARIO: sin contrasena_hash, telefono, ubicacion_ciudad, ubicacion_pais, biografia (viven en el satelite vertical)
 CREATE TABLE USUARIO (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(255) NOT NULL,
     email VARCHAR(320) NOT NULL,
+    contrasena_actualizada_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     creado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     actualizado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
         ON UPDATE CURRENT_TIMESTAMP,
     activo BOOLEAN NOT NULL DEFAULT TRUE,
+    plan ENUM(
+        'GRATUITO',
+        'PREMIUM'
+    ) NOT NULL DEFAULT 'GRATUITO',
+    eliminada_en DATETIME NULL,
     CONSTRAINT pk_usuario
         PRIMARY KEY (id),
     CONSTRAINT uq_usuario_email
         UNIQUE (email),
     INDEX idx_usuario_activo (activo),
-    INDEX idx_usuario_creado_en (creado_en)
+    INDEX idx_usuario_creado_en (creado_en),
+    INDEX idx_usuario_eliminada (eliminada_en)
 ) ENGINE=InnoDB;;
 
 CREATE TABLE ESPECIE (
@@ -59,7 +68,7 @@ CREATE TABLE RAZA (
     INDEX idx_raza_especie_id (especie_id)
 ) ENGINE=InnoDB;;
 
--- MASCOTA: sin biografia, foto_perfil_url (viven en el satelite vertical)
+-- MASCOTA: sin biografia, foto_perfil_url, foto_portada_url, sitio_web, ubicacion_ciudad, ubicacion_pais, latitud, longitud (viven en el satelite vertical)
 CREATE TABLE MASCOTA (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(100) NOT NULL,
@@ -69,6 +78,9 @@ CREATE TABLE MASCOTA (
     sexo CHAR(1) NULL,
     fecha_nacimiento DATE NULL,
     es_privada BOOLEAN NOT NULL DEFAULT FALSE,
+    verificada BOOLEAN NOT NULL DEFAULT FALSE,
+    verificada_en DATETIME NULL,
+    eliminada_en DATETIME NULL,
     creado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     actualizado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
         ON UPDATE CURRENT_TIMESTAMP,
@@ -89,7 +101,9 @@ CREATE TABLE MASCOTA (
     INDEX idx_mascota_especie_id (especie_id),
     INDEX idx_mascota_raza_id (raza_id),
     INDEX idx_mascota_nombre (nombre),
-    INDEX idx_mascota_privada (es_privada)
+    INDEX idx_mascota_privada (es_privada),
+    INDEX idx_mascota_verificada (verificada),
+    INDEX idx_mascota_eliminada (eliminada_en)
 ) ENGINE=InnoDB;;
 
 CREATE TABLE USUARIO_MASCOTA (
@@ -357,8 +371,16 @@ CREATE TABLE PUBLICACION_GUARDADA (
 CREATE TABLE HISTORIA (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
     mascota_id BIGINT UNSIGNED NOT NULL,
+    texto VARCHAR(500) NULL,
+    audiencia ENUM(
+        'PUBLICO',
+        'SEGUIDORES',
+        'SOLO_YO'
+    ) NOT NULL DEFAULT 'PUBLICO',
+    permite_respuestas BOOLEAN NOT NULL DEFAULT TRUE,
     creado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     vence_en DATETIME NOT NULL,
+    eliminada_en DATETIME NULL,
     CONSTRAINT pk_historia
         PRIMARY KEY (id),
     CONSTRAINT fk_historia_mascota
@@ -369,21 +391,43 @@ CREATE TABLE HISTORIA (
     INDEX idx_historia_mascota_creado
         (mascota_id, creado_en),
     INDEX idx_historia_vence
-        (vence_en)
+        (vence_en),
+    INDEX idx_historia_eliminada
+        (eliminada_en)
 ) ENGINE=InnoDB;;
 
 CREATE TABLE CONVERSACION (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    solicitante_id BIGINT UNSIGNED NULL,
+    estado ENUM(
+        'SOLICITUD',
+        'ACTIVA',
+        'IGNORADA'
+    ) NOT NULL DEFAULT 'ACTIVA',
+    ultimo_mensaje_en DATETIME NULL,
     creado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT pk_conversacion
         PRIMARY KEY (id),
+    CONSTRAINT fk_conversacion_solicitante
+        FOREIGN KEY (solicitante_id)
+        REFERENCES MASCOTA(id)
+        ON UPDATE CASCADE
+        ON DELETE SET NULL,
     INDEX idx_conversacion_creado
-        (creado_en)
+        (creado_en),
+    INDEX idx_conversacion_bandeja
+        (estado, ultimo_mensaje_en)
 ) ENGINE=InnoDB;;
 
 CREATE TABLE CONVERSACION_PARTICIPANTE (
     conversacion_id BIGINT UNSIGNED NOT NULL,
     mascota_id BIGINT UNSIGNED NOT NULL,
+    -- Puntero sin clave ajena: MENSAJE se declara mas abajo en este mismo esquema.,
+    leido_hasta_mensaje_id BIGINT UNSIGNED NULL,
+    leido_en DATETIME NULL,
+    silenciada_hasta DATETIME NULL,
+    silenciada_en DATETIME NULL,
+    nota VARCHAR(500) NULL,
     creado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT pk_conversacion_participante
         PRIMARY KEY (conversacion_id, mascota_id),
@@ -405,11 +449,20 @@ CREATE TABLE MENSAJE (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
     conversacion_id BIGINT UNSIGNED NOT NULL,
     remitente_id BIGINT UNSIGNED NOT NULL,
+    historia_id BIGINT UNSIGNED NULL,
+    clave_cliente CHAR(36) NULL,
     texto TEXT NOT NULL,
     creado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     eliminado_en DATETIME NULL,
     CONSTRAINT pk_mensaje
         PRIMARY KEY (id),
+    CONSTRAINT uq_mensaje_clave_cliente
+        UNIQUE (conversacion_id, remitente_id, clave_cliente),
+    CONSTRAINT fk_mensaje_historia
+        FOREIGN KEY (historia_id)
+        REFERENCES HISTORIA(id)
+        ON UPDATE CASCADE
+        ON DELETE SET NULL,
     CONSTRAINT fk_mensaje_conversacion
         FOREIGN KEY (conversacion_id)
         REFERENCES CONVERSACION(id)
@@ -424,6 +477,8 @@ CREATE TABLE MENSAJE (
         (conversacion_id, creado_en),
     INDEX idx_mensaje_remitente
         (remitente_id),
+    INDEX idx_mensaje_historia
+        (historia_id),
     INDEX idx_mensaje_eliminado
         (eliminado_en)
 ) ENGINE=InnoDB;;
@@ -452,8 +507,10 @@ CREATE TABLE REPORTE (
         'RESUELTO',
         'RECHAZADO'
     ) NOT NULL DEFAULT 'PENDIENTE',
+    resolucion VARCHAR(1000) NULL,
     creado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     resuelto_en DATETIME NULL,
+    archivado_en DATETIME NULL,
     CONSTRAINT pk_reporte
         PRIMARY KEY (id),
     CONSTRAINT fk_reporte_reportante
@@ -490,6 +547,8 @@ CREATE TABLE REPORTE (
         (reportado_por_mascota_id),
     INDEX idx_reporte_estado_creado
         (estado, creado_en),
+    INDEX idx_reporte_reportante_archivado
+        (reportado_por_mascota_id, archivado_en),
     INDEX idx_reporte_publicacion
         (publicacion_id),
     INDEX idx_reporte_comentario
@@ -500,6 +559,297 @@ CREATE TABLE REPORTE (
         (mensaje_id),
     INDEX idx_reporte_mascota
         (mascota_id)
+) ENGINE=InnoDB;;
+
+CREATE TABLE SESION (
+    id VARCHAR(64) NOT NULL,
+    usuario_id BIGINT UNSIGNED NOT NULL,
+    mascota_id BIGINT UNSIGNED NULL,
+    dispositivo VARCHAR(120) NULL,
+    plataforma VARCHAR(60) NULL,
+    ubicacion_ciudad VARCHAR(100) NULL,
+    ubicacion_pais VARCHAR(100) NULL,
+    iniciada_en DATETIME NOT NULL,
+    ultima_actividad_en DATETIME NOT NULL,
+    expira_en DATETIME NOT NULL,
+    cerrada_en DATETIME NULL,
+    cerrada_por ENUM(
+        'USUARIO',
+        'TODAS',
+        'CONTRASENA',
+        'EXPIRADA',
+        'CUENTA_ELIMINADA'
+    ) NULL,
+    CONSTRAINT pk_sesion
+        PRIMARY KEY (id),
+    CONSTRAINT fk_sesion_usuario
+        FOREIGN KEY (usuario_id)
+        REFERENCES USUARIO(id)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    CONSTRAINT fk_sesion_mascota
+        FOREIGN KEY (mascota_id)
+        REFERENCES MASCOTA(id)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    INDEX idx_sesion_usuario_abierta
+        (usuario_id, cerrada_en),
+    INDEX idx_sesion_mascota_abierta
+        (mascota_id, cerrada_en),
+    INDEX idx_sesion_expira
+        (expira_en),
+    INDEX idx_sesion_ultima_actividad
+        (ultima_actividad_en)
+) ENGINE=InnoDB;;
+
+CREATE TABLE MASCOTA_PREFERENCIAS (
+    mascota_id BIGINT UNSIGNED NOT NULL,
+    mostrar_ubicacion BOOLEAN NOT NULL DEFAULT FALSE,
+    permitir_mensajes_desconocidos BOOLEAN NOT NULL DEFAULT FALSE,
+    compartir_historias_seguidores BOOLEAN NOT NULL DEFAULT TRUE,
+    permitir_descarga_historias BOOLEAN NOT NULL DEFAULT FALSE,
+    filtro_comentarios_ofensivos BOOLEAN NOT NULL DEFAULT FALSE,
+    filtro_cuentas_sin_foto BOOLEAN NOT NULL DEFAULT FALSE,
+    filtro_palabras JSON NULL,
+    actualizado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+    CONSTRAINT pk_mascota_preferencias
+        PRIMARY KEY (mascota_id),
+    CONSTRAINT fk_mp_mascota
+        FOREIGN KEY (mascota_id)
+        REFERENCES MASCOTA(id)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+) ENGINE=InnoDB;;
+
+CREATE TABLE USUARIO_PREFERENCIAS (
+    usuario_id BIGINT UNSIGNED NOT NULL,
+    avisos_correo BOOLEAN NOT NULL DEFAULT TRUE,
+    avisos_push BOOLEAN NOT NULL DEFAULT TRUE,
+    avisos_tipos JSON NULL,
+    actualizado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+    CONSTRAINT pk_usuario_preferencias
+        PRIMARY KEY (usuario_id),
+    CONSTRAINT fk_up_usuario
+        FOREIGN KEY (usuario_id)
+        REFERENCES USUARIO(id)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+) ENGINE=InnoDB;;
+
+CREATE TABLE HISTORIA_DESTACADA (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    mascota_id BIGINT UNSIGNED NOT NULL,
+    titulo VARCHAR(60) NOT NULL,
+    portada_historia_id BIGINT UNSIGNED NULL,
+    orden SMALLINT NOT NULL DEFAULT 0,
+    creado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    actualizado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+    CONSTRAINT pk_historia_destacada
+        PRIMARY KEY (id),
+    CONSTRAINT fk_hd_mascota
+        FOREIGN KEY (mascota_id)
+        REFERENCES MASCOTA(id)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    CONSTRAINT fk_hd_portada
+        FOREIGN KEY (portada_historia_id)
+        REFERENCES HISTORIA(id)
+        ON UPDATE CASCADE
+        ON DELETE SET NULL,
+    INDEX idx_hd_mascota_orden
+        (mascota_id, orden)
+) ENGINE=InnoDB;;
+
+CREATE TABLE HISTORIA_DESTACADA_ELEMENTO (
+    destacada_id BIGINT UNSIGNED NOT NULL,
+    historia_id BIGINT UNSIGNED NOT NULL,
+    posicion SMALLINT NOT NULL DEFAULT 0,
+    agregada_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT pk_historia_destacada_elemento
+        PRIMARY KEY (destacada_id, historia_id),
+    CONSTRAINT fk_hde_destacada
+        FOREIGN KEY (destacada_id)
+        REFERENCES HISTORIA_DESTACADA(id)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    CONSTRAINT fk_hde_historia
+        FOREIGN KEY (historia_id)
+        REFERENCES HISTORIA(id)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    INDEX idx_hde_historia
+        (historia_id)
+) ENGINE=InnoDB;;
+
+CREATE TABLE REPORTE_APELACION (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    reporte_id BIGINT UNSIGNED NOT NULL,
+    mascota_id BIGINT UNSIGNED NOT NULL,
+    motivo VARCHAR(2000) NOT NULL,
+    estado ENUM(
+        'PENDIENTE',
+        'ACEPTADA',
+        'RECHAZADA'
+    ) NOT NULL DEFAULT 'PENDIENTE',
+    resolucion VARCHAR(1000) NULL,
+    creado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    resuelto_en DATETIME NULL,
+    CONSTRAINT pk_reporte_apelacion
+        PRIMARY KEY (id),
+    CONSTRAINT uq_ra_una_por_reporte
+        UNIQUE (reporte_id),
+    CONSTRAINT fk_ra_reporte
+        FOREIGN KEY (reporte_id)
+        REFERENCES REPORTE(id)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    CONSTRAINT fk_ra_mascota
+        FOREIGN KEY (mascota_id)
+        REFERENCES MASCOTA(id)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    INDEX idx_ra_mascota
+        (mascota_id),
+    INDEX idx_ra_estado
+        (estado, creado_en)
+) ENGINE=InnoDB;;
+
+CREATE TABLE TICKET_SOPORTE (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    usuario_id BIGINT UNSIGNED NOT NULL,
+    mascota_id BIGINT UNSIGNED NULL,
+    tema ENUM(
+        'CUENTA',
+        'PRIVACIDAD',
+        'MENSAJES',
+        'REPORTES',
+        'HISTORIAS',
+        'OTRO'
+    ) NOT NULL,
+    correo_contacto VARCHAR(320) NOT NULL,
+    asunto VARCHAR(200) NOT NULL,
+    descripcion TEXT NOT NULL,
+    estado ENUM(
+        'ABIERTA',
+        'EN_REVISION',
+        'ESPERANDO_USUARIO',
+        'RESUELTA',
+        'CERRADA'
+    ) NOT NULL DEFAULT 'ABIERTA',
+    privacidad_aceptada_en DATETIME NOT NULL,
+    creado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    actualizado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+    cerrada_en DATETIME NULL,
+    CONSTRAINT pk_ticket_soporte
+        PRIMARY KEY (id),
+    CONSTRAINT fk_ts_usuario
+        FOREIGN KEY (usuario_id)
+        REFERENCES USUARIO(id)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    CONSTRAINT fk_ts_mascota
+        FOREIGN KEY (mascota_id)
+        REFERENCES MASCOTA(id)
+        ON UPDATE CASCADE
+        ON DELETE SET NULL,
+    INDEX idx_ts_usuario_creado
+        (usuario_id, creado_en),
+    INDEX idx_ts_estado_creado
+        (estado, creado_en)
+) ENGINE=InnoDB;;
+
+CREATE TABLE TICKET_MENSAJE (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    ticket_id BIGINT UNSIGNED NOT NULL,
+    autor_tipo ENUM(
+        'USUARIO',
+        'SOPORTE'
+    ) NOT NULL,
+    autor_usuario_id BIGINT UNSIGNED NULL,
+    texto TEXT NOT NULL,
+    creado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT pk_ticket_mensaje
+        PRIMARY KEY (id),
+    CONSTRAINT fk_tm_ticket
+        FOREIGN KEY (ticket_id)
+        REFERENCES TICKET_SOPORTE(id)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    CONSTRAINT fk_tm_autor
+        FOREIGN KEY (autor_usuario_id)
+        REFERENCES USUARIO(id)
+        ON UPDATE CASCADE
+        ON DELETE SET NULL,
+    INDEX idx_tm_ticket_creado
+        (ticket_id, creado_en)
+) ENGINE=InnoDB;;
+
+CREATE TABLE AYUDA_CATEGORIA (
+    id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    slug VARCHAR(60) NOT NULL,
+    nombre VARCHAR(120) NOT NULL,
+    descripcion VARCHAR(255) NULL,
+    orden SMALLINT NOT NULL DEFAULT 0,
+    activo BOOLEAN NOT NULL DEFAULT TRUE,
+    CONSTRAINT pk_ayuda_categoria
+        PRIMARY KEY (id),
+    CONSTRAINT uq_ayuda_categoria_slug
+        UNIQUE (slug)
+) ENGINE=InnoDB;;
+
+CREATE TABLE AYUDA_ARTICULO (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    categoria_id SMALLINT UNSIGNED NOT NULL,
+    slug VARCHAR(120) NOT NULL,
+    titulo VARCHAR(200) NOT NULL,
+    resumen VARCHAR(500) NULL,
+    contenido MEDIUMTEXT NOT NULL,
+    minutos_lectura SMALLINT NOT NULL DEFAULT 1,
+    estado ENUM(
+        'BORRADOR',
+        'PUBLICADO',
+        'RETIRADO'
+    ) NOT NULL DEFAULT 'BORRADOR',
+    publicado_en DATETIME NULL,
+    actualizado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+    orden SMALLINT NOT NULL DEFAULT 0,
+    CONSTRAINT pk_ayuda_articulo
+        PRIMARY KEY (id),
+    CONSTRAINT uq_ayuda_articulo_slug
+        UNIQUE (slug),
+    CONSTRAINT fk_aa_categoria
+        FOREIGN KEY (categoria_id)
+        REFERENCES AYUDA_CATEGORIA(id)
+        ON UPDATE CASCADE
+        ON DELETE RESTRICT,
+    INDEX idx_aa_categoria_estado
+        (categoria_id, estado, orden),
+    FULLTEXT idx_aa_busqueda
+        (titulo, resumen, contenido)
+) ENGINE=InnoDB;;
+
+CREATE TABLE AYUDA_ARTICULO_UTIL (
+    articulo_id BIGINT UNSIGNED NOT NULL,
+    mascota_id BIGINT UNSIGNED NOT NULL,
+    util BOOLEAN NOT NULL,
+    creado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT pk_ayuda_articulo_util
+        PRIMARY KEY (articulo_id, mascota_id),
+    CONSTRAINT fk_aau_articulo
+        FOREIGN KEY (articulo_id)
+        REFERENCES AYUDA_ARTICULO(id)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    CONSTRAINT fk_aau_mascota
+        FOREIGN KEY (mascota_id)
+        REFERENCES MASCOTA(id)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
 ) ENGINE=InnoDB;;
 
 -- Satelite vertical: USUARIO_CREDENCIALES  <-  USUARIO(contrasena_hash)
@@ -516,12 +866,35 @@ CREATE TABLE USUARIO_CREDENCIALES (
         ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
--- Satelite vertical: MASCOTA_PERFIL  <-  MASCOTA(biografia, foto_perfil_url)
+-- Satelite vertical: USUARIO_PERFIL  <-  USUARIO(telefono, ubicacion_ciudad, ubicacion_pais, biografia)
+
+CREATE TABLE USUARIO_PERFIL (
+    usuario_id BIGINT UNSIGNED NOT NULL,
+    telefono VARCHAR(32) NULL,
+    ubicacion_ciudad VARCHAR(100) NULL,
+    ubicacion_pais VARCHAR(100) NULL,
+    biografia VARCHAR(500) NULL,
+    CONSTRAINT pk_usuario_perfil
+        PRIMARY KEY (usuario_id),
+    CONSTRAINT fk_usuario_perfil_usuario
+        FOREIGN KEY (usuario_id)
+        REFERENCES USUARIO(id)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+-- Satelite vertical: MASCOTA_PERFIL  <-  MASCOTA(biografia, foto_perfil_url, foto_portada_url, sitio_web, ubicacion_ciudad, ubicacion_pais, latitud, longitud)
 
 CREATE TABLE MASCOTA_PERFIL (
     mascota_id BIGINT UNSIGNED NOT NULL,
     biografia VARCHAR(1000) NULL,
     foto_perfil_url VARCHAR(2048) NULL,
+    foto_portada_url VARCHAR(2048) NULL,
+    sitio_web VARCHAR(255) NULL,
+    ubicacion_ciudad VARCHAR(100) NULL,
+    ubicacion_pais VARCHAR(100) NULL,
+    latitud DECIMAL(9, 6) NULL,
+    longitud DECIMAL(9, 6) NULL,
     CONSTRAINT pk_mascota_perfil
         PRIMARY KEY (mascota_id),
     CONSTRAINT fk_mascota_perfil_mascota
@@ -596,6 +969,31 @@ BEGIN
 END//
 
 DELIMITER ;
+
+
+-- RETENCION
+
+CREATE EVENT ev_historia_archivo
+ON SCHEDULE EVERY 1 DAY
+STARTS CURRENT_TIMESTAMP + INTERVAL 1 HOUR
+DO
+    UPDATE HISTORIA h
+       SET h.eliminada_en = NOW()
+     WHERE h.eliminada_en IS NULL
+       AND h.vence_en < NOW() - INTERVAL 30 DAY
+       AND NOT EXISTS (SELECT 1
+                         FROM HISTORIA_DESTACADA_ELEMENTO e
+                        WHERE e.historia_id = h.id);
+
+CREATE EVENT ev_reporte_archivo
+ON SCHEDULE EVERY 1 DAY
+STARTS CURRENT_TIMESTAMP + INTERVAL 2 HOUR
+DO
+    UPDATE REPORTE r
+       SET r.archivado_en = NOW()
+     WHERE r.archivado_en IS NULL
+       AND r.resuelto_en IS NOT NULL
+       AND r.resuelto_en < NOW() - INTERVAL 90 DAY;
 
 
 -- USUARIO ADMINISTRADOR DE LA BD

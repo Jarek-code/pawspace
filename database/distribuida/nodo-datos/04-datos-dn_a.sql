@@ -105,6 +105,35 @@ INSERT INTO HISTORIA (id, mascota_id, creado_en, vence_en) VALUES
     (6, 3, '2026-02-06 08:00:00', '2026-02-06 20:00:00');
 
 -- ---------------------------------------------------------------------------
+-- Mensajeria: la conversacion 3 entra como SOLICITUD
+-- ---------------------------------------------------------------------------
+
+INSERT INTO CONVERSACION (id, solicitante_id, estado, creado_en) VALUES
+    (1, NULL, 'ACTIVA', '2026-03-01 09:00:00'),
+    (2, NULL, 'ACTIVA', '2026-03-02 09:00:00'),
+    (3, 4, 'SOLICITUD', '2026-03-03 09:00:00');
+
+INSERT INTO CONVERSACION_PARTICIPANTE (conversacion_id, mascota_id) VALUES
+    (1, 1),
+    (1, 2),
+    (2, 1),
+    (2, 3),
+    (3, 3),
+    (3, 4);
+
+INSERT INTO MENSAJE (id, conversacion_id, remitente_id, texto, creado_en) VALUES
+    (1, 2, 3, 'Mensaje 1', '2026-03-01 10:00:00'),
+    (2, 3, 4, 'Mensaje 2', '2026-03-02 10:00:00'),
+    (3, 1, 1, 'Mensaje 3', '2026-03-03 10:00:00'),
+    (4, 2, 2, 'Mensaje 4', '2026-03-04 10:00:00'),
+    (5, 3, 3, 'Mensaje 5', '2026-03-05 10:00:00'),
+    (6, 1, 4, 'Mensaje 6', '2026-03-06 10:00:00'),
+    (7, 2, 1, 'Mensaje 7', '2026-03-07 10:00:00'),
+    (8, 3, 2, 'Mensaje 8', '2026-03-08 10:00:00'),
+    (9, 1, 3, 'Mensaje 9', '2026-03-09 10:00:00'),
+    (10, 2, 4, 'Mensaje 10', '2026-03-10 10:00:00');
+
+-- ---------------------------------------------------------------------------
 -- El fragmento de dn_a: SOLO duenos PARES
 -- ---------------------------------------------------------------------------
 
@@ -141,6 +170,15 @@ INSERT INTO HISTORIA_VISTA (historia_id, mascota_id, vista_en) VALUES
     (3, 2, '2026-02-10 09:00:00'),
     (3, 4, '2026-02-12 09:00:00');
 
+-- MENSAJE_LECTURA: dueno mascota_id -> 6 de las 12 filas
+INSERT INTO MENSAJE_LECTURA (mensaje_id, mascota_id, leido_en) VALUES
+    (1, 2, '2026-03-02 10:00:00'),
+    (1, 4, '2026-03-04 10:00:00'),
+    (2, 2, '2026-03-06 10:00:00'),
+    (2, 4, '2026-03-08 10:00:00'),
+    (3, 2, '2026-03-10 10:00:00'),
+    (3, 4, '2026-03-12 10:00:00');
+
 -- NOTIFICACION: dueno destinatario_id -> 7 de las 14 filas
 INSERT INTO NOTIFICACION (id, destinatario_id, actor_id, tipo, publicacion_id, creado_en) VALUES
     (2, 2, 3, 'LIKE_PUBLICACION', 1, '2026-02-02 09:00:00'),
@@ -159,6 +197,7 @@ SELECT 'ME_GUSTA_PUBLICACION' AS fragmento, COUNT(*) AS filas FROM ME_GUSTA_PUBL
 UNION ALL SELECT 'ME_GUSTA_COMENTARIO   ', COUNT(*) FROM ME_GUSTA_COMENTARIO
 UNION ALL SELECT 'ME_GUSTA_HISTORIA     ', COUNT(*) FROM ME_GUSTA_HISTORIA
 UNION ALL SELECT 'HISTORIA_VISTA        ', COUNT(*) FROM HISTORIA_VISTA
+UNION ALL SELECT 'MENSAJE_LECTURA       ', COUNT(*) FROM MENSAJE_LECTURA
 UNION ALL SELECT 'NOTIFICACION          ', COUNT(*) FROM NOTIFICACION
 UNION ALL SELECT 'MASCOTA (replicada)', COUNT(*) FROM MASCOTA
 UNION ALL SELECT 'PUBLICACION (replicada)', COUNT(*) FROM PUBLICACION

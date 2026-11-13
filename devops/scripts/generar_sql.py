@@ -29,6 +29,7 @@ FRAGMENTADAS = [
     ("ME_GUSTA_COMENTARIO", "mascota_id"),     # el like a un comentario
     ("ME_GUSTA_HISTORIA", "mascota_id"),       # el like a una historia
     ("HISTORIA_VISTA", "mascota_id"),          # la mascota que ve la historia
+    ("MENSAJE_LECTURA", "mascota_id"),         # la mascota que leyo el mensaje
     ("NOTIFICACION", "destinatario_id"),       # la mascota que la recibe
 ]
 
@@ -37,7 +38,12 @@ CORTES = [
     # (padre, satelite, columnas que se mueven, motivo)
     ("USUARIO", "USUARIO_CREDENCIALES", ["contrasena_hash"],
      "sensibilidad: el hash no debe viajar en cada listado de usuarios"),
-    ("MASCOTA", "MASCOTA_PERFIL", ["biografia", "foto_perfil_url"],
+    ("USUARIO", "USUARIO_PERFIL",
+     ["telefono", "ubicacion_ciudad", "ubicacion_pais", "biografia"],
+     "datos personales del tutor: no viajan en cada listado de cuentas"),
+    ("MASCOTA", "MASCOTA_PERFIL",
+     ["biografia", "foto_perfil_url", "foto_portada_url", "sitio_web",
+      "ubicacion_ciudad", "ubicacion_pais", "latitud", "longitud"],
      "columnas frias, de tamano variable, que no se filtran ni se ordenan"),
     ("PUBLICACION", "PUBLICACION_TEXTO", ["texto"],
      "el TEXT del post: la fila caliente del feed deja de arrastrarlo"),
@@ -56,8 +62,12 @@ PROCEDIMIENTOS_H = [
     # Volver a ver la misma historia solo actualiza la fecha, no duplica la fila.
     ("HISTORIA_VISTA", "mascota_id", ["historia_id"], False,
      "ON DUPLICATE KEY UPDATE vista_en = NOW()"),
+    # Leer dos veces el mismo mensaje no duplica la fila: solo mueve la fecha.
+    ("MENSAJE_LECTURA", "mascota_id", ["mensaje_id"], False,
+     "ON DUPLICATE KEY UPDATE leido_en = NOW()"),
     ("NOTIFICACION", "destinatario_id",
-     ["actor_id", "tipo", "publicacion_id", "comentario_id", "historia_id"],
+     ["actor_id", "tipo", "publicacion_id", "comentario_id", "historia_id",
+      "conversacion_id", "mensaje_id"],
      True, None),
 ]
 
@@ -305,7 +315,7 @@ TEXTOS = ["Primer dia en el parque", "Siesteando al sol",
           "Paseo por el rio", "Merendando", "Dormido en el sofa"]
 FRAGMENTO_FILAS = {"ME_GUSTA_PUBLICACION": 12, "ME_GUSTA_COMENTARIO": 10,
                    "ME_GUSTA_HISTORIA": 8, "HISTORIA_VISTA": 12,
-                   "NOTIFICACION": 14}
+                   "MENSAJE_LECTURA": 12, "NOTIFICACION": 14}
 
 
 def filas_fragmento(nombre, cuantas):
@@ -371,6 +381,21 @@ def datos_dn_a():
                     lambda f: "(%d, %d, '2026-02-%02d 08:00:00', '2026-02-%02d 20:00:00')"
                     % (f[0], f[1], f[0], f[0])))
     l.append("-- ---------------------------------------------------------------------------"
+             "\n-- Mensajeria: la conversacion 3 entra como SOLICITUD"
+             "\n-- ---------------------------------------------------------------------------\n")
+    l.append(insert("CONVERSACION", "id, solicitante_id, estado, creado_en",
+                    [(1, "NULL", "'ACTIVA'"), (2, "NULL", "'ACTIVA'"),
+                     (3, "4", "'SOLICITUD'")],
+                    lambda f: "(%d, %s, %s, '2026-03-0%d 09:00:00')"
+                    % (f[0], f[1], f[2], f[0])))
+    l.append(insert("CONVERSACION_PARTICIPANTE", "conversacion_id, mascota_id",
+                    [(1, 1), (1, 2), (2, 1), (2, 3), (3, 3), (3, 4)],
+                    lambda f: "(%d, %d)" % f))
+    l.append(insert("MENSAJE", "id, conversacion_id, remitente_id, texto, creado_en",
+                    [(i, (i % 3) + 1, ((i + 1) % 4) + 1) for i in range(1, 11)],
+                    lambda f: "(%d, %d, %d, 'Mensaje %d', '2026-03-%02d 10:00:00')"
+                    % (f[0], f[1], f[2], f[0], f[0])))
+    l.append("-- ---------------------------------------------------------------------------"
              "\n-- El fragmento de dn_a: SOLO duenos PARES"
              "\n-- ---------------------------------------------------------------------------\n")
     l.extend(bloque_fragmento(0))
@@ -406,6 +431,7 @@ def bloque_fragmento(paridad):
                  "ME_GUSTA_COMENTARIO": "comentario_id",
                  "ME_GUSTA_HISTORIA": "historia_id",
                  "HISTORIA_VISTA": "historia_id",
+                 "MENSAJE_LECTURA": "mensaje_id",
                  "NOTIFICACION": "publicacion_id"}[nombre]
         l.append("-- %s: dueno %s -> %d de las %d filas"
                  % (nombre, dueno, len(mias), len(todas)))
@@ -416,6 +442,10 @@ def bloque_fragmento(paridad):
         if nombre == "HISTORIA_VISTA":
             l.append(insert(nombre, "historia_id, mascota_id, vista_en", mias,
                             lambda f: "(%d, %d, '2026-02-%02d 09:00:00')"
+                            % (f[2], f[1], f[0])))
+        elif nombre == "MENSAJE_LECTURA":
+            l.append(insert(nombre, "mensaje_id, mascota_id, leido_en", mias,
+                            lambda f: "(%d, %d, '2026-03-%02d 10:00:00')"
                             % (f[2], f[1], f[0])))
         elif nombre == "NOTIFICACION":
             l.append(insert(nombre,
@@ -453,37 +483,43 @@ def procedimiento(nombre, parametros, cuerpo, comentario):
 
 
 def procedimientos_vertical(tablas):
-    """Los tres procedimientos que escriben en padre y satelite a la vez."""
+    """Un procedimiento por padre: escribe la fila y todos sus satelites a la vez."""
     fuera = []
+    por_padre = {}
     for padre, satelite, columnas, motivo in CORTES:
+        por_padre.setdefault(padre, []).append((satelite, columnas, motivo))
+
+    for padre, satelites in por_padre.items():
         p = tablas[padre]
         # La clave del satelite se llama <padre>_id y es la misma que la del
         # padre: es una relacion 1:1.
         clave = padre.lower() + "_id"
-        # Las columnas que se fueron al satelite NO se insertan en el padre: en
-        # el esquema logico estan, pero el corte ya las movio de tabla.
-        propias = [c for c in p.columnas_obligatorias() if c not in columnas]
+        # Las columnas que se fueron a cualquier satelite NO se insertan en el
+        # padre: en el esquema logico estan, pero el corte ya las movio.
+        movidas = [c for _, cols, _ in satelites for c in cols]
+        propias = [c for c in p.columnas_obligatorias() if c not in movidas]
         parametros = ["IN p_%s %s" % (c, p.tipo_parametro(c))
-                      for c in propias + columnas]
+                      for c in propias + movidas]
         parametros.append("OUT p_id BIGINT UNSIGNED")
-        cuerpo = (
-            "BEGIN\n"
-            "    -- Corte vertical: la fila vive en dos tablas y las dos escrituras\n"
-            "    -- van juntas. Se escribe en la tabla del dato y en su satelite.\n"
-            "    INSERT INTO %s (%s)\n"
-            "    VALUES (%s);\n"
-            "    SET p_id = LAST_INSERT_ID();\n"
-            "    INSERT INTO %s (%s, %s)\n"
-            "    VALUES (p_id%s);\n"
-            "END"
-            % (padre, ", ".join(propias),
-               ", ".join("p_%s" % c for c in propias),
-               satelite, clave, ", ".join(columnas),
-               "".join(", p_%s" % c for c in columnas)))
-        fuera.append((
-            "sp_%s_crear" % padre.lower(), parametros, cuerpo,
-            "-- %s + %s   (%s)\n-- %s" % (padre, satelite,
-                                           ", ".join(columnas), motivo)))
+
+        cuerpo = ["BEGIN",
+                  "    -- Corte vertical: la fila vive en varias tablas y todas las",
+                  "    -- escrituras van juntas.",
+                  "    INSERT INTO %s (%s)" % (padre, ", ".join(propias)),
+                  "    VALUES (%s);" % ", ".join("p_%s" % c for c in propias),
+                  "    SET p_id = LAST_INSERT_ID();"]
+        for satelite, cols, _ in satelites:
+            cuerpo += ["    INSERT INTO %s (%s, %s)" % (satelite, clave, ", ".join(cols)),
+                       "    VALUES (p_id%s);"
+                       % "".join(", p_%s" % c for c in cols)]
+        cuerpo.append("END")
+        cuerpo = "\n".join(cuerpo)
+
+        comentario = "\n".join(
+            ["-- %s + %s   (%s)" % (padre, satelite, ", ".join(cols))
+             for satelite, cols, _ in satelites] +
+            ["-- %s" % motivo for _, _, motivo in satelites])
+        fuera.append(("sp_%s_crear" % padre.lower(), parametros, cuerpo, comentario))
     return fuera
 
 
@@ -558,7 +594,9 @@ def main():
     print()
 
     replicadas = [n for n in orden if n not in frag]
-    quitadas = {padre: cols for padre, _, cols, _ in CORTES}
+    quitadas = {}
+    for padre, _, cols, _ in CORTES:
+        quitadas.setdefault(padre, []).extend(cols)
     print("esquema replicado: %d tablas + %d satelites = %d objetos"
           % (len(replicadas), len(CORTES), len(replicadas) + len(CORTES)))
     print()
@@ -700,7 +738,7 @@ def main():
          "",
          "USE %s;" % NOMBRE_BD,
          ""]
-    vistas = []
+    vistas = {}
     for padre, sat, cols, motivo in CORTES:
         p = tablas[padre]
         l += ["-- %s  <-  %s(%s)" % (sat, padre, ", ".join(cols)),
@@ -708,18 +746,25 @@ def main():
         l.append(filas_vertical(p, sat, cols, "SPIDER", con_fk=False,
                                 comentario='wrapper "mysql", srv "dn_a"'))
         l.append("")
-        vistas.append((padre, sat, cols, padre.lower() + "_id"))
+        vistas.setdefault(padre, []).append((sat, cols))
     l += ["-- Vistas de conveniencia: se lee como antes de fragmentar",
           ""]
-    for padre, sat, cols, clave in vistas:
+    # Un padre puede tener varios satelites: la vista une todos.
+    for padre, satelites in vistas.items():
         p = tablas[padre]
-        calientes = [c for c in p.columnas if c not in cols]
+        movidas = [c for _, cols in satelites for c in cols]
+        calientes = [c for c in p.columnas if c not in movidas]
         l += ["CREATE OR REPLACE VIEW v%s AS" % padre,
               "SELECT %s," % ", ".join("p.%s" % c for c in calientes),
-              "         %s" % ",\n         ".join("s.%s" % c for c in cols),
-              "  FROM %s p" % padre,
-              "  LEFT JOIN %s s ON s.%s = p.%s;" % (sat, clave, p.pk_columnas[0]),
-              ""]
+              "         %s" % ",\n         ".join(
+                  "s%d.%s" % (k, c) for k, (_, cols) in enumerate(satelites)
+                  for c in cols),
+              "  FROM %s p" % padre]
+        for k, (sat, _) in enumerate(satelites):
+            l.append("  LEFT JOIN %s s%d ON s%d.%s = p.%s"
+                     % (sat, k, k, padre.lower() + "_id", p.pk_columnas[0]))
+        l[-1] += ";"
+        l.append("")
     escribir("nodo-spider/03-vertical.sql", "\n".join(l))
 
     # ----------------------------------------- nodo spider: procedimientos
