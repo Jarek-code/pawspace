@@ -24,10 +24,12 @@ class Check_This:
         # El "-> int" que esta al final sirve para indicar que el valor que se devolvera es un entero en este caso el id 
         hash_generado = contra_encrip.hash(usuario.contrasena)
         
-        #Llama al procedure que envia los datos a la base de datos 
+        #Llama al procedure que envia los datos a la base de datos. Escribe la cuenta,
+        #sus credenciales y el perfil del tutor: lo que no llega en el registro va vacio.
         resultado = db.execute(
-            text("CALL sp_usuario_crear(:nombre, :email, :hash, @nuevo_id)"),
-            {"nombre": usuario.nombre, "email": usuario.email, "hash": hash_generado},
+            text("CALL sp_usuario_crear(:nombre, :email, :hash, :telefono, :ciudad, :pais, :biografia, @nuevo_id)"),
+            {"nombre": usuario.nombre, "email": usuario.email, "hash": hash_generado,
+             "telefono": None, "ciudad": None, "pais": None, "biografia": None},
         )
         #Cierra el proceso
         resultado.close()
