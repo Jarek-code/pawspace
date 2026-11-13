@@ -125,6 +125,36 @@ BEGIN
     END IF;
 END//
 
+CREATE TRIGGER trg_mensaje_lectura_par_insert
+BEFORE INSERT ON MENSAJE_LECTURA
+FOR EACH ROW
+BEGIN
+    DECLARE msg VARCHAR(255);
+
+    IF MOD(NEW.mascota_id, 2) <> 0 THEN
+        SET msg = CONCAT(
+            'fragmento incorrecto: MENSAJE_LECTURA.mascota_id=', NEW.mascota_id,
+            ': este nodo (dn_a) solo acepta duenos PAR; los ',
+            IF(MOD(NEW.mascota_id, 2) = 0, 'PAR', 'IMPAR'), ' van a dn_b');
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = msg;
+    END IF;
+END//
+
+CREATE TRIGGER trg_mensaje_lectura_par_update
+BEFORE UPDATE ON MENSAJE_LECTURA
+FOR EACH ROW
+BEGIN
+    DECLARE msg VARCHAR(255);
+
+    IF MOD(NEW.mascota_id, 2) <> 0 THEN
+        SET msg = CONCAT(
+            'fragmento incorrecto: MENSAJE_LECTURA.mascota_id=', NEW.mascota_id,
+            ': este nodo (dn_a) solo acepta duenos PAR; los ',
+            IF(MOD(NEW.mascota_id, 2) = 0, 'PAR', 'IMPAR'), ' van a dn_b');
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = msg;
+    END IF;
+END//
+
 CREATE TRIGGER trg_notificacion_par_insert
 BEFORE INSERT ON NOTIFICACION
 FOR EACH ROW
