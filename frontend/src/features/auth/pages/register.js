@@ -65,7 +65,7 @@ export function createPage({ router } = {}) {
   const strength = createPasswordStrength();
   const passwordHelp = h('p', {
     class: 'ps-field__help',
-    text: 'Usa 8 caracteres o más, con al menos una letra y un número.',
+    text: 'Usa 8 caracteres o más.',
   });
   passwordField.element.append(strength.element, passwordHelp);
 

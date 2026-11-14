@@ -1,8 +1,16 @@
 import { h } from '@/lib/dom.js';
+import { estimatePasswordStrength } from '@/lib/password.js';
+
+const LEVEL_LABELS = {
+  weak: 'Débil',
+  medium: 'Media',
+  strong: 'Segura',
+};
 
 /**
  * CMP-22 — PasswordStrength.
- * Tres niveles acompañados de texto; el color nunca es la única señal.
+ * Tres niveles por entropía, acompañados de texto; el color nunca es la única
+ * señal. Es informativo: no bloquea el envío del formulario.
  */
 export function createPasswordStrength({ value = '' } = {}) {
   const segments = [0, 1, 2].map(() => h('span', { class: 'ps-password-strength__segment' }));
@@ -18,35 +26,20 @@ export function createPasswordStrength({ value = '' } = {}) {
     label,
   );
 
-  function score(nextValue) {
-    const text = String(nextValue || '');
-    const checks = [text.length >= 8, /[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]/.test(text), /\d/.test(text)];
-    return checks.filter(Boolean).length;
-  }
-
   function update(nextValue = value) {
     value = nextValue;
-    const level = score(value);
-    element.dataset.level = String(level);
+    const { level } = estimatePasswordStrength(value);
 
     if (!value) {
       label.textContent = '';
       element.classList.remove('is-visible');
+      element.removeAttribute('data-level');
       return;
     }
 
     element.classList.add('is-visible');
-
-    if (level <= 1) {
-      label.textContent = 'Débil';
-      element.dataset.level = 'weak';
-    } else if (level === 2) {
-      label.textContent = 'Media';
-      element.dataset.level = 'medium';
-    } else {
-      label.textContent = 'Segura';
-      element.dataset.level = 'strong';
-    }
+    element.dataset.level = level;
+    label.textContent = LEVEL_LABELS[level];
   }
 
   update(value);
@@ -54,9 +47,5 @@ export function createPasswordStrength({ value = '' } = {}) {
   return {
     element,
     update,
-    isValid: () => {
-      const text = String(value || '');
-      return text.length >= 8 && /[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]/.test(text) && /\d/.test(text);
-    },
   };
 }

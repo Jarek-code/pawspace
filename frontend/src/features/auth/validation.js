@@ -13,7 +13,6 @@ export const messages = {
   emailInvalid: 'Escribe un correo electrónico válido.',
   passwordRequired: 'Escribe tu contraseña.',
   passwordMin: 'La contraseña debe tener 8 caracteres o más.',
-  passwordWeak: 'Usa al menos una letra y un número.',
   passwordMismatch: 'Las contraseñas no coinciden.',
   termsRequired: 'Acepta los términos para continuar.',
   credentials: 'El correo o la contraseña no son correctos.',
@@ -78,11 +77,6 @@ export function validateName(value) {
   return '';
 }
 
-export function isStrongPassword(value) {
-  const password = String(value || '');
-  return password.length >= 8 && /[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]/.test(password) && /\d/.test(password);
-}
-
 export function validateRegistration({ nombre, email, password, confirm, terms } = {}) {
   const errors = {};
   const nameError = validateName(nombre);
@@ -102,8 +96,6 @@ export function validateRegistration({ nombre, email, password, confirm, terms }
     errors.password = messages.passwordRequired;
   } else if (passwordText.length < 8) {
     errors.password = messages.passwordMin;
-  } else if (!isStrongPassword(passwordText)) {
-    errors.password = messages.passwordWeak;
   }
 
   if (!confirmText) {
