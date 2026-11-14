@@ -1,0 +1,110 @@
+/*
+ * Base global de PawSpace.
+ * Solo resets, fundamentos y utilidades de accesibilidad. La anatomía de cada
+ * componente vive junto a su módulo.
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  color-scheme: light;
+}
+
+html[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100svh;
+  background: var(--ps-bg);
+  color: var(--ps-text);
+  font-family: var(--ps-font-body);
+  font-size: var(--ps-text-body);
+  line-height: var(--ps-leading-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: var(--ps-secondary);
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  color: var(--ps-secondary-hover);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ps-focus);
+  outline-offset: 2px;
+}
+
+.ps-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.ps-skip-link {
+  position: absolute;
+  top: -100px;
+  left: var(--ps-space-4);
+  z-index: var(--ps-z-toast);
+  padding: var(--ps-space-3) var(--ps-space-4);
+  border-radius: var(--ps-radius-md);
+  background: var(--ps-surface);
+  color: var(--ps-text);
+  font-weight: var(--ps-weight-semibold);
+  box-shadow: var(--ps-shadow-md);
+  text-decoration: none;
+  transition: top var(--ps-motion-fast) var(--ps-ease-standard);
+}
+
+.ps-skip-link:focus {
+  top: var(--ps-space-4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

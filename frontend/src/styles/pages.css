@@ -1,0 +1,101 @@
+.ps-placeholder {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ps-space-4);
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: var(--ps-space-8);
+  background: var(--ps-bg);
+  text-align: center;
+}
+
+.ps-placeholder .ps-theme-toggle {
+  position: absolute;
+  top: var(--ps-space-4);
+  right: var(--ps-space-4);
+}
+
+.ps-placeholder__eyebrow {
+  margin: 0;
+  color: var(--ps-secondary);
+  font-size: var(--ps-text-body-sm);
+  font-weight: var(--ps-weight-semibold);
+  letter-spacing: 0.04em;
+  line-height: var(--ps-leading-body-sm);
+  text-transform: uppercase;
+}
+
+.ps-placeholder__title {
+  margin: 0;
+  color: var(--ps-text);
+  font-family: var(--ps-font-display);
+  font-size: var(--ps-text-h1);
+  font-weight: var(--ps-weight-extrabold);
+  line-height: var(--ps-leading-h1);
+}
+
+.ps-placeholder__text {
+  max-width: 520px;
+  margin: 0;
+  color: var(--ps-text-muted);
+  font-size: var(--ps-text-body-lg);
+  line-height: var(--ps-leading-body-lg);
+}
+
+.ps-placeholder__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--ps-space-3);
+  margin-top: var(--ps-space-2);
+}
+
+.ps-route-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ps-space-4);
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: var(--ps-space-8);
+  background: var(--ps-bg);
+  text-align: center;
+}
+
+.ps-h2 {
+  margin: 0;
+  color: var(--ps-text);
+  font-family: var(--ps-font-display);
+  font-size: var(--ps-text-h2);
+  font-weight: var(--ps-weight-bold);
+  line-height: var(--ps-leading-h2);
+}
+
+.ps-body {
+  max-width: 520px;
+  margin: 0;
+  color: var(--ps-text-muted);
+  font-size: var(--ps-text-body);
+  line-height: var(--ps-leading-body);
+}
+
+@media (max-width: 640px) {
+  .ps-placeholder,
+  .ps-route-error {
+    padding: var(--ps-space-6) var(--ps-space-4);
+  }
+
+  .ps-placeholder__title {
+    font-size: var(--ps-text-h2);
+    line-height: var(--ps-leading-h2);
+  }
+
+  .ps-placeholder__text {
+    font-size: var(--ps-text-body);
+    line-height: var(--ps-leading-body);
+  }
+}

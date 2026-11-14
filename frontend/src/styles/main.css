@@ -1,0 +1,72 @@
+@import '@fontsource-variable/inter/index.css';
+@import '@fontsource-variable/outfit/index.css';
+@import 'tailwindcss';
+@import './tokens.css';
+@import './base.css';
+@import './fluid.css';
+@import './pages.css';
+@import '../components/primitives/primitives.css';
+@import '../components/layout/layout.css';
+@import '../components/navigation/navigation.css';
+
+/*
+ * Fontsource publica las familias variables como "Inter Variable" y
+ * "Outfit Variable". Los tokens canónicos usan "Inter" y "Outfit"; este puente
+ * conserva los nombres de la fuente de verdad sin declarar dos familias.
+ */
+:root {
+  --ps-font-display: 'Outfit Variable', system-ui, -apple-system, sans-serif;
+  --ps-font-body: 'Inter Variable', system-ui, -apple-system, sans-serif;
+}
+
+/*
+ * Tailwind se usa para layout y utilidades. Los componentes conservan su
+ * anatomía en CSS con tokens --ps-* para no perder estados ni accesibilidad.
+ *
+ * @theme inline permite que las utilidades referencien los tokens semánticos
+ * en lugar de copiar el valor: el tema oscuro sigue funcionando.
+ */
+@theme {
+  --spacing: 4px;
+}
+
+@theme inline {
+  --font-display: var(--ps-font-display);
+  --font-body: var(--ps-font-body);
+
+  --color-bg: var(--ps-bg);
+  --color-bg-subtle: var(--ps-bg-subtle);
+  --color-surface: var(--ps-surface);
+  --color-surface-raised: var(--ps-surface-raised);
+  --color-surface-sunken: var(--ps-surface-sunken);
+  --color-border: var(--ps-border);
+  --color-border-strong: var(--ps-border-strong);
+  --color-border-interactive: var(--ps-border-interactive);
+  --color-text: var(--ps-text);
+  --color-text-muted: var(--ps-text-muted);
+  --color-text-subtle: var(--ps-text-subtle);
+  --color-primary: var(--ps-primary);
+  --color-primary-hover: var(--ps-primary-hover);
+  --color-primary-soft: var(--ps-primary-soft);
+  --color-on-primary: var(--ps-on-primary);
+  --color-secondary: var(--ps-secondary);
+  --color-secondary-soft: var(--ps-secondary-soft);
+  --color-danger: var(--ps-danger);
+  --color-danger-soft: var(--ps-danger-soft);
+  --color-success: var(--ps-success);
+  --color-success-soft: var(--ps-success-soft);
+  --color-warning: var(--ps-warning);
+  --color-warning-soft: var(--ps-warning-soft);
+  --color-focus: var(--ps-focus);
+
+  --radius-xs: var(--ps-radius-xs);
+  --radius-sm: var(--ps-radius-sm);
+  --radius-md: var(--ps-radius-md);
+  --radius-lg: var(--ps-radius-lg);
+  --radius-xl: var(--ps-radius-xl);
+  --radius-full: var(--ps-radius-full);
+
+  --shadow-sm: var(--ps-shadow-sm);
+  --shadow-md: var(--ps-shadow-md);
+  --shadow-lg: var(--ps-shadow-lg);
+}

@@ -1,0 +1,386 @@
+/* ============================================================
+   GENERADO — no editar a mano.
+   Fuente: ui-ux/design-system/tokens/tokens.css
+   Sincronizar con: npm run tokens:sync
+   ============================================================ */
+
+/* ============================================================
+   PawSpace — Design Tokens
+   Fuente: ui-ux/design-system/tokens/tokens.json
+   Tema por defecto: claro. Tema oscuro: [data-theme="dark"].
+   ============================================================ */
+
+:root {
+  color-scheme: light;
+
+  /* --- Colores base ------------------------------------------------ */
+  --ps-color-coral-50: #FFF1EF;
+  --ps-color-coral-100: #FFE2DE;
+  --ps-color-coral-200: #FFC7C0;
+  --ps-color-coral-300: #FFA79D;
+  --ps-color-coral-400: #F9867A;
+  --ps-color-coral-500: #F26B5E;
+  --ps-color-coral-600: #D9564A;
+  --ps-color-coral-700: #C94C41;
+  --ps-color-coral-800: #A63A32;
+  --ps-color-coral-900: #7E2B25;
+
+  --ps-color-forest-50: #EEF5F0;
+  --ps-color-forest-100: #D8E9DE;
+  --ps-color-forest-200: #B4D3C0;
+  --ps-color-forest-300: #86B59D;
+  --ps-color-forest-400: #5D9479;
+  --ps-color-forest-500: #41785F;
+  --ps-color-forest-600: #2F5D4A;
+  --ps-color-forest-700: #244A3B;
+  --ps-color-forest-800: #1B3A2E;
+  --ps-color-forest-900: #132A21;
+
+  --ps-color-cream-50: #FFF8F0;
+  --ps-color-cream-100: #FBEFE2;
+  --ps-color-cream-200: #F4E2CF;
+  --ps-color-cream-300: #E8D0B8;
+  --ps-color-cream-400: #D2B69A;
+  --ps-color-cream-500: #B3967A;
+  --ps-color-cream-600: #8C725A;
+  --ps-color-cream-700: #6B5745;
+  --ps-color-cream-800: #4A3D32;
+  --ps-color-cream-900: #2E2721;
+
+  --ps-color-ink-50: #F7FAF8;
+  --ps-color-ink-100: #F0F4F1;
+  --ps-color-ink-200: #E3E9E5;
+  --ps-color-ink-300: #C9D2CC;
+  --ps-color-ink-400: #A3AFA8;
+  --ps-color-ink-500: #7A8880;
+  --ps-color-ink-600: #5C6B62;
+  --ps-color-ink-700: #3E4C44;
+  --ps-color-ink-800: #2B3831;
+  --ps-color-ink-900: #1F2A24;
+
+  --ps-color-sun-50: #FFF8E6;
+  --ps-color-sun-100: #FFEDBF;
+  --ps-color-sun-200: #FFDD85;
+  --ps-color-sun-300: #F9C95C;
+  --ps-color-sun-400: #F2B24C;
+  --ps-color-sun-500: #D99A32;
+  --ps-color-sun-600: #B57B1F;
+  --ps-color-sun-700: #8F5E14;
+
+  --ps-color-success-50: #E8F5EE;
+  --ps-color-success-100: #C9E9D8;
+  --ps-color-success-500: #3C9470;
+  --ps-color-success-600: #2E7D5B;
+  --ps-color-success-700: #1F5C42;
+
+  --ps-color-warning-50: #FDF5E6;
+  --ps-color-warning-100: #F8E6BF;
+  --ps-color-warning-500: #D18F27;
+  --ps-color-warning-600: #B7791F;
+  --ps-color-warning-700: #8A5A14;
+
+  --ps-color-danger-50: #FDECEA;
+  --ps-color-danger-100: #F8D2CE;
+  --ps-color-danger-500: #D33A2E;
+  --ps-color-danger-600: #B42318;
+  --ps-color-danger-700: #8F1B12;
+
+  /* --- Semánticos: tema claro -------------------------------------- */
+  --ps-bg: var(--ps-color-cream-50);
+  --ps-bg-subtle: var(--ps-color-cream-100);
+  --ps-surface: #FFFFFF;
+  --ps-surface-raised: #FFFFFF;
+  --ps-surface-sunken: var(--ps-color-cream-200);
+  --ps-border: var(--ps-color-cream-300);
+  --ps-border-strong: var(--ps-color-cream-400);
+  --ps-border-interactive: var(--ps-color-cream-600);
+
+  --ps-text: var(--ps-color-ink-900);
+  --ps-text-muted: var(--ps-color-ink-600);
+  --ps-text-subtle: var(--ps-color-ink-500);
+  --ps-text-inverse: var(--ps-color-cream-50);
+
+  --ps-primary: var(--ps-color-coral-700);
+  --ps-primary-hover: var(--ps-color-coral-800);
+  --ps-primary-active: var(--ps-color-coral-900);
+  --ps-primary-soft: var(--ps-color-coral-50);
+  --ps-on-primary: #FFFFFF;
+
+  --ps-secondary: var(--ps-color-forest-600);
+  --ps-secondary-hover: var(--ps-color-forest-700);
+  --ps-secondary-soft: var(--ps-color-forest-50);
+  --ps-on-secondary: #FFFFFF;
+
+  --ps-accent: var(--ps-color-sun-400);
+  --ps-on-accent: var(--ps-color-ink-900);
+
+  --ps-disabled-bg: var(--ps-color-cream-200);
+  --ps-disabled-text: var(--ps-color-ink-600);
+
+  --ps-success: var(--ps-color-success-600);
+  --ps-success-soft: var(--ps-color-success-50);
+  --ps-warning: var(--ps-color-warning-600);
+  --ps-warning-soft: var(--ps-color-warning-50);
+  --ps-danger: var(--ps-color-danger-600);
+  --ps-danger-soft: var(--ps-color-danger-50);
+
+  --ps-focus: var(--ps-color-forest-600);
+  --ps-overlay: rgba(31, 42, 36, 0.48);
+
+  /* --- Tipografía --------------------------------------------------- */
+  --ps-font-display: "Outfit", system-ui, -apple-system, sans-serif;
+  --ps-font-body: "Inter", system-ui, -apple-system, sans-serif;
+
+  --ps-weight-regular: 400;
+  --ps-weight-semibold: 600;
+  --ps-weight-bold: 700;
+  --ps-weight-extrabold: 800;
+
+  --ps-text-display-xl: 3rem;
+  --ps-text-display-lg: 2.5rem;
+  --ps-text-h1: 2rem;
+  --ps-text-h2: 1.75rem;
+  --ps-text-h3: 1.5rem;
+  --ps-text-h4: 1.25rem;
+  --ps-text-body-lg: 1.125rem;
+  --ps-text-body: 1rem;
+  --ps-text-body-sm: 0.875rem;
+  --ps-text-label: 0.875rem;
+  --ps-text-caption: 0.75rem;
+
+  --ps-leading-display-xl: 3.5rem;
+  --ps-leading-display-lg: 3rem;
+  --ps-leading-h1: 2.5rem;
+  --ps-leading-h2: 2.25rem;
+  --ps-leading-h3: 2rem;
+  --ps-leading-h4: 1.75rem;
+  --ps-leading-body-lg: 1.75rem;
+  --ps-leading-body: 1.5rem;
+  --ps-leading-body-sm: 1.25rem;
+  --ps-leading-label: 1.25rem;
+  --ps-leading-caption: 1rem;
+
+  /* --- Espaciado ---------------------------------------------------- */
+  --ps-space-1: 4px;
+  --ps-space-2: 8px;
+  --ps-space-3: 12px;
+  --ps-space-4: 16px;
+  --ps-space-5: 20px;
+  --ps-space-6: 24px;
+  --ps-space-8: 32px;
+  --ps-space-10: 40px;
+  --ps-space-12: 48px;
+  --ps-space-16: 64px;
+  --ps-space-20: 80px;
+  --ps-space-24: 96px;
+
+  /* --- Radios y bordes --------------------------------------------- */
+  --ps-radius-xs: 6px;
+  --ps-radius-sm: 8px;
+  --ps-radius-md: 12px;
+  --ps-radius-lg: 16px;
+  --ps-radius-xl: 24px;
+  --ps-radius-full: 999px;
+
+  --ps-border-width: 1px;
+  --ps-border-width-strong: 2px;
+
+  /* --- Sombras ------------------------------------------------------ */
+  --ps-shadow-sm: 0 1px 2px rgba(31, 42, 36, 0.08);
+  --ps-shadow-md: 0 4px 12px rgba(31, 42, 36, 0.10);
+  --ps-shadow-lg: 0 12px 32px rgba(31, 42, 36, 0.14);
+
+  /* --- Movimiento --------------------------------------------------- */
+  --ps-motion-fast: 120ms;
+  --ps-motion-base: 200ms;
+  --ps-motion-slow: 320ms;
+  --ps-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ps-ease-out: cubic-bezier(0.4, 0, 1, 1);
+
+  /* --- Capas -------------------------------------------------------- */
+  --ps-z-base: 0;
+  --ps-z-sticky: 100;
+  --ps-z-dropdown: 1000;
+  --ps-z-overlay: 1200;
+  --ps-z-modal: 1300;
+  --ps-z-toast: 1400;
+
+  /* --- Layout ------------------------------------------------------- */
+  --ps-content-max: 1200px;
+  --ps-form-max: 440px;
+  --ps-gutter-desktop: 24px;
+  --ps-gutter-tablet: 20px;
+  --ps-gutter-mobile: 16px;
+  --ps-margin-desktop: 32px;
+  --ps-margin-tablet: 24px;
+  --ps-margin-mobile: 16px;
+  --ps-control-height-lg: 48px;
+  --ps-control-height-md: 44px;
+  --ps-control-height-sm: 36px;
+  --ps-touch-target: 44px;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --ps-bg: #141A17;
+  --ps-bg-subtle: #1B231F;
+  --ps-surface: #1D2521;
+  --ps-surface-raised: #24302A;
+  --ps-surface-sunken: #111613;
+  --ps-border: #35423B;
+  --ps-border-strong: #4A5A52;
+  --ps-border-interactive: #8A9A92;
+
+  --ps-text: #F5EFE6;
+  --ps-text-muted: #B8C4BD;
+  --ps-text-subtle: #8A9A92;
+  --ps-text-inverse: var(--ps-color-ink-900);
+
+  --ps-primary: var(--ps-color-coral-300);
+  --ps-primary-hover: var(--ps-color-coral-200);
+  --ps-primary-active: var(--ps-color-coral-100);
+  --ps-primary-soft: #35211F;
+  --ps-on-primary: var(--ps-color-ink-900);
+
+  --ps-secondary: var(--ps-color-forest-300);
+  --ps-secondary-hover: var(--ps-color-forest-200);
+  --ps-secondary-soft: #1B2E26;
+  --ps-on-secondary: var(--ps-color-forest-900);
+
+  --ps-accent: var(--ps-color-sun-400);
+  --ps-on-accent: var(--ps-color-ink-900);
+
+  --ps-disabled-bg: #2B3831;
+  --ps-disabled-text: #96A79E;
+
+  --ps-success: var(--ps-color-forest-400);
+  --ps-success-soft: #163025;
+  --ps-warning: var(--ps-color-sun-400);
+  --ps-warning-soft: #332610;
+  --ps-danger: var(--ps-color-coral-400);
+  --ps-danger-soft: #351A18;
+
+  --ps-focus: var(--ps-color-sun-400);
+  --ps-overlay: rgba(0, 0, 0, 0.60);
+
+  --ps-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.24);
+  --ps-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.32);
+  --ps-shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.44);
+}
+
+/* --- Estilos de texto ---------------------------------------------- */
+.ps-display-xl {
+  font-family: var(--ps-font-display);
+  font-size: var(--ps-text-display-xl);
+  line-height: var(--ps-leading-display-xl);
+  font-weight: var(--ps-weight-extrabold);
+}
+
+.ps-display-lg {
+  font-family: var(--ps-font-display);
+  font-size: var(--ps-text-display-lg);
+  line-height: var(--ps-leading-display-lg);
+  font-weight: var(--ps-weight-extrabold);
+}
+
+.ps-h1 {
+  font-family: var(--ps-font-display);
+  font-size: var(--ps-text-h1);
+  line-height: var(--ps-leading-h1);
+  font-weight: var(--ps-weight-extrabold);
+}
+
+.ps-h2 {
+  font-family: var(--ps-font-display);
+  font-size: var(--ps-text-h2);
+  line-height: var(--ps-leading-h2);
+  font-weight: var(--ps-weight-bold);
+}
+
+.ps-h3 {
+  font-family: var(--ps-font-display);
+  font-size: var(--ps-text-h3);
+  line-height: var(--ps-leading-h3);
+  font-weight: var(--ps-weight-bold);
+}
+
+.ps-h4 {
+  font-family: var(--ps-font-display);
+  font-size: var(--ps-text-h4);
+  line-height: var(--ps-leading-h4);
+  font-weight: var(--ps-weight-bold);
+}
+
+.ps-body-lg {
+  font-family: var(--ps-font-body);
+  font-size: var(--ps-text-body-lg);
+  line-height: var(--ps-leading-body-lg);
+  font-weight: var(--ps-weight-regular);
+}
+
+.ps-body {
+  font-family: var(--ps-font-body);
+  font-size: var(--ps-text-body);
+  line-height: var(--ps-leading-body);
+  font-weight: var(--ps-weight-regular);
+}
+
+.ps-body-sm {
+  font-family: var(--ps-font-body);
+  font-size: var(--ps-text-body-sm);
+  line-height: var(--ps-leading-body-sm);
+  font-weight: var(--ps-weight-regular);
+}
+
+.ps-label {
+  font-family: var(--ps-font-body);
+  font-size: var(--ps-text-label);
+  line-height: var(--ps-leading-label);
+  font-weight: var(--ps-weight-semibold);
+}
+
+.ps-caption {
+  font-family: var(--ps-font-body);
+  font-size: var(--ps-text-caption);
+  line-height: var(--ps-leading-caption);
+  font-weight: var(--ps-weight-semibold);
+}
+
+.ps-overline {
+  font-family: var(--ps-font-body);
+  font-size: var(--ps-text-caption);
+  line-height: var(--ps-leading-caption);
+  font-weight: var(--ps-weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* --- Ajuste móvil de la escala ------------------------------------- */
+@media (max-width: 639px) {
+  :root {
+    --ps-text-display-xl: 2.25rem;
+    --ps-leading-display-xl: 2.75rem;
+    --ps-text-display-lg: 2rem;
+    --ps-leading-display-lg: 2.5rem;
+    --ps-text-h1: 1.75rem;
+    --ps-leading-h1: 2.25rem;
+    --ps-text-h2: 1.5rem;
+    --ps-leading-h2: 2rem;
+    --ps-text-h3: 1.375rem;
+    --ps-leading-h3: 1.875rem;
+    --ps-text-h4: 1.125rem;
+    --ps-leading-h4: 1.625rem;
+    --ps-text-body-lg: 1.0625rem;
+    --ps-leading-body-lg: 1.625rem;
+  }
+}
+
+/* --- Movimiento reducido ------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ps-motion-fast: 0.01ms;
+    --ps-motion-base: 0.01ms;
+    --ps-motion-slow: 0.01ms;
+  }
+}
