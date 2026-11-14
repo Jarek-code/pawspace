@@ -15,6 +15,8 @@ export function createCombobox({
   options = [],
   value = '',
   emptyText = 'Sin resultados.',
+  optional = false,
+  toggleLabel = 'Mostrar opciones',
   onChange = null,
 } = {}) {
   comboboxCounter += 1;
@@ -62,7 +64,7 @@ export function createCombobox({
         class: 'ps-combobox__toggle',
         type: 'button',
         tabindex: '-1',
-        attrs: { 'aria-label': 'Mostrar especies', 'aria-controls': listId },
+        attrs: { 'aria-label': toggleLabel, 'aria-controls': listId },
         onClick: () => (open ? close() : openList()),
       },
       createIcon('chevron-down', { size: 18 }),
@@ -72,7 +74,14 @@ export function createCombobox({
   const element = h(
     'div',
     { class: 'ps-field ps-combobox' },
-    label ? h('label', { class: 'ps-field__label', for: baseId, text: label }) : null,
+    label
+      ? h(
+          'label',
+          { class: 'ps-field__label', for: baseId },
+          label,
+          optional ? h('span', { class: 'ps-field__optional', text: ' (opcional)' }) : null,
+        )
+      : null,
     control,
     list,
   );

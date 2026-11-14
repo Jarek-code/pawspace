@@ -20,6 +20,7 @@ export function createPage({ router } = {}) {
     options: OTHER_SPECIES,
     value: selected?.value || '',
     emptyText: 'No encontramos esa especie en el catálogo.',
+    toggleLabel: 'Mostrar especies',
     onChange: (option) => {
       selected = option;
       next.setDisabled(!option);

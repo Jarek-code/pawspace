@@ -1,9 +1,11 @@
 import { createAuthCard } from '@/components/layout/auth-card.js';
 import { createButton } from '@/components/primitives/button.js';
+import { createCombobox } from '@/components/primitives/combobox.js';
 import { createField, createSelectField } from '@/components/primitives/field.js';
 import { createIcon } from '@/components/primitives/icon.js';
 import { h } from '@/lib/dom.js';
 import { getDraft, saveDraft } from '@/features/onboarding/draft.js';
+import { breedsForSpecies } from '@/features/onboarding/breeds.js';
 import { createOnboardingLayout } from '@/features/onboarding/layout.js';
 import { messages, validatePetName, validateUsername } from '@/features/auth/validation.js';
 
@@ -46,14 +48,19 @@ export function createPage({ router } = {}) {
     onInput: () => usernameField.clearError(),
   });
 
-  const breedField = createField({
-    name: 'raza',
-    label: 'Raza',
-    value: draft.raza || '',
-    placeholder: 'Siamés',
-    autocomplete: 'off',
-    optional: true,
-  });
+  const breedOptions = breedsForSpecies(draft.especie || '');
+  const breedCombobox = breedOptions.length
+    ? createCombobox({
+        id: 'raza',
+        label: 'Raza',
+        placeholder: 'Busca una raza',
+        options: breedOptions,
+        value: draft.raza || '',
+        emptyText: 'Sin razas para esta especie.',
+        optional: true,
+        toggleLabel: 'Mostrar razas',
+      })
+    : null;
 
   const sexField = createSelectField({
     name: 'sexo',
@@ -130,7 +137,7 @@ export function createPage({ router } = {}) {
         saveDraft({
           nombre,
           usuario,
-          raza: breedField.getValue().trim(),
+          raza: breedCombobox ? breedCombobox.getValue() : '',
           sexo: sexField.getValue(),
           fechaNacimiento: birthField.getValue(),
         });
@@ -140,7 +147,7 @@ export function createPage({ router } = {}) {
     },
     nameField.element,
     usernameField.element,
-    breedField.element,
+    breedCombobox ? breedCombobox.element : null,
     sexField.element,
     birthField.element,
     h('div', { class: 'ps-onboarding__actions' }, next.element),
