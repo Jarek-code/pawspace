@@ -1,0 +1,370 @@
+.ps-auth-card {
+  width: 100%;
+  max-width: var(--ps-form-max);
+  padding: var(--ps-space-10);
+  border-radius: var(--ps-radius-xl);
+  background: var(--ps-surface);
+  box-shadow: var(--ps-shadow-md);
+}
+
+.ps-auth-card__header {
+  margin-bottom: var(--ps-space-2);
+}
+
+.ps-auth-card__title {
+  margin: 0;
+  color: var(--ps-text);
+  font-family: var(--ps-font-display);
+  font-size: var(--ps-text-h1);
+  font-weight: var(--ps-weight-extrabold);
+  line-height: var(--ps-leading-h1);
+}
+
+.ps-auth-card__subtitle {
+  margin: 0;
+  color: var(--ps-text-muted);
+  font-size: var(--ps-text-body-lg);
+  line-height: var(--ps-leading-body-lg);
+}
+
+.ps-auth-card__footer {
+  margin-top: var(--ps-space-6);
+  color: var(--ps-text-muted);
+  font-size: var(--ps-text-body-sm);
+  line-height: var(--ps-leading-body-sm);
+  text-align: center;
+}
+
+.ps-auth-card__footer a {
+  font-weight: var(--ps-weight-semibold);
+}
+
+@media (max-width: 640px) {
+  .ps-auth-card {
+    padding: var(--ps-space-6);
+  }
+
+  .ps-auth-card__title {
+    font-size: var(--ps-text-h2);
+    line-height: var(--ps-leading-h2);
+  }
+
+  .ps-auth-card__subtitle {
+    font-size: var(--ps-text-body);
+    line-height: var(--ps-leading-body);
+  }
+}
+
+@media (max-width: 390px) {
+  .ps-auth-card {
+    padding: var(--ps-space-5);
+  }
+}
+
+.ps-auth-layout {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  min-height: 100vh;
+  min-height: 100svh;
+  background: var(--ps-bg);
+}
+
+.ps-auth-layout__brand {
+  min-width: 0;
+}
+
+.ps-auth-layout__main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: var(--ps-space-8);
+  background: var(--ps-bg);
+}
+
+.ps-auth-layout__main .ps-theme-toggle {
+  position: absolute;
+  top: var(--ps-space-4);
+  right: var(--ps-space-4);
+}
+
+.ps-auth-layout--centered {
+  grid-template-columns: 1fr;
+}
+
+.ps-auth-layout__mobile-brand {
+  display: none;
+  align-items: center;
+  gap: var(--ps-space-2);
+  width: 100%;
+  max-width: var(--ps-form-max);
+  margin-bottom: var(--ps-space-6);
+}
+
+.ps-auth-layout__mobile-logo {
+  width: auto;
+  height: 38px;
+}
+
+.ps-auth-layout__mobile-name {
+  margin: 0;
+  color: var(--ps-text);
+  font-family: var(--ps-font-display);
+  font-size: var(--ps-text-h4);
+  font-weight: var(--ps-weight-bold);
+  line-height: var(--ps-leading-h4);
+}
+
+@media (max-width: 1279px) and (min-width: 1025px) {
+  .ps-auth-layout__main {
+    padding: var(--ps-space-6) var(--ps-space-5);
+  }
+}
+
+@media (max-width: 1024px) {
+  .ps-auth-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ps-auth-layout__brand {
+    display: none;
+  }
+
+  .ps-auth-layout__main {
+    padding: var(--ps-space-6) var(--ps-space-4);
+  }
+
+  .ps-auth-layout__mobile-brand {
+    display: flex;
+  }
+}
+
+@media (max-width: 640px) {
+  .ps-auth-layout__main {
+    padding: var(--ps-space-4);
+  }
+}
+
+@media (max-width: 390px) {
+  .ps-auth-layout__main {
+    padding: var(--ps-space-4);
+  }
+}
+
+/*
+ * Un celular en horizontal recupera el layout de escritorio: la orientación
+ * manda por encima del breakpoint de ancho.
+ */
+@media (max-width: 1024px) and (orientation: landscape) {
+  .ps-auth-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .ps-auth-layout__brand {
+    display: block;
+  }
+
+  .ps-auth-layout__main {
+    padding: var(--ps-space-6) var(--ps-space-5);
+  }
+
+  .ps-auth-layout__mobile-brand {
+    display: none;
+  }
+}
+
+.ps-brand-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: var(--ps-space-8);
+  background: var(--ps-color-forest-700);
+  color: var(--ps-color-cream-50);
+  overflow: hidden;
+}
+
+.ps-brand-panel__header {
+  display: flex;
+  align-items: center;
+  gap: var(--ps-space-2);
+  min-height: var(--ps-space-12);
+  margin-bottom: var(--ps-space-8);
+}
+
+.ps-brand-panel__logo {
+  width: auto;
+  height: 48px;
+  flex: none;
+}
+
+.ps-brand-panel__name {
+  margin: 0;
+  color: var(--ps-color-cream-50);
+  font-family: var(--ps-font-display);
+  font-size: var(--ps-text-h4);
+  font-weight: var(--ps-weight-bold);
+  line-height: var(--ps-leading-h4);
+}
+
+.ps-brand-panel__hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--ps-space-8);
+  width: 100%;
+  margin-top: auto;
+}
+
+.ps-brand-panel__illustration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
+  max-width: 520px;
+  height: clamp(340px, 46vh, 400px);
+  padding: var(--ps-space-3);
+  overflow: hidden;
+  border-radius: var(--ps-radius-lg);
+  background: var(--ps-color-cream-50);
+}
+
+.ps-brand-panel__illustration img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.ps-brand-panel__copy {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 320px;
+  gap: var(--ps-space-6);
+}
+
+.ps-brand-panel__headline {
+  margin: 0;
+  color: var(--ps-color-cream-50);
+  font-family: var(--ps-font-display);
+  font-size: clamp(var(--ps-text-h1), 2.9vw, var(--ps-text-display-lg));
+  font-weight: var(--ps-weight-extrabold);
+  line-height: var(--ps-leading-display-lg);
+  letter-spacing: -0.01em;
+  text-align: left;
+}
+
+.ps-brand-panel__benefits {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  gap: var(--ps-space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ps-brand-panel__benefit {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ps-space-3);
+  color: var(--ps-color-forest-100);
+  font-size: var(--ps-text-body);
+  line-height: var(--ps-leading-body);
+}
+
+.ps-brand-panel__benefit-icon {
+  display: grid;
+  place-items: center;
+  width: var(--ps-space-6);
+  height: var(--ps-space-6);
+  flex: none;
+  border-radius: var(--ps-radius-full);
+  background: var(--ps-color-forest-600);
+  color: var(--ps-color-sun-400);
+}
+
+.ps-brand-panel__benefit-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.ps-brand-panel__legal {
+  margin-top: auto;
+  padding-top: var(--ps-space-8);
+  color: var(--ps-color-forest-200);
+  font-size: var(--ps-text-caption);
+  font-weight: var(--ps-weight-semibold);
+  line-height: var(--ps-leading-caption);
+}
+
+@media (max-width: 1279px) and (min-width: 1025px) {
+  .ps-brand-panel__hero {
+    flex-direction: column;
+    gap: var(--ps-space-6);
+  }
+
+  .ps-brand-panel__illustration {
+    width: min(480px, 100%);
+    height: 300px;
+  }
+
+  .ps-brand-panel__copy {
+    flex: none;
+    align-items: center;
+    gap: var(--ps-space-6);
+    width: min(480px, 100%);
+  }
+
+  .ps-brand-panel__headline {
+    width: 100%;
+    text-align: center;
+  }
+
+  .ps-brand-panel__benefits {
+    align-self: center;
+  }
+}
+
+/* Celular en horizontal: panel compacto para caber en la mitad de la pantalla. */
+@media (max-width: 1024px) and (orientation: landscape) {
+  .ps-brand-panel {
+    padding: var(--ps-space-6);
+  }
+
+  .ps-brand-panel__header {
+    margin-bottom: var(--ps-space-5);
+  }
+
+  .ps-brand-panel__hero {
+    flex-direction: column;
+    gap: var(--ps-space-5);
+  }
+
+  .ps-brand-panel__illustration {
+    width: min(280px, 100%);
+    height: 160px;
+  }
+
+  .ps-brand-panel__copy {
+    flex: none;
+    align-items: center;
+    gap: var(--ps-space-4);
+    width: 100%;
+  }
+
+  .ps-brand-panel__headline {
+    width: 100%;
+    text-align: center;
+  }
+
+  .ps-brand-panel__benefits {
+    align-self: center;
+  }
+
+  .ps-brand-panel__legal {
+    padding-top: var(--ps-space-5);
+  }
+}

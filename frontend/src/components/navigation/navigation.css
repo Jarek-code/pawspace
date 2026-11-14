@@ -1,0 +1,124 @@
+.ps-stepper {
+  width: 100%;
+  max-width: 560px;
+}
+
+.ps-stepper__list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ps-stepper__item {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  min-width: 0;
+}
+
+.ps-stepper__item:not(:last-child)::after {
+  position: absolute;
+  top: 16px;
+  left: calc(50% + 20px);
+  width: calc(100% - 40px);
+  height: 1px;
+  background: var(--ps-border);
+  content: '';
+}
+
+.ps-stepper__item.is-complete:not(:last-child)::after {
+  background: var(--ps-primary);
+}
+
+.ps-stepper__button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ps-space-2);
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ps-text-muted);
+  font-size: var(--ps-text-caption);
+  font-weight: var(--ps-weight-semibold);
+  line-height: var(--ps-leading-caption);
+  text-align: center;
+}
+
+button.ps-stepper__button {
+  cursor: pointer;
+}
+
+button.ps-stepper__button:hover .ps-stepper__label {
+  color: var(--ps-secondary-hover);
+}
+
+.ps-stepper__marker {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--ps-radius-full);
+  background: var(--ps-surface-sunken);
+  color: var(--ps-text-muted);
+  font-size: var(--ps-text-body-sm);
+  font-weight: var(--ps-weight-semibold);
+}
+
+.ps-stepper__item.is-current .ps-stepper__marker {
+  background: var(--ps-primary);
+  color: var(--ps-on-primary);
+}
+
+.ps-stepper__item.is-complete .ps-stepper__marker {
+  background: var(--ps-primary);
+  color: var(--ps-on-primary);
+}
+
+.ps-stepper__item.is-current .ps-stepper__label,
+.ps-stepper__item.is-complete .ps-stepper__label {
+  color: var(--ps-text);
+}
+
+.ps-stepper__mobile {
+  display: none;
+}
+
+.ps-stepper__mobile-label {
+  margin: 0 0 var(--ps-space-2);
+  color: var(--ps-text-muted);
+  font-size: var(--ps-text-body-sm);
+  font-weight: var(--ps-weight-semibold);
+  line-height: var(--ps-leading-body-sm);
+}
+
+.ps-stepper__progress {
+  height: 6px;
+  overflow: hidden;
+  border-radius: var(--ps-radius-full);
+  background: var(--ps-border);
+}
+
+.ps-stepper__progress-bar {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--ps-primary);
+  transition: width var(--ps-motion-base) var(--ps-ease-standard);
+}
+
+@media (max-width: 768px) {
+  .ps-stepper__list {
+    display: none;
+  }
+
+  .ps-stepper__mobile {
+    display: block;
+  }
+}
