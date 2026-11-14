@@ -1,0 +1,34 @@
+.ps-auth-form {
+  margin-top: var(--ps-space-6);
+}
+
+.ps-auth-form .ps-field {
+  margin-bottom: var(--ps-space-5);
+}
+
+.ps-auth-form .ps-checkbox {
+  margin-bottom: var(--ps-space-4);
+}
+
+.ps-auth-form .ps-alert {
+  margin-bottom: var(--ps-space-5);
+}
+
+.ps-auth-form__submit {
+  margin-top: var(--ps-space-1);
+}
+
+.ps-auth-form__footer {
+  margin: 0;
+}
+
+.ps-auth-form__footer a {
+  color: var(--ps-secondary);
+  font-weight: var(--ps-weight-semibold);
+}
+
+@media (max-width: 640px) {
+  .ps-auth-form {
+    margin-top: var(--ps-space-5);
+  }
+}

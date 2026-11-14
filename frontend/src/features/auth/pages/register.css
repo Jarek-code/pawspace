@@ -1,0 +1,35 @@
+.ps-register-form .ps-field {
+  margin-bottom: var(--ps-space-4);
+}
+
+.ps-register-form .ps-password-strength {
+  margin-top: var(--ps-space-2);
+}
+
+.ps-register-form .ps-register-form__terms {
+  margin: var(--ps-space-2) 0 var(--ps-space-4);
+}
+
+.ps-register-form .ps-checkbox--terms {
+  align-items: flex-start;
+  margin-bottom: 0;
+  line-height: var(--ps-leading-body);
+}
+
+.ps-register-form .ps-checkbox--terms input {
+  margin-top: 2px;
+}
+
+.ps-register-form .ps-checkbox.is-invalid input {
+  border-color: var(--ps-danger);
+}
+
+.ps-register-form .ps-checkbox.is-invalid .ps-checkbox__label {
+  color: var(--ps-danger);
+}
+
+@media (max-width: 640px) {
+  .ps-register-form .ps-field {
+    margin-bottom: var(--ps-space-4);
+  }
+}
