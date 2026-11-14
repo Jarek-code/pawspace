@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, Request
+from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 from src.config.database import get_db
 from src.config.database import get_logs
@@ -40,3 +41,19 @@ async def ruta_cambia_estado(usuario_id: int, cambio: CambioEstado, request: Req
 db: Session = Depends(get_db), logs: ClienteLogs = Depends(get_logs)):
 
     return await UsuarioControl.cambia_estado_us(usuario_id, cambio, db, request, logs)
+
+
+
+#Esto esto es para hacer pruebas desde el /docs se tiene que eliminar en el futuro
+@router.post("/token", response_model=TokenSesion)
+async def token_para_swagger(
+    request: Request,
+    form_data: OAuth2PasswordRequestForm = Depends(),
+    db: Session = Depends(get_db),
+    logs: ClienteLogs = Depends(get_logs)
+):
+    credenciales = UserLogin(
+        email=form_data.username,
+        contrasena=form_data.password
+    )
+    return await UsuarioControl.chequea_login(credenciales, db, request, logs)

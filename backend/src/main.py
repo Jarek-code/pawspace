@@ -8,6 +8,7 @@ from src.routes.mascota_ruta import router as mascota_ruta
 from src.routes.adjuntos import router as adjunto
 from pawspace_logs import ClienteLogs
 from pawspace_logs.middleware import MiddlewareLogs
+from fastapi.middleware.cors import CORSMiddleware
 
 logs = ClienteLogs(
     url=settings.MONGO_URL,
@@ -31,7 +32,8 @@ async def lifespan(app):
     yield
     #Cuando se detiene el servicion se ejecuta para que se cierre corectamente los archivos
     await logs.cerrar()
-    
+
+
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -39,6 +41,16 @@ app = FastAPI(
     description="PawSpace - Social network for pets",
     lifespan=lifespan
 )
+
+app.add_middleware(
+    CORSMiddleware,
+    # ESTA ES LA CLAVE: Debes usar una lista con corchetes [ ]
+    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"], 
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+) 
+
 #hace que las rutas de usuario_ruta se puedan visualizar en el main
 app.include_router(usuario_ruta)
 

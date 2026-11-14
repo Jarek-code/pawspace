@@ -8,7 +8,8 @@ from src.config.database import get_db
 
 Llave_super_secreta ="odio israel"
 Algoritmo_Cifrador = "HS256"
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/usuarios/login")
+#oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/usuarios/login")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/usuarios/token")
 
 def dame_usuario_ahorita(token:str = Depends(oauth2_scheme), db: Session = Depends(get_db)) -> int:
     excepcion_nao_nao = HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Token invalido o expirado")
@@ -38,7 +39,7 @@ def dame_usuario_ahorita(token:str = Depends(oauth2_scheme), db: Session = Depen
     if ultima_update_db.tzinfo is None:
         ultima_update_db = ultima_update_db.replace(tzinfo=timezone.utc)
 
-    if token_iat < ultima_update_db:
+    if token_dado_en < ultima_update_db:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Sesion expirada. Porfavor iniciar sesion nuevamente"

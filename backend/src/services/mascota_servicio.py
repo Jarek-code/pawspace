@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from sqlalchemy import text
-from fastapi import HTTPException
+from fastapi import HTTPException, status
 from datetime import datetime, timezone
 from src.models.scheme_c_mascota import MascotaCrear
 from src.models.MASCOTA import Raza, Mascota, UsuarioMascota
@@ -8,7 +8,7 @@ from src.models.MASCOTA import Raza, Mascota, UsuarioMascota
 class Mascota_Servicio:
 
     @staticmethod
-    def validar_raza_especie(db:Session, especie_id:int, raza_id):
+    def validar_raza_especie(db:Session, especie_id, raza_id):
         if raza_id is None:
             return True
         
@@ -39,7 +39,14 @@ class Mascota_Servicio:
             "p_biografia": mascota.biografia or "",
             "p_foto_perfil_url":mascota.foto_perfil_url or ""
         })
-        mascota_id = db.execute(text("SELECT @nueva_mascota_id")).scalar()
+
+        resultado.close()
+
+        mascota_id = db.execute(text("SELECT @nueva_mascota")).scalar()
+
+        if not mascota_id:
+            raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"No se pudo crear la mascota")
 
         if mascota.raza_id or mascota.sexo or mascota.fecha_nacimiento or mascota.es_privado:
             db.query(Mascota).filter(Mascota.id == mascota_id).update({
