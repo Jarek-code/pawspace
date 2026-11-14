@@ -145,14 +145,13 @@ services:
     networks:
       - pawspace-net
 
-  # Optional frontend static server (nginx)
+  # Frontend: Vite build + nginx (proxy same-origin hacia /api)
   frontend:
-    image: nginx:alpine
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
     container_name: pawspace-frontend
     restart: unless-stopped
-    volumes:
-      - ./frontend/src:/usr/share/nginx/html:ro
-      - ./frontend/nginx.conf:/etc/nginx/conf.d/default.conf:ro
     ports:
       - "3000:80"
     depends_on:
