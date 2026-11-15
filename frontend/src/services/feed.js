@@ -1,4 +1,4 @@
-import { get } from '@/services/http.js';
+import { get, post } from '@/services/http.js';
 
 /**
  * Servicio del feed.
@@ -22,4 +22,29 @@ export async function loadFeed() {
     sugerencias: sugerencias.sugerencias || [],
     tendencias: tendencias.tendencias || [],
   };
+}
+
+export async function loadPost(id) {
+  const data = await get(`/feed/${encodeURIComponent(id)}`);
+
+  return {
+    publicacion: data.publicacion,
+    comentarios: data.comentarios || [],
+  };
+}
+
+export async function createPost({ texto, media = null, mascota }) {
+  return post('/feed', {
+    texto,
+    media,
+    mascota,
+  });
+}
+
+export async function addComment(id, { texto, mascota }) {
+  return post(`/feed/${encodeURIComponent(id)}/comentarios`, { texto, mascota });
+}
+
+export async function toggleLike(id) {
+  return post(`/feed/${encodeURIComponent(id)}/me-gusta`);
 }

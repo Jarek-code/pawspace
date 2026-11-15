@@ -88,7 +88,7 @@ export function createDropzone({
   const element = h(
     'div',
     { class: 'ps-dropzone' },
-    h('p', { class: 'ps-field__label', text: label }),
+    label ? h('p', { class: 'ps-field__label', text: label }) : null,
     zone,
     h('p', { class: 'ps-field__help', id: helpId, text: help }),
     message,

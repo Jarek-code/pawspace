@@ -39,6 +39,7 @@ import userRaw from 'lucide-static/icons/user.svg?raw';
 import xRaw from 'lucide-static/icons/x.svg?raw';
 import usersRaw from 'lucide-static/icons/users.svg?raw';
 import shieldRaw from 'lucide-static/icons/shield.svg?raw';
+import zapRaw from 'lucide-static/icons/zap.svg?raw';
 
 /**
  * Registro explícito de iconos Lucide. Solo se empaqueta lo que se usa.
@@ -86,6 +87,7 @@ const ICONS = {
   x: xRaw,
   users: usersRaw,
   shield: shieldRaw,
+  zap: zapRaw,
 };
 
 export function createIcon(name, { size = 20, label = '', className = '' } = {}) {

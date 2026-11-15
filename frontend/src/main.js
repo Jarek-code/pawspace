@@ -84,6 +84,18 @@ const routes = [
     load: () => import('@/features/feed/pages/feed.js'),
   },
   {
+    path: '/publicar',
+    title: 'Crear publicación',
+    guard: 'auth',
+    load: () => import('@/features/feed/pages/compose.js'),
+  },
+  {
+    path: '/publicacion/:id',
+    title: 'Publicación',
+    guard: 'auth',
+    load: () => import('@/features/feed/pages/post.js'),
+  },
+  {
     path: '*',
     title: 'Página no encontrada',
     load: () => import('@/features/shared/pages/not-found.js'),

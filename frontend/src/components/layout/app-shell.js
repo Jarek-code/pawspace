@@ -36,6 +36,8 @@ export function createAppShell({
   notificationCount = 0,
   onCompose = null,
   onLogout = null,
+  backTo = '',
+  hideBottomNav = false,
   rail = null,
   children = null,
 } = {}) {
@@ -76,10 +78,24 @@ export function createAppShell({
     renderSidebarAccount(account, onLogout),
   );
 
+  const backButton = backTo
+    ? h(
+        'a',
+        {
+          class: 'ps-topbar__back',
+          href: backTo,
+          attrs: { 'aria-label': 'Volver' },
+        },
+        createIcon('arrow-left', { size: 22 }),
+      )
+    : null;
+
   const topbar = h(
     'header',
-    { class: 'ps-topbar' },
+    { class: `ps-topbar${backTo ? ' ps-topbar--nested' : ''}` },
+    backButton,
     h('div', { class: 'ps-topbar__mobile-brand' }, brand.cloneNode(true)),
+    h('span', { class: 'ps-topbar__mobile-title', text: title }),
     h(
       'div',
       { class: 'ps-topbar__heading' },
@@ -90,6 +106,15 @@ export function createAppShell({
     h(
       'div',
       { class: 'ps-topbar__actions' },
+      h(
+        'button',
+        {
+          class: 'ps-icon-button ps-topbar__search-toggle',
+          type: 'button',
+          attrs: { 'aria-label': 'Buscar', 'aria-disabled': 'true', title: 'Próximamente' },
+        },
+        createIcon('search', { size: 20 }),
+      ),
       themeToggle,
       h(
         'button',
@@ -97,7 +122,8 @@ export function createAppShell({
           class: 'ps-icon-button ps-topbar__bell',
           type: 'button',
           attrs: {
-            'aria-label': notificationCount > 0 ? `Avisos, ${notificationCount} sin leer` : 'Avisos',
+            'aria-label':
+              notificationCount > 0 ? `Avisos, ${notificationCount} sin leer` : 'Avisos',
           },
         },
         createIcon('bell', { size: 20 }),
@@ -106,9 +132,17 @@ export function createAppShell({
     ),
   );
 
-  const content = h('main', { id: 'contenido', class: 'ps-shell__content', tabindex: '-1' }, children);
+  const content = h(
+    'main',
+    { id: 'contenido', class: 'ps-shell__content', tabindex: '-1' },
+    children,
+  );
 
-  const railElement = h('aside', { class: 'ps-rail', attrs: { 'aria-label': 'Panel lateral' } }, rail);
+  const railElement = h(
+    'aside',
+    { class: 'ps-rail', attrs: { 'aria-label': 'Panel lateral' } },
+    rail,
+  );
 
   const bottomNav = h(
     'nav',
@@ -122,7 +156,15 @@ export function createAppShell({
 
   return h(
     'div',
-    { class: 'ps-app-shell' },
+    {
+      class: [
+        'ps-app-shell',
+        backTo ? 'ps-app-shell--nested' : '',
+        hideBottomNav ? 'ps-app-shell--no-bottom' : '',
+      ]
+        .filter(Boolean)
+        .join(' '),
+    },
     h('a', { class: 'ps-skip-link', href: '#contenido' }, 'Saltar al contenido'),
     sidebar,
     h('div', { class: 'ps-shell__main' }, topbar, content),
@@ -135,7 +177,11 @@ function renderNavItem(item, activePath, notificationCount) {
   const isActive = item.path === activePath;
   const badge = item.icon === 'bell' && notificationCount > 0 ? notificationCount : 0;
 
-  const icon = h('span', { class: 'ps-nav__icon', 'aria-hidden': 'true' }, createIcon(item.icon, { size: 20 }));
+  const icon = h(
+    'span',
+    { class: 'ps-nav__icon', 'aria-hidden': 'true' },
+    createIcon(item.icon, { size: 20 }),
+  );
   const label = h('span', { class: 'ps-nav__label', text: item.label });
 
   const link = h(
@@ -161,7 +207,11 @@ function renderSidebarPets(pet) {
 
   const change = h(
     'button',
-    { class: 'ps-sidebar__pets-link', type: 'button', attrs: { 'aria-disabled': 'true', title: 'Próximamente' } },
+    {
+      class: 'ps-sidebar__pets-link',
+      type: 'button',
+      attrs: { 'aria-disabled': 'true', title: 'Próximamente' },
+    },
     '+ Agregar mascota',
   );
 
@@ -216,7 +266,11 @@ function renderSearch() {
   return h(
     'div',
     { class: 'ps-topbar__search', role: 'search' },
-    h('span', { class: 'ps-topbar__search-icon', 'aria-hidden': 'true' }, createIcon('search', { size: 18 })),
+    h(
+      'span',
+      { class: 'ps-topbar__search-icon', 'aria-hidden': 'true' },
+      createIcon('search', { size: 18 }),
+    ),
     h('input', {
       class: 'ps-topbar__search-input',
       type: 'search',
@@ -230,7 +284,12 @@ function renderBottomItem(item, activePath, onCompose) {
   if (item.fab) {
     const fab = h(
       'button',
-      { class: 'ps-bottom-nav__fab', type: 'button', attrs: { 'aria-label': 'Crear publicación' }, onClick: onCompose },
+      {
+        class: 'ps-bottom-nav__fab',
+        type: 'button',
+        attrs: { 'aria-label': 'Crear publicación' },
+        onClick: onCompose,
+      },
       createIcon('plus', { size: 24 }),
     );
     return h('li', { class: 'ps-bottom-nav__item ps-bottom-nav__item--fab' }, fab);
@@ -246,7 +305,11 @@ function renderBottomItem(item, activePath, onCompose) {
         ? { type: 'button', attrs: { 'aria-disabled': 'true', title: 'Próximamente' } }
         : { href: item.path, attrs: { 'aria-current': isActive ? 'page' : null } }),
     },
-    h('span', { class: 'ps-bottom-nav__icon', 'aria-hidden': 'true' }, createIcon(item.icon, { size: 24 })),
+    h(
+      'span',
+      { class: 'ps-bottom-nav__icon', 'aria-hidden': 'true' },
+      createIcon(item.icon, { size: 24 }),
+    ),
     h('span', { class: 'ps-bottom-nav__label', text: item.label }),
   );
 
