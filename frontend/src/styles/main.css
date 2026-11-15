@@ -7,7 +7,9 @@
 @import './pages.css';
 @import '../components/primitives/primitives.css';
 @import '../components/layout/layout.css';
+@import '../components/layout/app-shell.css';
 @import '../components/navigation/navigation.css';
+@import '../components/feed/feed.css';
 
 /*
  * Fontsource publica las familias variables como "Inter Variable" y
