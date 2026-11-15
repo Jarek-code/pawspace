@@ -1,6 +1,7 @@
 import { config } from '@/app/config.js';
 import { ApiError } from '@/lib/errors.js';
 import { demoUsers } from './fixtures/auth.js';
+import { feedPosts, feedStories, feedSugerencias, feedTendencias } from './fixtures/feed.js';
 
 /**
  * Adaptador de mocks.
@@ -101,6 +102,26 @@ const routes = [
     method: 'GET',
     pattern: /^\/health$/,
     handler: () => ({ status: 'healthy' }),
+  },
+  {
+    method: 'GET',
+    pattern: /^\/feed$/,
+    handler: () => ({ publicaciones: feedPosts }),
+  },
+  {
+    method: 'GET',
+    pattern: /^\/historias$/,
+    handler: () => ({ historias: feedStories }),
+  },
+  {
+    method: 'GET',
+    pattern: /^\/sugerencias$/,
+    handler: () => ({ sugerencias: feedSugerencias }),
+  },
+  {
+    method: 'GET',
+    pattern: /^\/tendencias$/,
+    handler: () => ({ tendencias: feedTendencias }),
   },
 ];
 
