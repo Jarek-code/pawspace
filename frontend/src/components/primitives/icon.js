@@ -4,24 +4,35 @@ import checkRaw from 'lucide-static/icons/check.svg?raw';
 import eyeOffRaw from 'lucide-static/icons/eye-off.svg?raw';
 import eyeRaw from 'lucide-static/icons/eye.svg?raw';
 import lockRaw from 'lucide-static/icons/lock.svg?raw';
+import logOutRaw from 'lucide-static/icons/log-out.svg?raw';
 import mailRaw from 'lucide-static/icons/mail.svg?raw';
 import moonRaw from 'lucide-static/icons/moon.svg?raw';
 import sunRaw from 'lucide-static/icons/sun.svg?raw';
 import arrowLeftRaw from 'lucide-static/icons/arrow-left.svg?raw';
 import arrowRightRaw from 'lucide-static/icons/arrow-right.svg?raw';
+import bellRaw from 'lucide-static/icons/bell.svg?raw';
 import birdRaw from 'lucide-static/icons/bird.svg?raw';
+import bookmarkRaw from 'lucide-static/icons/bookmark.svg?raw';
 import calendarRaw from 'lucide-static/icons/calendar.svg?raw';
 import catRaw from 'lucide-static/icons/cat.svg?raw';
 import chevronDownRaw from 'lucide-static/icons/chevron-down.svg?raw';
 import circleCheckRaw from 'lucide-static/icons/circle-check.svg?raw';
+import compassRaw from 'lucide-static/icons/compass.svg?raw';
 import dogRaw from 'lucide-static/icons/dog.svg?raw';
 import fishRaw from 'lucide-static/icons/fish.svg?raw';
 import globeRaw from 'lucide-static/icons/globe.svg?raw';
+import heartRaw from 'lucide-static/icons/heart.svg?raw';
+import homeRaw from 'lucide-static/icons/home.svg?raw';
 import imageRaw from 'lucide-static/icons/image.svg?raw';
+import messageCircleRaw from 'lucide-static/icons/message-circle.svg?raw';
+import messageSquareRaw from 'lucide-static/icons/message-square.svg?raw';
+import moreHorizontalRaw from 'lucide-static/icons/more-horizontal.svg?raw';
 import pawPrintRaw from 'lucide-static/icons/paw-print.svg?raw';
 import plusRaw from 'lucide-static/icons/plus.svg?raw';
 import rabbitRaw from 'lucide-static/icons/rabbit.svg?raw';
 import searchRaw from 'lucide-static/icons/search.svg?raw';
+import sendRaw from 'lucide-static/icons/send.svg?raw';
+import share2Raw from 'lucide-static/icons/share-2.svg?raw';
 import turtleRaw from 'lucide-static/icons/turtle.svg?raw';
 import uploadRaw from 'lucide-static/icons/upload.svg?raw';
 import userRaw from 'lucide-static/icons/user.svg?raw';
@@ -40,22 +51,33 @@ const ICONS = {
   eye: eyeRaw,
   'eye-off': eyeOffRaw,
   lock: lockRaw,
+  'log-out': logOutRaw,
   mail: mailRaw,
   'arrow-left': arrowLeftRaw,
   'arrow-right': arrowRightRaw,
+  bell: bellRaw,
   bird: birdRaw,
+  bookmark: bookmarkRaw,
   calendar: calendarRaw,
   cat: catRaw,
   'chevron-down': chevronDownRaw,
   'circle-check': circleCheckRaw,
+  compass: compassRaw,
   dog: dogRaw,
   fish: fishRaw,
   globe: globeRaw,
+  heart: heartRaw,
+  home: homeRaw,
   image: imageRaw,
+  'message-circle': messageCircleRaw,
+  'message-square': messageSquareRaw,
+  'more-horizontal': moreHorizontalRaw,
   'paw-print': pawPrintRaw,
   plus: plusRaw,
   rabbit: rabbitRaw,
   search: searchRaw,
+  send: sendRaw,
+  'share-2': share2Raw,
   turtle: turtleRaw,
   upload: uploadRaw,
   user: userRaw,
