@@ -40,6 +40,21 @@ import xRaw from 'lucide-static/icons/x.svg?raw';
 import usersRaw from 'lucide-static/icons/users.svg?raw';
 import shieldRaw from 'lucide-static/icons/shield.svg?raw';
 import zapRaw from 'lucide-static/icons/zap.svg?raw';
+import archiveRaw from 'lucide-static/icons/archive.svg?raw';
+import cameraRaw from 'lucide-static/icons/camera.svg?raw';
+import chevronLeftRaw from 'lucide-static/icons/chevron-left.svg?raw';
+import chevronRightRaw from 'lucide-static/icons/chevron-right.svg?raw';
+import clockRaw from 'lucide-static/icons/clock.svg?raw';
+import hashRaw from 'lucide-static/icons/hash.svg?raw';
+import moreVerticalRaw from 'lucide-static/icons/more-vertical.svg?raw';
+import pauseRaw from 'lucide-static/icons/pause.svg?raw';
+import pencilRaw from 'lucide-static/icons/pencil.svg?raw';
+import playRaw from 'lucide-static/icons/play.svg?raw';
+import settingsRaw from 'lucide-static/icons/settings.svg?raw';
+import slidersHorizontalRaw from 'lucide-static/icons/sliders-horizontal.svg?raw';
+import trash2Raw from 'lucide-static/icons/trash-2.svg?raw';
+import trendingUpRaw from 'lucide-static/icons/trending-up.svg?raw';
+import userPlusRaw from 'lucide-static/icons/user-plus.svg?raw';
 
 /**
  * Registro explícito de iconos Lucide. Solo se empaqueta lo que se usa.
@@ -88,6 +103,21 @@ const ICONS = {
   users: usersRaw,
   shield: shieldRaw,
   zap: zapRaw,
+  archive: archiveRaw,
+  camera: cameraRaw,
+  'chevron-left': chevronLeftRaw,
+  'chevron-right': chevronRightRaw,
+  clock: clockRaw,
+  hash: hashRaw,
+  'more-vertical': moreVerticalRaw,
+  pause: pauseRaw,
+  pencil: pencilRaw,
+  play: playRaw,
+  settings: settingsRaw,
+  'sliders-horizontal': slidersHorizontalRaw,
+  'trash-2': trash2Raw,
+  'trending-up': trendingUpRaw,
+  'user-plus': userPlusRaw,
 };
 
 export function createIcon(name, { size = 20, label = '', className = '' } = {}) {

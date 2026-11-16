@@ -22,6 +22,7 @@ export function createModal({
   description = '',
   children = null,
   size = 'md',
+  variant = 'default',
   closeOnOverlay = true,
   onClose = null,
 } = {}) {
@@ -70,7 +71,14 @@ export function createModal({
     body,
   );
 
-  const element = h('div', { class: 'ps-modal', attrs: { hidden: true } }, panel);
+  const element = h(
+    'div',
+    {
+      class: ['ps-modal', variant === 'sheet' ? 'ps-modal--sheet' : ''].filter(Boolean).join(' '),
+      attrs: { hidden: true },
+    },
+    panel,
+  );
 
   let isOpen = false;
   let previousFocus = null;
