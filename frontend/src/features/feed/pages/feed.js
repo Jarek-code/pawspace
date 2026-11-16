@@ -54,6 +54,10 @@ export function createPage({ router } = {}) {
           data,
           onCompose: () => router.navigate('/publicar'),
           onOpenPost: (post) => router.navigate(`/publicacion/${post.id}`),
+          onOpenStory: (story) =>
+            router.navigate(
+              `/historias/${story.mascota.handle.replace(/^@/, '')}?desde=${encodeURIComponent('/inicio')}`,
+            ),
         }),
       );
     })

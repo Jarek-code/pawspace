@@ -37,6 +37,7 @@ export function createFeedContent({
   onOpenPost = null,
   onCompose = null,
   onExplore = null,
+  onOpenStory = null,
 } = {}) {
   if (!data.publicaciones.length) {
     return createEmptyState({
@@ -53,7 +54,7 @@ export function createFeedContent({
 
   const feedTabs = createFeedTabs({ active: 'para-ti' }).element;
   const composer = pet ? createComposer({ pet, onCompose }).element : null;
-  const stories = createStoryRow({ stories: data.historias }).element;
+  const stories = createStoryRow({ stories: data.historias, onOpen: onOpenStory }).element;
   const posts = data.publicaciones.map(
     (post) =>
       createPostCard({
