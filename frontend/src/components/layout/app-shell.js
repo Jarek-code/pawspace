@@ -8,18 +8,18 @@ import { h } from '@/lib/dom.js';
 
 const NAV_ITEMS = [
   { label: 'Inicio', icon: 'home', path: '/inicio' },
-  { label: 'Explorar', icon: 'compass', path: '/explorar', disabled: true },
+  { label: 'Explorar', icon: 'compass', path: '/explorar' },
   { label: 'Notificaciones', icon: 'bell', path: '/notificaciones', disabled: true },
   { label: 'Mensajes', icon: 'message-circle', path: '/mensajes', disabled: true },
-  { label: 'Perfil', icon: 'user', path: '/perfil', disabled: true },
+  { label: 'Perfil', icon: 'user', path: '/perfil' },
 ];
 
 const BOTTOM_ITEMS = [
   { label: 'Inicio', icon: 'home', path: '/inicio' },
-  { label: 'Explorar', icon: 'compass', path: '/explorar', disabled: true },
+  { label: 'Explorar', icon: 'compass', path: '/explorar' },
   { fab: true, label: 'Crear' },
   { label: 'Avisos', icon: 'bell', path: '/notificaciones', disabled: true },
-  { label: 'Perfil', icon: 'user', path: '/perfil', disabled: true },
+  { label: 'Perfil', icon: 'user', path: '/perfil' },
 ];
 
 /**
@@ -36,6 +36,7 @@ export function createAppShell({
   notificationCount = 0,
   onCompose = null,
   onLogout = null,
+  onSearch = null,
   backTo = '',
   hideBottomNav = false,
   rail = null,
@@ -102,7 +103,7 @@ export function createAppShell({
       h('h1', { class: 'ps-topbar__title', text: title }),
       subtitle ? h('p', { class: 'ps-topbar__subtitle', text: subtitle }) : null,
     ),
-    renderSearch(),
+    renderSearch(onSearch),
     h(
       'div',
       { class: 'ps-topbar__actions' },
@@ -111,7 +112,8 @@ export function createAppShell({
         {
           class: 'ps-icon-button ps-topbar__search-toggle',
           type: 'button',
-          attrs: { 'aria-label': 'Buscar', 'aria-disabled': 'true', title: 'Próximamente' },
+          attrs: { 'aria-label': 'Buscar' },
+          onClick: () => onSearch?.(''),
         },
         createIcon('search', { size: 20 }),
       ),
@@ -222,7 +224,7 @@ function renderSidebarPets(pet) {
     h(
       'div',
       { class: 'ps-sidebar__pet' },
-      createAvatar({ name: pet.nombre, size: 'sm' }),
+      createAvatar({ name: pet.nombre, src: pet.avatar, size: 'sm' }),
       h(
         'div',
         { class: 'ps-sidebar__pet-info' },
@@ -262,22 +264,33 @@ function renderSidebarAccount(account, onLogout) {
   );
 }
 
-function renderSearch() {
-  return h(
-    'div',
-    { class: 'ps-topbar__search', role: 'search' },
+function renderSearch(onSearch) {
+  const input = h('input', {
+    class: 'ps-topbar__search-input',
+    type: 'search',
+    placeholder: 'Buscar',
+    attrs: { 'aria-label': 'Buscar en PawSpace' },
+  });
+
+  const form = h(
+    'form',
+    {
+      class: 'ps-topbar__search',
+      role: 'search',
+      onSubmit: (event) => {
+        event.preventDefault();
+        onSearch?.(input.value.trim());
+      },
+    },
     h(
       'span',
       { class: 'ps-topbar__search-icon', 'aria-hidden': 'true' },
       createIcon('search', { size: 18 }),
     ),
-    h('input', {
-      class: 'ps-topbar__search-input',
-      type: 'search',
-      placeholder: 'Buscar',
-      attrs: { 'aria-label': 'Buscar en PawSpace' },
-    }),
+    input,
   );
+
+  return form;
 }
 
 function renderBottomItem(item, activePath, onCompose) {
