@@ -1,4 +1,5 @@
 from fastapi import HTTPException, status, Request
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 from src.config.database import SessionLocal
 from src.models.schema_c_usuario import UsuarioCrear, UserLogin
@@ -93,8 +94,10 @@ class UsuarioControl:
         #Y te devuelve el token y que tipo de token es
         return{
             "token_acceso": nueo_token,
-            "token_tipo": "bearer"
-            ,"sesion_id": sesion_id
+            "token_tipo": "bearer",
+            "sesion_id": sesion_id,
+            "access_token": nueo_token,
+            "token_type": "bearer",
         }
 
     @staticmethod

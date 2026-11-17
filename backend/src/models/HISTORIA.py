@@ -1,6 +1,7 @@
-from sqlalchemy import Column, String, DateTime, Enum, Index, text
-from sqlalchemy.dialects.mysql import BIGINT, SMALLINT, INTEGER
+from sqlalchemy import Boolean, Column, DateTime, SmallInteger, String, text
+from sqlalchemy.dialects.mysql import BIGINT, SMALLINT, INTEGER, ENUM
 from sqlalchemy.orm import declarative_base
+from sqlalchemy.orm import relationship
 from src.config.database import engine
 
 Base = declarative_base()
@@ -10,25 +11,32 @@ class Historia(Base):
     __tablename__ = 'HISTORIA'
 
     id = Column(BIGINT(unsigned=True), primary_key=True, autoincrement=True)
-    
-    # Referencia a la mascota que sube la historia
+
     mascota_id = Column(BIGINT(unsigned=True), nullable=False)
-    
-    # Fecha de creación automática
-    creado_en = Column(
-        DateTime, 
-        nullable=False, 
-        server_default=text('CURRENT_TIMESTAMP')
+
+    texto = Column(String(500), nullable=True)
+
+    audiencia = Column(
+        ENUM('PUBLICO', 'SEGUIDORES', 'SOLO_YO'),
+        nullable=False,
+        server_default=text("'PUBLICO'"),
     )
-    
-    # Fecha de vencimiento (calculada y enviada desde el backend, usualmente creado_en + 24 horas)
+
+    permite_respuestas = Column(Boolean, nullable=False, server_default=text('1'))
+
+    creado_en = Column(
+        DateTime, nullable=False, server_default=text('CURRENT_TIMESTAMP')
+    )
+
     vence_en = Column(DateTime, nullable=False)
 
-    # Configuración del motor distribuido Spider
+    eliminada_en = Column(DateTime, nullable=True)
+
+
     __table_args__ = (
         {
             'mysql_engine': 'Spider',
-            'mysql_comment': 'wrapper "mysql", srv "dn_a"'
+            'mysql_comment': 'wrapper "mysql", srv "dn_a"',
         }
     )
 
@@ -36,8 +44,16 @@ class Historia(Base):
 CREATE TABLE HISTORIA (
     id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
     mascota_id BIGINT UNSIGNED NOT NULL,
+    texto VARCHAR(500) NULL,
+    audiencia ENUM(
+        'PUBLICO',
+        'SEGUIDORES',
+        'SOLO_YO'
+    ) NOT NULL DEFAULT 'PUBLICO',
+    permite_respuestas BOOLEAN NOT NULL DEFAULT TRUE,
     creado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     vence_en DATETIME NOT NULL,
+    eliminada_en DATETIME NULL,
     CONSTRAINT pk_historia
         PRIMARY KEY (id)
 ) ENGINE=SPIDER
@@ -89,4 +105,87 @@ PARTITION BY HASH (mascota_id)
     PARTITION p1 COMMENT = 'srv "dn_b", table "HISTORIA_VISTA"'
 );
 '''
+#-------------------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------------------
+
+class HistoriaDestacada(Base):
+    __tablename__ = 'HISTORIA_DESTACADA'
+
+    id = Column(BIGINT(unsigned=True), primary_key=True, autoincrement=True)
+
+    mascota_id = Column(BIGINT(unsigned=True), nullable=False)
+
+    titulo = Column(String(60), nullable=False)
+
+    portada_historia_id = Column(BIGINT(unsigned=True), nullable=True)
+
+    orden = Column(SMALLINT, nullable=False, server_default=text('0'))
+
+    creado_en = Column(
+        DateTime, nullable=False, server_default=text('CURRENT_TIMESTAMP')
+    )
+
+    actualizado_en = Column(
+        DateTime,
+        nullable=False,
+        server_default=text('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'),
+    )
+
+    __table_args__ = (
+        {
+            'mysql_engine': 'Spider',
+            'mysql_comment': 'wrapper "mysql", srv "dn_a"',
+        }
+    )
+
+'''
+CREATE TABLE HISTORIA_DESTACADA (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    mascota_id BIGINT UNSIGNED NOT NULL,
+    titulo VARCHAR(60) NOT NULL,
+    portada_historia_id BIGINT UNSIGNED NULL,
+    orden SMALLINT NOT NULL DEFAULT 0,
+    creado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    actualizado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+        ON UPDATE CURRENT_TIMESTAMP,
+    CONSTRAINT pk_historia_destacada
+        PRIMARY KEY (id)
+) ENGINE=SPIDER
+  COMMENT='wrapper "mysql", srv "dn_a"';
+'''
+
+#-------------------------------------------------------------------------------------------
+
+#-------------------------------------------------------------------------------------------
+
+class HistoriaDestacadaElemento(Base):
+    __tablename__ = 'HISTORIA_DESTACADA_ELEMENTO'
+
+    destacada_id = Column(BIGINT(unsigned=True), primary_key=True)
+    historia_id = Column(BIGINT(unsigned=True), primary_key=True)
+    posicion = Column(SMALLINT, nullable=False, server_default=text('0'))
+    agregada_en = Column(
+        DateTime, nullable=False, server_default=text('CURRENT_TIMESTAMP')
+    )
+
+    __table_args__ = (
+        {
+            'mysql_engine': 'Spider',
+            'mysql_comment': 'wrapper "mysql", srv "dn_a"',
+        }
+    )
+
+'''
+CREATE TABLE HISTORIA_DESTACADA_ELEMENTO (
+    destacada_id BIGINT UNSIGNED NOT NULL,
+    historia_id BIGINT UNSIGNED NOT NULL,
+    posicion SMALLINT NOT NULL DEFAULT 0,
+    agregada_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT pk_historia_destacada_elemento
+        PRIMARY KEY (destacada_id, historia_id)
+) ENGINE=SPIDER
+  COMMENT='wrapper "mysql", srv "dn_a"';
+'''
+
 #-------------------------------------------------------------------------------------------

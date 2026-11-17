@@ -32,7 +32,7 @@ class Mascota_Servicio:
         )
         """)
 
-        db.execute(consulta_sp,{
+        resultado = db.execute(consulta_sp,{
             "p_nombre":mascota.nombre,
             "p_nombre_usuario":mascota.nombre_usuario,
             "p_especie_id": mascota.especie_id,
@@ -59,7 +59,7 @@ class Mascota_Servicio:
         nuevo_vinculo = UsuarioMascota(
             usuario_id=usuario_id,
             mascota_id=mascota_id,
-            asignado_por_usuario=usuario_id
+            #asignado_por_usuario=usuario_id
         )
         db.add(nuevo_vinculo)
 

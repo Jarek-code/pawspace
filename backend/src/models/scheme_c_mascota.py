@@ -4,7 +4,7 @@ from datetime import date
 
 class MascotaCrear(BaseModel):
     nombre : str = Field(..., min_length = 2, max_length = 100)
-    nombre_usuario: str = Field(..., min_length = 2, max_length = 50, pattern="^[a-zA-Z0-9_]+$")
+    nombre_usuario: str = Field(..., min_length = 2, max_length = 50)
     especie_id : int = Field(..., gt = 0)
     biografia : Optional[str] = Field(None, max_length = 1000)
     foto_perfil_url: Optional[str] = Field(None, max_length=2048)
