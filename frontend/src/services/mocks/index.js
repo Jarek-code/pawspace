@@ -1,6 +1,6 @@
 import { config } from '@/app/config.js';
 import { ApiError } from '@/lib/errors.js';
-import { getActivePet } from '@/lib/storage.js';
+import { getActivePet, getSession, setSession } from '@/lib/storage.js';
 import { demoUsers } from './fixtures/auth.js';
 import {
   feedComments,
@@ -23,6 +23,36 @@ import {
 } from './profiles.slice.js';
 import { archiveState, storyGroupsState } from './stories.slice.js';
 import { recentSearchesState } from './explore.slice.js';
+import {
+  markAllNotificationsRead,
+  markNotificationRead,
+  notificationsPayload,
+} from './notifications.slice.js';
+import {
+  accountHandle,
+  appealReport,
+  closeAllSessions,
+  closeSession,
+  dataDownloadInfo,
+  registerPasswordChange,
+  settingsPayload,
+  unblockAccount,
+  updateSettingsAccount,
+  updateSettingsFilters,
+  updateSettingsPrivacy,
+} from './settings.slice.js';
+import {
+  acceptRequest,
+  findConversation,
+  findRequest,
+  ignoreRequest,
+  inboxPayload,
+  messageSuggestionHandles,
+  reportConversation,
+  sendMessage,
+  toggleBlock as toggleConversationBlock,
+  toggleSilence,
+} from './messages.slice.js';
 
 /**
  * Adaptador de mocks.
@@ -545,6 +575,57 @@ function searchPayload({ query }) {
   };
 }
 
+function suggestionSummaries(handles) {
+  return handles
+    .map((handle) => profilesState[handle])
+    .filter(Boolean)
+    .map(profileSummary);
+}
+
+function notificationsResponse() {
+  return {
+    ...notificationsPayload(),
+    sugerencias: suggestionSummaries(['@milo', '@nala', '@kira']),
+  };
+}
+
+function messagesResponse() {
+  return {
+    ...inboxPayload(),
+    sugerencias: suggestionSummaries(messageSuggestionHandles),
+  };
+}
+
+function conversationHandle(path) {
+  return decodeURIComponent(path.split('/')[2] || '');
+}
+
+function messageThread({ path }) {
+  const handle = conversationHandle(path);
+  const conversation = findConversation(handle);
+
+  if (!conversation) {
+    if (findRequest(handle)) {
+      throw new ApiError('Acepta la solicitud antes de abrir la conversación.', 409, {
+        detail: 'Solicitud pendiente',
+      });
+    }
+
+    throw new ApiError('No encontramos esta conversación.', 404, {
+      detail: 'Conversación inexistente',
+    });
+  }
+
+  return {
+    conversacion: conversation,
+    mensajes: conversation.mensajes,
+  };
+}
+
+function createMessage({ path, body }) {
+  return sendMessage({ handle: conversationHandle(path), body });
+}
+
 function login({ body }) {
   const email = String(body?.email || '')
     .trim()
@@ -598,6 +679,95 @@ function register({ body }) {
   });
 
   return { mensaje: 'Usuario creado con exito' };
+}
+
+function settingsResponse() {
+  return settingsPayload();
+}
+
+function settingsAccountUpdate({ body }) {
+  const nextEmail = String(body?.email || '')
+    .trim()
+    .toLowerCase();
+  const current = String(settingsPayload().cuenta.email || '').toLowerCase();
+
+  if (nextEmail && nextEmail !== current && findUser(nextEmail)) {
+    throw new ApiError('Ese correo ya está registrado.', 409, {
+      detail: 'Ese correo ya está registrado.',
+    });
+  }
+
+  const result = updateSettingsAccount(body);
+  const session = getSession();
+  const user = findUser(session.email);
+
+  if (user) {
+    user.nombre = result.cuenta.nombre;
+    user.email = result.cuenta.email;
+
+    if (session.token) {
+      setSession(
+        {
+          token_acceso: session.token,
+          token_tipo: session.tokenType,
+          sesion_id: session.sessionId,
+          email: result.cuenta.email,
+        },
+        Boolean(window.localStorage.getItem('pawspace.token')),
+      );
+    }
+  }
+
+  return result;
+}
+
+function settingsPassword({ body }) {
+  const actual = String(body?.actual || '');
+  const nueva = String(body?.nueva || '');
+
+  if (nueva.length < 8) {
+    throw new ApiError('La contraseña nueva debe tener al menos 8 caracteres.', 422, {
+      detail: 'Contraseña demasiado corta.',
+    });
+  }
+
+  if (actual === nueva) {
+    throw new ApiError('La contraseña nueva debe ser distinta de la actual.', 422, {
+      detail: 'Contraseña repetida.',
+    });
+  }
+
+  const user = findUser(getSession().email);
+
+  if (!user || user.contrasena !== actual) {
+    throw new ApiError('La contraseña actual no es correcta.', 422, {
+      detail: 'Contraseña actual incorrecta.',
+    });
+  }
+
+  user.contrasena = nueva;
+  closeAllSessions();
+  return registerPasswordChange();
+}
+
+function settingsDelete({ query }) {
+  const handle = String(query.get('handle') || '')
+    .trim()
+    .toLowerCase();
+
+  if (handle !== accountHandle().toLowerCase()) {
+    throw new ApiError('Escribe el nombre de usuario exacto para confirmar.', 422, {
+      detail: 'Confirmación incorrecta.',
+    });
+  }
+
+  const user = findUser(getSession().email);
+
+  if (user) {
+    user.activo = false;
+  }
+
+  return { mensaje: 'Tu cuenta fue eliminada.' };
 }
 
 function findPost(id) {
@@ -795,6 +965,61 @@ const routes = [
   },
   {
     method: 'GET',
+    pattern: /^\/ajustes$/,
+    handler: settingsResponse,
+  },
+  {
+    method: 'PATCH',
+    pattern: /^\/ajustes\/cuenta$/,
+    handler: settingsAccountUpdate,
+  },
+  {
+    method: 'PATCH',
+    pattern: /^\/ajustes\/privacidad$/,
+    handler: ({ body }) => updateSettingsPrivacy(body),
+  },
+  {
+    method: 'PATCH',
+    pattern: /^\/ajustes\/seguridad$/,
+    handler: ({ body }) => updateSettingsFilters(body),
+  },
+  {
+    method: 'POST',
+    pattern: /^\/ajustes\/contrasena$/,
+    handler: settingsPassword,
+  },
+  {
+    method: 'POST',
+    pattern: /^\/ajustes\/descargar$/,
+    handler: () => dataDownloadInfo(),
+  },
+  {
+    method: 'POST',
+    pattern: /^\/ajustes\/reportes\/[^/]+\/apelar$/,
+    handler: ({ path }) => appealReport(decodeURIComponent(path.split('/')[3] || '')),
+  },
+  {
+    method: 'DELETE',
+    pattern: /^\/ajustes\/sesiones\/[^/]+$/,
+    handler: ({ path }) => closeSession(decodeURIComponent(path.split('/')[3] || '')),
+  },
+  {
+    method: 'DELETE',
+    pattern: /^\/ajustes\/sesiones$/,
+    handler: () => closeAllSessions(),
+  },
+  {
+    method: 'DELETE',
+    pattern: /^\/ajustes\/bloqueos\/[^/]+$/,
+    handler: ({ path }) => unblockAccount(decodeURIComponent(path.split('/')[3] || '')),
+  },
+  {
+    method: 'DELETE',
+    pattern: /^\/ajustes\/cuenta$/,
+    handler: settingsDelete,
+  },
+  {
+    method: 'GET',
     pattern: /^\/perfiles\/mios$/,
     handler: () => profilePayload(activeHandle()),
   },
@@ -832,6 +1057,61 @@ const routes = [
     method: 'GET',
     pattern: /^\/buscar$/,
     handler: searchPayload,
+  },
+  {
+    method: 'GET',
+    pattern: /^\/notificaciones$/,
+    handler: notificationsResponse,
+  },
+  {
+    method: 'POST',
+    pattern: /^\/notificaciones\/leer-todas$/,
+    handler: () => markAllNotificationsRead(),
+  },
+  {
+    method: 'POST',
+    pattern: /^\/notificaciones\/[^/]+\/leer$/,
+    handler: ({ path }) => markNotificationRead(decodeURIComponent(path.split('/')[2] || '')),
+  },
+  {
+    method: 'GET',
+    pattern: /^\/mensajes$/,
+    handler: messagesResponse,
+  },
+  {
+    method: 'POST',
+    pattern: /^\/mensajes\/solicitudes\/[^/]+\/aceptar$/,
+    handler: ({ path }) => acceptRequest(conversationHandle(path.replace('/solicitudes', ''))),
+  },
+  {
+    method: 'POST',
+    pattern: /^\/mensajes\/solicitudes\/[^/]+\/ignorar$/,
+    handler: ({ path }) => ignoreRequest(conversationHandle(path.replace('/solicitudes', ''))),
+  },
+  {
+    method: 'GET',
+    pattern: /^\/mensajes\/[^/]+$/,
+    handler: messageThread,
+  },
+  {
+    method: 'POST',
+    pattern: /^\/mensajes\/[^/]+$/,
+    handler: createMessage,
+  },
+  {
+    method: 'POST',
+    pattern: /^\/mensajes\/[^/]+\/silenciar$/,
+    handler: ({ path }) => toggleSilence(conversationHandle(path)),
+  },
+  {
+    method: 'POST',
+    pattern: /^\/mensajes\/[^/]+\/bloquear$/,
+    handler: ({ path }) => toggleConversationBlock(conversationHandle(path)),
+  },
+  {
+    method: 'POST',
+    pattern: /^\/mensajes\/[^/]+\/reportar$/,
+    handler: ({ path }) => reportConversation(conversationHandle(path)),
   },
 ];
 

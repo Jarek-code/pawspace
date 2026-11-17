@@ -9,8 +9,8 @@ import { h } from '@/lib/dom.js';
 const NAV_ITEMS = [
   { label: 'Inicio', icon: 'home', path: '/inicio' },
   { label: 'Explorar', icon: 'compass', path: '/explorar' },
-  { label: 'Notificaciones', icon: 'bell', path: '/notificaciones', disabled: true },
-  { label: 'Mensajes', icon: 'message-circle', path: '/mensajes', disabled: true },
+  { label: 'Notificaciones', icon: 'bell', path: '/notificaciones' },
+  { label: 'Mensajes', icon: 'message-circle', path: '/mensajes' },
   { label: 'Perfil', icon: 'user', path: '/perfil' },
 ];
 
@@ -18,7 +18,7 @@ const BOTTOM_ITEMS = [
   { label: 'Inicio', icon: 'home', path: '/inicio' },
   { label: 'Explorar', icon: 'compass', path: '/explorar' },
   { fab: true, label: 'Crear' },
-  { label: 'Avisos', icon: 'bell', path: '/notificaciones', disabled: true },
+  { label: 'Avisos', icon: 'bell', path: '/notificaciones' },
   { label: 'Perfil', icon: 'user', path: '/perfil' },
 ];
 
@@ -30,6 +30,7 @@ const BOTTOM_ITEMS = [
 export function createAppShell({
   activePath = '/inicio',
   title = '',
+  mobileTitle = '',
   subtitle = '',
   pet = null,
   account = null,
@@ -39,6 +40,7 @@ export function createAppShell({
   onSearch = null,
   backTo = '',
   hideBottomNav = false,
+  className = '',
   rail = null,
   children = null,
 } = {}) {
@@ -96,7 +98,7 @@ export function createAppShell({
     { class: `ps-topbar${backTo ? ' ps-topbar--nested' : ''}` },
     backButton,
     h('div', { class: 'ps-topbar__mobile-brand' }, brand.cloneNode(true)),
-    h('span', { class: 'ps-topbar__mobile-title', text: title }),
+    h('span', { class: 'ps-topbar__mobile-title', text: mobileTitle || title }),
     h(
       'div',
       { class: 'ps-topbar__heading' },
@@ -119,17 +121,22 @@ export function createAppShell({
       ),
       themeToggle,
       h(
-        'button',
+        'a',
         {
           class: 'ps-icon-button ps-topbar__bell',
-          type: 'button',
+          href: '/notificaciones',
           attrs: {
             'aria-label':
               notificationCount > 0 ? `Avisos, ${notificationCount} sin leer` : 'Avisos',
           },
         },
         createIcon('bell', { size: 20 }),
-        notificationCount > 0 ? createBadge({ label: String(notificationCount) }) : null,
+        notificationCount > 0
+          ? createBadge({
+              label: String(notificationCount),
+              className: 'ps-notification-count',
+            })
+          : null,
       ),
     ),
   );
@@ -163,6 +170,7 @@ export function createAppShell({
         'ps-app-shell',
         backTo ? 'ps-app-shell--nested' : '',
         hideBottomNav ? 'ps-app-shell--no-bottom' : '',
+        className,
       ]
         .filter(Boolean)
         .join(' '),
@@ -186,6 +194,13 @@ function renderNavItem(item, activePath, notificationCount) {
   );
   const label = h('span', { class: 'ps-nav__label', text: item.label });
 
+  let badgeElement = null;
+
+  if (badge > 0) {
+    badgeElement = createBadge({ label: String(badge) });
+    badgeElement.dataset.notificationBadge = 'nav';
+  }
+
   const link = h(
     item.disabled ? 'button' : 'a',
     {
@@ -196,7 +211,7 @@ function renderNavItem(item, activePath, notificationCount) {
     },
     icon,
     label,
-    badge > 0 ? createBadge({ label: String(badge) }) : null,
+    badgeElement,
   );
 
   return h('li', {}, link);
@@ -327,4 +342,34 @@ function renderBottomItem(item, activePath, onCompose) {
   );
 
   return h('li', { class: 'ps-bottom-nav__slot' }, link);
+}
+
+/**
+ * Actualiza el contador de avisos de la sidebar y del topbar sin re-renderizar
+ * la página completa. Se usa al marcar avisos como leídos.
+ */
+export function setShellNotificationCount(shell, count) {
+  const normalized = Math.max(0, Number(count || 0));
+  const navItem = shell.querySelector('.ps-nav__item[href="/notificaciones"]');
+
+  if (navItem) {
+    navItem.querySelector('[data-notification-badge="nav"]')?.remove();
+
+    if (normalized > 0) {
+      const badge = createBadge({ label: String(normalized) });
+      badge.dataset.notificationBadge = 'nav';
+      navItem.append(badge);
+    }
+  }
+
+  const bell = shell.querySelector('.ps-topbar__bell');
+
+  if (bell) {
+    bell.querySelector('.ps-notification-count')?.remove();
+    bell.setAttribute('aria-label', normalized > 0 ? `Avisos, ${normalized} sin leer` : 'Avisos');
+
+    if (normalized > 0) {
+      bell.append(createBadge({ label: String(normalized), className: 'ps-notification-count' }));
+    }
+  }
 }

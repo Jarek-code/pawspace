@@ -13,7 +13,7 @@ export const profilesState = Object.fromEntries(
 
 export const followingState = new Set(['@luna', '@kira']);
 export const pendingState = new Set();
-export const blockedState = new Set();
+export const blockedState = new Set(['@toby', '@coco']);
 export const reportedState = new Set();
 
 export const suggestionHandles = [...profileSuggestions];

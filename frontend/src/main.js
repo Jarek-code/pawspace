@@ -144,6 +144,54 @@ const routes = [
     load: () => import('@/features/explore/pages/search.js'),
   },
   {
+    path: '/notificaciones',
+    title: 'Notificaciones',
+    guard: 'auth',
+    load: () => import('@/features/messaging/pages/notifications.js'),
+  },
+  {
+    path: '/avisos',
+    redirect: '/notificaciones',
+  },
+  {
+    path: '/mensajes',
+    title: 'Mensajes',
+    guard: 'auth',
+    load: () => import('@/features/messaging/pages/inbox.js'),
+  },
+  {
+    path: '/avisos/mensajes',
+    redirect: '/mensajes',
+  },
+  {
+    path: '/mensajes/:handle',
+    title: 'Conversación',
+    guard: 'auth',
+    load: () => import('@/features/messaging/pages/chat.js'),
+  },
+  {
+    path: '/ajustes',
+    redirect: '/ajustes/cuenta',
+  },
+  {
+    path: '/ajustes/cuenta',
+    title: 'Configuración',
+    guard: 'auth',
+    load: () => import('@/features/settings/pages/account.js'),
+  },
+  {
+    path: '/ajustes/privacidad',
+    title: 'Privacidad',
+    guard: 'auth',
+    load: () => import('@/features/settings/pages/privacy.js'),
+  },
+  {
+    path: '/ajustes/seguridad',
+    title: 'Seguridad',
+    guard: 'auth',
+    load: () => import('@/features/settings/pages/security.js'),
+  },
+  {
     path: '*',
     title: 'Página no encontrada',
     load: () => import('@/features/shared/pages/not-found.js'),

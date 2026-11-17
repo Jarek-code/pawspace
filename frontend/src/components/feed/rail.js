@@ -22,7 +22,7 @@ export function createRail({ pet, sugerencias = [], tendencias = [], onChangePet
   return cards.filter(Boolean);
 }
 
-function createActivePetCard(pet, onChangePet) {
+export function createActivePetCard(pet, onChangePet) {
   if (!pet) {
     return null;
   }
@@ -43,11 +43,7 @@ function createActivePetCard(pet, onChangePet) {
         h('span', { class: 'ps-rail__pet-handle', text: pet.handle }),
         h('span', { class: 'ps-rail__pet-visibility', text: visibility }),
       ),
-      h(
-        'button',
-        { class: 'ps-rail__link', type: 'button', onClick: onChangePet },
-        'Cambiar',
-      ),
+      h('button', { class: 'ps-rail__link', type: 'button', onClick: onChangePet }, 'Cambiar'),
     ),
   );
 }

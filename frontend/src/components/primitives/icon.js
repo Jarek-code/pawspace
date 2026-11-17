@@ -1,8 +1,13 @@
 import alertCircleRaw from 'lucide-static/icons/alert-circle.svg?raw';
 import alertTriangleRaw from 'lucide-static/icons/alert-triangle.svg?raw';
+import banRaw from 'lucide-static/icons/ban.svg?raw';
+import downloadRaw from 'lucide-static/icons/download.svg?raw';
+import bellOffRaw from 'lucide-static/icons/bell-off.svg?raw';
 import checkRaw from 'lucide-static/icons/check.svg?raw';
+import checkCheckRaw from 'lucide-static/icons/check-check.svg?raw';
 import eyeOffRaw from 'lucide-static/icons/eye-off.svg?raw';
 import eyeRaw from 'lucide-static/icons/eye.svg?raw';
+import flagRaw from 'lucide-static/icons/flag.svg?raw';
 import lockRaw from 'lucide-static/icons/lock.svg?raw';
 import logOutRaw from 'lucide-static/icons/log-out.svg?raw';
 import mailRaw from 'lucide-static/icons/mail.svg?raw';
@@ -27,14 +32,18 @@ import imageRaw from 'lucide-static/icons/image.svg?raw';
 import messageCircleRaw from 'lucide-static/icons/message-circle.svg?raw';
 import messageSquareRaw from 'lucide-static/icons/message-square.svg?raw';
 import moreHorizontalRaw from 'lucide-static/icons/more-horizontal.svg?raw';
+import paperclipRaw from 'lucide-static/icons/paperclip.svg?raw';
 import pawPrintRaw from 'lucide-static/icons/paw-print.svg?raw';
+import phoneRaw from 'lucide-static/icons/phone.svg?raw';
 import plusRaw from 'lucide-static/icons/plus.svg?raw';
 import rabbitRaw from 'lucide-static/icons/rabbit.svg?raw';
+import rotateCcwRaw from 'lucide-static/icons/rotate-ccw.svg?raw';
 import searchRaw from 'lucide-static/icons/search.svg?raw';
 import sendRaw from 'lucide-static/icons/send.svg?raw';
 import share2Raw from 'lucide-static/icons/share-2.svg?raw';
 import turtleRaw from 'lucide-static/icons/turtle.svg?raw';
 import uploadRaw from 'lucide-static/icons/upload.svg?raw';
+import videoRaw from 'lucide-static/icons/video.svg?raw';
 import userRaw from 'lucide-static/icons/user.svg?raw';
 import xRaw from 'lucide-static/icons/x.svg?raw';
 import usersRaw from 'lucide-static/icons/users.svg?raw';
@@ -63,9 +72,14 @@ import userPlusRaw from 'lucide-static/icons/user-plus.svg?raw';
 const ICONS = {
   alert: alertCircleRaw,
   warning: alertTriangleRaw,
+  ban: banRaw,
+  download: downloadRaw,
+  'bell-off': bellOffRaw,
   check: checkRaw,
+  'check-check': checkCheckRaw,
   eye: eyeRaw,
   'eye-off': eyeOffRaw,
+  flag: flagRaw,
   lock: lockRaw,
   'log-out': logOutRaw,
   mail: mailRaw,
@@ -88,15 +102,19 @@ const ICONS = {
   'message-circle': messageCircleRaw,
   'message-square': messageSquareRaw,
   'more-horizontal': moreHorizontalRaw,
+  paperclip: paperclipRaw,
   'paw-print': pawPrintRaw,
+  phone: phoneRaw,
   plus: plusRaw,
   rabbit: rabbitRaw,
+  'rotate-ccw': rotateCcwRaw,
   search: searchRaw,
   send: sendRaw,
   'share-2': share2Raw,
   turtle: turtleRaw,
   upload: uploadRaw,
   user: userRaw,
+  video: videoRaw,
   moon: moonRaw,
   sun: sunRaw,
   x: xRaw,

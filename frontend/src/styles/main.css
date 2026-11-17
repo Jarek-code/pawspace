@@ -13,6 +13,8 @@
 @import '../components/profile/profile.css';
 @import '../components/stories/stories.css';
 @import '../components/explore/explore.css';
+@import '../components/messaging/messaging.css';
+@import '../components/settings/settings.css';
 
 /*
  * Fontsource publica las familias variables como "Inter Variable" y
