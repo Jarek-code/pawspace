@@ -322,6 +322,10 @@
   display: none;
 }
 
+.ps-topbar__account {
+  display: none;
+}
+
 .ps-shell__content {
   width: 100%;
   max-width: 720px;
@@ -616,6 +620,10 @@
   }
 
   .ps-topbar__bell {
+    display: inline-flex;
+  }
+
+  .ps-topbar__account {
     display: inline-flex;
   }
 

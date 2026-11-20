@@ -1,0 +1,195 @@
+/*
+ * CMP-109 — AccountMenu.
+ * Popover de cuenta en escritorio/tablet y hoja inferior en móvil.
+ */
+
+.ps-account-menu {
+  display: inline-flex;
+}
+
+.ps-account-menu__trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--ps-touch-target);
+  height: var(--ps-touch-target);
+  padding: 0;
+  border: 0;
+  border-radius: var(--ps-radius-full);
+  background: transparent;
+  cursor: pointer;
+}
+
+.ps-account-menu__trigger .ps-avatar {
+  flex: none;
+}
+
+.ps-account-menu__trigger:focus-visible {
+  outline: 2px solid var(--ps-focus);
+  outline-offset: 2px;
+}
+
+.ps-sidebar__account .ps-account-menu__trigger:focus-visible {
+  outline-color: var(--ps-color-sun-400);
+}
+
+.ps-account-menu__panel {
+  display: none;
+  position: fixed;
+  z-index: var(--ps-z-modal);
+  width: 300px;
+  max-height: min(70vh, 520px);
+  overflow-y: auto;
+  padding: var(--ps-space-4);
+  border: 1px solid var(--ps-border);
+  border-radius: var(--ps-radius-lg);
+  background: var(--ps-surface);
+  box-shadow: var(--ps-shadow-lg);
+}
+
+.ps-account-menu__panel.is-open {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ps-space-3);
+}
+
+.ps-account-menu__handle {
+  display: none;
+}
+
+.ps-account-menu__identity {
+  display: flex;
+  align-items: center;
+  gap: var(--ps-space-3);
+  padding-bottom: var(--ps-space-3);
+  border-bottom: 1px solid var(--ps-border);
+}
+
+.ps-account-menu__identity .ps-avatar {
+  flex: none;
+  background: var(--ps-secondary-soft);
+  color: var(--ps-secondary);
+}
+
+.ps-account-menu__identity-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.ps-account-menu__pet-name {
+  color: var(--ps-text);
+  font-family: var(--ps-font-display);
+  font-size: var(--ps-text-body);
+  font-weight: var(--ps-weight-bold);
+  line-height: var(--ps-leading-body);
+}
+
+.ps-account-menu__pet-handle {
+  color: var(--ps-secondary);
+  font-size: var(--ps-text-body-sm);
+  font-weight: var(--ps-weight-semibold);
+}
+
+.ps-account-menu__person {
+  margin-top: var(--ps-space-2);
+  color: var(--ps-text);
+  font-size: var(--ps-text-body-sm);
+  font-weight: var(--ps-weight-semibold);
+}
+
+.ps-account-menu__email {
+  overflow: hidden;
+  color: var(--ps-text-muted);
+  font-size: var(--ps-text-caption);
+  line-height: var(--ps-leading-caption);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ps-account-menu__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ps-space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ps-account-menu__item {
+  display: flex;
+  align-items: center;
+  gap: var(--ps-space-3);
+  width: 100%;
+  min-height: var(--ps-touch-target);
+  padding: 0 var(--ps-space-2);
+  border: 0;
+  border-radius: var(--ps-radius-md);
+  background: transparent;
+  color: var(--ps-text);
+  font-family: inherit;
+  font-size: var(--ps-text-body-sm);
+  font-weight: var(--ps-weight-semibold);
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.ps-account-menu__item svg {
+  flex: none;
+  color: var(--ps-text-muted);
+}
+
+.ps-account-menu__item:hover {
+  background: var(--ps-bg-subtle);
+}
+
+.ps-account-menu__item:focus-visible {
+  outline: 2px solid var(--ps-focus);
+  outline-offset: -2px;
+}
+
+.ps-account-menu__item--danger,
+.ps-account-menu__item--danger svg {
+  color: var(--ps-danger);
+}
+
+.ps-account-menu__divider {
+  height: 1px;
+  margin: var(--ps-space-2) 0;
+  background: var(--ps-border);
+}
+
+.ps-account-menu__backdrop {
+  display: none;
+}
+
+/* --- Hoja inferior en móvil vertical ----------------------------------- */
+
+.ps-account-menu__panel.is-sheet {
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: auto;
+  max-height: 82vh;
+  border-radius: var(--ps-radius-xl) var(--ps-radius-xl) 0 0;
+  padding-bottom: calc(var(--ps-space-4) + env(safe-area-inset-bottom, 0px));
+}
+
+.ps-account-menu__panel.is-sheet .ps-account-menu__handle {
+  display: block;
+  width: 40px;
+  height: 4px;
+  margin: 0 auto var(--ps-space-2);
+  border-radius: var(--ps-radius-full);
+  background: var(--ps-border);
+}
+
+.ps-account-menu__backdrop.is-sheet.is-open {
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: var(--ps-z-overlay);
+  background: var(--ps-overlay);
+}

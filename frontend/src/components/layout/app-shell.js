@@ -1,4 +1,5 @@
 import logoUrl from '@/assets/brand/pawspace-logo-light.svg';
+import { createAccountMenu } from '@/components/layout/account-menu.js';
 import { createAvatar } from '@/components/primitives/avatar.js';
 import { createBadge } from '@/components/primitives/badge.js';
 import { createButton } from '@/components/primitives/button.js';
@@ -45,6 +46,7 @@ export function createAppShell({
   children = null,
 } = {}) {
   const themeToggle = createThemeToggle().element;
+  const topbarAccount = account ? createAccountMenu({ pet, account, onLogout }) : null;
 
   const brand = h(
     'div',
@@ -78,7 +80,7 @@ export function createAppShell({
     navList,
     h('div', { class: 'ps-sidebar__create' }, create.element),
     renderSidebarPets(pet),
-    renderSidebarAccount(account, onLogout),
+    renderSidebarAccount(pet, account, onLogout),
   );
 
   const backButton = backTo
@@ -138,6 +140,7 @@ export function createAppShell({
             })
           : null,
       ),
+      topbarAccount ? h('div', { class: 'ps-topbar__account' }, topbarAccount.element) : null,
     ),
   );
 
@@ -251,30 +254,22 @@ function renderSidebarPets(pet) {
   );
 }
 
-function renderSidebarAccount(account, onLogout) {
+function renderSidebarAccount(pet, account, onLogout) {
   if (!account) {
     return null;
   }
 
+  const menu = createAccountMenu({ pet, account, onLogout });
+
   return h(
     'div',
     { class: 'ps-sidebar__account' },
-    createAvatar({ name: account.nombre, size: 'sm' }),
+    menu.element,
     h(
       'div',
       { class: 'ps-sidebar__account-info' },
       h('span', { class: 'ps-sidebar__account-name', text: account.nombre }),
       h('span', { class: 'ps-sidebar__account-email', text: account.email }),
-    ),
-    h(
-      'button',
-      {
-        class: 'ps-icon-button ps-sidebar__logout',
-        type: 'button',
-        attrs: { 'aria-label': 'Cerrar sesión' },
-        onClick: onLogout,
-      },
-      createIcon('log-out', { size: 20 }),
     ),
   );
 }
