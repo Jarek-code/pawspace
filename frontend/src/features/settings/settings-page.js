@@ -6,6 +6,7 @@ import { currentSession, logout } from '@/services/auth.js';
 import { getCurrentPet, listPets } from '@/services/pets.js';
 import { loadSettings } from '@/services/settings.js';
 import { createSettingsNav } from '@/components/settings/settings-nav.js';
+import { createSettingsHelpCard } from '@/components/settings/settings-rail.js';
 import { accountFromEmail, normalizePet } from '@/features/feed/feed-view.js';
 
 /**
@@ -63,7 +64,9 @@ export function mountSettingsPage({
       },
     });
 
-    content.replaceChildren(nav, body);
+    const helpMobile = h('div', { class: 'ps-settings-help-mobile' }, createSettingsHelpCard());
+
+    content.replaceChildren(nav, body, helpMobile);
 
     const cards = createRail({
       data: current,

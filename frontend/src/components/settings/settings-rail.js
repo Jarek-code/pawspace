@@ -20,7 +20,7 @@ export function createSettingsRail({
   if (section === 'cuenta') {
     cards.push(accountSummary(data));
     cards.push(sessionsCard(data, onCloseSession, onCloseAll));
-    cards.push(helpCard());
+    cards.push(createSettingsHelpCard());
     return cards;
   }
 
@@ -33,7 +33,7 @@ export function createSettingsRail({
 
   cards.push(reportSummaryCard(data, onOpenReport));
   cards.push(quickActionsCard());
-  cards.push(helpCard());
+  cards.push(createSettingsHelpCard());
   return cards;
 }
 
@@ -305,7 +305,7 @@ function quickActionsCard() {
   );
 }
 
-function helpCard() {
+export function createSettingsHelpCard() {
   return h(
     'section',
     { class: 'ps-rail__card' },
@@ -327,13 +327,20 @@ function helpCard() {
         'li',
         {},
         h(
-          'span',
-          { class: 'ps-settings-quick__link is-disabled', attrs: { 'aria-disabled': 'true' } },
+          'a',
+          { class: 'ps-settings-quick__link', href: '/ayuda' },
           h('span', { class: 'ps-settings-quick__title', text: 'Centro de ayuda' }),
-          h('span', {
-            class: 'ps-settings-quick__body',
-            text: 'Disponible en el bloque de ayuda.',
-          }),
+          createIcon('chevron-right', { size: 18 }),
+        ),
+      ),
+      h(
+        'li',
+        {},
+        h(
+          'a',
+          { class: 'ps-settings-quick__link', href: '/soporte' },
+          h('span', { class: 'ps-settings-quick__title', text: 'Contactar con soporte' }),
+          createIcon('chevron-right', { size: 18 }),
         ),
       ),
     ),

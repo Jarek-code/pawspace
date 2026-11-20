@@ -975,3 +975,16 @@
     justify-self: start;
   }
 }
+
+/* --- Ayuda y soporte en Ajustes móvil ----------------------------------- */
+
+.ps-settings-help-mobile {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .ps-settings-help-mobile {
+    display: block;
+    margin-top: var(--ps-space-6);
+  }
+}
