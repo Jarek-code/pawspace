@@ -17,18 +17,22 @@ import arrowLeftRaw from 'lucide-static/icons/arrow-left.svg?raw';
 import arrowRightRaw from 'lucide-static/icons/arrow-right.svg?raw';
 import bellRaw from 'lucide-static/icons/bell.svg?raw';
 import birdRaw from 'lucide-static/icons/bird.svg?raw';
+import bookOpenRaw from 'lucide-static/icons/book-open.svg?raw';
 import bookmarkRaw from 'lucide-static/icons/bookmark.svg?raw';
 import calendarRaw from 'lucide-static/icons/calendar.svg?raw';
 import catRaw from 'lucide-static/icons/cat.svg?raw';
 import chevronDownRaw from 'lucide-static/icons/chevron-down.svg?raw';
 import circleCheckRaw from 'lucide-static/icons/circle-check.svg?raw';
+import circleHelpRaw from 'lucide-static/icons/circle-help.svg?raw';
 import compassRaw from 'lucide-static/icons/compass.svg?raw';
 import dogRaw from 'lucide-static/icons/dog.svg?raw';
 import fishRaw from 'lucide-static/icons/fish.svg?raw';
 import globeRaw from 'lucide-static/icons/globe.svg?raw';
 import heartRaw from 'lucide-static/icons/heart.svg?raw';
+import headsetRaw from 'lucide-static/icons/headset.svg?raw';
 import homeRaw from 'lucide-static/icons/home.svg?raw';
 import imageRaw from 'lucide-static/icons/image.svg?raw';
+import layoutDashboardRaw from 'lucide-static/icons/layout-dashboard.svg?raw';
 import messageCircleRaw from 'lucide-static/icons/message-circle.svg?raw';
 import messageSquareRaw from 'lucide-static/icons/message-square.svg?raw';
 import moreHorizontalRaw from 'lucide-static/icons/more-horizontal.svg?raw';
@@ -38,6 +42,7 @@ import phoneRaw from 'lucide-static/icons/phone.svg?raw';
 import plusRaw from 'lucide-static/icons/plus.svg?raw';
 import rabbitRaw from 'lucide-static/icons/rabbit.svg?raw';
 import rotateCcwRaw from 'lucide-static/icons/rotate-ccw.svg?raw';
+import scaleRaw from 'lucide-static/icons/scale.svg?raw';
 import searchRaw from 'lucide-static/icons/search.svg?raw';
 import sendRaw from 'lucide-static/icons/send.svg?raw';
 import share2Raw from 'lucide-static/icons/share-2.svg?raw';
@@ -88,17 +93,21 @@ const ICONS = {
   bell: bellRaw,
   bird: birdRaw,
   bookmark: bookmarkRaw,
+  'book-open': bookOpenRaw,
   calendar: calendarRaw,
   cat: catRaw,
   'chevron-down': chevronDownRaw,
   'circle-check': circleCheckRaw,
+  'circle-help': circleHelpRaw,
   compass: compassRaw,
   dog: dogRaw,
   fish: fishRaw,
   globe: globeRaw,
   heart: heartRaw,
+  headset: headsetRaw,
   home: homeRaw,
   image: imageRaw,
+  'layout-dashboard': layoutDashboardRaw,
   'message-circle': messageCircleRaw,
   'message-square': messageSquareRaw,
   'more-horizontal': moreHorizontalRaw,
@@ -108,6 +117,7 @@ const ICONS = {
   plus: plusRaw,
   rabbit: rabbitRaw,
   'rotate-ccw': rotateCcwRaw,
+  scale: scaleRaw,
   search: searchRaw,
   send: sendRaw,
   'share-2': share2Raw,
