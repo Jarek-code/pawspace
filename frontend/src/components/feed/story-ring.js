@@ -32,10 +32,10 @@ export function createStoryRing({ story, onOpen = null } = {}) {
     badge,
   );
 
-  const name = h(
-    'span',
-    { class: 'ps-story-ring__name', text: estado === 'propia' ? 'Tu historia' : mascota.nombre },
-  );
+  const name = h('span', {
+    class: 'ps-story-ring__name',
+    text: estado === 'propia' ? 'Tu historia' : mascota.nombre,
+  });
 
   const element = h('li', { class: 'ps-story-ring__item' }, button, name);
 

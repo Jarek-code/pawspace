@@ -7,23 +7,24 @@ import { h } from '@/lib/dom.js';
  */
 export function createTabs({ tabs = [], onChange = null } = {}) {
   const buttons = tabs.map((tab) =>
-    h(
-      'button',
-      {
-        class: 'ps-tabs__tab',
-        type: 'button',
-        role: 'tab',
-        attrs: {
-          'aria-selected': String(Boolean(tab.active)),
-          'data-value': tab.value,
-        },
-        dataset: { value: tab.value },
-        text: tab.label,
+    h('button', {
+      class: 'ps-tabs__tab',
+      type: 'button',
+      role: 'tab',
+      attrs: {
+        'aria-selected': String(Boolean(tab.active)),
+        'data-value': tab.value,
       },
-    ),
+      dataset: { value: tab.value },
+      text: tab.label,
+    }),
   );
 
-  const element = h('div', { class: 'ps-tabs', role: 'tablist', attrs: { 'aria-label': 'Pestañas' } }, buttons);
+  const element = h(
+    'div',
+    { class: 'ps-tabs', role: 'tablist', attrs: { 'aria-label': 'Pestañas' } },
+    buttons,
+  );
 
   function select(value) {
     for (const [index, tab] of tabs.entries()) {

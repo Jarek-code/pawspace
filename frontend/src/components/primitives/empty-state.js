@@ -15,7 +15,11 @@ export function createEmptyState({
   return h(
     'section',
     { class: 'ps-empty-state', attrs: { role: 'status' } },
-    h('span', { class: 'ps-empty-state__icon', 'aria-hidden': 'true' }, createIcon(icon, { size: 40 })),
+    h(
+      'span',
+      { class: 'ps-empty-state__icon', 'aria-hidden': 'true' },
+      createIcon(icon, { size: 40 }),
+    ),
     h('h2', { class: 'ps-empty-state__title', text: title }),
     body ? h('p', { class: 'ps-empty-state__body', text: body }) : null,
     action ? h('div', { class: 'ps-empty-state__action' }, action) : null,
