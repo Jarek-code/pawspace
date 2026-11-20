@@ -53,6 +53,43 @@ import {
   toggleBlock as toggleConversationBlock,
   toggleSilence,
 } from './messages.slice.js';
+import {
+  createSupportTicket,
+  helpArticlePayload,
+  helpCenterPayload,
+  registerHelpFeedback,
+  reopenSupportTicket,
+  supportPayload,
+} from './help.slice.js';
+import {
+  acceptAdminAppeal,
+  adminAppealDetail,
+  adminAppealsPayload,
+  adminReportDetail,
+  adminReportsPayload,
+  adminSummaryPayload,
+  adminTicketDetail,
+  adminTicketsPayload,
+  adminArticleDetail,
+  adminArticlesPayload,
+  adminHelpCategories,
+  adminUserDetail,
+  adminUsersPayload,
+  markAdminReportReview,
+  moderateAdminContent,
+  moveAdminCategory,
+  rejectAdminAppeal,
+  rejectAdminReport,
+  resolveAdminReport,
+  respondAdminTicket,
+  saveAdminArticle,
+  saveAdminCategory,
+  setAdminArticleStatus,
+  setAdminTicketState,
+  reactivateAdminUser,
+  suspendAdminUser,
+  toggleAdminCategory,
+} from './admin.slice.js';
 
 /**
  * Adaptador de mocks.
@@ -650,6 +687,7 @@ function login({ body }) {
     token_tipo: 'bearer',
     sesion_id: `ses_demo_${user.id}`,
     email: user.email,
+    es_admin: Boolean(user.es_admin),
   };
 }
 
@@ -1017,6 +1055,216 @@ const routes = [
     method: 'DELETE',
     pattern: /^\/ajustes\/cuenta$/,
     handler: settingsDelete,
+  },
+  {
+    method: 'GET',
+    pattern: /^\/ayuda$/,
+    handler: ({ query }) =>
+      helpCenterPayload({
+        q: query.get('q') || '',
+        categoria: query.get('categoria') || '',
+      }),
+  },
+  {
+    method: 'GET',
+    pattern: /^\/ayuda\/[^/]+$/,
+    handler: ({ path }) => helpArticlePayload(decodeURIComponent(path.split('/')[2] || '')),
+  },
+  {
+    method: 'POST',
+    pattern: /^\/ayuda\/[^/]+\/feedback$/,
+    handler: ({ path, body }) =>
+      registerHelpFeedback(decodeURIComponent(path.split('/')[2] || ''), body?.valor),
+  },
+  {
+    method: 'GET',
+    pattern: /^\/admin\/resumen$/,
+    handler: () => adminSummaryPayload(),
+  },
+  {
+    method: 'GET',
+    pattern: /^\/admin\/reportes$/,
+    handler: ({ query }) =>
+      adminReportsPayload({
+        estado: query.get('estado') || 'todos',
+        categoria: query.get('categoria') || '',
+        tipo: query.get('tipo') || '',
+        fecha: query.get('fecha') || '',
+        q: query.get('q') || '',
+        page: query.get('page') || 1,
+      }),
+  },
+  {
+    method: 'GET',
+    pattern: /^\/admin\/reportes\/[^/]+$/,
+    handler: ({ path }) => adminReportDetail(decodeURIComponent(path.split('/')[3] || '')),
+  },
+  {
+    method: 'POST',
+    pattern: /^\/admin\/reportes\/[^/]+\/en-revision$/,
+    handler: ({ path }) => markAdminReportReview(decodeURIComponent(path.split('/')[3] || '')),
+  },
+  {
+    method: 'POST',
+    pattern: /^\/admin\/reportes\/[^/]+\/resolver$/,
+    handler: ({ path, body }) =>
+      resolveAdminReport(decodeURIComponent(path.split('/')[3] || ''), body?.nota),
+  },
+  {
+    method: 'POST',
+    pattern: /^\/admin\/reportes\/[^/]+\/rechazar$/,
+    handler: ({ path, body }) =>
+      rejectAdminReport(decodeURIComponent(path.split('/')[3] || ''), body?.motivo),
+  },
+  {
+    method: 'POST',
+    pattern: /^\/admin\/reportes\/[^/]+\/moderar$/,
+    handler: ({ path, body }) =>
+      moderateAdminContent(decodeURIComponent(path.split('/')[3] || ''), body),
+  },
+  {
+    method: 'GET',
+    pattern: /^\/admin\/apelaciones$/,
+    handler: ({ query }) =>
+      adminAppealsPayload({
+        estado: query.get('estado') || 'todos',
+        q: query.get('q') || '',
+        page: query.get('page') || 1,
+      }),
+  },
+  {
+    method: 'GET',
+    pattern: /^\/admin\/apelaciones\/[^/]+$/,
+    handler: ({ path }) => adminAppealDetail(decodeURIComponent(path.split('/')[3] || '')),
+  },
+  {
+    method: 'POST',
+    pattern: /^\/admin\/apelaciones\/[^/]+\/aceptar$/,
+    handler: ({ path, body }) =>
+      acceptAdminAppeal(decodeURIComponent(path.split('/')[3] || ''), body?.resolucion),
+  },
+  {
+    method: 'POST',
+    pattern: /^\/admin\/apelaciones\/[^/]+\/rechazar$/,
+    handler: ({ path, body }) =>
+      rejectAdminAppeal(decodeURIComponent(path.split('/')[3] || ''), body?.resolucion),
+  },
+  {
+    method: 'GET',
+    pattern: /^\/admin\/soporte$/,
+    handler: ({ query }) =>
+      adminTicketsPayload({
+        estado: query.get('estado') || '',
+        tema: query.get('tema') || '',
+        q: query.get('q') || '',
+        page: query.get('page') || 1,
+      }),
+  },
+  {
+    method: 'GET',
+    pattern: /^\/admin\/soporte\/[^/]+$/,
+    handler: ({ path }) => adminTicketDetail(decodeURIComponent(path.split('/')[3] || '')),
+  },
+  {
+    method: 'POST',
+    pattern: /^\/admin\/soporte\/[^/]+\/responder$/,
+    handler: ({ path, body }) =>
+      respondAdminTicket(decodeURIComponent(path.split('/')[3] || ''), body?.mensaje),
+  },
+  {
+    method: 'POST',
+    pattern: /^\/admin\/soporte\/[^/]+\/estado$/,
+    handler: ({ path, body }) =>
+      setAdminTicketState(decodeURIComponent(path.split('/')[3] || ''), body?.estado),
+  },
+  {
+    method: 'GET',
+    pattern: /^\/admin\/usuarios$/,
+    handler: ({ query }) =>
+      adminUsersPayload({
+        filtro: query.get('filtro') || 'todos',
+        q: query.get('q') || '',
+        page: query.get('page') || 1,
+      }),
+  },
+  {
+    method: 'GET',
+    pattern: /^\/admin\/usuarios\/[^/]+$/,
+    handler: ({ path }) => adminUserDetail(decodeURIComponent(path.split('/')[3] || '')),
+  },
+  {
+    method: 'POST',
+    pattern: /^\/admin\/usuarios\/[^/]+\/suspender$/,
+    handler: ({ path, body }) =>
+      suspendAdminUser(decodeURIComponent(path.split('/')[3] || ''), body?.motivo),
+  },
+  {
+    method: 'POST',
+    pattern: /^\/admin\/usuarios\/[^/]+\/reactivar$/,
+    handler: ({ path }) => reactivateAdminUser(decodeURIComponent(path.split('/')[3] || '')),
+  },
+  {
+    method: 'GET',
+    pattern: /^\/admin\/ayuda$/,
+    handler: ({ query }) =>
+      adminArticlesPayload({
+        q: query.get('q') || '',
+        categoria: query.get('categoria') || '',
+        estado: query.get('estado') || '',
+        page: query.get('page') || 1,
+      }),
+  },
+  {
+    method: 'GET',
+    pattern: /^\/admin\/ayuda\/categorias$/,
+    handler: () => ({ categorias: adminHelpCategories() }),
+  },
+  {
+    method: 'POST',
+    pattern: /^\/admin\/ayuda\/categorias$/,
+    handler: ({ body }) => saveAdminCategory(body),
+  },
+  {
+    method: 'POST',
+    pattern: /^\/admin\/ayuda\/categorias\/[^/]+\/alternar$/,
+    handler: ({ path }) => toggleAdminCategory(decodeURIComponent(path.split('/')[4] || '')),
+  },
+  {
+    method: 'POST',
+    pattern: /^\/admin\/ayuda\/categorias\/[^/]+\/mover$/,
+    handler: ({ path, body }) =>
+      moveAdminCategory(decodeURIComponent(path.split('/')[4] || ''), body?.direction),
+  },
+  {
+    method: 'GET',
+    pattern: /^\/admin\/ayuda\/[^/]+$/,
+    handler: ({ path }) => adminArticleDetail(decodeURIComponent(path.split('/')[3] || '')),
+  },
+  {
+    method: 'POST',
+    pattern: /^\/admin\/ayuda$/,
+    handler: ({ body }) => saveAdminArticle(body),
+  },
+  {
+    method: 'POST',
+    pattern: /^\/admin\/ayuda\/[^/]+\/estado$/,
+    handler: ({ path, body }) =>
+      setAdminArticleStatus(decodeURIComponent(path.split('/')[3] || ''), body?.estado),
+  },
+  {
+    method: 'GET',
+    pattern: /^\/soporte$/,
+    handler: () => supportPayload(),
+  },
+  {
+    method: 'POST',
+    pattern: /^\/soporte$/,
+    handler: ({ body }) => createSupportTicket(body),
+  },
+  {
+    method: 'POST',
+    pattern: /^\/soporte\/[^/]+\/reabrir$/,
+    handler: ({ path }) => reopenSupportTicket(decodeURIComponent(path.split('/')[2] || '')),
   },
   {
     method: 'GET',
