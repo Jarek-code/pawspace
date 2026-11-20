@@ -53,7 +53,6 @@ export function createDropzone({
       class: 'ps-dropzone__title',
       text: 'Arrastra una imagen o haz clic para elegirla',
     }),
-    h('span', { class: 'ps-dropzone__help', text: help }),
   );
 
   const preview = h(
