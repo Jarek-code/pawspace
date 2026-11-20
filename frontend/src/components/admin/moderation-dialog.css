@@ -1,0 +1,45 @@
+/*
+ * CMP-98 — ModerationDialog.
+ * Diálogo destructivo con motivo obligatorio.
+ */
+
+.ps-moderation {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ps-space-4);
+}
+
+.ps-moderation__body {
+  margin: 0;
+  color: var(--ps-text);
+  font-size: var(--ps-text-body);
+  line-height: var(--ps-leading-body);
+}
+
+.ps-moderation__warning {
+  display: flex;
+  gap: var(--ps-space-3);
+  padding: var(--ps-space-3);
+  border: 1px solid var(--ps-warning-soft);
+  border-radius: var(--ps-radius-md);
+  background: var(--ps-warning-soft);
+}
+
+.ps-moderation__warning-icon {
+  display: inline-flex;
+  flex: none;
+  color: var(--ps-warning);
+}
+
+.ps-moderation__warning-text {
+  margin: 0;
+  color: var(--ps-warning);
+  font-size: var(--ps-text-body-sm);
+  line-height: var(--ps-leading-body-sm);
+}
+
+.ps-moderation__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--ps-space-3);
+}

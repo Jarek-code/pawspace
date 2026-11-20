@@ -1,0 +1,128 @@
+/*
+ * CMP-97 — DataTable.
+ * Tabla densa de administración. En móvil se convierte en tarjetas.
+ */
+
+.ps-data-table {
+  display: flex;
+  flex-direction: column;
+}
+
+.ps-data-table__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ps-data-table__head th {
+  padding: var(--ps-space-2) var(--ps-space-3);
+  color: var(--ps-text-muted);
+  font-size: var(--ps-text-caption);
+  font-weight: var(--ps-weight-bold);
+  letter-spacing: 0.04em;
+  text-align: left;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.ps-data-table__body .ps-data-table__row {
+  border-top: 1px solid var(--ps-border);
+}
+
+.ps-data-table__body .ps-data-table__row:hover {
+  background: var(--ps-bg-subtle);
+}
+
+.ps-data-table__body td {
+  padding: var(--ps-space-2) var(--ps-space-3);
+  vertical-align: middle;
+  min-height: 56px;
+}
+
+.ps-data-table__id {
+  color: var(--ps-text-muted);
+  font-size: var(--ps-text-caption);
+  font-weight: var(--ps-weight-bold);
+  white-space: nowrap;
+}
+
+.ps-data-table__text {
+  color: var(--ps-text-muted);
+  font-size: var(--ps-text-body-sm);
+  white-space: nowrap;
+}
+
+.ps-data-table__cards {
+  display: none;
+  flex-direction: column;
+  gap: var(--ps-space-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ps-data-table__card {
+  margin: 0;
+}
+
+.ps-data-table__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ps-space-3);
+  padding-top: var(--ps-space-4);
+  border-top: 1px solid var(--ps-border);
+}
+
+.ps-data-table__range {
+  margin: 0;
+  color: var(--ps-text-muted);
+  font-size: var(--ps-text-body-sm);
+}
+
+.ps-data-table__pagination {
+  display: flex;
+  gap: var(--ps-space-2);
+}
+
+.ps-data-table__page {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--ps-touch-target);
+  height: var(--ps-touch-target);
+  border: 1px solid var(--ps-border-interactive);
+  border-radius: var(--ps-radius-md);
+  background: var(--ps-surface);
+  color: var(--ps-text);
+  cursor: pointer;
+}
+
+.ps-data-table__page:hover:not(:disabled) {
+  border-color: var(--ps-secondary);
+  color: var(--ps-secondary);
+}
+
+.ps-data-table__page:disabled {
+  color: var(--ps-disabled-text);
+  background: var(--ps-disabled-bg);
+  cursor: not-allowed;
+}
+
+.ps-data-table__page:focus-visible {
+  outline: 2px solid var(--ps-focus);
+  outline-offset: 2px;
+}
+
+.ps-data-table .ps-empty-state {
+  padding: var(--ps-space-8) 0;
+}
+
+@media (max-width: 900px) {
+  .ps-data-table__scroll {
+    display: none;
+  }
+
+  .ps-data-table__cards {
+    display: flex;
+  }
+}
