@@ -141,8 +141,8 @@ export function createPage({ router } = {}) {
     setBusy(true);
 
     try {
-      await login({ email, password, remember: remember.getValue() });
-      await router.navigate('/inicio', { replace: true });
+      const session = await login({ email, password, remember: remember.getValue() });
+      await router.navigate(session.es_admin ? '/admin' : '/inicio', { replace: true });
     } catch (error) {
       if (error instanceof ApiError && error.status === 403) {
         showError('Cuenta desactivada', messages.inactive);

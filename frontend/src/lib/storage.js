@@ -12,6 +12,7 @@ const KEYS = {
   tokenType: 'pawspace.token_tipo',
   sessionId: 'pawspace.sesion',
   email: 'pawspace.email',
+  admin: 'pawspace.es_admin',
   theme: 'pawspace.theme',
   activePet: 'pawspace.activePet',
 };
@@ -50,9 +51,15 @@ function clearStorage(storage) {
   }
 }
 
-export function setSession({ token_acceso, token_tipo, sesion_id, email }, remember = false) {
+export function setSession(
+  { token_acceso, token_tipo, sesion_id, email, es_admin },
+  remember = false,
+) {
+  const previousAdmin =
+    safeGet(sessionStorage, KEYS.admin) || safeGet(localStorage, KEYS.admin) || '0';
   const destination = remember ? localStorage : sessionStorage;
   const other = remember ? sessionStorage : localStorage;
+  const adminValue = es_admin === undefined ? previousAdmin : es_admin ? '1' : '0';
 
   clearStorage(other);
 
@@ -60,6 +67,7 @@ export function setSession({ token_acceso, token_tipo, sesion_id, email }, remem
   safeSet(destination, KEYS.tokenType, token_tipo || 'bearer');
   safeSet(destination, KEYS.sessionId, sesion_id || '');
   safeSet(destination, KEYS.email, email || '');
+  safeSet(destination, KEYS.admin, adminValue);
 }
 
 export function getSession() {
@@ -71,6 +79,7 @@ export function getSession() {
     tokenType: readFrom(storage, KEYS.tokenType) || 'bearer',
     sessionId: readFrom(storage, KEYS.sessionId),
     email: readFrom(storage, KEYS.email),
+    esAdmin: readFrom(storage, KEYS.admin) === '1',
   };
 }
 

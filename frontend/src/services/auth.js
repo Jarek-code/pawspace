@@ -48,6 +48,14 @@ export function hasSession() {
   return Boolean(getSession().token);
 }
 
+/**
+ * Marca local de administración. El backend sigue siendo la autoridad: este
+ * dato solo decide qué shell mostrar y nunca sustituye la validación remota.
+ */
+export function isAdmin() {
+  return Boolean(getSession().esAdmin);
+}
+
 export function currentSession() {
   return getSession();
 }

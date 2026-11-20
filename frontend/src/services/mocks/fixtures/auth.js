@@ -17,4 +17,12 @@ export const demoUsers = [
     contrasena: 'Pawspace2026',
     activo: false,
   },
+  {
+    id: 3,
+    nombre: 'Mariana Ortega',
+    email: 'mariana.ortega@pawspace.com',
+    contrasena: 'Pawspace2026',
+    activo: true,
+    es_admin: true,
+  },
 ];
