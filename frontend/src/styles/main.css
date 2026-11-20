@@ -8,6 +8,7 @@
 @import '../components/primitives/primitives.css';
 @import '../components/layout/layout.css';
 @import '../components/layout/app-shell.css';
+@import '../components/layout/account-menu.css';
 @import '../components/navigation/navigation.css';
 @import '../components/feed/feed.css';
 @import '../components/profile/profile.css';
@@ -15,6 +16,13 @@
 @import '../components/explore/explore.css';
 @import '../components/messaging/messaging.css';
 @import '../components/settings/settings.css';
+@import '../components/help/help.css';
+@import '../components/admin/admin-shell.css';
+@import '../components/admin/data-table.css';
+@import '../components/admin/moderation-dialog.css';
+@import '../features/admin/admin.css';
+@import '../features/admin/reports.css';
+@import '../features/admin/ayuda.css';
 
 /*
  * Fontsource publica las familias variables como "Inter Variable" y
