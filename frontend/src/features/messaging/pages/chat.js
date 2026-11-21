@@ -200,8 +200,6 @@ export function createPage({ router, params } = {}) {
       h(
         'div',
         { class: 'ps-chat-head__actions' },
-        headAction('phone', `Llamar a ${mascota.nombre}`),
-        headAction('video', `Videollamar a ${mascota.nombre}`),
         h(
           'button',
           {
@@ -213,20 +211,6 @@ export function createPage({ router, params } = {}) {
           createIcon('more-vertical', { size: 20 }),
         ),
       ),
-    );
-  }
-
-  function headAction(icon, label) {
-    return h(
-      'button',
-      {
-        class: 'ps-chat-head__icon',
-        type: 'button',
-        title: 'Próximamente',
-        attrs: { 'aria-label': label },
-        onClick: () => showToast('Las llamadas todavía no están disponibles en esta demostración.'),
-      },
-      createIcon(icon, { size: 20 }),
     );
   }
 

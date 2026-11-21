@@ -13,9 +13,11 @@
 
 .ps-report-queue__filters {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) repeat(3, minmax(140px, 180px));
+  grid-template-columns:
+    minmax(0, 1fr) minmax(150px, 200px)
+    repeat(3, minmax(130px, 170px));
   gap: var(--ps-space-3);
-  align-items: start;
+  align-items: end;
 }
 
 .ps-report-queue__filters .ps-field {
@@ -23,7 +25,7 @@
 }
 
 .ps-report-queue__filters--single {
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(150px, 200px);
 }
 
 .ps-report-cell {
@@ -498,30 +500,10 @@
   }
 }
 
-@media (max-width: 900px) {
-  .ps-report-queue__filters {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  }
-
-  .ps-report-queue__filters .ps-field:first-child {
-    grid-column: 1 / -1;
-  }
-}
-
-@media (max-width: 420px) {
-  .ps-report-queue__filters {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .ps-report-queue__filters .ps-field:first-child {
-    grid-column: auto;
-  }
-}
-
 /* --- Soporte ------------------------------------------------------------ */
 
 .ps-report-queue__filters--soporte {
-  grid-template-columns: minmax(0, 1fr) minmax(140px, 220px);
+  grid-template-columns: minmax(0, 1fr) minmax(150px, 200px) minmax(140px, 220px);
 }
 
 .ps-ticket-thread {
@@ -569,8 +551,33 @@
   font-size: var(--ps-text-caption);
 }
 
-@media (max-width: 420px) {
+/* --- Responsivo de filtros ---------------------------------------------- */
+
+@media (max-width: 1100px) {
+  .ps-report-queue__filters,
+  .ps-report-queue__filters--soporte {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ps-report-queue__filters .ps-field:first-child,
+  .ps-report-queue__filters--soporte .ps-field:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .ps-report-queue__filters--single {
+    grid-template-columns: minmax(0, 1fr) minmax(150px, 200px);
+  }
+}
+
+@media (max-width: 700px) {
+  .ps-report-queue__filters,
+  .ps-report-queue__filters--single,
   .ps-report-queue__filters--soporte {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ps-report-queue__filters .ps-field:first-child,
+  .ps-report-queue__filters--soporte .ps-field:first-child {
+    grid-column: auto;
   }
 }

@@ -3,7 +3,7 @@ import { createTicketQueue } from '@/features/admin/ticket-queue.js';
 
 /**
  * D40 / M30 — Soporte.
- * Bandeja de tickets con pestañas por estado, filtro de tema y búsqueda.
+ * Bandeja de tickets con filtro desplegable por estado, filtro de tema y búsqueda.
  */
 export function createPage({ router }) {
   return mountAdminPage({

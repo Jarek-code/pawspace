@@ -3,7 +3,7 @@ import { createAppealQueue } from '@/features/admin/appeal-queue.js';
 
 /**
  * D38 — Apelaciones.
- * Lista de solicitudes de revisión con pestañas por estado y búsqueda.
+ * Lista de solicitudes de revisión con filtro desplegable por estado y búsqueda.
  */
 export function createPage({ router }) {
   return mountAdminPage({

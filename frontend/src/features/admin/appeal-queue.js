@@ -5,11 +5,11 @@ import { createButton } from '@/components/primitives/button.js';
 import { createEmptyState } from '@/components/primitives/empty-state.js';
 import { createField } from '@/components/primitives/field.js';
 import { createIcon } from '@/components/primitives/icon.js';
-import { createTabs } from '@/components/primitives/tabs.js';
+import { createQueueStatusFilter } from '@/features/admin/queue-status.js';
 import { h } from '@/lib/dom.js';
 import { loadAdminAppeals } from '@/services/admin.js';
 
-const TABS = [
+const STATUS_OPTIONS = [
   { value: 'todos', label: 'Todas', countKey: null },
   { value: 'pendientes', label: 'Pendientes', countKey: 'pendientes' },
   { value: 'aceptadas', label: 'Aceptadas', countKey: 'aceptadas' },
@@ -18,15 +18,14 @@ const TABS = [
 
 /**
  * CMP-101 — AppealQueue (lista de D38 / M28b).
- * Apelaciones con pestañas por estado y búsqueda; la resolución ocurre en el
- * detalle (D39).
+ * Apelaciones con filtro desplegable por estado y búsqueda; la tabla permanece
+ * oculta hasta elegir un estado. La resolución ocurre en el detalle (D39).
  */
 export function createAppealQueue() {
-  const state = { estado: 'todos', q: '', page: 1, conteos: null };
+  const state = { estado: '', q: '', page: 1, conteos: null };
   let searchTimer = null;
 
   const root = h('div', { class: 'ps-report-queue' });
-  const tabsHost = h('div', { class: 'ps-report-queue__tabs' });
   const tableHost = h('div', { class: 'ps-report-queue__table' });
 
   const search = createField({
@@ -37,42 +36,42 @@ export function createAppealQueue() {
       searchTimer = window.setTimeout(() => {
         state.q = search.getValue().trim();
         state.page = 1;
-        load();
+
+        if (state.estado) {
+          load();
+        }
       }, 300);
     },
   });
   search.input.setAttribute('aria-label', 'Buscar por número o mascota');
 
+  const statusFilter = createQueueStatusFilter({
+    options: STATUS_OPTIONS,
+    total: (conteos) => conteos.pendientes + conteos.aceptadas + conteos.rechazadas,
+    onChange: () => {
+      state.estado = statusFilter.getValue();
+      state.page = 1;
+      load();
+    },
+  });
+
   const filters = h(
     'div',
     { class: 'ps-report-queue__filters ps-report-queue__filters--single' },
     search.element,
+    statusFilter.element,
   );
 
-  root.append(tabsHost, filters, tableHost);
+  root.append(filters, tableHost);
 
-  function renderTabs() {
-    const tabs = TABS.map((tab) => {
-      const count = tab.countKey
-        ? state.conteos?.[tab.countKey]
-        : state.conteos
-          ? state.conteos.pendientes + state.conteos.aceptadas + state.conteos.rechazadas
-          : null;
-      const label = count === null ? tab.label : `${tab.label} (${count})`;
-
-      return { value: tab.value, label, active: tab.value === state.estado };
-    });
-
-    const tabsComponent = createTabs({
-      tabs,
-      onChange: (value) => {
-        state.estado = value;
-        state.page = 1;
-        load();
-      },
-    });
-
-    tabsHost.replaceChildren(tabsComponent.element);
+  function renderGuide() {
+    tableHost.replaceChildren(
+      createEmptyState({
+        icon: 'scale',
+        title: 'Selecciona un estado',
+        body: 'Elige todas, pendientes, aceptadas o rechazadas para ver las apelaciones.',
+      }),
+    );
   }
 
   function renderTable(payload) {
@@ -107,7 +106,7 @@ export function createAppealQueue() {
             ? createButton({
                 label: 'Ver todas las apelaciones',
                 variant: 'secondary',
-                onClick: () => resetFilters(),
+                onClick: () => showAll(),
               }).element
             : null,
       },
@@ -116,15 +115,32 @@ export function createAppealQueue() {
     tableHost.replaceChildren(table);
   }
 
-  function resetFilters() {
+  function showAll() {
     state.estado = 'todos';
     state.q = '';
     state.page = 1;
+    statusFilter.setValue('todos');
     search.setValue('');
     load();
   }
 
-  function load() {
+  function load({ silent = false } = {}) {
+    if (silent) {
+      loadAdminAppeals({ ...state, estado: '' })
+        .then((payload) => {
+          state.conteos = payload.conteos;
+          statusFilter.setCounts(state.conteos);
+        })
+        .catch(() => {});
+
+      return;
+    }
+
+    if (!state.estado) {
+      renderGuide();
+      return;
+    }
+
     tableHost.replaceChildren(
       h(
         'div',
@@ -136,7 +152,7 @@ export function createAppealQueue() {
     loadAdminAppeals(state)
       .then((payload) => {
         state.conteos = payload.conteos;
-        renderTabs();
+        statusFilter.setCounts(state.conteos);
         renderTable(payload);
       })
       .catch(() => {
@@ -155,7 +171,8 @@ export function createAppealQueue() {
       });
   }
 
-  load();
+  renderGuide();
+  load({ silent: true });
 
   return root;
 }

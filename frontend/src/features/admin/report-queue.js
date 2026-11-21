@@ -5,7 +5,7 @@ import { createButton } from '@/components/primitives/button.js';
 import { createEmptyState } from '@/components/primitives/empty-state.js';
 import { createField, createSelectField } from '@/components/primitives/field.js';
 import { createIcon } from '@/components/primitives/icon.js';
-import { createTabs } from '@/components/primitives/tabs.js';
+import { createQueueStatusFilter } from '@/features/admin/queue-status.js';
 import { h } from '@/lib/dom.js';
 import { loadAdminReports } from '@/services/admin.js';
 
@@ -32,7 +32,7 @@ const FECHA_OPCIONES = [
   { value: 'anteriores', label: 'Anteriores' },
 ];
 
-const TABS = [
+const STATUS_OPTIONS = [
   { value: 'todos', label: 'Todos', countKey: null },
   { value: 'pendientes', label: 'Pendientes', countKey: 'pendientes' },
   { value: 'en-revision', label: 'En revisión', countKey: 'enRevision' },
@@ -42,13 +42,12 @@ const TABS = [
 
 /**
  * CMP-99 — ReportQueue.
- * Bandeja de reportes con pestañas por estado, filtros y tabla densa (móvil:
- * tarjetas). Almacena los filtros en el estado local para conservarlos al
- * volver del detalle.
+ * Bandeja de reportes con filtro desplegable por estado, filtros y tabla densa
+ * (móvil: tarjetas). La tabla permanece oculta hasta elegir un estado.
  */
 export function createReportQueue({ initialQ = '' } = {}) {
   const state = {
-    estado: 'todos',
+    estado: '',
     categoria: '',
     tipo: '',
     fecha: '',
@@ -60,7 +59,6 @@ export function createReportQueue({ initialQ = '' } = {}) {
   let searchTimer = null;
 
   const root = h('div', { class: 'ps-report-queue' });
-  const tabsHost = h('div', { class: 'ps-report-queue__tabs' });
   const tableHost = h('div', { class: 'ps-report-queue__table' });
 
   const search = createField({
@@ -71,12 +69,26 @@ export function createReportQueue({ initialQ = '' } = {}) {
       searchTimer = window.setTimeout(() => {
         state.q = search.getValue().trim();
         state.page = 1;
-        load();
+
+        if (state.estado) {
+          load();
+        }
       }, 300);
     },
   });
   search.input.value = initialQ;
   search.input.setAttribute('aria-label', 'Buscar por número, mascota o texto');
+
+  const statusFilter = createQueueStatusFilter({
+    options: STATUS_OPTIONS,
+    total: (conteos) =>
+      conteos.pendientes + conteos.enRevision + conteos.resueltos + conteos.rechazados,
+    onChange: () => {
+      state.estado = statusFilter.getValue();
+      state.page = 1;
+      load();
+    },
+  });
 
   const tipoSelect = createSelectField({
     label: 'Categoría',
@@ -115,38 +127,22 @@ export function createReportQueue({ initialQ = '' } = {}) {
     'div',
     { class: 'ps-report-queue__filters' },
     search.element,
+    statusFilter.element,
     tipoSelect.element,
     motivoSelect.element,
     fechaSelect.element,
   );
 
-  root.append(tabsHost, filters, tableHost);
+  root.append(filters, tableHost);
 
-  function renderTabs() {
-    const tabs = TABS.map((tab) => {
-      const count = tab.countKey
-        ? state.conteos?.[tab.countKey]
-        : state.conteos
-          ? state.conteos.pendientes +
-            state.conteos.enRevision +
-            state.conteos.resueltos +
-            state.conteos.rechazados
-          : null;
-      const label = count === null ? tab.label : `${tab.label} (${count})`;
-
-      return { value: tab.value, label, active: tab.value === state.estado };
-    });
-
-    const tabsComponent = createTabs({
-      tabs,
-      onChange: (value) => {
-        state.estado = value;
-        state.page = 1;
-        load();
-      },
-    });
-
-    tabsHost.replaceChildren(tabsComponent.element);
+  function renderGuide() {
+    tableHost.replaceChildren(
+      createEmptyState({
+        icon: 'sliders-horizontal',
+        title: 'Selecciona un estado',
+        body: 'Elige todos, pendientes, en revisión, resueltos o rechazados para ver los reportes.',
+      }),
+    );
   }
 
   function renderTable(payload) {
@@ -181,7 +177,7 @@ export function createReportQueue({ initialQ = '' } = {}) {
             ? createButton({
                 label: 'Ver todos los reportes',
                 variant: 'secondary',
-                onClick: () => resetFilters(),
+                onClick: () => showAll(),
               }).element
             : null,
       },
@@ -190,13 +186,14 @@ export function createReportQueue({ initialQ = '' } = {}) {
     tableHost.replaceChildren(table);
   }
 
-  function resetFilters() {
+  function showAll() {
     state.estado = 'todos';
     state.categoria = '';
     state.tipo = '';
     state.fecha = '';
     state.q = '';
     state.page = 1;
+    statusFilter.setValue('todos');
     search.setValue('');
     tipoSelect.setValue('');
     motivoSelect.setValue('');
@@ -204,13 +201,29 @@ export function createReportQueue({ initialQ = '' } = {}) {
     load();
   }
 
-  function load() {
+  function load({ silent = false } = {}) {
+    if (silent) {
+      loadAdminReports({ ...state, estado: '' })
+        .then((payload) => {
+          state.conteos = payload.conteos;
+          statusFilter.setCounts(state.conteos);
+        })
+        .catch(() => {});
+
+      return;
+    }
+
+    if (!state.estado) {
+      renderGuide();
+      return;
+    }
+
     tableHost.replaceChildren(createLoading());
 
     loadAdminReports(state)
       .then((payload) => {
         state.conteos = payload.conteos;
-        renderTabs();
+        statusFilter.setCounts(state.conteos);
         renderTable(payload);
       })
       .catch(() => {
@@ -229,7 +242,8 @@ export function createReportQueue({ initialQ = '' } = {}) {
       });
   }
 
-  load();
+  renderGuide();
+  load({ silent: true });
 
   return root;
 }

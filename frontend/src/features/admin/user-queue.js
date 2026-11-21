@@ -6,11 +6,11 @@ import { createButton } from '@/components/primitives/button.js';
 import { createEmptyState } from '@/components/primitives/empty-state.js';
 import { createField } from '@/components/primitives/field.js';
 import { createIcon } from '@/components/primitives/icon.js';
-import { createTabs } from '@/components/primitives/tabs.js';
+import { createQueueStatusFilter } from '@/features/admin/queue-status.js';
 import { h } from '@/lib/dom.js';
 import { loadAdminUsers } from '@/services/admin.js';
 
-const TABS = [
+const STATUS_OPTIONS = [
   { value: 'todos', label: 'Todos', countKey: null },
   { value: 'activos', label: 'Activos', countKey: 'activos' },
   { value: 'suspendidos', label: 'Suspendidos', countKey: 'suspendidos' },
@@ -19,15 +19,14 @@ const TABS = [
 
 /**
  * CMP-107 — UserTable (D45 / M33).
- * Lista de cuentas con filtros por estado y búsqueda por nombre, correo o
- * mascota.
+ * Lista de cuentas con filtro desplegable y búsqueda por nombre, correo o
+ * mascota. La tabla permanece oculta hasta elegir un filtro.
  */
 export function createUserQueue() {
-  const state = { filtro: 'todos', q: '', page: 1, conteos: null };
+  const state = { filtro: '', q: '', page: 1, conteos: null };
   let searchTimer = null;
 
   const root = h('div', { class: 'ps-report-queue' });
-  const tabsHost = h('div', { class: 'ps-report-queue__tabs' });
   const tableHost = h('div', { class: 'ps-report-queue__table' });
 
   const search = createField({
@@ -38,45 +37,45 @@ export function createUserQueue() {
       searchTimer = window.setTimeout(() => {
         state.q = search.getValue().trim();
         state.page = 1;
-        load();
+
+        if (state.filtro) {
+          load();
+        }
       }, 300);
     },
   });
   search.input.setAttribute('aria-label', 'Buscar por nombre, correo o mascota');
 
+  const statusFilter = createQueueStatusFilter({
+    label: 'Filtro',
+    placeholder: 'Selecciona un filtro',
+    options: STATUS_OPTIONS,
+    total: (conteos) =>
+      conteos.activos + conteos.suspendidos + conteos.administradores + conteos.eliminadas,
+    onChange: () => {
+      state.filtro = statusFilter.getValue();
+      state.page = 1;
+      load();
+    },
+  });
+
   const filters = h(
     'div',
     { class: 'ps-report-queue__filters ps-report-queue__filters--single' },
     search.element,
+    statusFilter.element,
   );
 
-  root.append(tabsHost, filters, tableHost);
+  root.append(filters, tableHost);
 
-  function renderTabs() {
-    const tabs = TABS.map((tab) => {
-      const count = tab.countKey
-        ? state.conteos?.[tab.countKey]
-        : state.conteos
-          ? state.conteos.activos +
-            state.conteos.suspendidos +
-            state.conteos.administradores +
-            state.conteos.eliminadas
-          : null;
-      const label = count === null ? tab.label : `${tab.label} (${count})`;
-
-      return { value: tab.value, label, active: tab.value === state.filtro };
-    });
-
-    const tabsComponent = createTabs({
-      tabs,
-      onChange: (value) => {
-        state.filtro = value;
-        state.page = 1;
-        load();
-      },
-    });
-
-    tabsHost.replaceChildren(tabsComponent.element);
+  function renderGuide() {
+    tableHost.replaceChildren(
+      createEmptyState({
+        icon: 'users',
+        title: 'Selecciona un filtro',
+        body: 'Elige todos, activos, suspendidos o administradores para ver las cuentas.',
+      }),
+    );
   }
 
   function renderTable(payload) {
@@ -109,7 +108,7 @@ export function createUserQueue() {
             ? createButton({
                 label: 'Ver todas las cuentas',
                 variant: 'secondary',
-                onClick: () => resetFilters(),
+                onClick: () => showAll(),
               }).element
             : null,
       },
@@ -118,15 +117,32 @@ export function createUserQueue() {
     tableHost.replaceChildren(table);
   }
 
-  function resetFilters() {
+  function showAll() {
     state.filtro = 'todos';
     state.q = '';
     state.page = 1;
+    statusFilter.setValue('todos');
     search.setValue('');
     load();
   }
 
-  function load() {
+  function load({ silent = false } = {}) {
+    if (silent) {
+      loadAdminUsers({ ...state, filtro: '', q: '' })
+        .then((payload) => {
+          state.conteos = payload.conteos;
+          statusFilter.setCounts(state.conteos);
+        })
+        .catch(() => {});
+
+      return;
+    }
+
+    if (!state.filtro) {
+      renderGuide();
+      return;
+    }
+
     tableHost.replaceChildren(
       h('div', {
         class: 'ps-report-queue__loading',
@@ -137,7 +153,7 @@ export function createUserQueue() {
     loadAdminUsers(state)
       .then((payload) => {
         state.conteos = payload.conteos;
-        renderTabs();
+        statusFilter.setCounts(state.conteos);
         renderTable(payload);
       })
       .catch(() => {
@@ -156,7 +172,8 @@ export function createUserQueue() {
       });
   }
 
-  load();
+  renderGuide();
+  load({ silent: true });
 
   return root;
 }

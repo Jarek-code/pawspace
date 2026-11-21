@@ -4,12 +4,12 @@ import { createButton } from '@/components/primitives/button.js';
 import { createEmptyState } from '@/components/primitives/empty-state.js';
 import { createField, createSelectField } from '@/components/primitives/field.js';
 import { createIcon } from '@/components/primitives/icon.js';
-import { createTabs } from '@/components/primitives/tabs.js';
+import { createQueueStatusFilter } from '@/features/admin/queue-status.js';
 import { h } from '@/lib/dom.js';
 import { loadAdminTickets } from '@/services/admin.js';
 
-const TABS = [
-  { value: '', label: 'Todas', countKey: null },
+const STATUS_OPTIONS = [
+  { value: 'todos', label: 'Todas', countKey: null },
   { value: 'ABIERTA', label: 'Abiertas', countKey: 'abiertas' },
   { value: 'EN_REVISION', label: 'En revisión', countKey: 'enRevision' },
   { value: 'ESPERANDO_USUARIO', label: 'Esperando', countKey: 'esperando' },
@@ -19,14 +19,14 @@ const TABS = [
 
 /**
  * CMP-102 — TicketQueue (D40 / M30).
- * Bandeja de soporte con pestañas por estado, filtro de tema y búsqueda.
+ * Bandeja de soporte con filtro desplegable por estado, filtro de tema y
+ * búsqueda. La tabla permanece oculta hasta elegir un estado.
  */
 export function createTicketQueue() {
   const state = { estado: '', tema: '', q: '', page: 1, conteos: null, temas: [] };
   let searchTimer = null;
 
   const root = h('div', { class: 'ps-report-queue' });
-  const tabsHost = h('div', { class: 'ps-report-queue__tabs' });
   const tableHost = h('div', { class: 'ps-report-queue__table' });
 
   const search = createField({
@@ -37,11 +37,24 @@ export function createTicketQueue() {
       searchTimer = window.setTimeout(() => {
         state.q = search.getValue().trim();
         state.page = 1;
-        load();
+
+        if (state.estado) {
+          load();
+        }
       }, 300);
     },
   });
   search.input.setAttribute('aria-label', 'Buscar por número, asunto o correo');
+
+  const statusFilter = createQueueStatusFilter({
+    options: STATUS_OPTIONS,
+    total: (conteos) => Object.values(conteos).reduce((sum, value) => sum + value, 0),
+    onChange: () => {
+      state.estado = statusFilter.getValue();
+      state.page = 1;
+      load();
+    },
+  });
 
   const temaSelect = createSelectField({
     label: 'Tema',
@@ -58,10 +71,21 @@ export function createTicketQueue() {
     'div',
     { class: 'ps-report-queue__filters ps-report-queue__filters--soporte' },
     search.element,
+    statusFilter.element,
     temaSelect.element,
   );
 
-  root.append(tabsHost, filters, tableHost);
+  root.append(filters, tableHost);
+
+  function renderGuide() {
+    tableHost.replaceChildren(
+      createEmptyState({
+        icon: 'headset',
+        title: 'Selecciona un estado',
+        body: 'Elige todas, abiertas, en revisión, esperando, resueltas o cerradas para ver los tickets.',
+      }),
+    );
+  }
 
   function syncTemas(temas) {
     state.temas = temas;
@@ -73,30 +97,6 @@ export function createTicketQueue() {
       ...temas.map((tema) => h('option', { value: tema.value, text: tema.label })),
     );
     select.value = current || '';
-  }
-
-  function renderTabs() {
-    const tabs = TABS.map((tab) => {
-      const count = tab.countKey
-        ? state.conteos?.[tab.countKey]
-        : state.conteos
-          ? Object.values(state.conteos).reduce((sum, value) => sum + value, 0)
-          : null;
-      const label = count === null ? tab.label : `${tab.label} (${count})`;
-
-      return { value: tab.value, label, active: tab.value === state.estado };
-    });
-
-    const tabsComponent = createTabs({
-      tabs,
-      onChange: (value) => {
-        state.estado = value;
-        state.page = 1;
-        load();
-      },
-    });
-
-    tabsHost.replaceChildren(tabsComponent.element);
   }
 
   function renderTable(payload) {
@@ -130,7 +130,7 @@ export function createTicketQueue() {
             ? createButton({
                 label: 'Ver todos los tickets',
                 variant: 'secondary',
-                onClick: () => resetFilters(),
+                onClick: () => showAll(),
               }).element
             : null,
       },
@@ -139,17 +139,35 @@ export function createTicketQueue() {
     tableHost.replaceChildren(table);
   }
 
-  function resetFilters() {
-    state.estado = '';
+  function showAll() {
+    state.estado = 'todos';
     state.tema = '';
     state.q = '';
     state.page = 1;
+    statusFilter.setValue('todos');
     search.setValue('');
     temaSelect.setValue('');
     load();
   }
 
-  function load() {
+  function load({ silent = false } = {}) {
+    if (silent) {
+      loadAdminTickets({ ...state, estado: '', tema: '', q: '' })
+        .then((payload) => {
+          state.conteos = payload.conteos;
+          syncTemas(payload.temas);
+          statusFilter.setCounts(state.conteos);
+        })
+        .catch(() => {});
+
+      return;
+    }
+
+    if (!state.estado) {
+      renderGuide();
+      return;
+    }
+
     tableHost.replaceChildren(
       h('div', {
         class: 'ps-report-queue__loading',
@@ -157,11 +175,14 @@ export function createTicketQueue() {
       }),
     );
 
-    loadAdminTickets(state)
+    loadAdminTickets({
+      ...state,
+      estado: state.estado === 'todos' ? '' : state.estado,
+    })
       .then((payload) => {
         state.conteos = payload.conteos;
         syncTemas(payload.temas);
-        renderTabs();
+        statusFilter.setCounts(state.conteos);
         renderTable(payload);
       })
       .catch(() => {
@@ -180,7 +201,8 @@ export function createTicketQueue() {
       });
   }
 
-  load();
+  renderGuide();
+  load({ silent: true });
 
   return root;
 }

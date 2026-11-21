@@ -4,12 +4,12 @@ import { createButton } from '@/components/primitives/button.js';
 import { createEmptyState } from '@/components/primitives/empty-state.js';
 import { createField } from '@/components/primitives/field.js';
 import { createIcon } from '@/components/primitives/icon.js';
-import { createTabs } from '@/components/primitives/tabs.js';
+import { createQueueStatusFilter } from '@/features/admin/queue-status.js';
 import { h } from '@/lib/dom.js';
 import { loadAdminArticles } from '@/services/admin.js';
 
-const TABS = [
-  { value: '', label: 'Todos', countKey: null },
+const STATUS_OPTIONS = [
+  { value: 'todos', label: 'Todos', countKey: null },
   { value: 'PUBLICADO', label: 'Publicados', countKey: 'publicados' },
   { value: 'BORRADOR', label: 'Borradores', countKey: 'borradores' },
   { value: 'RETIRADO', label: 'Retirados', countKey: 'retirados' },
@@ -17,7 +17,8 @@ const TABS = [
 
 /**
  * CMP-104 — ArticleTable (D42 / M32).
- * Lista de artículos con estado, lectura, orden y última actualización.
+ * Lista de artículos con estado, lectura, orden y última actualización. La
+ * tabla permanece oculta hasta elegir un estado.
  */
 export function createArticleQueue({ router }) {
   const state = { q: '', estado: '', page: 1, conteos: null };
@@ -33,7 +34,6 @@ export function createArticleQueue({ router }) {
       onClick: () => router.navigate('/admin/ayuda/nuevo'),
     }).element,
   );
-  const tabsHost = h('div', { class: 'ps-report-queue__tabs' });
   const tableHost = h('div', { class: 'ps-report-queue__table' });
 
   const search = createField({
@@ -44,41 +44,41 @@ export function createArticleQueue({ router }) {
       searchTimer = window.setTimeout(() => {
         state.q = search.getValue().trim();
         state.page = 1;
-        load();
+
+        if (state.estado) {
+          load();
+        }
       }, 300);
     },
   });
   search.input.setAttribute('aria-label', 'Buscar por título o slug');
 
+  const statusFilter = createQueueStatusFilter({
+    options: STATUS_OPTIONS,
+    total: (conteos) => conteos.publicados + conteos.borradores + conteos.retirados,
+    onChange: () => {
+      state.estado = statusFilter.getValue();
+      state.page = 1;
+      load();
+    },
+  });
+
   const filters = h(
     'div',
     { class: 'ps-report-queue__filters ps-report-queue__filters--single' },
     search.element,
+    statusFilter.element,
   );
 
-  root.append(toolbar, tabsHost, filters, tableHost);
+  root.append(toolbar, filters, tableHost);
 
-  function renderTabs() {
-    const tabs = TABS.map((tab) => {
-      const count = tab.countKey
-        ? state.conteos?.[tab.countKey]
-        : state.conteos
-          ? state.conteos.publicados + state.conteos.borradores + state.conteos.retirados
-          : null;
-      const label = count === null ? tab.label : `${tab.label} (${count})`;
-
-      return { value: tab.value, label, active: tab.value === state.estado };
-    });
-
-    tabsHost.replaceChildren(
-      createTabs({
-        tabs,
-        onChange: (value) => {
-          state.estado = value;
-          state.page = 1;
-          load();
-        },
-      }).element,
+  function renderGuide() {
+    tableHost.replaceChildren(
+      createEmptyState({
+        icon: 'book-open',
+        title: 'Selecciona un estado',
+        body: 'Elige todos, publicados, borradores o retirados para ver los artículos.',
+      }),
     );
   }
 
@@ -113,7 +113,7 @@ export function createArticleQueue({ router }) {
             ? createButton({
                 label: 'Ver todos los artículos',
                 variant: 'secondary',
-                onClick: () => resetFilters(),
+                onClick: () => showAll(),
               }).element
             : createButton({
                 label: 'Nuevo artículo',
@@ -126,15 +126,32 @@ export function createArticleQueue({ router }) {
     tableHost.replaceChildren(table);
   }
 
-  function resetFilters() {
-    state.estado = '';
+  function showAll() {
+    state.estado = 'todos';
     state.q = '';
     state.page = 1;
+    statusFilter.setValue('todos');
     search.setValue('');
     load();
   }
 
-  function load() {
+  function load({ silent = false } = {}) {
+    if (silent) {
+      loadAdminArticles({ ...state, estado: '', q: '' })
+        .then((payload) => {
+          state.conteos = payload.conteos;
+          statusFilter.setCounts(state.conteos);
+        })
+        .catch(() => {});
+
+      return;
+    }
+
+    if (!state.estado) {
+      renderGuide();
+      return;
+    }
+
     tableHost.replaceChildren(
       h('div', {
         class: 'ps-report-queue__loading',
@@ -142,10 +159,13 @@ export function createArticleQueue({ router }) {
       }),
     );
 
-    loadAdminArticles(state)
+    loadAdminArticles({
+      ...state,
+      estado: state.estado === 'todos' ? '' : state.estado,
+    })
       .then((payload) => {
         state.conteos = payload.conteos;
-        renderTabs();
+        statusFilter.setCounts(state.conteos);
         renderTable(payload);
       })
       .catch(() => {
@@ -164,7 +184,8 @@ export function createArticleQueue({ router }) {
       });
   }
 
-  load();
+  renderGuide();
+  load({ silent: true });
 
   return root;
 }

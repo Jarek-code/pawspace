@@ -3,7 +3,7 @@ import { createReportQueue } from '@/features/admin/report-queue.js';
 
 /**
  * D35 / D35b / M28 — Reportes.
- * Bandeja con pestañas por estado, filtros y tabla densa (tarjetas en móvil).
+ * Bandeja con filtro desplegable por estado, filtros y tabla densa (tarjetas en móvil).
  */
 export function createPage({ router, query }) {
   return mountAdminPage({
