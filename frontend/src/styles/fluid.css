@@ -15,4 +15,14 @@
   --ps-text-h3: clamp(1.375rem, 1.2rem + 0.4vw, 1.5rem);
   --ps-text-h4: clamp(1.125rem, 1.05rem + 0.2vw, 1.25rem);
   --ps-text-body-lg: clamp(1.0625rem, 1rem + 0.18vw, 1.125rem);
+
+  /*
+   * Espaciado de página, no de componente. La retícula interna de 4 px sigue
+   * fija para no romper la consistencia entre controles.
+   *
+   * gutter: 16 px en móvil, ~24 px a 1440 y 40 px en pantallas grandes.
+   * margin: 16 px en móvil, ~32 px a 1440 y 40 px en pantallas grandes.
+   */
+  --ps-gutter-page: clamp(16px, 0.8rem + 0.75vw, 40px);
+  --ps-margin-page: clamp(16px, 0.625rem + 1.5vw, 40px);
 }

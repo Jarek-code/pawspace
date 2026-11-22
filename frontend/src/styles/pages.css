@@ -7,7 +7,7 @@
   gap: var(--ps-space-4);
   min-height: 100vh;
   min-height: 100svh;
-  padding: var(--ps-space-8);
+  padding: var(--ps-margin-page) var(--ps-gutter-page);
   background: var(--ps-bg);
   text-align: center;
 }
@@ -61,7 +61,7 @@
   gap: var(--ps-space-4);
   min-height: 100vh;
   min-height: 100svh;
-  padding: var(--ps-space-8);
+  padding: var(--ps-margin-page) var(--ps-gutter-page);
   background: var(--ps-bg);
   text-align: center;
 }
@@ -84,11 +84,6 @@
 }
 
 @media (max-width: 640px) {
-  .ps-placeholder,
-  .ps-route-error {
-    padding: var(--ps-space-6) var(--ps-space-4);
-  }
-
   .ps-placeholder__title {
     font-size: var(--ps-text-h2);
     line-height: var(--ps-leading-h2);

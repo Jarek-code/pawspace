@@ -201,7 +201,12 @@
 
   /* --- Layout ------------------------------------------------------- */
   --ps-content-max: 1200px;
+  --ps-content-max-feed: 840px;
+  --ps-content-max-wide: 1200px;
+  --ps-content-max-admin: 1440px;
   --ps-form-max: 440px;
+  --ps-gutter-page: 24px;
+  --ps-margin-page: 32px;
   --ps-gutter-desktop: 24px;
   --ps-gutter-tablet: 20px;
   --ps-gutter-mobile: 16px;
