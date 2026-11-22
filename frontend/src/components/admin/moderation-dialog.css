@@ -33,7 +33,7 @@
 
 .ps-moderation__warning-text {
   margin: 0;
-  color: var(--ps-warning);
+  color: var(--ps-color-warning-700);
   font-size: var(--ps-text-body-sm);
   line-height: var(--ps-leading-body-sm);
 }
