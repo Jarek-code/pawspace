@@ -36,6 +36,7 @@ export function createPage({ router } = {}) {
 
   const shell = createAppShell({
     activePath: '/notificaciones',
+    layout: 'wide',
     title: 'Notificaciones',
     subtitle: 'Cargando avisos…',
     pet,

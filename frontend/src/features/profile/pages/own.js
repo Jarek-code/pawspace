@@ -27,6 +27,8 @@ export function createPage({ router } = {}) {
 
   const shell = createAppShell({
     activePath: '/perfil',
+    layout: 'wide',
+    container: true,
     title: 'Mi perfil',
     subtitle: 'Así te ve la comunidad',
     pet,

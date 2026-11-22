@@ -445,8 +445,9 @@
 
 .ps-admin__content-body {
   width: 100%;
-  max-width: 1320px;
+  max-width: var(--ps-content-max-admin);
   margin: 0 auto;
+  container-type: inline-size;
 }
 
 .ps-admin__page-heading {

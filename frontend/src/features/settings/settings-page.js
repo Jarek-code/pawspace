@@ -27,6 +27,7 @@ export function mountSettingsPage({
 
   const shell = createAppShell({
     activePath: '/perfil',
+    layout: 'wide',
     title: 'Configuración',
     mobileTitle: 'Ajustes',
     subtitle,

@@ -982,7 +982,7 @@
   display: none;
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 1439px) {
   .ps-settings-help-mobile {
     display: block;
     margin-top: var(--ps-space-6);

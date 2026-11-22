@@ -37,6 +37,7 @@ export function createPage({ router, query } = {}) {
 
   const shell = createAppShell({
     activePath: '/mensajes',
+    layout: 'wide',
     title: 'Mensajes',
     subtitle: 'Cargando conversaciones…',
     pet,

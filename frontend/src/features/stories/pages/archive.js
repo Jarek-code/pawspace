@@ -23,6 +23,7 @@ export function createPage({ router } = {}) {
 
   const shell = createAppShell({
     activePath: '/perfil',
+    layout: 'wide',
     title: 'Tus historias',
     subtitle: 'Lo que compartiste en las últimas 24 horas',
     pet,

@@ -23,6 +23,8 @@ export function createPage({ router } = {}) {
 
   const shell = createAppShell({
     activePath: '/explorar',
+    layout: 'wide',
+    container: true,
     title: 'Explorar',
     subtitle: 'Encuentra mascotas, razas y temas',
     pet,

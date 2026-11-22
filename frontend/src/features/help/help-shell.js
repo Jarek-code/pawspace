@@ -19,6 +19,8 @@ export function mountHelpShell({ router, title, mobileTitle, subtitle, backTo = 
 
   const shell = createAppShell({
     activePath: '/perfil',
+    layout: 'wide',
+    container: true,
     title,
     mobileTitle,
     subtitle,

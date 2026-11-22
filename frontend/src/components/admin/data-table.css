@@ -117,7 +117,7 @@
   padding: var(--ps-space-8) 0;
 }
 
-@media (max-width: 900px) {
+@container (max-width: 900px) {
   .ps-data-table__scroll {
     display: none;
   }

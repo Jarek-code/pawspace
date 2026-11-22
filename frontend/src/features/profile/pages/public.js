@@ -28,6 +28,8 @@ export function createPage({ router, params } = {}) {
 
   const shell = createAppShell({
     activePath: '',
+    layout: 'wide',
+    container: true,
     title: 'Perfil',
     subtitle: 'Conoce a esta mascota',
     pet,

@@ -41,6 +41,8 @@ export function createPage({ router, query } = {}) {
 
   const shell = createAppShell({
     activePath: '/explorar',
+    layout: 'wide',
+    container: true,
     title: 'Buscar',
     subtitle: q ? `Resultados para “${q}”` : 'Encuentra mascotas, razas y temas',
     pet,

@@ -23,6 +23,8 @@ export function createPage({ router } = {}) {
 
   const shell = createAppShell({
     activePath: '/perfil',
+    layout: 'wide',
+    container: true,
     title: 'Editar perfil',
     subtitle: 'Actualiza la identidad de tu mascota',
     pet,

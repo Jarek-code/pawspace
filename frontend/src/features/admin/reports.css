@@ -494,7 +494,7 @@
 
 /* --- Responsivo --------------------------------------------------------- */
 
-@media (max-width: 1100px) {
+@container (max-width: 1100px) {
   .ps-report-detail__columns {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -553,7 +553,7 @@
 
 /* --- Responsivo de filtros ---------------------------------------------- */
 
-@media (max-width: 1100px) {
+@container (max-width: 1100px) {
   .ps-report-queue__filters,
   .ps-report-queue__filters--soporte {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -569,7 +569,7 @@
   }
 }
 
-@media (max-width: 700px) {
+@container (max-width: 700px) {
   .ps-report-queue__filters,
   .ps-report-queue__filters--single,
   .ps-report-queue__filters--soporte {
