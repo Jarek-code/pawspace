@@ -1162,6 +1162,7 @@
   width: 100%;
   max-width: 480px;
   max-height: calc(100vh - 32px);
+  max-height: calc(100dvh - 32px);
   overflow: auto;
   border-radius: var(--ps-radius-xl);
   background: var(--ps-surface);
@@ -1369,12 +1370,32 @@
   .ps-modal--sheet .ps-modal__panel {
     max-width: none;
     max-height: 88vh;
+    max-height: 88dvh;
     border-radius: var(--ps-radius-xl) var(--ps-radius-xl) 0 0;
     padding-bottom: env(safe-area-inset-bottom, 0);
   }
 
   .ps-toast-region {
     bottom: calc(64px + env(safe-area-inset-bottom, 0px) + var(--ps-space-4));
+  }
+}
+
+/* Hoja inferior también en landscape móvil, sin bottom nav. */
+@media (max-width: 900px) and (max-height: 500px) and (pointer: coarse) {
+  .ps-modal--sheet {
+    align-items: end;
+    padding: 0;
+  }
+
+  .ps-modal--sheet .ps-modal__panel {
+    max-width: none;
+    max-height: 88dvh;
+    border-radius: var(--ps-radius-xl) var(--ps-radius-xl) 0 0;
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+
+  .ps-toast-region {
+    bottom: calc(var(--ps-space-4) + env(safe-area-inset-bottom, 0px));
   }
 }
 

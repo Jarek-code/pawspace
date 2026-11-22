@@ -692,6 +692,7 @@
   flex-direction: column;
   gap: var(--ps-space-4);
   height: calc(100vh - 120px);
+  height: calc(100dvh - 120px);
   min-height: 520px;
 }
 
@@ -1414,6 +1415,7 @@
   .ps-app-shell--chat .ps-shell__content {
     height: 100vh;
     height: 100svh;
+    height: 100dvh;
   }
 
   .ps-app-shell--chat .ps-shell__content {

@@ -143,8 +143,9 @@ export function createAccountMenu({
   function positionPanel() {
     const rect = trigger.getBoundingClientRect();
     const gap = 8;
+    const width = panel.offsetWidth || 300;
 
-    panel.style.left = `${Math.max(8, rect.left)}px`;
+    panel.style.left = `${Math.max(8, Math.min(rect.left, window.innerWidth - width - 8))}px`;
     panel.style.bottom = `${Math.max(8, window.innerHeight - rect.top + gap)}px`;
   }
 

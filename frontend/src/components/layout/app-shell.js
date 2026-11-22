@@ -4,6 +4,7 @@ import { createAvatar } from '@/components/primitives/avatar.js';
 import { createBadge } from '@/components/primitives/badge.js';
 import { createButton } from '@/components/primitives/button.js';
 import { createIcon } from '@/components/primitives/icon.js';
+import { createModal } from '@/components/primitives/modal.js';
 import { createThemeToggle } from '@/components/primitives/theme-toggle.js';
 import { h } from '@/lib/dom.js';
 
@@ -41,6 +42,8 @@ export function createAppShell({
   onSearch = null,
   backTo = '',
   hideBottomNav = false,
+  layout = 'feed',
+  container = false,
   className = '',
   rail = null,
   children = null,
@@ -67,6 +70,7 @@ export function createAppShell({
 
   const create = createButton({
     label: 'Crear publicación',
+    ariaLabel: 'Crear publicación',
     variant: 'primary',
     fullWidth: true,
     iconLeft: createIcon('plus', { size: 18 }),
@@ -95,6 +99,91 @@ export function createAppShell({
       )
     : null;
 
+  let navSheet = null;
+
+  const menuButton = h(
+    'button',
+    {
+      class: 'ps-icon-button ps-topbar__menu',
+      type: 'button',
+      attrs: { 'aria-label': 'Menú', 'aria-haspopup': 'dialog', 'aria-expanded': 'false' },
+      onClick: () => openNavSheet(),
+    },
+    createIcon('menu', { size: 22 }),
+  );
+
+  function openNavSheet() {
+    if (navSheet?.isOpen()) {
+      return;
+    }
+
+    const modal = createModal({
+      title: 'Menú',
+      variant: 'sheet',
+      onClose: () => {
+        menuButton.setAttribute('aria-expanded', 'false');
+        modal.element.remove();
+        navSheet = null;
+      },
+    });
+
+    const links = NAV_ITEMS.map((item, index) => {
+      const isActive = item.path === activePath;
+      const badge =
+        item.icon === 'bell' && notificationCount > 0
+          ? createBadge({ label: String(notificationCount) })
+          : null;
+
+      return h(
+        'li',
+        {},
+        h(
+          'a',
+          {
+            class: `ps-nav-sheet__item${isActive ? ' is-active' : ''}`,
+            href: item.path,
+            attrs: {
+              'aria-current': isActive ? 'page' : null,
+              'data-autofocus': index === 0 ? '' : null,
+            },
+            onClick: () => modal.close(),
+          },
+          h(
+            'span',
+            { class: 'ps-nav-sheet__icon', 'aria-hidden': 'true' },
+            createIcon(item.icon, { size: 20 }),
+          ),
+          h('span', { class: 'ps-nav-sheet__label', text: item.label }),
+          badge,
+        ),
+      );
+    });
+
+    const createAction = createButton({
+      label: 'Crear publicación',
+      fullWidth: true,
+      iconLeft: createIcon('plus', { size: 18 }),
+      onClick: () => {
+        modal.close();
+        onCompose?.();
+      },
+    });
+
+    modal.body.append(
+      h(
+        'nav',
+        { class: 'ps-nav-sheet', attrs: { 'aria-label': 'Navegación principal' } },
+        h('ul', { class: 'ps-nav-sheet__list' }, links),
+        h('div', { class: 'ps-nav-sheet__create' }, createAction.element),
+      ),
+    );
+
+    document.body.append(modal.element);
+    modal.open();
+    navSheet = modal;
+    menuButton.setAttribute('aria-expanded', 'true');
+  }
+
   const topbar = h(
     'header',
     { class: `ps-topbar${backTo ? ' ps-topbar--nested' : ''}` },
@@ -111,6 +200,7 @@ export function createAppShell({
     h(
       'div',
       { class: 'ps-topbar__actions' },
+      menuButton,
       h(
         'button',
         {
@@ -146,7 +236,13 @@ export function createAppShell({
 
   const content = h(
     'main',
-    { id: 'contenido', class: 'ps-shell__content', tabindex: '-1' },
+    {
+      id: 'contenido',
+      class: ['ps-shell__content', container ? 'ps-shell__content--cq' : '']
+        .filter(Boolean)
+        .join(' '),
+      tabindex: '-1',
+    },
     children,
   );
 
@@ -173,6 +269,7 @@ export function createAppShell({
         'ps-app-shell',
         backTo ? 'ps-app-shell--nested' : '',
         hideBottomNav ? 'ps-app-shell--no-bottom' : '',
+        layout === 'wide' ? 'ps-app-shell--wide' : '',
         className,
       ]
         .filter(Boolean)

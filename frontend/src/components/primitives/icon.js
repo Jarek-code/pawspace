@@ -11,6 +11,7 @@ import flagRaw from 'lucide-static/icons/flag.svg?raw';
 import lockRaw from 'lucide-static/icons/lock.svg?raw';
 import logOutRaw from 'lucide-static/icons/log-out.svg?raw';
 import mailRaw from 'lucide-static/icons/mail.svg?raw';
+import menuRaw from 'lucide-static/icons/menu.svg?raw';
 import moonRaw from 'lucide-static/icons/moon.svg?raw';
 import sunRaw from 'lucide-static/icons/sun.svg?raw';
 import arrowLeftRaw from 'lucide-static/icons/arrow-left.svg?raw';
@@ -88,6 +89,7 @@ const ICONS = {
   lock: lockRaw,
   'log-out': logOutRaw,
   mail: mailRaw,
+  menu: menuRaw,
   'arrow-left': arrowLeftRaw,
   'arrow-right': arrowRightRaw,
   bell: bellRaw,
