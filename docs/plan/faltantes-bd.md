@@ -94,9 +94,10 @@ Notas de las otras dos fuentes:
 | 13 | Solicitudes de soporte (D33, M26) | 2 tablas + Rust | `TICKET_SOPORTE`, `TICKET_MENSAJE`, `Tabla::TicketSoporte` | medio |
 | 14 | Centro de ayuda (D31, D32) | 3 tablas | `AYUDA_CATEGORIA`, `AYUDA_ARTICULO`, `AYUDA_ARTICULO_UTIL` | medio |
 | 15 | Descargar mis datos (D29) | Mongo + backend | colección `exportaciones`, acción `datos.exportar` | bajo |
+| 16 | Cuentas de administración (panel D34–D45, M28–M33) | 1 columna + 3 de atribución | `USUARIO.rol`; `resuelto_por_usuario_id` en `REPORTE` y `REPORTE_APELACION`; `AYUDA_ARTICULO.autor_usuario_id` | bajo |
 
-Siete funcionalidades **no necesitan tablas nuevas** (2, 3, 4, 8, 9, 12 parcialmente y 15); dos
-necesitan cambios en Rust (5 y 6) y una toca el procedimiento de registro (10).
+Ocho funcionalidades **no necesitan tablas nuevas** (2, 3, 4, 8, 9, 12 parcialmente, 15 y 16); dos
+necesitan cambios en Rust (5, 6 y 13) y una toca el procedimiento de alta del nodo Spider (10).
 
 ---
 
@@ -814,6 +815,46 @@ resumen de sesiones. Los archivos de la OODB se enlazan o se incluyen, según ta
 
 *Vocabulario*: `datos.exportar` (categoría `cuenta`).
 
+### 16. Cuentas de administración — D34 a D45, M28 a M33
+
+**Pantallas**: el panel de administración ya existe en el frontend de la rama `ui-ux` con seis
+secciones (`/admin`, `/admin/reportes`, `/admin/apelaciones`, `/admin/soporte`, `/admin/ayuda`,
+`/admin/usuarios`). La tabla de usuarios muestra una columna **Rol** y `services/admin.js` declara
+las rutas `/admin/...` que espera consumir.
+
+**Veredicto**: una columna en `USUARIO`, tres columnas de atribución y la promoción de la primera
+cuenta. Nada de tablas nuevas: el panel necesita saber *si* una cuenta administra y *quién* resolvió
+cada caso, no una jerarquía de permisos.
+
+```sql
+-- dentro de USUARIO, en la fila caliente porque se lee en cada petición del panel
+rol ENUM('TUTOR', 'MODERADOR', 'SOPORTE', 'EDITOR', 'ADMIN') NOT NULL DEFAULT 'TUTOR',
+INDEX idx_usuario_rol (rol),
+
+-- atribución: quién resolvió cada caso
+REPORTE.resuelto_por_usuario_id        -> USUARIO(id)
+REPORTE_APELACION.resuelto_por_usuario_id -> USUARIO(id)
+AYUDA_ARTICULO.autor_usuario_id        -> USUARIO(id)
+```
+
+`TICKET_MENSAJE.autor_usuario_id` ya existía: el hilo de soporte distingue `autor_tipo`
+`USUARIO`/`SOPORTE`.
+
+**Cómo se autoriza**:
+
+| Pieza | Regla |
+|---|---|
+| Respuesta del login | devuelve `es_admin` y `rol`. El frontend ya lee `es_admin` en `setSession`; hoy el backend no lo manda y el panel sólo se abre a mano |
+| Guard del backend | una dependencia por rol (`MODERADOR` para reportes y apelaciones, `SOPORTE` para tickets, `EDITOR` para ayuda, `ADMIN` para todo y para usuarios) que lee `USUARIO.rol` y rechaza `activo = 0` o `eliminada_en` |
+| Fuente del rol | se lee de la tabla, no del token: los JWT duran siete días y un rol retirado seguiría vigente |
+| Quitar un rol | cierra las sesiones de esa cuenta (`SESION.cerrada_por`) |
+| Primer administrador | la migración `02-mariadb-admin.sql` promueve el correo configurado en `@admin_email`; el resto se otorga desde el panel |
+
+**Lo que falta fuera de la base de datos**: los ~30 endpoints `/admin/...` en el backend, la
+dependencia de autorización y las acciones de auditoría (`moderacion.resolver`,
+`soporte.responder`, `ayuda.publicar`, `cuenta.suspender`, `staff.rol_cambiar`) en
+`logs/pawspace_logs/modelo.py` y en el catálogo de Mongo.
+
 ---
 
 ## 5. Huecos que aparecen al revisar las pantallas y no estaban en la lista
@@ -877,7 +918,8 @@ acaba borrándose de la OODB sin tocar las filas.
 
 ## 6. Paquete de migraciones
 
-Cinco archivos, agrupados por fuente, en `database/migraciones/`. Se aplican **en este orden**.
+Seis archivos, agrupados por fuente, en `database/migraciones/`. Se aplican **en este orden**. Los
+dos primeros ya están escritos y probados; los demás faltan.
 
 Idempotencia comprobada en los contenedores (MariaDB 11.4.13): `CREATE TABLE IF NOT EXISTS`,
 `ALTER TABLE … ADD COLUMN IF NOT EXISTS` y `CREATE INDEX IF NOT EXISTS` sí se pueden repetir;
@@ -888,10 +930,11 @@ vez de forma controlada.
 | Archivo | Contenido | Dónde se aplica |
 |---|---|---|
 | `01-mariadb.sql` | DDL de las tablas nuevas y `ALTER TABLE` de las existentes: `USUARIO`, `USUARIO_PERFIL`, `USUARIO_PREFERENCIAS`, `MASCOTA_PERFIL`, `MASCOTA_PREFERENCIAS`, `SESION`, `CONVERSACION`, `CONVERSACION_PARTICIPANTE`, `MENSAJE`, `MENSAJE_LECTURA`, `HISTORIA`, `HISTORIA_DESTACADA(_ELEMENTO)`, `REPORTE`, `REPORTE_APELACION`, `TICKET_*`, `AYUDA_*`, `NOTIFICACION`, más los `EVENT` de archivo | `dn_a` (maestro) |
-| `02-distribucion.sql` | Fragmentos de `MENSAJE_LECTURA` en `dn_a` y `dn_b` con sus disparadores de paridad, `ALTER` del fragmento de `NOTIFICACION` (columnas nuevas), satélite `USUARIO_PERFIL` visto desde Spider, `vUSUARIO` recreada, `sp_mensaje_lectura`, `sp_usuario_crear` recreado con la firma nueva | `dn_b`, `spider` |
-| `02b-usuarios.sql` | `pawlector` (sólo lectura) en `dn_a`, para la búsqueda del centro de ayuda; `GRANT EXECUTE` del planificador no hace falta, los eventos corren como `root` o como su definidor | `dn_a` |
-| `03-mongo.js` | `collMod` del validador completo de `sesiones`, índice `por_actor_abiertas`, colección `exportaciones` con validador e índices, `upsert` de las acciones nuevas en `acciones` | `mongosh` sobre `pawspace_logs` |
-| `04-oodb.md` | Cambios en Rust (§4.6 y §4.13, más la regla de la historia vencida de §4.5): `Tabla::Mensaje`, `Tabla::TicketSoporte`, clases `Mensaje`/`TicketSoporte`, ramas de `mariadb.rs` y `revision.rs` | despliegue del servicio |
+| `02-mariadb-admin.sql` | `USUARIO.rol`, las tres columnas de atribución del staff y la promoción de la primera cuenta a `ADMIN` (§4.16) | `dn_a` |
+| `03-distribucion.sql` | Fragmentos de `MENSAJE_LECTURA` en `dn_a` y `dn_b` con sus disparadores de paridad, `ALTER` del fragmento de `NOTIFICACION` (columnas nuevas), satélite `USUARIO_PERFIL` visto desde Spider, `vUSUARIO` recreada, `sp_mensaje_lectura`, `sp_usuario_crear` recreado con la firma nueva | `dn_b`, `spider` |
+| `04-usuarios.sql` | `pawlector` (sólo lectura) en `dn_a`, para la búsqueda del centro de ayuda; `GRANT EXECUTE` del planificador no hace falta, los eventos corren como `root` o como su definidor | `dn_a` |
+| `05-mongo.js` | `collMod` del validador completo de `sesiones`, índice `por_actor_abiertas`, colección `exportaciones` con validador e índices, `upsert` de las acciones nuevas en `acciones` | `mongosh` sobre `pawspace_logs` |
+| `06-oodb.md` | Cambios en Rust (§4.6 y §4.13, más la regla de la historia vencida de §4.5): `Tabla::Mensaje`, `Tabla::TicketSoporte`, clases `Mensaje`/`TicketSoporte`, ramas de `mariadb.rs` y `revision.rs` | despliegue del servicio |
 
 **Prerrequisito de DevOps** (lo llevas tú): `event_scheduler` está en `OFF` en los cinco nodos. Hay
 que arrancar `dn_a` con `--event-scheduler=ON` en `docker-compose.yml` (o un
@@ -942,7 +985,7 @@ docker exec -i pawspace-spider mariadb -uroot -p"$DB_ROOT_PASSWORD" \
   < database/distribuida/validaciones/01-fragmentacion.sql
 
 # 4. Mongo: validador, índices y catálogo
-docker exec -i pawspace-mongo mongosh pawspace_logs < database/migraciones/03-mongo.js
+docker exec -i pawspace-mongo mongosh pawspace_logs < database/migraciones/05-mongo.js
 docker exec -i pawspace-mongo mongosh pawspace_logs --eval \
   'db.sesiones.getIndexes().map(i=>i.name); db.exportaciones.countDocuments()'
 
