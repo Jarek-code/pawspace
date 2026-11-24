@@ -57,6 +57,13 @@ export function adminUsersPayload({ filtro = 'todos', q = '', page = 1, pageSize
   return { usuarios: lista, total, pagina, paginaSize: size, conteos };
 }
 
+export function adminUserIdByHandle(handle) {
+  const clean = String(handle || '').toLowerCase();
+  const user = usersState.users.find((item) => String(item.handle || '').toLowerCase() === clean);
+
+  return user?.id || null;
+}
+
 function findAdminUser(id) {
   const user = usersState.users.find((item) => item.id === String(id));
 

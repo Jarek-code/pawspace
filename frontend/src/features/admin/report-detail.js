@@ -115,6 +115,7 @@ export function createReportDetail({ router, id, refresh }) {
 
   function renderContentCard(report) {
     const noDisponible = report.contenidoNoDisponible;
+    const link = contenidoLink(report);
 
     return h(
       'section',
@@ -140,7 +141,9 @@ export function createReportDetail({ router, id, refresh }) {
               ),
             ),
             h('p', { class: 'ps-report-content__text', text: report.contenido }),
-            h('a', { class: 'ps-report-content__link', href: '/inicio', text: 'Ver publicación' }),
+            link
+              ? h('a', { class: 'ps-report-content__link', href: link.href, text: link.label })
+              : null,
           ),
     );
   }
@@ -377,7 +380,13 @@ export function createReportDetail({ router, id, refresh }) {
             text: `${persona.reportes} reportes enviados`,
           }),
         ),
-        h('a', { class: 'ps-report-person__link', href: '/admin/usuarios', text: 'Ver perfil' }),
+        h('a', {
+          class: 'ps-report-person__link',
+          href: persona.id
+            ? `/admin/usuarios/${encodeURIComponent(persona.id)}`
+            : `/admin/usuarios?q=${encodeURIComponent(persona.handle || handle || '')}`,
+          text: 'Ver perfil',
+        }),
       ),
     );
   }
@@ -408,6 +417,27 @@ export function createReportDetail({ router, id, refresh }) {
       ),
     );
   }
+}
+
+function contenidoLink(report) {
+  const handle = String(report.handle || '').replace(/^@/, '');
+
+  if (report.tipo === 'mensaje' && handle) {
+    return { href: `/mensajes/${encodeURIComponent(handle)}`, label: 'Ver conversación' };
+  }
+
+  if (report.tipo === 'historia' && handle) {
+    return { href: `/historias/${encodeURIComponent(handle)}`, label: 'Ver historia' };
+  }
+
+  if (report.publicacionId) {
+    return {
+      href: `/publicacion/${encodeURIComponent(report.publicacionId)}`,
+      label: report.tipo === 'comentario' ? 'Ver comentario' : 'Ver publicación',
+    };
+  }
+
+  return null;
 }
 
 function createLoading() {

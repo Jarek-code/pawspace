@@ -205,7 +205,13 @@ export function createAppealDetail({ router, id, refresh }) {
           h('span', { class: 'ps-report-person__name', text: appeal.handle }),
           h('span', { class: 'ps-report-person__meta', text: 'Apela una decisión de moderación' }),
         ),
-        h('a', { class: 'ps-report-person__link', href: '/admin/usuarios', text: 'Ver perfil' }),
+        h('a', {
+          class: 'ps-report-person__link',
+          href: appeal.usuarioId
+            ? `/admin/usuarios/${encodeURIComponent(appeal.usuarioId)}`
+            : `/admin/usuarios?q=${encodeURIComponent(appeal.handle || '')}`,
+          text: 'Ver perfil',
+        }),
       ),
     );
   }

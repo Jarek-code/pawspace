@@ -8,7 +8,7 @@ import { createProfileRail } from '@/components/profile/profile-rail.js';
 import { createProfileTabs } from '@/components/profile/profile-tabs.js';
 import { createStoryCard } from '@/components/stories/story-card.js';
 import { h } from '@/lib/dom.js';
-import { currentSession, logout } from '@/services/auth.js';
+import { currentSession, isAdmin, logout } from '@/services/auth.js';
 import { getCurrentPet, listPets } from '@/services/pets.js';
 import { loadOwnProfile } from '@/services/profiles.js';
 import { loadStoryArchive } from '@/services/stories.js';
@@ -24,6 +24,7 @@ export function createPage({ router } = {}) {
   const stored = getCurrentPet() || listPets(currentSession().email)[0] || null;
   const pet = stored ? { ...stored, handle: `@${stored.usuario}` } : null;
   const account = accountFromEmail(currentSession().email);
+  const readOnly = isAdmin();
 
   const shell = createAppShell({
     activePath: '/perfil',
@@ -71,6 +72,7 @@ export function createPage({ router } = {}) {
     const header = createProfileHeader({
       profile,
       variant: 'own',
+      readOnly,
       onEdit: () => router.navigate('/perfil/editar'),
       onShare: async () => {
         const result = await shareProfile(profile);
@@ -91,12 +93,12 @@ export function createPage({ router } = {}) {
     });
 
     const tabs = createProfileTabs({
-      own: true,
+      own: !readOnly,
       active: 'publicaciones',
-      onChange: (value) => showTab(value, profile, gridHost, router),
+      onChange: (value) => showTab(value, profile, gridHost, router, readOnly),
     });
 
-    showTab('publicaciones', profile, gridHost, router);
+    showTab('publicaciones', profile, gridHost, router, readOnly);
 
     content.replaceChildren(
       h(
@@ -115,8 +117,8 @@ export function createPage({ router } = {}) {
     rail.replaceChildren(
       ...createProfileRail({
         profile,
-        own: true,
-        suggestions: profile.sugerencias || [],
+        own: !readOnly,
+        suggestions: readOnly ? [] : profile.sugerencias || [],
         onChangePet: () => router.navigate('/elegir-mascota'),
         onEdit: () => router.navigate('/perfil/editar'),
         onOpenProfile: (item) => router.navigate(`/mascota/${item.handle.replace(/^@/, '')}`),
@@ -127,7 +129,7 @@ export function createPage({ router } = {}) {
   return shell;
 }
 
-function showTab(tab, profile, host, router) {
+function showTab(tab, profile, host, router, readOnly = false) {
   host.dataset.tab = tab;
   host.replaceChildren();
 
@@ -144,11 +146,13 @@ function showTab(tab, profile, host, router) {
             tab === 'fotos'
               ? 'Cuando publiques una foto, aparecerá aquí.'
               : 'Comparte un momento de tu mascota con la comunidad.',
-          action: createButton({
-            label: 'Crear publicación',
-            variant: 'primary',
-            onClick: () => router.navigate('/publicar'),
-          }).element,
+          action: readOnly
+            ? null
+            : createButton({
+                label: 'Crear publicación',
+                variant: 'primary',
+                onClick: () => router.navigate('/publicar'),
+              }).element,
         }),
       );
       return;
@@ -193,11 +197,13 @@ function showTab(tab, profile, host, router) {
                   variant: 'secondary',
                   onClick: () => router.navigate('/historias'),
                 }).element,
-                createButton({
-                  label: 'Crear historia',
-                  variant: 'primary',
-                  onClick: () => router.navigate('/historias/nueva'),
-                }).element,
+                readOnly
+                  ? null
+                  : createButton({
+                      label: 'Crear historia',
+                      variant: 'primary',
+                      onClick: () => router.navigate('/historias/nueva'),
+                    }).element,
               ),
             }),
           );
@@ -206,7 +212,10 @@ function showTab(tab, profile, host, router) {
 
         const handle = profile.handle.replace(/^@/, '');
         host.replaceChildren(
-          h('h2', { class: 'ps-profile__stories-title', text: 'Tus historias' }),
+          h('h2', {
+            class: 'ps-profile__stories-title',
+            text: readOnly ? 'Historias' : 'Tus historias',
+          }),
           h(
             'div',
             { class: 'ps-story-grid' },
@@ -219,15 +228,17 @@ function showTab(tab, profile, host, router) {
               }),
             ),
           ),
-          h(
-            'div',
-            { class: 'ps-profile__stories-actions' },
-            createButton({
-              label: 'Gestionar historias',
-              variant: 'secondary',
-              onClick: () => router.navigate('/historias'),
-            }).element,
-          ),
+          readOnly
+            ? null
+            : h(
+                'div',
+                { class: 'ps-profile__stories-actions' },
+                createButton({
+                  label: 'Gestionar historias',
+                  variant: 'secondary',
+                  onClick: () => router.navigate('/historias'),
+                }).element,
+              ),
         );
       })
       .catch(() => {

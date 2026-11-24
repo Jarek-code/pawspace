@@ -96,7 +96,9 @@ import {
  *
  * Mantiene la misma forma de error que la API real (ApiError) y devuelve
  * payloads realistas para que las pantallas se construyan sin backend de
- * dominio. Cuando exista el endpoint real, se apaga con VITE_USE_MOCKS=false.
+ * dominio. En modo híbrido solo las rutas de BACKEND_ROUTES van a FastAPI; el
+ * resto sigue aquí. La cuenta administradora de demostración se queda en mocks
+ * mientras el backend no exponga el rol.
  */
 
 function delay(milliseconds) {
@@ -142,7 +144,15 @@ function findUser(email) {
 
 function activeHandle() {
   const pet = getActivePet();
-  return pet?.usuario ? `@${pet.usuario}` : '@luna';
+
+  if (pet?.usuario) {
+    return `@${pet.usuario}`;
+  }
+
+  const email = String(getSession().email || '').toLowerCase();
+  const user = demoUsers.find((item) => item.email.toLowerCase() === email);
+
+  return user?.mascota?.handle || '@luna';
 }
 
 function ownProfile() {
@@ -1362,6 +1372,49 @@ const routes = [
     handler: ({ path }) => reportConversation(conversationHandle(path)),
   },
 ];
+
+const BACKEND_ROUTES = [
+  { method: 'POST', pattern: /^\/usuarios\/login$/ },
+  { method: 'POST', pattern: /^\/usuarios\/registro$/ },
+];
+
+const adminDemoEmail = (demoUsers.find((user) => user.es_admin)?.email || '').toLowerCase();
+
+function isAdminDemoLogin(path, method, body) {
+  if (method !== 'POST' || !/^\/usuarios\/login$/.test(path)) {
+    return false;
+  }
+
+  const email = String(body?.email || '')
+    .trim()
+    .toLowerCase();
+
+  return email !== '' && email === adminDemoEmail;
+}
+
+/**
+ * Decide si una solicitud debe resolverse con fixtures locales.
+ * En modo híbrido la lista es explícita: lo que no está implementado en el
+ * backend se queda en mocks, y la cuenta admin de demostración nunca sale de
+ * aquí.
+ */
+export function shouldUseMock(path, { method = 'GET', body } = {}) {
+  if (config.mode === 'mock') {
+    return true;
+  }
+
+  if (config.mode !== 'hybrid') {
+    return false;
+  }
+
+  const normalized = normalizePath(path);
+
+  if (isAdminDemoLogin(normalized, method, body)) {
+    return true;
+  }
+
+  return !BACKEND_ROUTES.some((route) => route.method === method && route.pattern.test(normalized));
+}
 
 export async function mockRequest(path, { method = 'GET', body } = {}) {
   const normalized = normalizePath(path);

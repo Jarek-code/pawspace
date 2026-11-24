@@ -4,6 +4,7 @@ export const adminReports = [
   {
     id: '1041',
     tipo: 'publicacion',
+    publicacionId: 'post_toby_1',
     titulo: 'Publicación de @toby',
     nombre: 'Toby',
     handle: '@toby',
@@ -80,6 +81,7 @@ export const adminReports = [
   {
     id: '1037',
     tipo: 'publicacion',
+    publicacionId: 'post_nala_1',
     titulo: 'Publicación de @nala',
     nombre: 'Nala',
     handle: '@nala',
@@ -195,6 +197,7 @@ export const adminReports = [
   {
     id: '1030',
     tipo: 'publicacion',
+    publicacionId: 'post_milo_1',
     titulo: 'Publicación de @milo',
     nombre: 'Milo',
     handle: '@milo',

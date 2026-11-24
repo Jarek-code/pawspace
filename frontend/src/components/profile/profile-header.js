@@ -13,6 +13,7 @@ import { createFollowButton } from './follow-button.js';
 export function createProfileHeader({
   profile,
   variant = 'own',
+  readOnly = false,
   onEdit = null,
   onShare = null,
   onFollow = null,
@@ -27,13 +28,18 @@ export function createProfileHeader({
   const actions = [];
 
   if (own) {
+    if (!readOnly) {
+      actions.push(
+        createButton({
+          label: 'Editar perfil',
+          size: 'md',
+          iconLeft: createIcon('pencil', { size: 18 }),
+          onClick: onEdit,
+        }).element,
+      );
+    }
+
     actions.push(
-      createButton({
-        label: 'Editar perfil',
-        size: 'md',
-        iconLeft: createIcon('pencil', { size: 18 }),
-        onClick: onEdit,
-      }).element,
       createButton({
         label: 'Compartir',
         variant: 'secondary',
@@ -72,7 +78,7 @@ export function createProfileHeader({
     );
   }
 
-  if (!own) {
+  if (!own && !readOnly) {
     actions.push(
       h(
         'button',

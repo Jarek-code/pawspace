@@ -177,6 +177,23 @@ export const profiles = {
       comentarios: 4,
     }),
   },
+  '@michi': {
+    id: 'pet_michi',
+    nombre: 'Michi',
+    handle: '@michi',
+    especie: 'Gato',
+    raza: 'Gato europeo',
+    sexo: 'Hembra',
+    fechaNacimiento: '2021-10-14',
+    bio: 'Gata de oficina. Supervisa cada reporte desde el teclado.',
+    privacidad: 'publico',
+    tutor: { nombre: 'Mariana Ortega', handle: '@mariana' },
+    stats: { publicaciones: 12, seguidores: 320, siguiendo: 84 },
+    publicaciones: makePosts('@michi', 'Michi', ['Siesta en el teclado', 'Ventana', 'Café'], {
+      likes: 16,
+      comentarios: 2,
+    }),
+  },
 };
 
 export const profileSuggestions = ['@milo', '@nala', '@kira', '@toby'];

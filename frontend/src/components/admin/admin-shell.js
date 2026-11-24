@@ -316,6 +316,22 @@ function renderAccountMenu({ account = null, onLogout = null, compact = false } 
       ),
       h(
         'div',
+        { class: 'ps-admin__account-links' },
+        h(
+          'a',
+          { class: 'ps-admin__account-link', href: '/perfil' },
+          createIcon('user', { size: 18 }),
+          h('span', { text: 'Ver mi perfil' }),
+        ),
+        h(
+          'a',
+          { class: 'ps-admin__account-link', href: '/inicio' },
+          createIcon('home', { size: 18 }),
+          h('span', { text: 'Ir a la app' }),
+        ),
+      ),
+      h(
+        'div',
         { class: 'ps-admin__account-panel-row' },
         h('span', { class: 'ps-admin__account-panel-label', text: 'Tema' }),
         themeToggle,

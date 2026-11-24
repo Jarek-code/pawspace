@@ -24,5 +24,6 @@ export const demoUsers = [
     contrasena: 'Pawspace2026',
     activo: true,
     es_admin: true,
+    mascota: { nombre: 'Michi', handle: '@michi' },
   },
 ];

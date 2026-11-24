@@ -1,5 +1,6 @@
 import { ApiError } from '@/lib/errors.js';
 import { adminReports } from '../fixtures/admin/reports.js';
+import { adminUserIdByHandle } from './users.js';
 import { clone, requireMotivo, tipoLabel } from './shared.js';
 
 const ESTADO_RANK = { PENDIENTE: 0, EN_REVISION: 1, RESUELTO: 2, RECHAZADO: 3 };
@@ -150,11 +151,13 @@ export function adminReportDetail(id) {
     ...clone(report),
     tipoLabel: tipoLabel(report.tipo),
     denunciante: {
+      id: adminUserIdByHandle(report.reportadoPor),
       handle: report.reportadoPor,
       nombre: report.reportadoPor?.replace('@', '') || 'Persona',
       reportes: countBy(reports, 'reportadoPor', report.reportadoPor),
     },
     denunciado: {
+      id: adminUserIdByHandle(report.handle),
       handle: report.handle,
       nombre: report.nombre,
       reportes: countBy(reports, 'objetivo', report.handle),

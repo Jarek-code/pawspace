@@ -1,6 +1,7 @@
 import { createAvatar } from '@/components/primitives/avatar.js';
 import { createIcon } from '@/components/primitives/icon.js';
 import { h } from '@/lib/dom.js';
+import { isAdmin } from '@/services/auth.js';
 
 let menuCounter = 0;
 
@@ -64,6 +65,20 @@ export function createAccountMenu({
     ),
   );
 
+  const adminItem = isAdmin()
+    ? h(
+        'a',
+        {
+          class: 'ps-account-menu__item',
+          href: '/admin',
+          attrs: { role: 'menuitem' },
+          onClick: () => close({ returnFocus: false }),
+        },
+        createIcon('layout-dashboard', { size: 20 }),
+        h('span', { text: 'Panel de administración' }),
+      )
+    : null;
+
   const configItem = h(
     'a',
     {
@@ -114,6 +129,7 @@ export function createAccountMenu({
     h(
       'ul',
       { class: 'ps-account-menu__list', attrs: { role: 'none' } },
+      adminItem ? h('li', { attrs: { role: 'none' } }, adminItem) : null,
       h('li', { attrs: { role: 'none' } }, configItem),
       h('li', { attrs: { role: 'none' } }, helpItem),
       h('li', { class: 'ps-account-menu__divider', attrs: { role: 'none' } }),

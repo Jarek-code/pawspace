@@ -2,6 +2,7 @@ import { ApiError } from '@/lib/errors.js';
 import { adminAppeals } from '../fixtures/admin/appeals.js';
 import { clone } from './shared.js';
 import { reportsState } from './reports.js';
+import { adminUserIdByHandle } from './users.js';
 
 export const appealsState = { appeals: clone(adminAppeals) };
 
@@ -90,6 +91,7 @@ export function adminAppealDetail(id) {
 
   return {
     ...clone(appeal),
+    usuarioId: adminUserIdByHandle(appeal.handle),
     reporteOriginal: reporteOriginal
       ? {
           id: reporteOriginal.id,
