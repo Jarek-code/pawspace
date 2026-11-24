@@ -5,8 +5,8 @@
 --     docker exec -i pawspace-dn-a mariadb -uroot -p"$DB_ROOT_PASSWORD" \
 --         < database/migraciones/01-mariadb.sql
 --
--- Despues hay que aplicar 02-distribucion.sql (fragmento del lado de dn_b y
--- envoltorios del nodo Spider) y 02b-usuarios.sql.
+-- Despues hay que aplicar 02-mariadb-admin.sql, 03-distribucion.sql (fragmento
+-- del lado de dn_b y envoltorios del nodo Spider) y 04-usuarios.sql.
 --
 -- Los eventos de retencion que crea este archivo necesitan
 -- event_scheduler=ON: MariaDB lo trae apagado por defecto.
