@@ -56,7 +56,7 @@ CREATE TABLE PUBLICACION_TEXTO (
 -- Vistas de conveniencia: se lee como antes de fragmentar
 
 CREATE OR REPLACE VIEW vUSUARIO AS
-SELECT p.id, p.nombre, p.email, p.contrasena_actualizada_en, p.creado_en, p.actualizado_en, p.activo, p.plan, p.eliminada_en,
+SELECT p.id, p.nombre, p.email, p.contrasena_actualizada_en, p.creado_en, p.actualizado_en, p.activo, p.plan, p.rol, p.eliminada_en,
          s0.contrasena_hash,
          s1.telefono,
          s1.ubicacion_ciudad,

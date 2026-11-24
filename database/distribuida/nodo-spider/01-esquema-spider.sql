@@ -17,6 +17,13 @@ CREATE TABLE USUARIO (
         'GRATUITO',
         'PREMIUM'
     ) NOT NULL DEFAULT 'GRATUITO',
+    rol ENUM(
+        'TUTOR',
+        'MODERADOR',
+        'SOPORTE',
+        'EDITOR',
+        'ADMIN'
+    ) NOT NULL DEFAULT 'TUTOR',
     eliminada_en DATETIME NULL,
     CONSTRAINT pk_usuario
         PRIMARY KEY (id)
@@ -270,6 +277,7 @@ CREATE TABLE REPORTE (
         'RECHAZADO'
     ) NOT NULL DEFAULT 'PENDIENTE',
     resolucion VARCHAR(1000) NULL,
+    resuelto_por_usuario_id BIGINT UNSIGNED NULL,
     creado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     resuelto_en DATETIME NULL,
     archivado_en DATETIME NULL,
@@ -365,6 +373,7 @@ CREATE TABLE REPORTE_APELACION (
         'RECHAZADA'
     ) NOT NULL DEFAULT 'PENDIENTE',
     resolucion VARCHAR(1000) NULL,
+    resuelto_por_usuario_id BIGINT UNSIGNED NULL,
     creado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     resuelto_en DATETIME NULL,
     CONSTRAINT pk_reporte_apelacion
@@ -444,6 +453,7 @@ CREATE TABLE AYUDA_ARTICULO (
         'PUBLICADO',
         'RETIRADO'
     ) NOT NULL DEFAULT 'BORRADOR',
+    autor_usuario_id BIGINT UNSIGNED NULL,
     publicado_en DATETIME NULL,
     actualizado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
         ON UPDATE CURRENT_TIMESTAMP,

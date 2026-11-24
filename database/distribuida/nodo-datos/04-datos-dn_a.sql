@@ -30,6 +30,8 @@ INSERT INTO USUARIO (id, nombre, email) VALUES
     (2, 'Luis Perez', 'luis@example.com'),
     (3, 'Marta Ruiz', 'marta@example.com');
 
+UPDATE USUARIO SET rol = 'ADMIN' WHERE id = 1;
+
 INSERT INTO USUARIO_CREDENCIALES (usuario_id, contrasena_hash) VALUES
     (1, 'CAMBIA_ESTO_hash_de_prueba_1'),
     (2, 'CAMBIA_ESTO_hash_de_prueba_2'),

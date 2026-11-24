@@ -345,6 +345,8 @@ def datos_dn_a():
              "\n-- ---------------------------------------------------------------------------\n")
     l.append(insert("USUARIO", "id, nombre, email", list(enumerate(USUARIOS, 1)),
                     lambda f: "(%d, '%s', '%s')" % (f[0], f[1][0], f[1][1])))
+    # La primera cuenta entra como ADMIN para poder abrir el panel de administracion.
+    l.append("UPDATE USUARIO SET rol = 'ADMIN' WHERE id = 1;\n")
     l.append(insert("USUARIO_CREDENCIALES", "usuario_id, contrasena_hash",
                     list(enumerate(USUARIOS, 1)),
                     lambda f: "(%d, 'CAMBIA_ESTO_hash_de_prueba_%d')" % (f[0], f[0])))

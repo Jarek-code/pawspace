@@ -29,6 +29,13 @@ CREATE TABLE USUARIO (
         'GRATUITO',
         'PREMIUM'
     ) NOT NULL DEFAULT 'GRATUITO',
+    rol ENUM(
+        'TUTOR',
+        'MODERADOR',
+        'SOPORTE',
+        'EDITOR',
+        'ADMIN'
+    ) NOT NULL DEFAULT 'TUTOR',
     eliminada_en DATETIME NULL,
 
     CONSTRAINT pk_usuario
@@ -39,6 +46,7 @@ CREATE TABLE USUARIO (
 
     INDEX idx_usuario_activo (activo),
     INDEX idx_usuario_creado_en (creado_en),
+    INDEX idx_usuario_rol (rol),
     INDEX idx_usuario_eliminada (eliminada_en)
 ) ENGINE=InnoDB;
 
@@ -806,6 +814,7 @@ CREATE TABLE REPORTE (
     ) NOT NULL DEFAULT 'PENDIENTE',
 
     resolucion VARCHAR(1000) NULL,
+    resuelto_por_usuario_id BIGINT UNSIGNED NULL,
     creado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     resuelto_en DATETIME NULL,
     archivado_en DATETIME NULL,
@@ -818,6 +827,12 @@ CREATE TABLE REPORTE (
         REFERENCES MASCOTA(id)
         ON UPDATE CASCADE
         ON DELETE CASCADE,
+
+    CONSTRAINT fk_reporte_resolutor
+        FOREIGN KEY (resuelto_por_usuario_id)
+        REFERENCES USUARIO(id)
+        ON UPDATE CASCADE
+        ON DELETE SET NULL,
 
     CONSTRAINT fk_reporte_publicacion
         FOREIGN KEY (publicacion_id)
@@ -857,6 +872,9 @@ CREATE TABLE REPORTE (
 
     INDEX idx_reporte_reportante_archivado
         (reportado_por_mascota_id, archivado_en),
+
+    INDEX idx_reporte_resolutor
+        (resuelto_por_usuario_id),
 
     INDEX idx_reporte_publicacion
         (publicacion_id),
@@ -1178,6 +1196,7 @@ CREATE TABLE REPORTE_APELACION (
         'RECHAZADA'
     ) NOT NULL DEFAULT 'PENDIENTE',
     resolucion VARCHAR(1000) NULL,
+    resuelto_por_usuario_id BIGINT UNSIGNED NULL,
     creado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     resuelto_en DATETIME NULL,
 
@@ -1199,11 +1218,20 @@ CREATE TABLE REPORTE_APELACION (
         ON UPDATE CASCADE
         ON DELETE CASCADE,
 
+    CONSTRAINT fk_ra_resolutor
+        FOREIGN KEY (resuelto_por_usuario_id)
+        REFERENCES USUARIO(id)
+        ON UPDATE CASCADE
+        ON DELETE SET NULL,
+
     INDEX idx_ra_mascota
         (mascota_id),
 
     INDEX idx_ra_estado
-        (estado, creado_en)
+        (estado, creado_en),
+
+    INDEX idx_ra_resolutor
+        (resuelto_por_usuario_id)
 ) ENGINE=InnoDB;
 
 
@@ -1326,6 +1354,7 @@ CREATE TABLE AYUDA_ARTICULO (
         'PUBLICADO',
         'RETIRADO'
     ) NOT NULL DEFAULT 'BORRADOR',
+    autor_usuario_id BIGINT UNSIGNED NULL,
     publicado_en DATETIME NULL,
     actualizado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
         ON UPDATE CURRENT_TIMESTAMP,
@@ -1343,8 +1372,17 @@ CREATE TABLE AYUDA_ARTICULO (
         ON UPDATE CASCADE
         ON DELETE RESTRICT,
 
+    CONSTRAINT fk_aa_autor
+        FOREIGN KEY (autor_usuario_id)
+        REFERENCES USUARIO(id)
+        ON UPDATE CASCADE
+        ON DELETE SET NULL,
+
     INDEX idx_aa_categoria_estado
         (categoria_id, estado, orden),
+
+    INDEX idx_aa_autor
+        (autor_usuario_id),
 
     FULLTEXT idx_aa_busqueda
         (titulo, resumen, contenido)
