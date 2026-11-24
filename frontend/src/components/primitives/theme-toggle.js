@@ -22,10 +22,13 @@ export function createThemeToggle() {
     const dark = document.documentElement.dataset.theme === 'dark';
     element.replaceChildren(createIcon(dark ? 'sun' : 'moon', { size: 20 }), label);
     element.setAttribute('aria-label', dark ? 'Activar tema claro' : 'Activar tema oscuro');
+    if (element.getAttribute('role') === 'menuitemcheckbox') {
+      element.setAttribute('aria-checked', String(dark));
+    }
     label.textContent = dark ? 'Activar tema claro' : 'Activar tema oscuro';
   }
 
   sync();
 
-  return { element };
+  return { element, sync };
 }

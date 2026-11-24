@@ -5,7 +5,6 @@ import { createBadge } from '@/components/primitives/badge.js';
 import { createButton } from '@/components/primitives/button.js';
 import { createIcon } from '@/components/primitives/icon.js';
 import { createModal } from '@/components/primitives/modal.js';
-import { createThemeToggle } from '@/components/primitives/theme-toggle.js';
 import { h } from '@/lib/dom.js';
 
 const NAV_ITEMS = [
@@ -48,7 +47,6 @@ export function createAppShell({
   rail = null,
   children = null,
 } = {}) {
-  const themeToggle = createThemeToggle().element;
   const topbarAccount = account ? createAccountMenu({ pet, account, onLogout }) : null;
 
   const brand = h(
@@ -211,7 +209,6 @@ export function createAppShell({
         },
         createIcon('search', { size: 20 }),
       ),
-      themeToggle,
       h(
         'a',
         {

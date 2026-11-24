@@ -155,6 +155,25 @@
   color: var(--ps-danger);
 }
 
+.ps-account-menu__theme {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ps-space-3);
+  min-height: var(--ps-touch-target);
+  padding: 0 var(--ps-space-2);
+}
+
+.ps-account-menu__theme-label {
+  color: var(--ps-text);
+  font-size: var(--ps-text-body-sm);
+  font-weight: var(--ps-weight-semibold);
+}
+
+.ps-account-menu__theme-toggle {
+  flex: none;
+}
+
 .ps-account-menu__divider {
   height: 1px;
   margin: var(--ps-space-2) 0;

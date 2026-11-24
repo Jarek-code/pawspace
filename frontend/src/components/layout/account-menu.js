@@ -1,5 +1,6 @@
 import { createAvatar } from '@/components/primitives/avatar.js';
 import { createIcon } from '@/components/primitives/icon.js';
+import { createThemeToggle } from '@/components/primitives/theme-toggle.js';
 import { h } from '@/lib/dom.js';
 import { isAdmin } from '@/services/auth.js';
 
@@ -103,6 +104,17 @@ export function createAccountMenu({
     h('span', { text: 'Ayuda y soporte' }),
   );
 
+  const themeToggle = createThemeToggle();
+  themeToggle.element.classList.add('ps-account-menu__theme-toggle');
+  themeToggle.element.setAttribute('role', 'menuitemcheckbox');
+
+  const themeItem = h(
+    'div',
+    { class: 'ps-account-menu__theme' },
+    h('span', { class: 'ps-account-menu__theme-label', text: 'Modo oscuro' }),
+    themeToggle.element,
+  );
+
   const logoutItem = h(
     'button',
     {
@@ -132,6 +144,7 @@ export function createAccountMenu({
       adminItem ? h('li', { attrs: { role: 'none' } }, adminItem) : null,
       h('li', { attrs: { role: 'none' } }, configItem),
       h('li', { attrs: { role: 'none' } }, helpItem),
+      h('li', { attrs: { role: 'none' } }, themeItem),
       h('li', { class: 'ps-account-menu__divider', attrs: { role: 'none' } }),
       h('li', { attrs: { role: 'none' } }, logoutItem),
     ),
@@ -153,7 +166,9 @@ export function createAccountMenu({
   let previousOverflow = '';
 
   function menuItems() {
-    return Array.from(menu.querySelectorAll('.ps-account-menu__item'));
+    return Array.from(
+      menu.querySelectorAll('.ps-account-menu__item, .ps-account-menu__theme-toggle'),
+    );
   }
 
   function positionPanel() {
@@ -171,6 +186,7 @@ export function createAccountMenu({
     }
 
     isOpen = true;
+    themeToggle.sync();
     const sheet = isMobileSheet();
 
     if (sheet) {
