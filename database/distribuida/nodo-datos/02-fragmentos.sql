@@ -116,6 +116,32 @@ CREATE TABLE HISTORIA_VISTA (
         (historia_id, vista_en)
 ) ENGINE=InnoDB;;
 
+-- MENSAJE_LECTURA   dueno = mascota_id
+--   la PK original (mensaje_id, mascota_id) ya incluye mascota_id: no cambia
+-- ---------------------------------------------------------------------------
+
+CREATE TABLE MENSAJE_LECTURA (
+    mensaje_id BIGINT UNSIGNED NOT NULL,
+    mascota_id BIGINT UNSIGNED NOT NULL,
+    leido_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT pk_mensaje_lectura
+        PRIMARY KEY (mensaje_id, mascota_id),
+    CONSTRAINT fk_ml_mensaje
+        FOREIGN KEY (mensaje_id)
+        REFERENCES MENSAJE(id)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    CONSTRAINT fk_ml_mascota
+        FOREIGN KEY (mascota_id)
+        REFERENCES MASCOTA(id)
+        ON UPDATE CASCADE
+        ON DELETE CASCADE,
+    INDEX idx_ml_mascota
+        (mascota_id),
+    INDEX idx_ml_mensaje_leido
+        (mensaje_id, leido_en)
+) ENGINE=InnoDB;;
+
 -- NOTIFICACION   dueno = destinatario_id
 --   PRIMARY KEY (id)  ->  PRIMARY KEY (id, destinatario_id)
 -- ---------------------------------------------------------------------------
@@ -134,11 +160,16 @@ CREATE TABLE NOTIFICACION (
         'RESPUESTA',
         'MENCION',
         'REPOST',
-        'MENSAJE'
+        'MENSAJE',
+        'RESPUESTA_HISTORIA',
+        'APELACION',
+        'SOPORTE'
     ) NOT NULL,
     publicacion_id BIGINT UNSIGNED NULL,
     comentario_id BIGINT UNSIGNED NULL,
     historia_id BIGINT UNSIGNED NULL,
+    conversacion_id BIGINT UNSIGNED NULL,
+    mensaje_id BIGINT UNSIGNED NULL,
     leida_en DATETIME NULL,
     creado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT pk_notificacion
@@ -168,6 +199,16 @@ CREATE TABLE NOTIFICACION (
         REFERENCES HISTORIA(id)
         ON UPDATE CASCADE
         ON DELETE SET NULL,
+    CONSTRAINT fk_notificacion_conversacion
+        FOREIGN KEY (conversacion_id)
+        REFERENCES CONVERSACION(id)
+        ON UPDATE CASCADE
+        ON DELETE SET NULL,
+    CONSTRAINT fk_notificacion_mensaje
+        FOREIGN KEY (mensaje_id)
+        REFERENCES MENSAJE(id)
+        ON UPDATE CASCADE
+        ON DELETE SET NULL,
     INDEX idx_notificacion_destinatario_creado
         (destinatario_id, creado_en),
     INDEX idx_notificacion_no_leida
@@ -179,5 +220,9 @@ CREATE TABLE NOTIFICACION (
     INDEX idx_notificacion_comentario
         (comentario_id),
     INDEX idx_notificacion_historia
-        (historia_id)
+        (historia_id),
+    INDEX idx_notificacion_conversacion
+        (conversacion_id),
+    INDEX idx_notificacion_mensaje
+        (mensaje_id)
 ) ENGINE=InnoDB;;

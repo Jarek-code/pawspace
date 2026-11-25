@@ -4,6 +4,7 @@
 --     replicate-ignore-table = pawspace.ME_GUSTA_COMENTARIO
 --     replicate-ignore-table = pawspace.ME_GUSTA_HISTORIA
 --     replicate-ignore-table = pawspace.HISTORIA_VISTA
+--     replicate-ignore-table = pawspace.MENSAJE_LECTURA
 --     replicate-ignore-table = pawspace.NOTIFICACION
 
 -- Arranca desde el principio del binlog: MASTER_LOG_FILE='' y MASTER_LOG_POS=0.

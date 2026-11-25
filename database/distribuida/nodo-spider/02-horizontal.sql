@@ -202,6 +202,52 @@ SELECT historia_id, mascota_id, vista_en FROM HISTORIA_VISTA_NODO_A
 UNION ALL
 SELECT historia_id, mascota_id, vista_en FROM HISTORIA_VISTA_NODO_B;
 
+-- MENSAJE_LECTURA   (dueno = mascota_id)
+
+-- 1) La tabla de uso normal: particionada por la paridad del dueno.
+--    p0 = MOD(mascota_id,2)=0 -> dn_a    p1 = MOD(mascota_id,2)=1 -> dn_b
+CREATE TABLE MENSAJE_LECTURA (
+    mensaje_id BIGINT UNSIGNED NOT NULL,
+    mascota_id BIGINT UNSIGNED NOT NULL,
+    leido_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT pk_mensaje_lectura
+        PRIMARY KEY (mensaje_id, mascota_id),
+    INDEX idx_ml_mascota
+        (mascota_id),
+    INDEX idx_ml_mensaje_leido
+        (mensaje_id, leido_en)
+) ENGINE=SPIDER
+  COMMENT='wrapper "mysql", table "MENSAJE_LECTURA"'
+PARTITION BY HASH (mascota_id)
+(
+    PARTITION p0 COMMENT = 'srv "dn_a", table "MENSAJE_LECTURA"',
+    PARTITION p1 COMMENT = 'srv "dn_b", table "MENSAJE_LECTURA"'
+);
+
+-- 2) Solo la mitad de dn_a.
+CREATE TABLE MENSAJE_LECTURA_NODO_A (
+    mensaje_id BIGINT UNSIGNED NOT NULL,
+    mascota_id BIGINT UNSIGNED NOT NULL,
+    leido_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (mensaje_id, mascota_id)
+) ENGINE=SPIDER
+  COMMENT='wrapper "mysql", srv "dn_a", table "MENSAJE_LECTURA"';
+
+-- 2) Solo la mitad de dn_b.
+CREATE TABLE MENSAJE_LECTURA_NODO_B (
+    mensaje_id BIGINT UNSIGNED NOT NULL,
+    mascota_id BIGINT UNSIGNED NOT NULL,
+    leido_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (mensaje_id, mascota_id)
+) ENGINE=SPIDER
+  COMMENT='wrapper "mysql", srv "dn_b", table "MENSAJE_LECTURA"';
+
+-- 3) La tabla original reconstruida.
+CREATE OR REPLACE VIEW MENSAJE_LECTURA_GLOBAL AS
+SELECT mensaje_id, mascota_id, leido_en FROM MENSAJE_LECTURA_NODO_A
+UNION ALL
+SELECT mensaje_id, mascota_id, leido_en FROM MENSAJE_LECTURA_NODO_B;
+
 -- NOTIFICACION   (dueno = destinatario_id)
 
 -- 1) La tabla de uso normal: particionada por la paridad del dueno.
@@ -220,11 +266,16 @@ CREATE TABLE NOTIFICACION (
         'RESPUESTA',
         'MENCION',
         'REPOST',
-        'MENSAJE'
+        'MENSAJE',
+        'RESPUESTA_HISTORIA',
+        'APELACION',
+        'SOPORTE'
     ) NOT NULL,
     publicacion_id BIGINT UNSIGNED NULL,
     comentario_id BIGINT UNSIGNED NULL,
     historia_id BIGINT UNSIGNED NULL,
+    conversacion_id BIGINT UNSIGNED NULL,
+    mensaje_id BIGINT UNSIGNED NULL,
     leida_en DATETIME NULL,
     creado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT pk_notificacion
@@ -240,7 +291,11 @@ CREATE TABLE NOTIFICACION (
     INDEX idx_notificacion_comentario
         (comentario_id),
     INDEX idx_notificacion_historia
-        (historia_id)
+        (historia_id),
+    INDEX idx_notificacion_conversacion
+        (conversacion_id),
+    INDEX idx_notificacion_mensaje
+        (mensaje_id)
 ) ENGINE=SPIDER
   COMMENT='wrapper "mysql", table "NOTIFICACION"'
 PARTITION BY HASH (destinatario_id)
@@ -264,11 +319,16 @@ CREATE TABLE NOTIFICACION_NODO_A (
         'RESPUESTA',
         'MENCION',
         'REPOST',
-        'MENSAJE'
+        'MENSAJE',
+        'RESPUESTA_HISTORIA',
+        'APELACION',
+        'SOPORTE'
     ) NOT NULL,
     publicacion_id BIGINT UNSIGNED NULL,
     comentario_id BIGINT UNSIGNED NULL,
     historia_id BIGINT UNSIGNED NULL,
+    conversacion_id BIGINT UNSIGNED NULL,
+    mensaje_id BIGINT UNSIGNED NULL,
     leida_en DATETIME NULL,
     creado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id, destinatario_id)
@@ -290,11 +350,16 @@ CREATE TABLE NOTIFICACION_NODO_B (
         'RESPUESTA',
         'MENCION',
         'REPOST',
-        'MENSAJE'
+        'MENSAJE',
+        'RESPUESTA_HISTORIA',
+        'APELACION',
+        'SOPORTE'
     ) NOT NULL,
     publicacion_id BIGINT UNSIGNED NULL,
     comentario_id BIGINT UNSIGNED NULL,
     historia_id BIGINT UNSIGNED NULL,
+    conversacion_id BIGINT UNSIGNED NULL,
+    mensaje_id BIGINT UNSIGNED NULL,
     leida_en DATETIME NULL,
     creado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (id, destinatario_id)
@@ -303,6 +368,6 @@ CREATE TABLE NOTIFICACION_NODO_B (
 
 -- 3) La tabla original reconstruida.
 CREATE OR REPLACE VIEW NOTIFICACION_GLOBAL AS
-SELECT id, destinatario_id, actor_id, tipo, publicacion_id, comentario_id, historia_id, leida_en, creado_en FROM NOTIFICACION_NODO_A
+SELECT id, destinatario_id, actor_id, tipo, publicacion_id, comentario_id, historia_id, conversacion_id, mensaje_id, leida_en, creado_en FROM NOTIFICACION_NODO_A
 UNION ALL
-SELECT id, destinatario_id, actor_id, tipo, publicacion_id, comentario_id, historia_id, leida_en, creado_en FROM NOTIFICACION_NODO_B;
+SELECT id, destinatario_id, actor_id, tipo, publicacion_id, comentario_id, historia_id, conversacion_id, mensaje_id, leida_en, creado_en FROM NOTIFICACION_NODO_B;
