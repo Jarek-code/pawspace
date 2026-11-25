@@ -1,6 +1,7 @@
 from fastapi import HTTPException, status, Request
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
+from sqlalchemy import text
 from src.config.database import SessionLocal
 from src.models.schema_c_usuario import UsuarioCrear, UserLogin
 from src.services.check_this import Check_This, Auten_Token, Cuenta
@@ -91,6 +92,24 @@ class UsuarioControl:
         #Si todo sale bien se crea un nuevo token para el usuario
         nueo_token = Auten_Token.crea_token(usuario_id, sesion_id)
 
+         # Guardar la sesion en MariaDB: asi la mascota activa se persiste
+        # en SESION y el token del login no necesita cambiar nunca.
+        db.execute(text("""
+            INSERT INTO SESION 
+            (id, usuario_id, mascota_id, iniciada_en,ultima_actividad_en, expira_en)
+            VALUES (:sid, :uid, NULL, NOW(), NOW(),
+                    DATE_ADD(NOW(), INTERVAL 7 DAY))
+            ON DUPLICATE KEY UPDATE
+                ultima_actividad_en = NOW(),
+                expira_en = DATE_ADD(NOW(), INTERVAL 7 DAY),
+                cerrada_en = NULL,
+                cerrada_por = NULL
+            """), {
+            "sid": sesion_id,
+            "uid": usuario_id,
+            })
+        db.commit()
+
         #Y te devuelve el token y que tipo de token es
         return{
             "token_acceso": nueo_token,
@@ -130,6 +149,7 @@ class UsuarioControl:
             acciones=[Accion.CUENTA_ACCEDER, Accion.CUENTA_FALLAR],
             limite=200,
         )
+        
         sesiones = await logs.sesiones_de_actor(usuario_id, limite=200)
 
         accesos = [e for e in eventos if e.get("accion") == Accion.CUENTA_ACCEDER.value]

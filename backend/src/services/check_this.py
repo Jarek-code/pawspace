@@ -1,6 +1,7 @@
+import uuid
 import jwt
 from sqlalchemy.orm import Session
-from sqlalchemy import text
+from sqlalchemy import select, text
 #Se  importan las librerias necesarias para el archivo y se asigna una variable para encriptar a contrasena
 from passlib.context import CryptContext
 from datetime import datetime, timedelta, timezone
@@ -56,10 +57,15 @@ class Cuenta:
     @staticmethod
     def dame_cuenta(db: Session, usuario_id: int):
 
-        consulta = text(
-            """SELECT id, nombre, email, activo, creado_en, actualizado_en
-            FROM USUARIO
-            WHERE id = :id""")
+        consulta = (select(
+        Usuario.id,
+        Usuario.nombre,
+        Usuario.email,
+        Usuario.activo,
+        Usuario.creado_en,
+        Usuario.actualizado_en,
+        ).where(Usuario.id == usuario_id)
+)
 
         return db.execute(consulta, {"id": usuario_id}).fetchone()
 
@@ -81,11 +87,16 @@ class Auten_Token :
     #este metodo le pide a la vase de datos que le de la contrasena (ya con hash)
     def dame_contra(db: Session, email: str):
 
-        consulta = text(
-            """SELECT u.id, uc.contrasena_hash, u.activo, u.actualizado_en
-            FROM USUARIO u
-            INNER JOIN USUARIO_CREDENCIALES uc ON u.id = uc.usuario_id
-            WHERE u.email = :email""")
+        consulta = (select(
+        Usuario.id,
+        Usuario_Credenciales.contrasena_hash,
+        Usuario.activo,
+        Usuario.actualizado_en,
+        ).select_from(Usuario)
+        .join(
+        Usuario_Credenciales,
+        Usuario.id == Usuario_Credenciales.usuario_id,
+        ).where(Usuario.email == email))
 
         return db.execute(consulta,{"email": email}).fetchone()
 

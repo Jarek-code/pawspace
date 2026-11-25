@@ -5,6 +5,7 @@ from src.config.database import SessionLocal
 from src.models.USUARIO import Usuario
 from src.routes.usuario_ruta import router as usuario_ruta
 from src.routes.mascota_ruta import router as mascota_ruta
+from src.routes.publicacion_ruta import router as publicacion_ruta
 from src.routes.adjuntos import router as adjunto
 from pawspace_logs import ClienteLogs
 from pawspace_logs.middleware import MiddlewareLogs
@@ -54,9 +55,12 @@ app.add_middleware(
 #hace que las rutas de usuario_ruta se puedan visualizar en el main
 app.include_router(usuario_ruta)
 
+app.include_router(mascota_ruta)
+
+app.include_router(publicacion_ruta)
+
 app.include_router(adjunto)
 
-app.include_router(mascota_ruta)
 
 app.add_middleware(MiddlewareLogs,cliente=logs, excluir=("/health", "/docs", "/redoc", "/openapi.json"))
 
