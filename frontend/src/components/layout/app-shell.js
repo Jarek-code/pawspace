@@ -50,8 +50,8 @@ export function createAppShell({
   const topbarAccount = account ? createAccountMenu({ pet, account, onLogout }) : null;
 
   const brand = h(
-    'div',
-    { class: 'ps-shell__brand' },
+    'a',
+    { class: 'ps-shell__brand', href: '/inicio' },
     h('img', { class: 'ps-shell__logo', src: logoUrl, alt: '', width: 32, height: 42 }),
     h('span', { class: 'ps-shell__wordmark', text: 'PawSpace' }),
   );

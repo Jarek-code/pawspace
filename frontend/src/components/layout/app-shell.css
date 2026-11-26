@@ -37,6 +37,8 @@
   align-items: center;
   gap: var(--ps-space-2);
   padding: 0 var(--ps-space-2);
+  color: inherit;
+  text-decoration: none;
 }
 
 .ps-shell__logo {

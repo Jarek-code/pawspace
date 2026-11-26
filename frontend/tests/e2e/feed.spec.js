@@ -103,6 +103,30 @@ test.describe('Feed', () => {
   });
 });
 
+test.describe('Marca PawSpace', () => {
+  test('escritorio: el logo del sidebar lleva al inicio', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await login(page);
+
+    await page.getByRole('link', { name: 'Explorar' }).first().click();
+    await expect(page).toHaveURL('/explorar');
+
+    await page.locator('.ps-sidebar .ps-shell__brand').click();
+    await expect(page).toHaveURL('/inicio');
+  });
+
+  test('móvil: el logo de la topbar lleva al inicio', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await login(page);
+
+    await page.goto('/mensajes');
+    await expect(page).toHaveURL('/mensajes');
+
+    await page.locator('.ps-topbar__mobile-brand .ps-shell__brand').click();
+    await expect(page).toHaveURL('/inicio');
+  });
+});
+
 test.describe('Crear publicación', () => {
   test('escritorio: modal D14 publica y vuelve al feed', async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
