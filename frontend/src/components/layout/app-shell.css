@@ -164,6 +164,25 @@
   flex: 1;
 }
 
+.ps-sidebar__account-info {
+  align-items: flex-start;
+  padding: var(--ps-space-1);
+  border: 0;
+  border-radius: var(--ps-radius-sm);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.ps-sidebar__account-info:hover .ps-sidebar__account-name {
+  text-decoration: underline;
+}
+
+.ps-sidebar__account-info:focus-visible {
+  outline: 2px solid var(--ps-color-sun-400);
+  outline-offset: 2px;
+}
+
 .ps-sidebar__pet-name,
 .ps-sidebar__account-name {
   color: var(--ps-color-cream-50);

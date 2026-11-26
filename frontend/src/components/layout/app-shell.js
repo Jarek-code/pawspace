@@ -355,17 +355,25 @@ function renderSidebarAccount(pet, account, onLogout) {
 
   const menu = createAccountMenu({ pet, account, onLogout });
 
-  return h(
-    'div',
-    { class: 'ps-sidebar__account' },
-    menu.element,
-    h(
-      'div',
-      { class: 'ps-sidebar__account-info' },
-      h('span', { class: 'ps-sidebar__account-name', text: account.nombre }),
-      h('span', { class: 'ps-sidebar__account-email', text: account.email }),
-    ),
+  const info = h(
+    'button',
+    {
+      class: 'ps-sidebar__account-info',
+      type: 'button',
+      attrs: {
+        'aria-haspopup': 'menu',
+        'aria-expanded': 'false',
+        'aria-controls': menu.menuId,
+        'aria-label': `Abrir menú de cuenta de ${account.nombre}`,
+      },
+    },
+    h('span', { class: 'ps-sidebar__account-name', text: account.nombre }),
+    h('span', { class: 'ps-sidebar__account-email', text: account.email }),
   );
+
+  menu.bindTrigger(info);
+
+  return h('div', { class: 'ps-sidebar__account' }, menu.element, info);
 }
 
 function renderSearch(onSearch) {

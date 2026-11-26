@@ -164,6 +164,34 @@ export function createAccountMenu({
 
   let isOpen = false;
   let previousOverflow = '';
+  let lastTrigger = trigger;
+  const extraTriggers = [];
+
+  function triggersContain(node) {
+    return trigger.contains(node) || extraTriggers.some((item) => item.contains(node));
+  }
+
+  function syncExpanded(next) {
+    for (const node of element.ownerDocument.querySelectorAll(`[aria-controls="${menuId}"]`)) {
+      node.setAttribute('aria-expanded', String(next));
+    }
+  }
+
+  function bindTrigger(node) {
+    if (!node || extraTriggers.includes(node)) {
+      return;
+    }
+
+    extraTriggers.push(node);
+    node.addEventListener('click', () => {
+      lastTrigger = node;
+      if (isOpen) {
+        close();
+      } else {
+        open();
+      }
+    });
+  }
 
   function menuItems() {
     return Array.from(
@@ -196,7 +224,7 @@ export function createAccountMenu({
 
     panel.classList.add('is-open');
     backdrop.classList.add('is-open');
-    trigger.setAttribute('aria-expanded', 'true');
+    syncExpanded(true);
 
     document.body.append(backdrop, panel);
 
@@ -228,7 +256,7 @@ export function createAccountMenu({
     isOpen = false;
     panel.classList.remove('is-open', 'is-sheet');
     backdrop.classList.remove('is-open', 'is-sheet');
-    trigger.setAttribute('aria-expanded', 'false');
+    syncExpanded(false);
     document.body.style.overflow = previousOverflow;
     document.removeEventListener('pointerdown', onPointerDown, true);
     document.removeEventListener('keydown', onDocumentKeyDown);
@@ -240,12 +268,12 @@ export function createAccountMenu({
     element.append(backdrop, panel);
 
     if (returnFocus) {
-      trigger.focus({ preventScroll: true });
+      lastTrigger.focus({ preventScroll: true });
     }
   }
 
   function onPointerDown(event) {
-    if (!panel.contains(event.target) && !trigger.contains(event.target)) {
+    if (!panel.contains(event.target) && !triggersContain(event.target)) {
       close({ returnFocus: false });
     }
   }
@@ -286,8 +314,15 @@ export function createAccountMenu({
     }
   }
 
-  trigger.addEventListener('click', () => (isOpen ? close() : open()));
+  trigger.addEventListener('click', () => {
+    lastTrigger = trigger;
+    if (isOpen) {
+      close();
+    } else {
+      open();
+    }
+  });
   panel.addEventListener('keydown', onPanelKeyDown);
 
-  return { element, trigger, open, close };
+  return { element, trigger, menuId, open, close, bindTrigger };
 }
