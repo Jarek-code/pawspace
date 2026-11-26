@@ -48,3 +48,7 @@ export async function addComment(id, { texto, mascota }) {
 export async function toggleLike(id) {
   return post(`/feed/${encodeURIComponent(id)}/me-gusta`);
 }
+
+export async function repostPost(id, { mascota }) {
+  return post(`/feed/${encodeURIComponent(id)}/republicar`, { mascota });
+}

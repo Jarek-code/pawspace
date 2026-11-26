@@ -5,6 +5,9 @@ import downloadRaw from 'lucide-static/icons/download.svg?raw';
 import bellOffRaw from 'lucide-static/icons/bell-off.svg?raw';
 import checkRaw from 'lucide-static/icons/check.svg?raw';
 import checkCheckRaw from 'lucide-static/icons/check-check.svg?raw';
+import copyRaw from 'lucide-static/icons/copy.svg?raw';
+import linkRaw from 'lucide-static/icons/link.svg?raw';
+import repeat2Raw from 'lucide-static/icons/repeat-2.svg?raw';
 import eyeOffRaw from 'lucide-static/icons/eye-off.svg?raw';
 import eyeRaw from 'lucide-static/icons/eye.svg?raw';
 import flagRaw from 'lucide-static/icons/flag.svg?raw';
@@ -83,6 +86,9 @@ const ICONS = {
   'bell-off': bellOffRaw,
   check: checkRaw,
   'check-check': checkCheckRaw,
+  copy: copyRaw,
+  link: linkRaw,
+  'repeat-2': repeat2Raw,
   eye: eyeRaw,
   'eye-off': eyeOffRaw,
   flag: flagRaw,

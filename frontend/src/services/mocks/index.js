@@ -859,6 +859,44 @@ function createFeedPost({ body }) {
   return { publicacion: post };
 }
 
+function repostFeedPost({ path, body }) {
+  const id = path.split('/')[2];
+  const original = findPost(id);
+
+  if (!original) {
+    throw new ApiError('Esta publicación ya no está disponible.', 404, {
+      detail: 'Publicación inexistente',
+    });
+  }
+
+  postCounter += 1;
+  const origen = {
+    id: original.id,
+    mascota: original.mascota,
+    tiempo: original.tiempo,
+    texto: original.texto,
+    media: original.media,
+  };
+  const post = {
+    id: `post_repost_${Date.now()}_${postCounter}`,
+    mascota: body?.mascota || { nombre: 'Tu mascota', handle: '@mascota' },
+    tiempo: 'Ahora',
+    texto: '',
+    media: null,
+    likes: 0,
+    comentarios: 0,
+    meGusta: false,
+    guardado: false,
+    publicacionOrigenId: original.id,
+    repostDe: origen,
+  };
+
+  feedState.unshift(post);
+  commentsState[post.id] = [];
+
+  return { publicacion: post, origen };
+}
+
 function feedPost({ path }) {
   const id = path.split('/')[2];
   const post = findPost(id);
@@ -965,6 +1003,11 @@ const routes = [
     method: 'POST',
     pattern: /^\/feed\/[^/]+\/me-gusta$/,
     handler: togglePostLike,
+  },
+  {
+    method: 'POST',
+    pattern: /^\/feed\/[^/]+\/republicar$/,
+    handler: repostFeedPost,
   },
   {
     method: 'GET',

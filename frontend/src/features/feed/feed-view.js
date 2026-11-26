@@ -5,6 +5,7 @@ import { createStoryRow } from '@/components/feed/story-ring.js';
 import { createButton } from '@/components/primitives/button.js';
 import { createEmptyState } from '@/components/primitives/empty-state.js';
 import { createSkeleton } from '@/components/primitives/skeleton.js';
+import { openShareDialog } from '@/components/feed/share-dialog.js';
 import { h } from '@/lib/dom.js';
 import { toggleLike } from '@/services/feed.js';
 
@@ -38,6 +39,7 @@ export function createFeedContent({
   onCompose = null,
   onExplore = null,
   onOpenStory = null,
+  onReposted = null,
 } = {}) {
   if (!data.publicaciones.length) {
     return createEmptyState({
@@ -64,6 +66,7 @@ export function createFeedContent({
         onLike: () => {
           toggleLike(post.id).catch(() => {});
         },
+        onShare: () => openShareDialog({ post, pet, onReposted }),
       }).element,
   );
 

@@ -1,6 +1,7 @@
 import { createCommentItem } from '@/components/feed/comment-item.js';
 import { createPostCard } from '@/components/feed/post-card.js';
 import { createRail } from '@/components/feed/rail.js';
+import { openShareDialog } from '@/components/feed/share-dialog.js';
 import { createAppShell } from '@/components/layout/app-shell.js';
 import { createButton } from '@/components/primitives/button.js';
 import { createEmptyState } from '@/components/primitives/empty-state.js';
@@ -131,6 +132,7 @@ function createDetail({ detail, pet, router }) {
     onLike: () => {
       toggleLike(publicacion.id).catch(() => {});
     },
+    onShare: () => openShareDialog({ post: publicacion, pet }),
   });
 
   const form = h('form', { class: 'ps-comment-form' }, input, send.element);

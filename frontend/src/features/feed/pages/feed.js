@@ -45,21 +45,34 @@ export function createPage({ router } = {}) {
 
   loadFeed()
     .then((data) => {
-      rail.replaceChildren(
-        ...createRail({ pet, ...data, onChangePet: () => router.navigate('/elegir-mascota') }),
-      );
-      content.replaceChildren(
-        createFeedContent({
-          pet,
-          data,
-          onCompose: () => router.navigate('/publicar'),
-          onOpenPost: (post) => router.navigate(`/publicacion/${post.id}`),
-          onOpenStory: (story) =>
-            router.navigate(
-              `/historias/${story.mascota.handle.replace(/^@/, '')}?desde=${encodeURIComponent('/inicio')}`,
-            ),
-        }),
-      );
+      const renderFeed = (feedData) => {
+        rail.replaceChildren(
+          ...createRail({
+            pet,
+            ...feedData,
+            onChangePet: () => router.navigate('/elegir-mascota'),
+          }),
+        );
+        content.replaceChildren(
+          createFeedContent({
+            pet,
+            data: feedData,
+            onCompose: () => router.navigate('/publicar'),
+            onOpenPost: (post) => router.navigate(`/publicacion/${post.id}`),
+            onOpenStory: (story) =>
+              router.navigate(
+                `/historias/${story.mascota.handle.replace(/^@/, '')}?desde=${encodeURIComponent('/inicio')}`,
+              ),
+            onReposted: () => {
+              loadFeed()
+                .then(renderFeed)
+                .catch(() => {});
+            },
+          }),
+        );
+      };
+
+      renderFeed(data);
     })
     .catch(() => {
       rail.replaceChildren();

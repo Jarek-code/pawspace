@@ -35,29 +35,67 @@ export function createPostCard({
     ),
   );
 
+  const repostedBanner = post.repostDe
+    ? h(
+        'p',
+        { class: 'ps-post-card__reposted' },
+        createIcon('repeat-2', { size: 16 }),
+        h('span', { text: `${post.mascota.nombre} republicó` }),
+      )
+    : null;
+
+  const quote = post.repostDe
+    ? h(
+        'div',
+        { class: 'ps-post-card__quote' },
+        h(
+          'div',
+          { class: 'ps-post-card__quote-author' },
+          createAvatar({ name: post.repostDe.mascota?.nombre || '', size: 'sm' }),
+          h('span', {
+            class: 'ps-post-card__quote-name',
+            text: `${post.repostDe.mascota?.nombre || ''} · ${post.repostDe.mascota?.handle || ''}`,
+          }),
+        ),
+        post.repostDe.texto
+          ? h('p', { class: 'ps-post-card__text', text: post.repostDe.texto })
+          : null,
+        post.repostDe.media?.caption
+          ? h(
+              'span',
+              { class: 'ps-post-card__quote-media' },
+              createIcon('image', { size: 18 }),
+              h('span', { text: post.repostDe.media.caption }),
+            )
+          : null,
+      )
+    : null;
+
   const body = h(
     'button',
     { class: 'ps-post-card__body', type: 'button' },
     h('span', { class: 'ps-sr-only', text: `Abrir publicación de ${post.mascota.nombre}: ` }),
-    h('p', { class: 'ps-post-card__text', text: post.texto }),
+    post.texto ? h('p', { class: 'ps-post-card__text', text: post.texto }) : null,
+    quote,
   );
 
-  const media = post.media
-    ? h(
-        'button',
-        {
-          class: 'ps-post-card__media',
-          type: 'button',
-        },
-        h('span', { class: 'ps-sr-only', text: `Abrir publicación de ${post.mascota.nombre}: ` }),
-        h(
-          'span',
-          { class: 'ps-post-card__media-icon', 'aria-hidden': 'true' },
-          createIcon('image', { size: 24 }),
-        ),
-        h('span', { class: 'ps-post-card__media-caption', text: post.media.caption }),
-      )
-    : null;
+  const media =
+    !post.repostDe && post.media
+      ? h(
+          'button',
+          {
+            class: 'ps-post-card__media',
+            type: 'button',
+          },
+          h('span', { class: 'ps-sr-only', text: `Abrir publicación de ${post.mascota.nombre}: ` }),
+          h(
+            'span',
+            { class: 'ps-post-card__media-icon', 'aria-hidden': 'true' },
+            createIcon('image', { size: 24 }),
+          ),
+          h('span', { class: 'ps-post-card__media-caption', text: post.media.caption }),
+        )
+      : null;
 
   const like = createAction({
     icon: 'heart',
@@ -108,6 +146,7 @@ export function createPostCard({
   const element = h(
     'article',
     { class: 'ps-post-card', dataset: { postId: post.id || '' } },
+    repostedBanner,
     header,
     body,
     media,
