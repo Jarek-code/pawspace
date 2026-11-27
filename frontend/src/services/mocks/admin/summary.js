@@ -26,6 +26,15 @@ export function adminSummaryPayload() {
   const activeTickets = tickets.filter((ticket) => ACTIVE_TICKET_STATES.has(ticket.estado));
   const openTickets = activeTickets.filter((ticket) => ticket.estado === 'ABIERTA');
   const pendingAppeals = appeals.filter((appeal) => appeal.estado === 'PENDIENTE');
+  const total =
+    pendingReports.length + reviewReports.length + activeTickets.length + pendingAppeals.length;
+  const nuevasHoy =
+    pendingReports.filter((report) => report.minutos < 1440).length +
+    pendingAppeals.filter((appeal) => appeal.nueva).length +
+    openTickets.length;
+  const vencen24h =
+    pendingReports.filter((report) => report.minutos >= 1440).length +
+    reviewReports.filter((report) => report.minutos >= 1440).length;
 
   return {
     cuenta: {
@@ -33,6 +42,7 @@ export function adminSummaryPayload() {
       email: session.email || 'mariana.ortega@pawspace.com',
       rol: 'Administradora',
     },
+    resumen: { total, nuevasHoy, vencen24h },
     metricas: {
       reportesPendientes: {
         valor: pendingReports.length,

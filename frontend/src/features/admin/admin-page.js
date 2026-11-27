@@ -11,7 +11,14 @@ import { loadAdminSummary } from '@/services/admin.js';
  * Carga el resumen una vez para alimentar los badges del shell y delega el
  * contenido a cada sección. El guard ya comprobó la sesión antes de llegar.
  */
-export function mountAdminPage({ active, title, subtitle, router, createContent }) {
+export function mountAdminPage({
+  active,
+  title,
+  subtitle,
+  hidePageHeading = false,
+  router,
+  createContent,
+}) {
   const session = currentSession();
   const account = {
     ...accountFromEmail(session.email),
@@ -22,6 +29,7 @@ export function mountAdminPage({ active, title, subtitle, router, createContent 
     active,
     title,
     subtitle,
+    hidePageHeading,
     account,
     onLogout: () => {
       logout();
@@ -86,16 +94,9 @@ function createAdminLoading() {
     'div',
     { class: 'ps-admin-loading', attrs: { role: 'status', 'aria-live': 'polite' } },
     h('span', { class: 'ps-sr-only', text: 'Cargando panel de administración…' }),
-    h(
-      'div',
-      { class: 'ps-admin-loading__metrics', 'aria-hidden': 'true' },
-      Array.from({ length: 4 }, () => h('div', { class: 'ps-admin-loading__card' })),
-    ),
-    h(
-      'div',
-      { class: 'ps-admin-loading__panels', 'aria-hidden': 'true' },
-      h('div', { class: 'ps-admin-loading__panel' }),
-      h('div', { class: 'ps-admin-loading__panel' }),
-    ),
+    h('div', { class: 'ps-admin-loading__masthead', 'aria-hidden': 'true' }),
+    h('div', { class: 'ps-admin-loading__pulse', 'aria-hidden': 'true' }),
+    h('div', { class: 'ps-admin-loading__queue', 'aria-hidden': 'true' }),
+    h('div', { class: 'ps-admin-loading__strip', 'aria-hidden': 'true' }),
   );
 }

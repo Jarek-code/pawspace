@@ -1,20 +1,19 @@
 import { createAdminStatus } from '@/components/admin/admin-status.js';
-import { createMetricCard } from '@/components/admin/metric-card.js';
-import { createAvatar } from '@/components/primitives/avatar.js';
 import { createEmptyState } from '@/components/primitives/empty-state.js';
 import { h } from '@/lib/dom.js';
 import { mountAdminPage } from '@/features/admin/admin-page.js';
 
 /**
- * D34 / M27 — Panel de administración.
- * Métricas del día, reportes y tickets recientes, apelaciones pendientes y
- * actividad. La acción principal es revisar lo pendiente.
+ * D34 / M27 — Resumen de administración.
+ * Masthead editorial, pulso por tipo, cola priorizada y movimiento del día.
+ * La acción principal es revisar lo pendiente.
  */
 export function createPage({ router } = {}) {
   return mountAdminPage({
     active: 'resumen',
     title: 'Administración',
     subtitle: 'Reportes, soporte y contenido de PawSpace.',
+    hidePageHeading: true,
     router,
     createContent: ({ data }) => createDashboard(data),
   });
@@ -22,140 +21,231 @@ export function createPage({ router } = {}) {
 
 function createDashboard(data) {
   const { metricas } = data;
+  const entries = [
+    {
+      key: 'reporte',
+      label: 'Reportes',
+      value: metricas.reportesPendientes.valor,
+      note: metricas.reportesPendientes.nota,
+    },
+    {
+      key: 'revision',
+      label: 'En revisión',
+      value: metricas.enRevision.valor,
+      note: metricas.enRevision.nota,
+    },
+    {
+      key: 'soporte',
+      label: 'Soporte',
+      value: metricas.ticketsAbiertos.valor,
+      note: metricas.ticketsAbiertos.nota,
+    },
+    {
+      key: 'apelaciones',
+      label: 'Apelaciones',
+      value: metricas.apelacionesPendientes.valor,
+      note: metricas.apelacionesPendientes.nota,
+    },
+  ];
+  const total = entries.reduce((sum, entry) => sum + entry.value, 0);
+  const nuevasHoy = data.resumen?.nuevasHoy ?? 0;
+  const vencen24h = data.resumen?.vencen24h ?? 0;
+  const queue = buildQueue(data);
 
   return h(
     'div',
     { class: 'ps-admin-dashboard' },
+    createMasthead({ total, nuevasHoy, vencen24h }),
+    createPulse(entries),
+    createQueue(queue),
+    createActivityStrip(data.actividad, data.sistema),
+  );
+}
+
+function createMasthead({ total, nuevasHoy, vencen24h }) {
+  return h(
+    'header',
+    { class: 'ps-admin-dashboard__masthead' },
     h(
-      'section',
-      { class: 'ps-admin-metrics', attrs: { 'aria-label': 'Métricas del panel' } },
-      createMetricCard({
-        label: 'Reportes pendientes',
-        value: metricas.reportesPendientes.valor,
-        note: metricas.reportesPendientes.nota,
-        icon: 'flag',
-        tone: 'sun',
-      }),
-      createMetricCard({
-        label: 'En revisión',
-        value: metricas.enRevision.valor,
-        note: metricas.enRevision.nota,
-        icon: 'eye',
-        tone: 'forest',
-      }),
-      createMetricCard({
-        label: 'Tickets abiertos',
-        value: metricas.ticketsAbiertos.valor,
-        note: metricas.ticketsAbiertos.nota,
-        icon: 'headset',
-        tone: 'coral',
-      }),
-      createMetricCard({
-        label: 'Apelaciones',
-        value: metricas.apelacionesPendientes.valor,
-        note: metricas.apelacionesPendientes.nota,
-        icon: 'scale',
-        tone: 'danger',
-      }),
+      'div',
+      { class: 'ps-admin-dashboard__masthead-copy' },
+      h('h2', { class: 'ps-admin-dashboard__today', text: 'Hoy' }),
+      h('p', { class: 'ps-admin-dashboard__date', text: todayLabel() }),
     ),
     h(
       'div',
-      { class: 'ps-admin-dashboard__columns ps-admin-dashboard__panels' },
+      { class: 'ps-admin-dashboard__totals' },
+      h(
+        'p',
+        { class: 'ps-admin-dashboard__total' },
+        h('strong', { text: String(total) }),
+        ' asuntos abiertos',
+      ),
+      h('p', {
+        class: 'ps-admin-dashboard__total-meta',
+        text: `${nuevasHoy} llegaron hoy · ${vencen24h} vencen en 24 h`,
+      }),
+    ),
+  );
+}
+
+function createPulse(entries) {
+  const summary = entries.map((entry) => `${entry.value} ${entry.label.toLowerCase()}`).join(', ');
+
+  return h(
+    'section',
+    { class: 'ps-admin-pulse', attrs: { 'aria-labelledby': 'ps-admin-pulse-title' } },
+    h(
+      'div',
+      { class: 'ps-admin-pulse__head' },
+      h('h2', {
+        class: 'ps-admin-pulse__title',
+        id: 'ps-admin-pulse-title',
+        text: 'Pulso por tipo',
+      }),
+      h('p', { class: 'ps-admin-pulse__note', text: '4 colas activas' }),
+    ),
+    h(
+      'div',
+      { class: 'ps-admin-pulse__body' },
       h(
         'div',
-        { class: 'ps-admin-dashboard__main' },
-        createPanel({
-          title: 'Reportes recientes',
-          href: '/admin/reportes',
-          items: data.reportesRecientes.map(reportRow),
-          emptyTitle: 'No hay reportes pendientes',
-          emptyBody: 'Cuando la comunidad reporte algo, aparecerá aquí.',
-        }),
-        createPanel({
-          title: 'Apelaciones pendientes',
-          href: '/admin/apelaciones',
-          actionLabel: 'Ver todas',
-          items: data.apelacionesRecientes.map(appealRow),
-          emptyTitle: 'No hay apelaciones pendientes',
-          emptyBody: 'Las solicitudes de revisión aparecerán aquí.',
-        }),
+        {
+          class: 'ps-admin-pulse__meter',
+          attrs: { role: 'img', 'aria-label': `Pulso por tipo: ${summary}` },
+        },
+        entries.map((entry) =>
+          h('span', {
+            class: `ps-admin-pulse__segment ps-admin-pulse__segment--${entry.key}`,
+            style: { flexGrow: String(entry.value || 0) },
+            'aria-hidden': 'true',
+          }),
+        ),
       ),
       h(
-        'div',
-        { class: 'ps-admin-dashboard__side' },
-        createPanel({
-          title: 'Tickets recientes',
-          href: '/admin/soporte',
-          items: data.ticketsRecientes.map(ticketRow),
-          emptyTitle: 'No hay tickets abiertos',
-          emptyBody: 'Las solicitudes de soporte aparecerán aquí.',
-        }),
-        createActivityPanel(data.actividad),
+        'ul',
+        { class: 'ps-admin-pulse__legend' },
+        entries.map((entry) =>
+          h(
+            'li',
+            { class: 'ps-admin-pulse__legend-item', attrs: { title: entry.note } },
+            h('span', {
+              class: `ps-admin-pulse__dot ps-admin-pulse__dot--${entry.key}`,
+              'aria-hidden': 'true',
+            }),
+            h('span', {
+              class: 'ps-admin-pulse__legend-text',
+              text: `${entry.label} · ${entry.value}`,
+            }),
+          ),
+        ),
       ),
     ),
-    createPriorityPanel(data),
   );
 }
 
-function createPriorityPanel(data) {
-  const items = [
-    ...data.reportesRecientes.slice(0, 2).map(reportRow),
-    ...(data.ticketsRecientes[0] ? [priorityTicketRow(data.ticketsRecientes[0])] : []),
-  ];
-
+function createQueue(items) {
   return h(
     'section',
-    { class: 'ps-admin-panel ps-admin-dashboard__priority' },
+    { class: 'ps-admin-queue', attrs: { 'aria-labelledby': 'ps-admin-queue-title' } },
     h(
       'header',
-      { class: 'ps-admin-panel__head' },
-      h('h2', { class: 'ps-admin-panel__title', text: 'Prioridad de hoy' }),
-      h('a', { class: 'ps-admin-panel__action', href: '/admin/reportes', text: 'Ver todo' }),
-    ),
-    h('ul', { class: 'ps-admin-panel__list' }, items),
-    h('p', {
-      class: 'ps-admin-priority__hint',
-      text: 'Toca un elemento para revisarlo y tomar una decisión.',
-    }),
-  );
-}
-
-function createPanel({ title, href, actionLabel = 'Ver todos', items, emptyTitle, emptyBody }) {
-  return h(
-    'section',
-    { class: 'ps-admin-panel' },
-    h(
-      'header',
-      { class: 'ps-admin-panel__head' },
-      h('h2', { class: 'ps-admin-panel__title', text: title }),
-      href ? h('a', { class: 'ps-admin-panel__action', href, text: actionLabel }) : null,
-    ),
-    items.length
-      ? h('ul', { class: 'ps-admin-panel__list' }, items)
-      : createEmptyState({ icon: 'paw-print', title: emptyTitle, body: emptyBody }),
-  );
-}
-
-function createActivityPanel(items) {
-  return h(
-    'section',
-    { class: 'ps-admin-panel' },
-    h(
-      'header',
-      { class: 'ps-admin-panel__head' },
-      h('h2', { class: 'ps-admin-panel__title', text: 'Actividad de hoy' }),
+      { class: 'ps-admin-queue__head' },
+      h(
+        'div',
+        {},
+        h('h2', {
+          class: 'ps-admin-queue__title',
+          id: 'ps-admin-queue-title',
+          text: 'Cola priorizada',
+        }),
+        h('p', {
+          class: 'ps-admin-queue__note',
+          text: 'Ordenada por urgencia y tiempo de espera',
+        }),
+      ),
+      h('a', { class: 'ps-admin-queue__action', href: '/admin/reportes', text: 'Ver reportes' }),
     ),
     items.length
       ? h(
           'ol',
-          { class: 'ps-admin-activity', attrs: { 'aria-label': 'Actividad de hoy' } },
-          items.map((item) =>
+          { class: 'ps-admin-queue__list' },
+          items.map((item, index) => h('li', {}, createQueueRow(item, index))),
+        )
+      : createEmptyState({
+          icon: 'flag',
+          title: 'No hay pendientes',
+          body: 'Cuando la comunidad reporte algo, aparecerá aquí.',
+        }),
+  );
+}
+
+function createQueueRow(item, index) {
+  return h(
+    'a',
+    { class: 'ps-admin-queue__row', href: item.href },
+    h('span', {
+      class: 'ps-admin-queue__rank',
+      text: String(index + 1).padStart(2, '0'),
+    }),
+    h(
+      'span',
+      { class: 'ps-admin-queue__body' },
+      h('span', {
+        class: `ps-admin-queue__type ps-admin-queue__type--${item.type}`,
+        text: item.typeLabel,
+      }),
+      h('span', { class: 'ps-admin-queue__row-title', text: item.title }),
+      h('span', { class: 'ps-admin-queue__meta', text: item.meta }),
+    ),
+    createAdminStatus(item.estado),
+  );
+}
+
+function createActivityStrip(items, system) {
+  return h(
+    'section',
+    { class: 'ps-admin-activity-strip', attrs: { 'aria-labelledby': 'ps-admin-activity-title' } },
+    h(
+      'header',
+      { class: 'ps-admin-activity-strip__head' },
+      h('h2', {
+        class: 'ps-admin-activity-strip__title',
+        id: 'ps-admin-activity-title',
+        text: 'Movimiento de hoy',
+      }),
+      system
+        ? h(
+            'span',
+            {
+              class: `ps-admin-activity-strip__system${
+                system.estado === 'operativo' ? '' : ' ps-admin-activity-strip__system--attention'
+              }`,
+            },
+            system.title,
+          )
+        : null,
+    ),
+    items.length
+      ? h(
+          'ol',
+          { class: 'ps-admin-activity-strip__list' },
+          items.map((item, index) =>
             h(
               'li',
-              { class: 'ps-admin-activity__item' },
-              h('span', { class: 'ps-admin-activity__time', text: item.hora }),
-              h('span', { class: 'ps-admin-activity__dot', 'aria-hidden': 'true' }),
-              h('span', { class: 'ps-admin-activity__text', text: item.texto }),
+              { class: 'ps-admin-activity-strip__item' },
+              h(
+                'span',
+                { class: 'ps-admin-activity-strip__meta' },
+                h('span', {
+                  class: `ps-admin-activity-strip__dot ps-admin-activity-strip__dot--${
+                    ['forest', 'info', 'warning', 'coral'][index % 4]
+                  }`,
+                  'aria-hidden': 'true',
+                }),
+                h('time', { class: 'ps-admin-activity-strip__time', text: item.hora }),
+              ),
+              h('span', { class: 'ps-admin-activity-strip__text', text: item.texto }),
             ),
           ),
         )
@@ -167,89 +257,73 @@ function createActivityPanel(items) {
   );
 }
 
-function reportRow(report) {
-  return h(
-    'li',
-    {},
-    h(
-      'a',
-      { class: 'ps-admin-row', href: `/admin/reportes/${report.id}` },
-      createAvatar({ name: report.nombre || report.handle, size: 'sm' }),
-      h(
-        'span',
-        { class: 'ps-admin-row__main' },
-        h('span', { class: 'ps-admin-row__title', text: report.titulo }),
-        h('span', {
-          class: 'ps-admin-row__meta',
-          text: `${report.categoriaLabel} · ${report.hace}`,
-        }),
-      ),
-      createAdminStatus(report.estado),
-    ),
-  );
+function buildQueue(data) {
+  const reports = data.reportesRecientes.map((report) => ({
+    key: `reporte-${report.id}`,
+    type: 'reporte',
+    typeLabel: 'REPORTE',
+    title: report.titulo,
+    meta: `${report.categoriaLabel} · ${report.hace}`,
+    estado: report.estado,
+    href: `/admin/reportes/${report.id}`,
+  }));
+  const tickets = data.ticketsRecientes.map((ticket) => ({
+    key: `soporte-${ticket.id}`,
+    type: 'soporte',
+    typeLabel: 'SOPORTE',
+    title: `Ticket #${ticket.id} · ${ticket.persona}`,
+    meta: `${ticket.asunto} · ${ticket.temaLabel}`,
+    estado: ticket.estado,
+    href: `/admin/soporte/${ticket.id}`,
+  }));
+  const appeals = data.apelacionesRecientes.map((appeal) => ({
+    key: `apelacion-${appeal.id}`,
+    type: 'apelacion',
+    typeLabel: 'APELACIÓN',
+    title: `${appeal.nombre} · ${appeal.handle}`,
+    meta: `Apelación del reporte #${appeal.reporteId}`,
+    estado: appeal.estado,
+    href: `/admin/apelaciones/${appeal.id}`,
+  }));
+
+  const preferred = [
+    reports[0],
+    reports[1],
+    tickets[0],
+    appeals[0],
+    reports[2],
+    tickets[1],
+    appeals[1],
+    reports[3],
+    tickets[2],
+    appeals[2],
+  ];
+  const queue = [];
+  const seen = new Set();
+
+  for (const item of preferred) {
+    if (item && !seen.has(item.key) && queue.length < 5) {
+      seen.add(item.key);
+      queue.push(item);
+    }
+  }
+
+  for (const item of [...reports, ...tickets, ...appeals]) {
+    if (!seen.has(item.key) && queue.length < 5) {
+      seen.add(item.key);
+      queue.push(item);
+    }
+  }
+
+  return queue;
 }
 
-function ticketRow(ticket) {
-  return h(
-    'li',
-    {},
-    h(
-      'a',
-      { class: 'ps-admin-row ps-admin-row--ticket', href: `/admin/soporte/${ticket.id}` },
-      h('span', { class: 'ps-admin-row__id', text: `#${ticket.id}` }),
-      h('span', { class: 'ps-admin-row__title', text: ticket.asunto }),
-      h('span', {
-        class: 'ps-admin-row__meta',
-        text: `${ticket.persona} · ${ticket.temaLabel}`,
-      }),
-      createAdminStatus(ticket.estado),
-    ),
-  );
-}
+function todayLabel() {
+  const formatted = new Intl.DateTimeFormat('es-MX', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+  }).format(new Date());
 
-function priorityTicketRow(ticket) {
-  return h(
-    'li',
-    {},
-    h(
-      'a',
-      { class: 'ps-admin-row', href: `/admin/soporte/${ticket.id}` },
-      createAvatar({ name: ticket.persona, size: 'sm' }),
-      h(
-        'span',
-        { class: 'ps-admin-row__main' },
-        h('span', { class: 'ps-admin-row__title', text: `Ticket #${ticket.id}` }),
-        h('span', {
-          class: 'ps-admin-row__meta',
-          text: `${ticket.persona} · ${ticket.asunto}`,
-        }),
-      ),
-      createAdminStatus(ticket.estado),
-    ),
-  );
-}
-
-function appealRow(appeal) {
-  return h(
-    'li',
-    {},
-    h(
-      'a',
-      { class: 'ps-admin-row', href: `/admin/apelaciones/${appeal.id}` },
-      createAvatar({ name: appeal.nombre, size: 'sm' }),
-      h(
-        'span',
-        { class: 'ps-admin-row__main' },
-        h('span', {
-          class: 'ps-admin-row__title',
-          text: `${appeal.nombre} · ${appeal.handle}`,
-        }),
-        h('span', {
-          class: 'ps-admin-row__meta',
-          text: `Apelación del reporte #${appeal.reporteId}`,
-        }),
-      ),
-      createAdminStatus(appeal.estado),
-    ),
-  );
+  return `${formatted.replace(',', '')} · edición de la comunidad`;
 }

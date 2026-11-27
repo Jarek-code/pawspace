@@ -31,6 +31,7 @@ export function createAdminShell({
   active = 'resumen',
   title = 'Administración',
   subtitle = 'Reportes, soporte y contenido de PawSpace.',
+  hidePageHeading = false,
   account = null,
   badges = {},
   system = null,
@@ -227,7 +228,11 @@ export function createAdminShell({
     { id: 'contenido', class: 'ps-admin__content', tabindex: '-1' },
     h(
       'div',
-      { class: 'ps-admin__page-heading' },
+      {
+        class: `ps-admin__page-heading${
+          hidePageHeading ? ' ps-admin__page-heading--visually-hidden' : ''
+        }`,
+      },
       h('h1', { class: 'ps-admin__page-title', text: title }),
       subtitle ? h('p', { class: 'ps-admin__page-subtitle', text: subtitle }) : null,
     ),
