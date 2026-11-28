@@ -88,14 +88,16 @@ class Auten_Token :
     def dame_contra(db: Session, email: str):
 
         consulta = (select(
-        Usuario.id,
-        Usuario_Credenciales.contrasena_hash,
-        Usuario.activo,
-        Usuario.actualizado_en,
-        ).select_from(Usuario)
+            Usuario.id,
+            Usuario_Credenciales.contrasena_hash,
+            Usuario.activo,
+            Usuario.actualizado_en,
+            Usuario.rol,
+        ).
+        select_from(Usuario)
         .join(
-        Usuario_Credenciales,
-        Usuario.id == Usuario_Credenciales.usuario_id,
+            Usuario_Credenciales,
+            Usuario.id == Usuario_Credenciales.usuario_id,
         ).where(Usuario.email == email))
 
         return db.execute(consulta,{"email": email}).fetchone()
@@ -125,7 +127,7 @@ class Auten_Token :
         sesion_doc = {
             "_id": sesion_id,
             "usuario_id" : usuario_id,
-            "iniciado_en" : ahora,
+            "iniciado_en" : rig_now,
             "cerrado_en" : None,
             "duracion_seg": 0,
             "ip_origen" : ip
@@ -134,7 +136,7 @@ class Auten_Token :
 
         evento_doc = {
             "accion":"cuenta.acceder",
-            "ocurrido_en": ahora,
+            "ocurrido_en": rig_now,
             "resultado":"ok",
             "actor":{"id": usuario_id},
             "sesion_id" : sesion_id,

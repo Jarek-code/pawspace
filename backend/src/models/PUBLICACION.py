@@ -14,14 +14,14 @@ class Publicacion(Base):
   
   mascota_id = Column(BIGINT(unsigned=True), nullable=False)
   
-  publicacion_origen_id = Column(BIGINT(unsigned=True), nullable=False)
+  publicacion_origen_id = Column(BIGINT(unsigned=True), nullable=True) 
   
   creado_en = Column(DateTime, nullable=False, server_default=text('CURRENT_TIMESTAMP'))
   
   actualizado_en = Column(DateTime, nullable=False, server_default=text('CURRENT_TIMESTAMP'), 
   server_onupdate=text('CURRENT_TIMESTAMP'))
 
-  eliminado_en = Column(DateTime, nullable=True, server_default=text('CURRENT_TIMESTAMP'))
+  eliminado_en = Column(DateTime, nullable=True)  
   
   __table_args__ = (
       {

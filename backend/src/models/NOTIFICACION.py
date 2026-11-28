@@ -1,5 +1,5 @@
-from sqlalchemy import Column, DateTime, ForeignKey, Index, String, Text, text
-from sqlalchemy.dialects.mysql import BIGINT,ENUM
+from sqlalchemy import Boolean, Column, DateTime, Enum, ForeignKey, Index, SmallInteger, String, Text, text
+from sqlalchemy.dialects.mysql import BIGINT, ENUM, MEDIUMTEXT, SMALLINT
 from sqlalchemy.orm import relationship
 from sqlalchemy.orm import declarative_base
 from src.config.database import engine
@@ -161,6 +161,7 @@ class Reporte(Base):
         DateTime, nullable=False, server_default=text('CURRENT_TIMESTAMP')
     )
     resuelto_en = Column(DateTime, nullable=True)
+    resuelto_por_usuario_id = Column(BIGINT(unsigned=True), nullable=True)
     archivado_en = Column(DateTime, nullable=True)
 
     __table_args__ = (
@@ -197,6 +198,7 @@ CREATE TABLE REPORTE (
         'RECHAZADO'
     ) NOT NULL DEFAULT 'PENDIENTE',
     resolucion VARCHAR(1000) NULL,
+    resuelto_por_usuario_id BIGINT UNSIGNED NULL,
     creado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     resuelto_en DATETIME NULL,
     archivado_en DATETIME NULL,
@@ -230,6 +232,8 @@ class ReporteApelacion(Base):
 
     resolucion = Column(String(1000), nullable=True)
 
+    resuelto_por_usuario_id = Column(BIGINT(unsigned=True), nullable=True)
+
     creado_en = Column(
         DateTime, nullable=False, server_default=text('CURRENT_TIMESTAMP')
     )
@@ -255,12 +259,14 @@ CREATE TABLE REPORTE_APELACION (
         'RECHAZADA'
     ) NOT NULL DEFAULT 'PENDIENTE',
     resolucion VARCHAR(1000) NULL,
+    resuelto_por_usuario_id BIGINT UNSIGNED NULL,
     creado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     resuelto_en DATETIME NULL,
     CONSTRAINT pk_reporte_apelacion
         PRIMARY KEY (id)
 ) ENGINE=SPIDER
   COMMENT='wrapper "mysql", srv "dn_a"';
+
 '''
 
 #-------------------------------------------------------------------------------------------
@@ -487,6 +493,8 @@ class AyudaArticulo(Base):
         server_default=text("'BORRADOR'")
     )
 
+    autor_usuario_id = Column(BIGINT(unsigned=True), nullable=True)
+
     publicado_en = Column(DateTime, nullable=True)
 
     actualizado_en = Column(
@@ -528,6 +536,7 @@ CREATE TABLE AYUDA_ARTICULO (
         'PUBLICADO',
         'RETIRADO'
     ) NOT NULL DEFAULT 'BORRADOR',
+    autor_usuario_id BIGINT UNSIGNED NULL,
     publicado_en DATETIME NULL,
     actualizado_en DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
         ON UPDATE CURRENT_TIMESTAMP,

@@ -32,10 +32,9 @@ class Comentario(Base):
     )
     
     actualizado_en = Column(
-        DateTime, 
-        nullable=False, 
-        server_default=text('CURRENT_TIMESTAMP'),
-        server_onupdate=text('CURRENT_TIMESTAMP')
+    DateTime,
+    nullable=False,
+    server_default=text('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'),
     )
     
     # Borrado lógico

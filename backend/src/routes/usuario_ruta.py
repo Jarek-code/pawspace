@@ -1,4 +1,5 @@
-from fastapi import APIRouter, Depends, Request
+from fastapi import APIRouter, Depends, Request, HTTPException, status
+from pydantic import ValidationError
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 from src.config.database import get_db
@@ -52,8 +53,15 @@ async def token_para_swagger(
     db: Session = Depends(get_db),
     logs: ClienteLogs = Depends(get_logs)
 ):
-    credenciales = UserLogin(
-        email=form_data.username,
-        contrasena=form_data.password
-    )
+    try:
+        credenciales = UserLogin(
+            email=(form_data.username or "").strip(),
+            contrasena=form_data.password,
+        )
+    except ValidationError:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Correo o contrasena incorrecta :(",
+        )
+
     return await UsuarioControl.chequea_login(credenciales, db, request, logs)

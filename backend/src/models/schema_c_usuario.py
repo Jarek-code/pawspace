@@ -28,6 +28,7 @@ class UsuarioRespuesta(BaseModel):
     email: EmailStr
     plan: str
     activo: bool
+    rol: str
 
     class Config:
         from_attributes = True
@@ -36,14 +37,18 @@ class UsuarioRespuesta(BaseModel):
 class TokenSesion(BaseModel):
     #Es el token del usuario esto se lo quedara el fronted por que es lo que usara el usuario para tener una sesion 
     #iniciada y no tenga que tener que inciar otra vez (Duarante un tiempo limitado claro)
-    access_token : str
+    access_token : str =""
 
     #El tipo del token es bearer esto debido a que es un standar de seguridad e indica como se le bede pasar el token al frontend
     token_type : str = "bearer"
-   
+    
     #Este campo indica que es opcional que se escriba el token directamente el campo puede estar vacio o con texto esto hace que la api
     #no falle cuando llegue a faltar
     sesion_id: Optional[str] = None
+
+    rol: Optional[str] = None
+    
+    es_admin: bool = False
 
 class UserLogin(BaseModel):
     #valisa el correo del usuario

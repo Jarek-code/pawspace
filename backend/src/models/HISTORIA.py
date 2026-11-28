@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, Column, DateTime, SmallInteger, String, text
+from sqlalchemy import Boolean, Column, DateTime, Index, SmallInteger, String, text
 from sqlalchemy.dialects.mysql import BIGINT, SMALLINT, INTEGER, ENUM
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import relationship

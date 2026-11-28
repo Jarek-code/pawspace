@@ -18,8 +18,11 @@ class Seguimiento(Base):
 
     creado_en = Column(DateTime, nullable=False, server_default=text('CURRENT_TIMESTAMP'))
 
-    actualizado_en = Column(DateTime, nullable=False, server_default=text('CURRENT_TIMESTAMP'), 
-    server_onupdate=text('CURRENT_TIMESTAMP'))
+    actualizado_en = Column(
+    DateTime,
+    nullable=False,
+    server_default=text('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'),
+    )
 
     __table_args__ = (
         {

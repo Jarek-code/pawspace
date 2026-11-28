@@ -61,7 +61,7 @@ class UsuarioControl:
                 detail="Correo o contrasena incorrecta :( "
             )
         #Toma los valores que necesita para poder verificarlos
-        usuario_id, hash_guardado, activo, actualizado_en = usuario_db
+        usuario_id, hash_guardado, activo, actualizado_en, rol = usuario_db
 
         #Esta seccion es para el caso en el que el usuario este desactivado
         if not activo:
@@ -95,28 +95,35 @@ class UsuarioControl:
          # Guardar la sesion en MariaDB: asi la mascota activa se persiste
         # en SESION y el token del login no necesita cambiar nunca.
         db.execute(text("""
-            INSERT INTO SESION 
-            (id, usuario_id, mascota_id, iniciada_en,ultima_actividad_en, expira_en)
-            VALUES (:sid, :uid, NULL, NOW(), NOW(),
+            INSERT INTO SESION
+            (id, usuario_id, mascota_id, dispositivo, plataforma,
+             ubicacion_ciudad, ubicacion_pais,
+             iniciada_en, ultima_actividad_en, expira_en)
+            VALUES (:sid, :uid, NULL, :dispositivo, :plataforma,
+                    :ciudad, :pais, NOW(), NOW(),
                     DATE_ADD(NOW(), INTERVAL 7 DAY))
             ON DUPLICATE KEY UPDATE
                 ultima_actividad_en = NOW(),
                 expira_en = DATE_ADD(NOW(), INTERVAL 7 DAY),
                 cerrada_en = NULL,
                 cerrada_por = NULL
-            """), {
+        """), {
             "sid": sesion_id,
             "uid": usuario_id,
-            })
+            "dispositivo": request.headers.get("user-agent", "")[:120] or None,
+            "plataforma": request.headers.get("sec-ch-ua-platform", "")[:60] or None,
+            "ciudad": None,
+            "pais": None,
+        })
+        
         db.commit()
 
         #Y te devuelve el token y que tipo de token es
         return{
-            "token_acceso": nueo_token,
-            "token_tipo": "bearer",
+            "token_acceso": nueo_token, "token_tipo": "bearer",
+            "access_token": nueo_token, "token_type": "bearer",
             "sesion_id": sesion_id,
-            "access_token": nueo_token,
-            "token_type": "bearer",
+            "rol": rol, "es_admin": rol == "ADMIN",
         }
 
     @staticmethod

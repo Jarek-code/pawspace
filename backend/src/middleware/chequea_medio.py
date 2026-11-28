@@ -1,5 +1,6 @@
 import jwt
 import os
+from typing import Optional
 from datetime import datetime, timezone
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
@@ -11,8 +12,12 @@ from src.models.MASCOTA import Mascota, UsuarioMascota
 
 Llave_super_secreta = "odio israel"
 Algoritmo_Cifrador = "HS256"
-#oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/usuarios/login")
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/usuarios/token")
+#oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/usuarios/login")   <- Esto se utiliza para el frontend cuando se implemente comentar abajo y solo dejar este
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/usuarios/token")   # <- Este se utiliza para el backend 
+
+oauth2_scheme_opcional = OAuth2PasswordBearer(
+    tokenUrl="/api/usuarios/token", auto_error=False
+)
 
 def credenciales_invalidas() -> HTTPException:
     return HTTPException(
@@ -38,7 +43,7 @@ def dame_usuario_ahorita(token:str = Depends(oauth2_scheme), db: Session = Depen
         try:
             token_iat = float(token_iat)
         except ValueError:
-            credenciales_invalidas()
+            raise credenciales_invalidas()
 
     token_dado_en = datetime.fromtimestamp(token_iat, tz=timezone.utc)
 
@@ -74,6 +79,16 @@ def dame_usuario_ahorita(token:str = Depends(oauth2_scheme), db: Session = Depen
                 detail="Sesion expirada. Porfavor iniciar sesion nuevamente"
                 )
 
+
+    sid = payload.get("sid")
+
+    if sid:
+        fila= db.execute(text(
+            "SELECT cerrada_en, expira_en FROM SESION WHERE id = :sid AND usuario_id = :uid"
+        ),{"sid": sid, "uid": usuario_id}).fetchone()
+        if not fila or fila.cerrada_en is not None or fila.expira_en <= datetime.now():
+            raise credenciales_invalidas()
+
     return usuario_id
 
 #La seccion dame mascota ahorita tiene la funcionalidad de que debas seleccionar una mascota al inicio para poder realizar las acciones
@@ -86,6 +101,22 @@ def dame_mascota_ahorita(token: str = Depends(oauth2_scheme), db:Session = Depen
     payload = jwt.decode(token, Llave_super_secreta, algorithms=[Algoritmo_Cifrador])
     mascota_id_xd = payload.get("mid")
     sesion_id = payload.get("sid")
+
+    if not sesion_id:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED, 
+            detail="Token sin sesion.")
+    
+    fila = db.execute(text('''
+        SELECT mascota_id, cerrada_en, expira_en
+        FROM SESION WHERE id = :sid AND usuario_id = :uid
+    '''), {"sid": sesion_id, "uid": usuario_id}).fetchone()
+
+    if not fila or fila.cerrada_en is not None or fila.expira_en <= datetime.now():
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED, 
+            detail="Sesion expirada o cerrada")
+    mascota_id_xd = fila.mascota_id
 
     if mascota_id_xd is None:
         if sesion_id:
@@ -136,5 +167,22 @@ def dame_mascota_ahorita(token: str = Depends(oauth2_scheme), db:Session = Depen
         "usuario_id": usuario_id,
         "mascota_id": mascota_id,
         "sesion_id" : sesion_id
+    }
+
+def pasen_contexto_opcional(
+    token: Optional[str] = Depends(oauth2_scheme_opcional),
+    db: Session = Depends(get_db),
+) -> Optional[dict]:
+
+    if not token:
+        return None
+
+    usuario_id = dame_usuario_ahorita(token=token, db=db)
+    payload = jwt.decode(token, Llave_super_secreta, algorithms=[Algoritmo_Cifrador])
+    mascota_id_raw = payload.get("mid")
+
+    return{
+        "usuario_id": usuario_id,
+        "mascota_id": int(mascota_id_raw) if mascota_id_raw is not None else None,
     }
 

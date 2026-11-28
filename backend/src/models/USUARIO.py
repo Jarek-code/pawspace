@@ -39,6 +39,12 @@ class Usuario(Base):
         server_default=text("'GRATUITO'"),
     )
 
+    rol = Column(
+        ENUM('TUTOR', 'MODERADOR', 'SOPORTE', 'EDITOR', 'ADMIN'),
+        nullable=False,
+        server_default=text("'TUTOR'"),
+    )
+
     eliminada_en = Column(DateTime, nullable=True)
 
     __table_args__ = (
@@ -65,6 +71,13 @@ CREATE TABLE USUARIO (
         'GRATUITO',
         'PREMIUM'
     ) NOT NULL DEFAULT 'GRATUITO',
+    rol ENUM(
+        'TUTOR',
+        'MODERADOR',
+        'SOPORTE',
+        'EDITOR',
+        'ADMIN'
+    ) NOT NULL DEFAULT 'TUTOR',
     eliminada_en DATETIME NULL,
     CONSTRAINT pk_usuario
         PRIMARY KEY (id)
